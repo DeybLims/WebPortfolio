@@ -59,7 +59,7 @@ export function Hero() {
                 />
               </a>
               <a
-                href="/Dave_Emanuel_G_Lima_Resume.pdf"
+                href="https://drive.google.com/file/d/1ddasoyRpPdOBtGby4caY9QVizrnQi1sb/view?usp=sharing"
                 className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-black/10 bg-white/70 px-5 text-sm font-semibold text-zinc-950 shadow-sm backdrop-blur transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
               >
                 <Download className="h-4 w-4" aria-hidden="true" />
