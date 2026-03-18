@@ -18,6 +18,11 @@ export type Project = {
   description: string;
   tags: string[];
   links: ProjectLink[];
+  image?: {
+    src: string;
+    alt: string;
+  };
+  imageFit?: "cover" | "contain";
   year?: string;
 };
 

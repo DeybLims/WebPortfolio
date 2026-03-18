@@ -29,22 +29,63 @@ export const portfolioData: PortfolioData = {
       title: "Backend",
       items: [
         "Python (Flask, Streamlit)",
+        "Frappe / ERPNext",
         "Node.js",
         "RESTful APIs",
         "Google Cloud Functions",
       ],
     },
     { title: "Databases", items: ["PostgreSQL", "Firebase", "Google Sheets API"] },
-    { title: "Cloud/Deploy", items: ["Vercel", "Google Cloud Platform", "Render.com"] },
+    {
+      title: "Cloud/Deploy",
+      items: [
+        "Vercel",
+        "Google Cloud Platform",
+        "Render.com",
+        "DigitalOcean",
+        "Contabo",
+        "Dokploy",
+      ],
+    },
     { title: "Tools", items: ["Git", "GitHub", "Figma", "Postman", "Jira"] },
   ],
   projects: [
     {
+      title: "PinPoint — Smart Attendance Platform",
+      year: "2024",
+      description:
+        "Smart geofenced attendance and time-aware student portal built with Laravel and React. Teachers, students, and admins each have dedicated panels: admins create accounts and define classroom geofence points, teachers monitor live attendance, and students sign in from allowed locations and times. The backend enforces GPS and schedule rules, logs time-stamped events, and exposes REST APIs for the frontend.",
+      tags: ["Laravel", "React", "Geofencing", "Attendance"],
+      image: {
+        src: "/images/projects/pinpoint.svg",
+        alt: "PinPoint attendance logo",
+      },
+      imageFit: "contain",
+      links: [{ label: "Contact", href: "#contact" }],
+    },
+    {
+      title: "ERPNext (Frappe) — Internal ERP",
+      year: "2026",
+      description:
+        "Develop and maintain ERP features in Frappe/ERPNext for internal operations customizing workflows and modules to match business processes and keep day-to-day systems reliable.",
+      tags: ["ERPNext", "Frappe", "Full-stack", "Business Workflows"],
+      image: {
+        src: "/images/projects/frappe.svg",
+        alt: "Frappe logo",
+      },
+      imageFit: "contain",
+      links: [{ label: "Contact", href: "#contact" }],
+    },
+    {
       title: "BuildMaster App & Website",
       description:
-        "Improved user experience through front-end development while ensuring quality via QA testing and maintaining reliable data workflows through database administration.",
-      tags: ["Frontend", "QA", "Database Admin"],
-      links: [{ label: "GitHub", href: "https://github.com/DeybLims" }],
+        "Started as an intern and was hired as a Junior Software Engineer. Shipped new features for the website and built API endpoints to support the mobile team, while keeping deployments healthy through routine checkups.",
+      tags: ["Full-stack", "APIs", "Dokploy"],
+      image: {
+        src: "/images/projects/buildmaster.png",
+        alt: "BuildMaster product page screenshot",
+      },
+      links: [{ label: "Contact", href: "#contact" }],
     },
     {
       title: "ColorAid",
@@ -85,21 +126,32 @@ export const portfolioData: PortfolioData = {
   ],
   experience: [
     {
-      role: "Web Developer",
+      role: "Junior Software Engineer (formerly Intern)",
+      company: "BuildMaster",
+      year: "2025–2026",
+      highlights: [
+        "Started as an intern and transitioned into a Junior Software Engineer role.",
+        "Developed and shipped new features for the website (full-stack ownership where needed).",
+        "Built backend API endpoints to support mobile development (handoff to a dedicated mobile developer).",
+        "Performed deployment checkups and basic operational monitoring using Dokploy.",
+      ],
+    },
+    {
+      role: "Junior ERPNext Developer",
       company: "Quirao Group of Companies",
       location: "La Paz, Iloilo City",
-      year: "2025",
+      year: "2026",
       highlights: [
-        "Oversaw QA for internal web and mobile applications to ensure optimal functionality, performance, and user experience.",
-        "Administered and maintained company databases, ensuring integrity, security, and availability across platforms.",
-        "Led the development and deployment of reservation-based websites, streamlining customer booking processes.",
-        "Collaborated with cross-functional teams to deliver scalable and responsive web solutions.",
+        "Develop and maintain ERP features using Frappe/ERPNext to support internal operations.",
+        "Build, customize, and improve ERP workflows and modules based on business requirements.",
+        "Collaborate with stakeholders to translate processes into reliable, maintainable ERP solutions.",
+        "Support deployments and operational checkups to keep systems stable and available.",
       ],
     },
     {
       role: "Front-End Web Developer",
       company: "MSL Philippines",
-      year: "2025",
+      year: "2026",
       highlights: [
         "Developed and maintained dynamic user interfaces using React (JSX/TSX) within a Laravel-based backend framework.",
         "Collaborated with backend developers to integrate RESTful APIs for seamless data flow and performance.",

@@ -7,7 +7,7 @@ import { Footer } from "@/components/sections/footer";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-white text-zinc-950 dark:bg-black dark:text-white">
       <SiteNav />
       <main id="content">
         <Hero />

@@ -38,15 +38,17 @@ export function SkillsSection() {
 
           return (
             <Reveal key={group.title} delay={idx * 0.04} className={span}>
-              <div className="group h-full rounded-2xl border border-white/10 bg-white/5 p-5 shadow-sm backdrop-blur transition hover:border-white/15 hover:bg-white/[0.07]">
+              <div className="group h-full rounded-2xl border border-black/10 bg-white p-5 shadow-sm transition hover:border-black/15 hover:bg-zinc-50 dark:border-white/10 dark:bg-white/5 dark:backdrop-blur dark:hover:border-white/15 dark:hover:bg-white/[0.07]">
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <h3 className="text-sm font-semibold text-white">{group.title}</h3>
-                    <p className="mt-1 text-xs text-zinc-400">
+                    <h3 className="text-sm font-semibold text-zinc-950 dark:text-white">
+                      {group.title}
+                    </h3>
+                    <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">
                       {group.items.length} technologies
                     </p>
                   </div>
-                  <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-zinc-200">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-black/10 bg-black/5 text-zinc-700 dark:border-white/10 dark:bg-white/5 dark:text-zinc-200">
                     <Icon className="h-4 w-4" aria-hidden="true" />
                   </div>
                 </div>
