@@ -9,7 +9,10 @@ import { Pill } from "@/components/ui/pill";
 import { Stagger, StaggerItem } from "@/components/motion/stagger";
 import { cn } from "@/lib/cn";
 
-const iconFor = (label: string) => {
+const iconFor = (href: string, label: string) => {
+  const lowerHref = href.toLowerCase();
+  if (lowerHref.includes("github.com")) return Github;
+  if (!href.startsWith("#")) return ExternalLink;
   const v = label.toLowerCase();
   if (v.includes("github")) return Github;
   if (v.includes("live")) return ExternalLink;
@@ -80,7 +83,7 @@ export function ProjectsSection() {
 
                 <footer className="mt-5 flex flex-wrap gap-2">
                   {project.links.map((link) => {
-                    const Icon = iconFor(link.label);
+                    const Icon = iconFor(link.href, link.label);
                     const isInternal = link.href.startsWith("#");
                     return (
                       <a

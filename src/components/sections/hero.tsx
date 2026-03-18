@@ -3,7 +3,7 @@
 import * as React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, Mail } from "lucide-react";
+import { ArrowRight, Download, Mail } from "lucide-react";
 import { portfolioData } from "@/lib/portfolio-data";
 
 export function Hero() {
@@ -59,12 +59,23 @@ export function Hero() {
                 />
               </a>
               <a
-                href="#contact"
+                href="/Dave_Emanuel_G_Lima_Resume.pdf"
                 className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-black/10 bg-white/70 px-5 text-sm font-semibold text-zinc-950 shadow-sm backdrop-blur transition hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
               >
-                <Mail className="h-4 w-4" aria-hidden="true" />
-                Contact Me
+                <Download className="h-4 w-4" aria-hidden="true" />
+                Download Resume
               </a>
+            </div>
+
+            <div className="mt-3 text-sm text-zinc-600 dark:text-zinc-400">
+              Or{" "}
+              <a
+                href="#contact"
+                className="font-medium text-violet-600 underline-offset-4 hover:underline dark:text-violet-300"
+              >
+                contact me
+              </a>{" "}
+              about a specific role or project.
             </div>
           </div>
 

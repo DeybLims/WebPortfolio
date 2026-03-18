@@ -126,17 +126,6 @@ export const portfolioData: PortfolioData = {
   ],
   experience: [
     {
-      role: "Junior Software Engineer (formerly Intern)",
-      company: "BuildMaster",
-      year: "2025–2026",
-      highlights: [
-        "Started as an intern and transitioned into a Junior Software Engineer role.",
-        "Developed and shipped new features for the website (full-stack ownership where needed).",
-        "Built backend API endpoints to support mobile development (handoff to a dedicated mobile developer).",
-        "Performed deployment checkups and basic operational monitoring using Dokploy.",
-      ],
-    },
-    {
       role: "Junior ERPNext Developer",
       company: "Quirao Group of Companies",
       location: "La Paz, Iloilo City",
@@ -146,6 +135,17 @@ export const portfolioData: PortfolioData = {
         "Build, customize, and improve ERP workflows and modules based on business requirements.",
         "Collaborate with stakeholders to translate processes into reliable, maintainable ERP solutions.",
         "Support deployments and operational checkups to keep systems stable and available.",
+      ],
+    },
+    {
+      role: "Junior Software Engineer (formerly Intern)",
+      company: "BuildMaster",
+      year: "2025–2026",
+      highlights: [
+        "Started as an intern and transitioned into a Junior Software Engineer role.",
+        "Developed and shipped new features for the website (full-stack ownership where needed).",
+        "Built backend API endpoints to support mobile development (handoff to a dedicated mobile developer).",
+        "Performed deployment checkups and basic operational monitoring using Dokploy.",
       ],
     },
     {

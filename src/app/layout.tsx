@@ -15,16 +15,15 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Dave Emanuel G. Lima — Software Developer",
-    template: "%s — Dave Emanuel G. Lima",
+    default: "Dave Emanuel G. Lima | Software Developer",
+    template: "%s | Dave Emanuel G. Lima",
   },
   description:
-    "Versatile software developer specializing in full‑stack web and mobile application development.",
-  metadataBase: new URL("https://example.com"),
+    "Versatile Software Developer specializing in full-stack web and mobile application development from Iloilo City, Philippines.",
   openGraph: {
-    title: "Dave Emanuel G. Lima — Software Developer",
+    title: "Dave Emanuel G. Lima | Software Developer",
     description:
-      "Versatile software developer specializing in full‑stack web and mobile application development.",
+      "Versatile Software Developer specializing in full-stack web and mobile application development from Iloilo City, Philippines.",
     type: "website",
   },
 };
