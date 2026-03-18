@@ -35,7 +35,10 @@ export const portfolioData: PortfolioData = {
         "Google Cloud Functions",
       ],
     },
-    { title: "Databases", items: ["PostgreSQL", "Firebase", "Google Sheets API"] },
+    {
+      title: "Databases",
+      items: ["PostgreSQL", "MySQL", "MariaDB", "Firebase", "Google Sheets API"],
+    },
     {
       title: "Cloud/Deploy",
       items: [
@@ -152,17 +155,6 @@ export const portfolioData: PortfolioData = {
       ],
     },
     {
-      role: "Junior Software Engineer (formerly Intern)",
-      company: "BuildMaster",
-      year: "2025–2026",
-      highlights: [
-        "Started as an intern and transitioned into a Junior Software Engineer role.",
-        "Developed and shipped new features for the website (full-stack ownership where needed).",
-        "Built backend API endpoints to support mobile development (handoff to a dedicated mobile developer).",
-        "Performed deployment checkups and basic operational monitoring using Dokploy.",
-      ],
-    },
-    {
       role: "Front-End Web Developer",
       company: "MSL Philippines",
       year: "2026",
@@ -171,6 +163,17 @@ export const portfolioData: PortfolioData = {
         "Collaborated with backend developers to integrate RESTful APIs for seamless data flow and performance.",
         "Applied responsive design principles and component-based architecture for scalable, maintainable UI.",
         "Improved front-end build processes and code quality through modern development practices and tooling.",
+      ],
+    },
+    {
+      role: "Junior Software Engineer (formerly Intern)",
+      company: "BuildMaster",
+      year: "2025–2026",
+      highlights: [
+        "Started as an intern and transitioned into a Junior Software Engineer role.",
+        "Developed and shipped new features for the website (full-stack ownership where needed).",
+        "Built backend API endpoints to support mobile development (handoff to a dedicated mobile developer).",
+        "Performed deployment checkups and basic operational monitoring using Dokploy.",
       ],
     },
   ],

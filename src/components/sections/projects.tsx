@@ -161,16 +161,16 @@ export function ProjectsSection() {
                 scale: 0.8,
                 transition: { duration: 0.2 },
               }}
-              className="mx-4 max-h-[85vh] w-full max-w-3xl overflow-y-auto rounded-2xl border border-white/10 bg-zinc-950/95 p-6 shadow-2xl ring-1 ring-white/10 preserve-3d"
+              className="mx-4 max-h-[85vh] w-full max-w-3xl overflow-y-auto rounded-2xl border border-black/10 bg-white p-6 shadow-2xl ring-1 ring-black/5 preserve-3d dark:border-white/10 dark:bg-zinc-950/95 dark:ring-white/10"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <h3 className="text-lg font-semibold tracking-tight text-white sm:text-xl">
+                  <h3 className="text-lg font-semibold tracking-tight text-zinc-950 dark:text-white sm:text-xl">
                     {selectedProject.title}
                   </h3>
                   {selectedProject.year ? (
-                    <p className="mt-1 font-mono text-xs text-zinc-400">
+                    <p className="mt-1 font-mono text-xs text-zinc-500 dark:text-zinc-400">
                       {selectedProject.year}
                     </p>
                   ) : null}
@@ -178,7 +178,7 @@ export function ProjectsSection() {
                 <button
                   type="button"
                   onClick={closeModal}
-                  className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-white/5 text-zinc-200 transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60"
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-black/10 bg-zinc-100 text-zinc-700 transition hover:bg-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60 dark:border-white/15 dark:bg-white/5 dark:text-zinc-200 dark:hover:bg-white/10"
                   aria-label="Close project details"
                 >
                   <X className="h-4 w-4" aria-hidden="true" />
@@ -186,7 +186,7 @@ export function ProjectsSection() {
               </div>
 
               {selectedProject.image ? (
-                <div className="mt-4 overflow-hidden rounded-xl border border-white/10 bg-white/5">
+                <div className="mt-4 overflow-hidden rounded-xl border border-black/10 bg-zinc-100 dark:border-white/10 dark:bg-white/5">
                   <Image
                     src={selectedProject.image.src}
                     alt={selectedProject.image.alt}
@@ -195,17 +195,19 @@ export function ProjectsSection() {
                     className={cn(
                       "max-h-80 w-full",
                       selectedProject.imageFit === "contain"
-                        ? "bg-black object-contain p-8"
+                        ? "bg-white object-contain p-8 dark:bg-black"
                         : "object-cover",
                     )}
                   />
                 </div>
               ) : null}
 
-              <div className="mt-5 space-y-3 text-sm text-zinc-200">
+              <div className="mt-5 space-y-3 text-sm text-zinc-700 dark:text-zinc-200">
                 <p>{selectedProject.description}</p>
                 {selectedProject.longDescription ? (
-                  <p className="text-zinc-300">{selectedProject.longDescription}</p>
+                  <p className="text-zinc-700 dark:text-zinc-300">
+                    {selectedProject.longDescription}
+                  </p>
                 ) : null}
               </div>
 
@@ -225,7 +227,7 @@ export function ProjectsSection() {
                       href={link.href}
                       target={isInternal ? undefined : "_blank"}
                       rel={isInternal ? undefined : "noreferrer"}
-                      className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60"
+                      className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-zinc-100 px-4 py-2 text-sm font-semibold text-zinc-900 transition hover:bg-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
                     >
                       <Icon className="h-4 w-4" aria-hidden="true" />
                       {link.label}
