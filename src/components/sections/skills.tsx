@@ -57,7 +57,7 @@ function SkillCard({ group, span, isTouch }: SkillCardProps) {
           rotateY: 4,
           boxShadow: "0 18px 45px rgba(15,23,42,0.3)",
         },
-        transition: { type: "spring", stiffness: 220, damping: 22 },
+        transition: { type: "spring" as const, stiffness: 220, damping: 22 },
         extraInnerClass:
           "relative overflow-hidden before:pointer-events-none before:absolute before:-left-1/3 before:-top-full before:h-[200%] before:w-1/2 before:rotate-12 before:bg-gradient-to-b before:from-white/5 before:via-white/20 before:to-transparent hover:before:translate-x-full hover:before:duration-700",
         tapDuration: 600,
@@ -68,7 +68,7 @@ function SkillCard({ group, span, isTouch }: SkillCardProps) {
           scale: 0.98,
           boxShadow: "0 0 28px rgba(34,197,94,0.65)",
         },
-        transition: { duration: 0.3, ease: "easeInOut" },
+        transition: { duration: 0.3, ease: "easeInOut" as const },
         extraInnerClass: "",
         tapDuration: 800,
       };
@@ -79,7 +79,7 @@ function SkillCard({ group, span, isTouch }: SkillCardProps) {
           boxShadow:
             "0 4px 0 rgba(24,24,27,1), 0 8px 0 rgba(39,39,42,1), 0 12px 0 rgba(63,63,70,1)",
         },
-        transition: { type: "spring", stiffness: 230, damping: 24 },
+        transition: { type: "spring" as const, stiffness: 230, damping: 24 },
         extraInnerClass: "",
         tapDuration: 500,
       };
@@ -89,7 +89,7 @@ function SkillCard({ group, span, isTouch }: SkillCardProps) {
           y: -8,
           boxShadow: "0 28px 60px rgba(59,130,246,0.45)",
         },
-        transition: { type: "spring", stiffness: 150, damping: 20 },
+        transition: { type: "spring" as const, stiffness: 150, damping: 20 },
         extraInnerClass: "",
         tapDuration: 700,
       };
@@ -99,7 +99,7 @@ function SkillCard({ group, span, isTouch }: SkillCardProps) {
           scale: 1.03,
           borderColor: "rgba(148,163,184,0.8)",
         },
-        transition: { duration: 0.12, ease: "easeOut" },
+        transition: { duration: 0.12, ease: "easeOut" as const },
         extraInnerClass:
           "bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[length:16px_16px]",
         tapDuration: 400,
@@ -111,7 +111,7 @@ function SkillCard({ group, span, isTouch }: SkillCardProps) {
         scale: 1.02,
         boxShadow: "0 8px 30px rgba(255,255,255,0.04)",
       },
-      transition: { type: "spring", stiffness: 220, damping: 22 },
+      transition: { type: "spring" as const, stiffness: 220, damping: 22 },
       extraInnerClass: "",
       tapDuration: 500,
     };
@@ -128,7 +128,7 @@ function SkillCard({ group, span, isTouch }: SkillCardProps) {
           rotateY: 4,
           boxShadow: "0 18px 45px rgba(15,23,42,0.3)",
         },
-        transition: { type: "spring", stiffness: 220, damping: 22 },
+        transition: { type: "spring" as const, stiffness: 220, damping: 22 },
       };
     } else if (title.includes("back")) {
       return {
@@ -144,7 +144,7 @@ function SkillCard({ group, span, isTouch }: SkillCardProps) {
           duration: 1.4,
           repeat: Infinity,
           repeatType: "loop" as const,
-          ease: "easeInOut",
+          ease: "easeInOut" as const,
         },
       };
     } else if (title.includes("database")) {
@@ -154,7 +154,7 @@ function SkillCard({ group, span, isTouch }: SkillCardProps) {
           boxShadow:
             "0 4px 0 rgba(24,24,27,1), 0 8px 0 rgba(39,39,42,1), 0 12px 0 rgba(63,63,70,1)",
         },
-        transition: { type: "spring", stiffness: 230, damping: 24 },
+        transition: { type: "spring" as const, stiffness: 230, damping: 24 },
       };
     } else if (title.includes("cloud")) {
       return {
@@ -166,7 +166,7 @@ function SkillCard({ group, span, isTouch }: SkillCardProps) {
           duration: 2,
           repeat: Infinity,
           repeatType: "reverse" as const,
-          ease: "easeInOut",
+          ease: "easeInOut" as const,
         },
       };
     } else if (title.includes("tool")) {
@@ -175,7 +175,7 @@ function SkillCard({ group, span, isTouch }: SkillCardProps) {
           scale: 1.03,
           borderColor: "rgba(148,163,184,0.8)",
         },
-        transition: { duration: 0.12, ease: "easeOut" },
+        transition: { duration: 0.12, ease: "easeOut" as const },
       };
     }
     return {
@@ -184,7 +184,7 @@ function SkillCard({ group, span, isTouch }: SkillCardProps) {
         scale: 1.02,
         boxShadow: "0 8px 30px rgba(255,255,255,0.04)",
       },
-      transition: { type: "spring", stiffness: 220, damping: 22 },
+      transition: { type: "spring" as const, stiffness: 220, damping: 22 },
     };
   };
 

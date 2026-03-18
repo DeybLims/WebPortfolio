@@ -94,7 +94,27 @@ export const portfolioData: PortfolioData = {
         src: "/images/projects/buildmaster.png",
         alt: "BuildMaster product page screenshot",
       },
-      links: [{ label: "Contact", href: "#contact" }],
+      links: [
+        { label: "Website", href: "https://buildmaster.ph" },
+        { label: "Contact", href: "#contact" },
+      ],
+    },
+    {
+      title: "MSL Philippines Website",
+      year: "2026",
+      description:
+        "Front-end development for the official MSL Philippines website, building dynamic interfaces with React and Laravel integration.",
+      longDescription:
+        "MSL Philippines is the official website for Mobile Legends: Bang Bang esports in the Philippines. I developed and maintained dynamic user interfaces using React (JSX/TSX) within a Laravel-based backend framework. The role involved collaborating with backend developers to integrate RESTful APIs, applying responsive design principles, and implementing component-based architecture for a scalable, maintainable UI.",
+      tags: ["React", "Laravel", "TypeScript", "RESTful APIs"],
+      image: {
+        src: "/images/projects/MSL.png",
+        alt: "MSL Philippines website screenshot",
+      },
+      links: [
+        { label: "Website", href: "https://www.moontonslph.org" },
+        { label: "Contact", href: "#contact" },
+      ],
     },
     {
       title: "ColorAid",
