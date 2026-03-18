@@ -63,7 +63,7 @@ export function Footer() {
             reserved.
           </p>
           <p className="font-mono text-xs">
-            Designed for performance, accessibility, and clarity.
+            Engineering the full stack of possibilities.
           </p>
         </div>
       </div>
