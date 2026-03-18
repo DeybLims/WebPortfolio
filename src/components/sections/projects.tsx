@@ -50,6 +50,7 @@ export function ProjectsSection() {
           <StaggerItem key={project.title}>
             <motion.article
               whileHover={{ scale: 1.01 }}
+              whileTap={{ scale: 0.97 }}
               transition={{ duration: 0.15 }}
               onClick={() => setSelectedProject(project)}
               role="button"
@@ -143,15 +144,24 @@ export function ProjectsSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm perspective-[1200px]"
             onClick={closeModal}
           >
             <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.96, y: 10 }}
-              transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
-              className="mx-4 max-h-[85vh] w-full max-w-3xl overflow-y-auto rounded-2xl border border-white/10 bg-zinc-950/95 p-6 shadow-2xl sm:p-8"
+              initial={{ opacity: 0, rotateY: 90, scale: 0.8 }}
+              animate={{
+                opacity: 1,
+                rotateY: 0,
+                scale: 1,
+                transition: { type: "spring", damping: 20, stiffness: 100 },
+              }}
+              exit={{
+                opacity: 0,
+                rotateY: -90,
+                scale: 0.8,
+                transition: { duration: 0.2 },
+              }}
+              className="mx-4 max-h-[85vh] w-full max-w-3xl overflow-y-auto rounded-2xl border border-white/10 bg-zinc-950/95 p-6 shadow-2xl ring-1 ring-white/10 preserve-3d"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex items-start justify-between gap-4">
