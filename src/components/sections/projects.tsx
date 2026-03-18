@@ -2,7 +2,8 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { ExternalLink, Github, Link as LinkIcon } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ExternalLink, Github, Link as LinkIcon, X } from "lucide-react";
 import { portfolioData } from "@/lib/portfolio-data";
 import { Section } from "@/components/ui/section";
 import { Pill } from "@/components/ui/pill";
@@ -20,6 +21,23 @@ const iconFor = (href: string, label: string) => {
 };
 
 export function ProjectsSection() {
+  const [selectedProject, setSelectedProject] = React.useState<
+    (typeof portfolioData.projects)[number] | null
+  >(null);
+
+  React.useEffect(() => {
+    if (selectedProject) {
+      const original = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = original;
+      };
+    }
+    return undefined;
+  }, [selectedProject]);
+
+  const closeModal = () => setSelectedProject(null);
+
   return (
     <Section
       id="projects"
@@ -30,7 +48,20 @@ export function ProjectsSection() {
       <Stagger className="grid gap-4 md:grid-cols-2">
         {portfolioData.projects.map((project) => (
           <StaggerItem key={project.title}>
-            <article className="group relative h-full overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-black/15 hover:bg-zinc-50 dark:border-white/10 dark:bg-white/5 dark:backdrop-blur dark:hover:border-white/15 dark:hover:bg-white/[0.07]">
+            <motion.article
+              whileHover={{ scale: 1.01 }}
+              transition={{ duration: 0.15 }}
+              onClick={() => setSelectedProject(project)}
+              role="button"
+              tabIndex={0}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setSelectedProject(project);
+                }
+              }}
+              className="group relative h-full cursor-pointer overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-black/15 hover:bg-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60 dark:border-white/10 dark:bg-white/5 dark:backdrop-blur dark:hover:border-white/15 dark:hover:bg-white/[0.07]"
+            >
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 blur-xl transition group-hover:opacity-100"
@@ -100,10 +131,102 @@ export function ProjectsSection() {
                   })}
                 </footer>
               </div>
-            </article>
+            </motion.article>
           </StaggerItem>
         ))}
       </Stagger>
+
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            key={selectedProject.title}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm"
+            onClick={closeModal}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96, y: 10 }}
+              transition={{ duration: 0.18, ease: [0.22, 1, 0.36, 1] }}
+              className="mx-4 max-h-[85vh] w-full max-w-3xl overflow-y-auto rounded-2xl border border-white/10 bg-zinc-950/95 p-6 shadow-2xl sm:p-8"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-start justify-between gap-4">
+                <div>
+                  <h3 className="text-lg font-semibold tracking-tight text-white sm:text-xl">
+                    {selectedProject.title}
+                  </h3>
+                  {selectedProject.year ? (
+                    <p className="mt-1 font-mono text-xs text-zinc-400">
+                      {selectedProject.year}
+                    </p>
+                  ) : null}
+                </div>
+                <button
+                  type="button"
+                  onClick={closeModal}
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-white/5 text-zinc-200 transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60"
+                  aria-label="Close project details"
+                >
+                  <X className="h-4 w-4" aria-hidden="true" />
+                </button>
+              </div>
+
+              {selectedProject.image ? (
+                <div className="mt-4 overflow-hidden rounded-xl border border-white/10 bg-white/5">
+                  <Image
+                    src={selectedProject.image.src}
+                    alt={selectedProject.image.alt}
+                    width={1400}
+                    height={800}
+                    className={cn(
+                      "max-h-80 w-full",
+                      selectedProject.imageFit === "contain"
+                        ? "bg-black object-contain p-8"
+                        : "object-cover",
+                    )}
+                  />
+                </div>
+              ) : null}
+
+              <div className="mt-5 space-y-3 text-sm text-zinc-200">
+                <p>{selectedProject.description}</p>
+                {selectedProject.longDescription ? (
+                  <p className="text-zinc-300">{selectedProject.longDescription}</p>
+                ) : null}
+              </div>
+
+              <div className="mt-4 flex flex-wrap gap-2">
+                {selectedProject.tags.map((tag) => (
+                  <Pill key={tag}>{tag}</Pill>
+                ))}
+              </div>
+
+              <div className="mt-6 flex flex-wrap gap-3">
+                {selectedProject.links.map((link) => {
+                  const Icon = iconFor(link.href, link.label);
+                  const isInternal = link.href.startsWith("#");
+                  return (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      target={isInternal ? undefined : "_blank"}
+                      rel={isInternal ? undefined : "noreferrer"}
+                      className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60"
+                    >
+                      <Icon className="h-4 w-4" aria-hidden="true" />
+                      {link.label}
+                    </a>
+                  );
+                })}
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </Section>
   );
 }

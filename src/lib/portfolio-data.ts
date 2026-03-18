@@ -55,6 +55,8 @@ export const portfolioData: PortfolioData = {
       year: "2024",
       description:
         "Smart geofenced attendance and time-aware student portal built with Laravel and React. Teachers, students, and admins each have dedicated panels: admins create accounts and define classroom geofence points, teachers monitor live attendance, and students sign in from allowed locations and times. The backend enforces GPS and schedule rules, logs time-stamped events, and exposes REST APIs for the frontend.",
+      longDescription:
+        "PinPoint was built as a thesis-turned-production project to make attendance painless for both faculty and students. It combines a Laravel 9 backend and React SPA front end. Admins configure geofenced classroom locations and school schedules, then onboard students and teachers. Students sign in from their phones within allowed geofences and time windows, while teachers see live attendance dashboards and historical logs. The system enforces business rules on the server, exposes REST endpoints for the web app and future mobile clients, and is designed to be deployed on modern PaaS platforms.",
       tags: ["Laravel", "React", "Geofencing", "Attendance"],
       image: {
         src: "/images/projects/pinpoint.svg",
@@ -68,6 +70,8 @@ export const portfolioData: PortfolioData = {
       year: "2026",
       description:
         "Develop and maintain ERP features in Frappe/ERPNext for internal operations customizing workflows and modules to match business processes and keep day-to-day systems reliable.",
+      longDescription:
+        "At Quirao Group of Companies, this internal ERPNext instance is the backbone for day-to-day operations. I extend and customize Frappe/ERPNext doctypes, workflows, and reports to match real business processes, from approvals to inventory and finance. My work focuses on translating stakeholder requirements into maintainable server-side logic, clear forms, and dashboards while keeping upgrades and performance in mind.",
       tags: ["ERPNext", "Frappe", "Full-stack", "Business Workflows"],
       image: {
         src: "/images/projects/frappe.svg",
@@ -80,6 +84,8 @@ export const portfolioData: PortfolioData = {
       title: "BuildMaster App & Website",
       description:
         "Started as an intern and was hired as a Junior Software Engineer. Shipped new features for the website and built API endpoints to support the mobile team, while keeping deployments healthy through routine checkups.",
+      longDescription:
+        "BuildMaster is a commercial construction marketplace where I contributed first as an intern and later as a Junior Software Engineer. I owned full-stack tickets on the web app: building new UX flows, refactoring legacy views, and wiring them to new and existing APIs. I also designed and implemented REST endpoints used by a separate mobile team, making sure contracts, validation, and error handling were solid. Part of the role involved monitoring deployments and health checks via Dokploy, helping keep the platform stable for end users.",
       tags: ["Full-stack", "APIs", "Dokploy"],
       image: {
         src: "/images/projects/buildmaster.png",
@@ -92,6 +98,8 @@ export const portfolioData: PortfolioData = {
       year: "2024",
       description:
         "Web app integrating real-time adaptive color correction for individuals with color vision deficiencies.",
+      longDescription:
+        "ColorAid helps people with color vision deficiencies better distinguish colors on screen. Users run through a vision test and then interact with tools that adapt colors in real time using Python, Flask, Firebase, and GCP. The goal was to explore accessibility-focused UI and data-driven adjustments, while learning how to ship a small but meaningful product end to end.",
       tags: ["Python", "Flask", "Firebase", "GCP"],
       links: [{ label: "GitHub", href: "https://github.com/DeybLims" }],
     },
@@ -99,6 +107,8 @@ export const portfolioData: PortfolioData = {
       title: "Paluto Reservation Website",
       description:
         "Full-stack reservation app for food orders with a Python backend interfacing with the Google Sheets API and a clean HTML/CSS/JS front end.",
+      longDescription:
+        "Paluto is a reservation and ordering website that connects customers to a food business. The backend uses Python and the Google Sheets API as a lightweight data store, while the frontend is kept intentionally simple with HTML, CSS, and JavaScript so it can run reliably in low-resource environments. I built the reservation flow, admin views for managing orders, and the integration that keeps Google Sheets data in sync.",
       tags: ["Python", "Google Sheets API", "HTML", "CSS", "JavaScript"],
       links: [
         {
@@ -112,6 +122,8 @@ export const portfolioData: PortfolioData = {
       year: "2023",
       description:
         "AI app that generates stories from user inputs using the Gemini API, with conversation history and reset support.",
+      longDescription:
+        "Story Creation with Gemini lets users define prompts such as setting, theme, and character details, then generates complete narratives using the Gemini API. It keeps a running conversation history so users can refine their stories over multiple interactions. The project was a way to experiment with LLM-powered UX, prompt design, and how to present AI responses in a way that feels approachable for non-technical users.",
       tags: ["Streamlit", "Python", "Gemini API"],
       links: [{ label: "GitHub", href: "https://github.com/DeybLims" }],
     },
@@ -120,6 +132,8 @@ export const portfolioData: PortfolioData = {
       year: "2023",
       description:
         "Mobile app for tracking daily food intake and calorie consumption with an intuitive interface and helpful insights.",
+      longDescription:
+        "Káon is a Flutter mobile app aimed at helping users understand their eating habits. Built with Dart, Flutter, and Python-backed services, it lets users log meals, track calories, and review trends over time. The project focused on mobile UI design patterns, offline-first considerations, and presenting nutrition data in a way that feels friendly instead of overwhelming.",
       tags: ["Dart", "Flutter", "Python"],
       links: [{ label: "GitHub", href: "https://github.com/DeybLims" }],
     },

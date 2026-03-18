@@ -16,6 +16,7 @@ export type ProjectLink = {
 export type Project = {
   title: string;
   description: string;
+  longDescription?: string;
   tags: string[];
   links: ProjectLink[];
   image?: {
