@@ -18,13 +18,44 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   font-family: var(--font-sans), ui-sans-serif, system-ui, -apple-system,
     "Segoe UI", sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 ::selection {
   background: color-mix(in oklab, #7c3aed 30%, transparent);
+}
+
+/* Prevent horizontal overflow on mobile */
+#__next,
+main {
+  overflow-x: hidden;
+}
+
+/* Modal scrolling fix for iOS Safari */
+.modal-scroll {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* Body scroll lock when modal is open */
+body.modal-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+/* Hide custom cursor effects on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .cursor-glow,
+  .mouse-follower {
+    display: none !important;
+  }
 }

@@ -4,12 +4,14 @@ import { SkillsSection } from "@/components/sections/skills";
 import { ProjectsSection } from "@/components/sections/projects";
 import { ExperienceSection } from "@/components/sections/experience";
 import { Footer } from "@/components/sections/footer";
+import { FloatingPageArtifacts } from "@/components/floating-page-artifacts";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white text-zinc-950 dark:bg-black dark:text-white">
+    <div className="relative min-h-screen overflow-x-hidden bg-white text-zinc-950 dark:bg-black dark:text-white">
       <SiteNav />
-      <main id="content">
+      <FloatingPageArtifacts />
+      <main id="content" className="overflow-x-hidden">
         <Hero />
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <ProjectsSection />

@@ -324,7 +324,7 @@ export function SkillsSection() {
       description="Grouped by the things I build and maintain day-to-day."
     >
       <motion.div
-        className="grid gap-4 md:grid-cols-12"
+        className="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-12"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}

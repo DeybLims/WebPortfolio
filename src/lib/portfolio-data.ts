@@ -124,6 +124,11 @@ export const portfolioData: PortfolioData = {
       longDescription:
         "ColorAid helps people with color vision deficiencies better distinguish colors on screen. Users run through a vision test and then interact with tools that adapt colors in real time using Python, Flask, Firebase, and GCP. The goal was to explore accessibility-focused UI and data-driven adjustments, while learning how to ship a small but meaningful product end to end.",
       tags: ["Python", "Flask", "Firebase", "GCP"],
+      image: {
+        src: "/images/projects/Logo 1.png",
+        alt: "ColorAid logo",
+      },
+      imageFit: "contain",
       links: [{ label: "GitHub", href: "https://github.com/DeybLims" }],
     },
     {

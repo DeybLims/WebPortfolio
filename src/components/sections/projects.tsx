@@ -45,12 +45,12 @@ export function ProjectsSection() {
       title="Selected work"
       description="A few projects that showcase how I think, build, and ship."
     >
-      <Stagger className="grid gap-4 md:grid-cols-2">
+      <Stagger className="grid gap-4 sm:grid-cols-1 md:grid-cols-2">
         {portfolioData.projects.map((project) => (
           <StaggerItem key={project.title}>
             <motion.article
               whileHover={{ scale: 1.01 }}
-              whileTap={{ scale: 0.97 }}
+              whileTap={{ scale: 0.98 }}
               transition={{ duration: 0.15 }}
               onClick={() => setSelectedProject(project)}
               role="button"
@@ -61,7 +61,7 @@ export function ProjectsSection() {
                   setSelectedProject(project);
                 }
               }}
-              className="group relative h-full cursor-pointer overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm transition hover:-translate-y-0.5 hover:border-black/15 hover:bg-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60 dark:border-white/10 dark:bg-white/5 dark:backdrop-blur dark:hover:border-white/15 dark:hover:bg-white/[0.07]"
+              className="group relative h-full cursor-pointer overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm transition active:scale-[0.98] hover:-translate-y-0.5 hover:border-black/15 hover:bg-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60 dark:border-white/10 dark:bg-white/5 dark:backdrop-blur dark:hover:border-white/15 dark:hover:bg-white/[0.07]"
             >
               <div
                 aria-hidden="true"
@@ -113,7 +113,7 @@ export function ProjectsSection() {
                 ))}
                 </div>
 
-                <footer className="mt-5 flex flex-wrap gap-2">
+                <footer className="mt-4 flex flex-wrap gap-2 sm:mt-5">
                   {project.links.map((link) => {
                     const Icon = iconFor(link.href, link.label);
                     const isInternal = link.href.startsWith("#");
@@ -121,9 +121,10 @@ export function ProjectsSection() {
                       <a
                         key={link.href}
                         href={link.href}
+                        onClick={(e) => e.stopPropagation()}
                         target={isInternal ? undefined : "_blank"}
                         rel={isInternal ? undefined : "noreferrer"}
-                        className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-black/5 px-3 py-2 text-sm font-semibold text-zinc-950 transition hover:bg-black/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+                        className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-black/10 bg-black/5 px-3 py-2 text-sm font-semibold text-zinc-950 transition hover:bg-black/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60 active:scale-95 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
                       >
                         <Icon className="h-4 w-4" aria-hidden="true" />
                         {link.label}
@@ -144,7 +145,7 @@ export function ProjectsSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm perspective-[1200px]"
+            className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-black/80 p-4 backdrop-blur-sm sm:perspective-[1200px]"
             onClick={closeModal}
           >
             <motion.div
@@ -161,12 +162,13 @@ export function ProjectsSection() {
                 scale: 0.8,
                 transition: { duration: 0.2 },
               }}
-              className="mx-4 max-h-[85vh] w-full max-w-3xl overflow-y-auto rounded-2xl border border-black/10 bg-white p-6 shadow-2xl ring-1 ring-black/5 preserve-3d dark:border-white/10 dark:bg-zinc-950/95 dark:ring-white/10"
+              className="modal-scroll my-auto w-[95vw] max-w-3xl overflow-y-auto overscroll-contain rounded-2xl border border-black/10 bg-white p-4 shadow-2xl ring-1 ring-black/5 sm:w-full sm:p-6 sm:preserve-3d dark:border-white/10 dark:bg-zinc-950/95 dark:ring-white/10"
+              style={{ maxHeight: "85vh", WebkitOverflowScrolling: "touch" }}
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h3 className="text-lg font-semibold tracking-tight text-zinc-950 dark:text-white sm:text-xl">
+              <div className="flex items-start justify-between gap-3 sm:gap-4">
+                <div className="min-w-0 flex-1">
+                  <h3 className="text-base font-semibold tracking-tight text-zinc-950 dark:text-white sm:text-lg md:text-xl">
                     {selectedProject.title}
                   </h3>
                   {selectedProject.year ? (
@@ -178,31 +180,31 @@ export function ProjectsSection() {
                 <button
                   type="button"
                   onClick={closeModal}
-                  className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-black/10 bg-zinc-100 text-zinc-700 transition hover:bg-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60 dark:border-white/15 dark:bg-white/5 dark:text-zinc-200 dark:hover:bg-white/10"
+                  className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-black/10 bg-zinc-100 text-zinc-700 transition hover:bg-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60 active:scale-95 dark:border-white/15 dark:bg-white/5 dark:text-zinc-200 dark:hover:bg-white/10 sm:h-8 sm:w-8"
                   aria-label="Close project details"
                 >
-                  <X className="h-4 w-4" aria-hidden="true" />
+                  <X className="h-5 w-5 sm:h-4 sm:w-4" aria-hidden="true" />
                 </button>
               </div>
 
               {selectedProject.image ? (
-                <div className="mt-4 overflow-hidden rounded-xl border border-black/10 bg-zinc-100 dark:border-white/10 dark:bg-white/5">
+                <div className="mt-3 overflow-hidden rounded-xl border border-black/10 bg-zinc-100 dark:border-white/10 dark:bg-white/5 sm:mt-4">
                   <Image
                     src={selectedProject.image.src}
                     alt={selectedProject.image.alt}
                     width={1400}
                     height={800}
                     className={cn(
-                      "max-h-80 w-full",
+                      "max-h-48 w-full sm:max-h-80",
                       selectedProject.imageFit === "contain"
-                        ? "bg-white object-contain p-8 dark:bg-black"
+                        ? "bg-white object-contain p-4 sm:p-8 dark:bg-black"
                         : "object-cover",
                     )}
                   />
                 </div>
               ) : null}
 
-              <div className="mt-5 space-y-3 text-sm text-zinc-700 dark:text-zinc-200">
+              <div className="mt-4 space-y-2 text-sm leading-relaxed text-zinc-700 dark:text-zinc-200 sm:mt-5 sm:space-y-3">
                 <p>{selectedProject.description}</p>
                 {selectedProject.longDescription ? (
                   <p className="text-zinc-700 dark:text-zinc-300">
@@ -217,7 +219,7 @@ export function ProjectsSection() {
                 ))}
               </div>
 
-              <div className="mt-6 flex flex-wrap gap-3">
+              <div className="mt-5 flex flex-wrap gap-2 sm:mt-6 sm:gap-3">
                 {selectedProject.links.map((link) => {
                   const Icon = iconFor(link.href, link.label);
                   const isInternal = link.href.startsWith("#");
@@ -227,7 +229,7 @@ export function ProjectsSection() {
                       href={link.href}
                       target={isInternal ? undefined : "_blank"}
                       rel={isInternal ? undefined : "noreferrer"}
-                      className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-zinc-100 px-4 py-2 text-sm font-semibold text-zinc-900 transition hover:bg-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+                      className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-black/10 bg-zinc-100 px-4 py-2 text-sm font-semibold text-zinc-900 transition hover:bg-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60 active:scale-95 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
                     >
                       <Icon className="h-4 w-4" aria-hidden="true" />
                       {link.label}
