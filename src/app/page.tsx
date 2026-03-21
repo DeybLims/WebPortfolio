@@ -3,6 +3,7 @@ import { Hero } from "@/components/sections/hero";
 import { SkillsSection } from "@/components/sections/skills";
 import { ProjectsSection } from "@/components/sections/projects";
 import { ExperienceSection } from "@/components/sections/experience";
+import { SystemArchitectureSection } from "@/components/sections/system-architecture";
 import { Footer } from "@/components/sections/footer";
 import { FloatingPageArtifacts } from "@/components/floating-page-artifacts";
 
@@ -16,6 +17,7 @@ export default function Home() {
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <ProjectsSection />
           <SkillsSection />
+          <SystemArchitectureSection />
           <ExperienceSection />
           <Footer />
         </div>
