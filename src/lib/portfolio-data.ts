@@ -55,7 +55,7 @@ export const portfolioData: PortfolioData = {
   projects: [
     {
       title: "PinPoint — Smart Attendance Platform",
-      year: "2024",
+      year: "2025",
       description:
         "Smart geofenced attendance and time-aware student portal built with Laravel and React. Teachers, students, and admins each have dedicated panels: admins create accounts and define classroom geofence points, teachers monitor live attendance, and students sign in from allowed locations and times. The backend enforces GPS and schedule rules, logs time-stamped events, and exposes REST APIs for the frontend.",
       longDescription:
@@ -122,8 +122,8 @@ export const portfolioData: PortfolioData = {
       description:
         "Web app integrating real-time adaptive color correction for individuals with color vision deficiencies.",
       longDescription:
-        "ColorAid helps people with color vision deficiencies better distinguish colors on screen. Users run through a vision test and then interact with tools that adapt colors in real time using Python, Flask, Firebase, and GCP. The goal was to explore accessibility-focused UI and data-driven adjustments, while learning how to ship a small but meaningful product end to end.",
-      tags: ["Python", "Flask", "Firebase", "GCP"],
+        "ColorAid helps people with color vision deficiencies better distinguish colors on screen. Users run through a vision test and then interact with tools that adapt colors in real time using Python, Firebase, and GCP. The goal was to explore accessibility-focused UI and data-driven adjustments, while learning how to ship a small but meaningful product end to end.",
+      tags: ["Python", "Firebase", "GCP"],
       image: {
         src: "/images/projects/Logo 1.png",
         alt: "ColorAid logo",
@@ -163,6 +163,11 @@ export const portfolioData: PortfolioData = {
       longDescription:
         "Káon is a Flutter mobile app aimed at helping users understand their eating habits. Built with Dart, Flutter, and Python-backed services, it lets users log meals, track calories, and review trends over time. The project focused on mobile UI design patterns, offline-first considerations, and presenting nutrition data in a way that feels friendly instead of overwhelming.",
       tags: ["Dart", "Flutter", "Python"],
+      image: {
+        src: "/images/projects/kaon.png",
+        alt: "Káon app logo",
+      },
+      imageFit: "contain",
       links: [{ label: "GitHub", href: "https://github.com/DeybLims" }],
     },
   ],

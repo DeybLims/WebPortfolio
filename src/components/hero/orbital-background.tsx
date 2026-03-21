@@ -52,8 +52,8 @@ export function OrbitalBackground({ mousePosition }: OrbitalBackgroundProps) {
         className="absolute inset-0 opacity-60 dark:opacity-100"
         style={{
           background: isMobile
-            ? "radial-gradient(400px circle at 20% 20%, rgba(124,58,237,0.12), transparent 50%), radial-gradient(300px circle at 80% 30%, rgba(14,165,233,0.08), transparent 50%)"
-            : "radial-gradient(800px circle at 20% 20%, rgba(124,58,237,0.15), transparent 50%), radial-gradient(600px circle at 80% 30%, rgba(14,165,233,0.1), transparent 50%), radial-gradient(700px circle at 60% 80%, rgba(236,72,153,0.08), transparent 50%)",
+            ? "radial-gradient(400px circle at 20% 20%, color-mix(in oklab, var(--vision-accent) 12%, transparent), transparent 50%), radial-gradient(300px circle at 80% 30%, color-mix(in oklab, var(--vision-accent-secondary) 8%, transparent), transparent 50%)"
+            : "radial-gradient(800px circle at 20% 20%, color-mix(in oklab, var(--vision-accent) 15%, transparent), transparent 50%), radial-gradient(600px circle at 80% 30%, color-mix(in oklab, var(--vision-accent-secondary) 10%, transparent), transparent 50%), radial-gradient(700px circle at 60% 80%, color-mix(in oklab, var(--vision-muted) 8%, transparent), transparent 50%)",
         }}
       />
 
@@ -122,8 +122,8 @@ export function OrbitalBackground({ mousePosition }: OrbitalBackgroundProps) {
         {/* Center glow */}
         <defs>
           <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="rgb(124,58,237)" stopOpacity="0.1" />
-            <stop offset="100%" stopColor="rgb(124,58,237)" stopOpacity="0" />
+            <stop offset="0%" stopColor="var(--vision-accent)" stopOpacity="0.1" />
+            <stop offset="100%" stopColor="var(--vision-accent)" stopOpacity="0" />
           </radialGradient>
         </defs>
         <circle cx={center} cy={center} r={isMobile ? 80 : 150} fill="url(#centerGlow)" />

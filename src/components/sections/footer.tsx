@@ -1,8 +1,25 @@
 "use client";
 
 import * as React from "react";
-import { Github, Mail, MapPin } from "lucide-react";
+import { Github, Mail, MapPin, Terminal } from "lucide-react";
 import { portfolioData } from "@/lib/portfolio-data";
+import { useDeveloperTerminal } from "@/components/developer-terminal/developer-terminal-context";
+import { FooterTechPlayground } from "@/components/sections/footer-tech-playground";
+
+function TerminalTrigger() {
+  const { toggle } = useDeveloperTerminal();
+  return (
+    <button
+      type="button"
+      onClick={toggle}
+      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-black/10 bg-black/5 text-zinc-600 transition hover:bg-black/10 hover:text-zinc-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring dark:border-white/10 dark:bg-white/5 dark:text-zinc-300 dark:hover:bg-white/10 dark:hover:text-white"
+      aria-label="Open developer terminal"
+      title="Developer terminal (⌘K / Ctrl+K)"
+    >
+      <Terminal className="h-4 w-4" aria-hidden="true" />
+    </button>
+  );
+}
 
 export function Footer() {
   return (
@@ -20,7 +37,7 @@ export function Footer() {
             <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
                 href={`mailto:${portfolioData.contact.email}`}
-                className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-white px-5 text-sm font-semibold text-black transition hover:bg-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60"
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-white px-5 text-sm font-semibold text-black transition hover:bg-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring"
               >
                 <Mail className="h-4 w-4" aria-hidden="true" />
                 Email Me
@@ -29,7 +46,7 @@ export function Footer() {
                 href={portfolioData.contact.github}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-black/10 bg-black/5 px-5 text-sm font-semibold text-zinc-950 transition hover:bg-black/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60 dark:border-white/10 dark:bg-white/5 dark:text-white dark:backdrop-blur dark:hover:bg-white/10"
+                className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-black/10 bg-black/5 px-5 text-sm font-semibold text-zinc-950 transition hover:bg-black/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring dark:border-white/10 dark:bg-white/5 dark:text-white dark:backdrop-blur dark:hover:bg-white/10"
               >
                 <Github className="h-4 w-4" aria-hidden="true" />
                 GitHub
@@ -48,14 +65,19 @@ export function Footer() {
                   <p className="mt-1 text-sm text-zinc-700 dark:text-zinc-300">
                     {portfolioData.location}
                   </p>
-                  <p className="mt-3 font-mono text-xs text-zinc-500 dark:text-zinc-400">
-                    Built with Next.js + Tailwind + Framer Motion
-                  </p>
+                  <div className="mt-3 flex items-center gap-3">
+                    <p className="font-mono text-xs text-zinc-500 dark:text-zinc-400">
+                      Built with Next.js + Tailwind + Framer Motion
+                    </p>
+                    <TerminalTrigger />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+        <FooterTechPlayground />
 
         <div className="mt-10 flex flex-col gap-2 border-t border-black/10 pt-6 text-sm text-zinc-500 dark:border-white/10 dark:text-zinc-400 sm:flex-row sm:items-center sm:justify-between">
           <p>

@@ -61,14 +61,14 @@ export function ProjectsSection() {
                   setSelectedProject(project);
                 }
               }}
-              className="group relative h-full cursor-pointer overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm transition active:scale-[0.98] hover:-translate-y-0.5 hover:border-black/15 hover:bg-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60 dark:border-white/10 dark:bg-white/5 dark:backdrop-blur dark:hover:border-white/15 dark:hover:bg-white/[0.07]"
+              className="group relative h-full cursor-pointer overflow-hidden rounded-2xl border border-black/10 bg-white shadow-sm transition active:scale-[0.98] hover:-translate-y-0.5 hover:border-black/15 hover:bg-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring dark:border-white/10 dark:bg-white/5 dark:backdrop-blur dark:hover:border-white/15 dark:hover:bg-white/[0.07]"
             >
               <div
                 aria-hidden="true"
                 className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 blur-xl transition group-hover:opacity-100"
                 style={{
                   background:
-                    "radial-gradient(600px circle at 20% 0%, rgba(124,58,237,0.18), transparent 45%), radial-gradient(600px circle at 80% 20%, rgba(14,165,233,0.12), transparent 45%)",
+                    "radial-gradient(600px circle at 20% 0%, color-mix(in oklab, var(--vision-accent) 18%, transparent), transparent 45%), radial-gradient(600px circle at 80% 20%, color-mix(in oklab, var(--vision-accent-secondary) 12%, transparent), transparent 45%)",
                 }}
               />
 
@@ -124,7 +124,7 @@ export function ProjectsSection() {
                         onClick={(e) => e.stopPropagation()}
                         target={isInternal ? undefined : "_blank"}
                         rel={isInternal ? undefined : "noreferrer"}
-                        className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-black/10 bg-black/5 px-3 py-2 text-sm font-semibold text-zinc-950 transition hover:bg-black/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60 active:scale-95 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+                        className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-black/10 bg-black/5 px-3 py-2 text-sm font-semibold text-zinc-950 transition hover:bg-black/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring active:scale-95 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
                       >
                         <Icon className="h-4 w-4" aria-hidden="true" />
                         {link.label}
@@ -180,7 +180,7 @@ export function ProjectsSection() {
                 <button
                   type="button"
                   onClick={closeModal}
-                  className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-black/10 bg-zinc-100 text-zinc-700 transition hover:bg-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60 active:scale-95 dark:border-white/15 dark:bg-white/5 dark:text-zinc-200 dark:hover:bg-white/10 sm:h-8 sm:w-8"
+                  className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-black/10 bg-zinc-100 text-zinc-700 transition hover:bg-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring active:scale-95 dark:border-white/15 dark:bg-white/5 dark:text-zinc-200 dark:hover:bg-white/10 sm:h-8 sm:w-8"
                   aria-label="Close project details"
                 >
                   <X className="h-5 w-5 sm:h-4 sm:w-4" aria-hidden="true" />
@@ -229,7 +229,7 @@ export function ProjectsSection() {
                       href={link.href}
                       target={isInternal ? undefined : "_blank"}
                       rel={isInternal ? undefined : "noreferrer"}
-                      className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-black/10 bg-zinc-100 px-4 py-2 text-sm font-semibold text-zinc-900 transition hover:bg-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60 active:scale-95 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
+                      className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-black/10 bg-zinc-100 px-4 py-2 text-sm font-semibold text-zinc-900 transition hover:bg-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring active:scale-95 dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10"
                     >
                       <Icon className="h-4 w-4" aria-hidden="true" />
                       {link.label}

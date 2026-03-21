@@ -3,6 +3,12 @@
 /* Make Tailwind's `dark:` variant respond to `.dark` class (next-themes). */
 @custom-variant dark (&:where(.dark, .dark *));
 
+/*
+ * Vision accents: DO NOT put --vision-* in @theme or @property — Tailwind v4
+ * hoists them to :root as static colors and breaks html[data-vision] overrides.
+ * Use the utilities below (text-vision-accent, ring-vision-ring, etc.).
+ */
+
 :root {
   color-scheme: light;
 }
@@ -11,14 +17,119 @@
   color-scheme: dark;
 }
 
+/* ---- Vision mode: default (modern violet / indigo + sky) ---- */
+html {
+  --vision-accent: #6d28d9;
+  --vision-accent-secondary: #0369a1;
+  --vision-muted: #7c3aed;
+  --vision-glow: rgba(124, 58, 237, 0.35);
+  --vision-node-glow: rgba(124, 58, 237, 0.12);
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  transition:
+    --vision-accent 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    --vision-accent-secondary 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    --vision-muted 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html.dark {
+  --vision-accent: #a78bfa;
+  --vision-accent-secondary: #38bdf8;
+  --vision-muted: #c4b5fd;
+  --vision-glow: rgba(167, 139, 250, 0.28);
+  --vision-node-glow: rgba(196, 181, 253, 0.22);
+}
+
+/* Protanopia-friendly: blues + gold */
+html[data-vision="protanopia"] {
+  --vision-accent: #1d4ed8;
+  --vision-accent-secondary: #b45309;
+  --vision-muted: #2563eb;
+  --vision-glow: rgba(37, 99, 235, 0.35);
+  --vision-node-glow: rgba(37, 99, 235, 0.14);
+}
+html.dark[data-vision="protanopia"] {
+  --vision-accent: #60a5fa;
+  --vision-accent-secondary: #fbbf24;
+  --vision-muted: #93c5fd;
+  --vision-glow: rgba(96, 165, 250, 0.3);
+  --vision-node-glow: rgba(96, 165, 250, 0.2);
+}
+
+/* Deuteranopia-friendly: magenta + deep blue */
+html[data-vision="deuteranopia"] {
+  --vision-accent: #a21caf;
+  --vision-accent-secondary: #1e3a8a;
+  --vision-muted: #c026d3;
+  --vision-glow: rgba(162, 28, 175, 0.32);
+  --vision-node-glow: rgba(162, 28, 175, 0.14);
+}
+html.dark[data-vision="deuteranopia"] {
+  --vision-accent: #e879f9;
+  --vision-accent-secondary: #818cf8;
+  --vision-muted: #f0abfc;
+  --vision-glow: rgba(232, 121, 249, 0.28);
+  --vision-node-glow: rgba(232, 121, 249, 0.18);
+}
+
+/* Tritanopia-friendly: red + cyan */
+html[data-vision="tritanopia"] {
+  --vision-accent: #b91c1c;
+  --vision-accent-secondary: #0e7490;
+  --vision-muted: #dc2626;
+  --vision-glow: rgba(220, 38, 38, 0.3);
+  --vision-node-glow: rgba(220, 38, 38, 0.12);
+}
+html.dark[data-vision="tritanopia"] {
+  --vision-accent: #f87171;
+  --vision-accent-secondary: #22d3ee;
+  --vision-muted: #fca5a5;
+  --vision-glow: rgba(248, 113, 113, 0.28);
+  --vision-node-glow: rgba(248, 113, 113, 0.18);
+}
+
 @theme inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-html {
-  scroll-behavior: smooth;
-  overflow-x: hidden;
+/* Runtime vision utilities — read live vars from html / html[data-vision] */
+@layer utilities {
+  .text-vision-accent {
+    color: var(--vision-accent);
+  }
+  .text-vision-muted {
+    color: var(--vision-muted);
+  }
+  .text-vision-accent-secondary {
+    color: var(--vision-accent-secondary);
+  }
+  .bg-vision-accent {
+    background-color: var(--vision-accent);
+  }
+  .border-vision-accent {
+    border-color: var(--vision-accent);
+  }
+  .bg-vision-accent-soft {
+    background-color: color-mix(in oklab, var(--vision-accent) 12%, transparent);
+  }
+  .bg-vision-bullet {
+    background-color: color-mix(in oklab, var(--vision-accent) 80%, transparent);
+  }
+  .vision-portrait-glow {
+    background: linear-gradient(
+      to bottom right,
+      color-mix(in oklab, var(--vision-accent) 20%, transparent),
+      color-mix(in oklab, var(--vision-accent-secondary) 10%, transparent),
+      color-mix(in oklab, var(--vision-muted) 20%, transparent)
+    );
+  }
+  .ring-vision-ring {
+    --tw-ring-color: color-mix(in oklab, var(--vision-accent) 60%, transparent);
+  }
+  .ring-vision-ring-soft {
+    --tw-ring-color: color-mix(in oklab, var(--vision-accent) 50%, transparent);
+  }
 }
 
 body {
@@ -30,7 +141,7 @@ body {
 }
 
 ::selection {
-  background: color-mix(in oklab, #7c3aed 30%, transparent);
+  background: color-mix(in oklab, var(--vision-accent) 32%, transparent);
 }
 
 /* Prevent horizontal overflow on mobile */

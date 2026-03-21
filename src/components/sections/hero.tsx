@@ -120,7 +120,7 @@ export function Hero() {
             >
               <a
                 href="#projects"
-                className="group inline-flex min-h-[48px] items-center justify-center rounded-full bg-zinc-950 px-6 text-sm font-semibold text-white shadow-lg shadow-zinc-950/20 transition active:scale-[0.98] hover:bg-zinc-800 hover:shadow-xl hover:shadow-zinc-950/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60 dark:bg-white dark:text-black dark:shadow-white/10 dark:hover:bg-zinc-200 dark:hover:shadow-white/20 sm:min-h-[44px]"
+                className="group inline-flex min-h-[48px] items-center justify-center rounded-full bg-zinc-950 px-6 text-sm font-semibold text-white shadow-lg shadow-zinc-950/20 transition active:scale-[0.98] hover:bg-zinc-800 hover:shadow-xl hover:shadow-zinc-950/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring dark:bg-white dark:text-black dark:shadow-white/10 dark:hover:bg-zinc-200 dark:hover:shadow-white/20 sm:min-h-[44px]"
               >
                 Explore Projects
                 <ArrowRight
@@ -132,7 +132,7 @@ export function Hero() {
                 href="https://drive.google.com/file/d/1ddasoyRpPdOBtGby4caY9QVizrnQi1sb/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-black/10 bg-white/70 px-6 text-sm font-semibold text-zinc-950 shadow-sm backdrop-blur transition active:scale-[0.98] hover:bg-white hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60 dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 sm:min-h-[44px]"
+                className="inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full border border-black/10 bg-white/70 px-6 text-sm font-semibold text-zinc-950 shadow-sm backdrop-blur transition active:scale-[0.98] hover:bg-white hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring dark:border-white/10 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 sm:min-h-[44px]"
               >
                 <Download className="h-4 w-4" aria-hidden="true" />
                 Resume
@@ -150,7 +150,7 @@ export function Hero() {
               Or{" "}
               <a
                 href="#contact"
-                className="font-medium text-violet-600 underline-offset-4 hover:underline dark:text-violet-400"
+                className="font-medium text-vision-accent underline-offset-4 hover:underline dark:text-vision-muted"
               >
                 contact me
               </a>{" "}

@@ -16,7 +16,7 @@ export function PortraitCard() {
         {/* Glow effect behind the card */}
         <div
           aria-hidden="true"
-          className="absolute -inset-4 rounded-[32px] bg-gradient-to-br from-violet-500/20 via-sky-500/10 to-pink-500/20 opacity-60 blur-2xl dark:opacity-40"
+          className="vision-portrait-glow absolute -inset-4 rounded-[32px] opacity-60 blur-2xl dark:opacity-40"
         />
 
         {/* Main card */}
@@ -27,7 +27,7 @@ export function PortraitCard() {
             className="pointer-events-none absolute inset-0 opacity-70"
             style={{
               background:
-                "radial-gradient(400px circle at 30% 0%, rgba(124,58,237,0.2), transparent 50%), radial-gradient(400px circle at 90% 40%, rgba(14,165,233,0.12), transparent 50%)",
+                "radial-gradient(400px circle at 30% 0%, color-mix(in oklab, var(--vision-accent) 22%, transparent), transparent 50%), radial-gradient(400px circle at 90% 40%, color-mix(in oklab, var(--vision-accent-secondary) 14%, transparent), transparent 50%)",
             }}
           />
 

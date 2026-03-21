@@ -105,7 +105,7 @@ function StoryBookArtifact({ className, style }: ArtifactProps) {
               transition={{ duration: 0.6 }}
               style={{ transformStyle: "preserve-3d" }}
             >
-              <BookOpen className="h-7 w-7 text-violet-500 dark:text-violet-400" />
+              <BookOpen className="h-7 w-7 text-vision-accent dark:text-vision-muted" />
             </motion.div>
           </div>
 
@@ -169,38 +169,27 @@ function KaonArtifact({ className, style }: ArtifactProps) {
           )}
         </AnimatePresence>
 
-        <div className="relative h-14 w-14" style={{ perspective: "600px" }}>
+        <motion.div
+          className="relative h-14 w-14 overflow-hidden rounded-2xl border border-black/10 bg-white shadow-lg dark:border-white/10"
+          animate={{ rotate: isHovered ? [0, -4, 4, 0] : 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <Image
+            src="/images/projects/kaon.png"
+            alt="Káon logo"
+            fill
+            className="object-contain p-1"
+          />
           <motion.div
-            className="relative h-full w-full"
-            animate={{ rotateY: isHovered ? 180 : 0 }}
-            transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            style={{ transformStyle: "preserve-3d" }}
-          >
-            <div
-              className="absolute inset-0 flex items-center justify-center rounded-2xl border border-black/10 bg-white/80 shadow-lg backdrop-blur-sm dark:border-white/10 dark:bg-white/5"
-              style={{ backfaceVisibility: "hidden" }}
-            >
-              <div className="text-center">
-                <div className="text-base font-bold text-emerald-500">420</div>
-                <div className="text-[7px] font-medium uppercase tracking-wider text-zinc-500">
-                  kcal
-                </div>
-              </div>
-            </div>
-
-            <div
-              className="absolute inset-0 flex items-center justify-center rounded-2xl border border-black/10 bg-white/80 shadow-lg backdrop-blur-sm dark:border-white/10 dark:bg-white/5"
-              style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
-            >
-              <div className="grid h-8 w-8 grid-cols-2 gap-0.5 rounded-lg bg-amber-100 p-1 dark:bg-amber-900/50">
-                <div className="rounded-sm bg-white dark:bg-zinc-200" />
-                <div className="rounded-sm bg-orange-400" />
-                <div className="rounded-sm bg-green-400" />
-                <div className="rounded-sm bg-pink-300" />
-              </div>
-            </div>
-          </motion.div>
-        </div>
+            className="pointer-events-none absolute inset-0 rounded-2xl"
+            animate={{
+              boxShadow: isHovered
+                ? "0 0 20px rgba(134, 166, 140, 0.45), 0 0 36px rgba(196, 181, 253, 0.25)"
+                : "0 0 0px rgba(134, 166, 140, 0)",
+            }}
+            transition={{ duration: 0.3 }}
+          />
+        </motion.div>
       </motion.div>
     </motion.div>
   );

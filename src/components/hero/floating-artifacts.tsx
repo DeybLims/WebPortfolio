@@ -110,7 +110,7 @@ function StoryBookArtifact({ className }: ArtifactProps) {
               transition={{ duration: 0.6 }}
               style={{ transformStyle: "preserve-3d" }}
             >
-              <BookOpen className="h-8 w-8 text-violet-500 dark:text-violet-400" />
+              <BookOpen className="h-8 w-8 text-vision-accent dark:text-vision-muted" />
             </motion.div>
           </div>
 
@@ -160,6 +160,9 @@ function KaonArtifact({ className }: ArtifactProps) {
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.95 }}
       >
+        {/* Tooltip */}
+        {/* Tooltip */}
+        {/* Tooltip */}
         {/* Tooltip */}
         <AnimatePresence>
           {isHovered && (

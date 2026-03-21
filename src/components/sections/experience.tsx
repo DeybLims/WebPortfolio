@@ -64,7 +64,7 @@ export function ExperienceSection() {
                       className={cn(
                         "block h-3 w-3 rounded-full border sm:h-4 sm:w-4",
                         isActive
-                          ? "border-violet-400 bg-violet-400 shadow-[0_0_0_4px_rgba(124,58,237,0.12)] sm:shadow-[0_0_0_6px_rgba(124,58,237,0.12)]"
+                          ? "border-vision-accent bg-vision-accent shadow-[0_0_0_4px_var(--vision-node-glow)] sm:shadow-[0_0_0_6px_var(--vision-node-glow)]"
                           : "border-black/25 bg-white shadow-sm dark:border-white/20 dark:bg-black",
                       )}
                       initial={{ scale: 0.9, opacity: 0.7 }}
@@ -90,7 +90,7 @@ export function ExperienceSection() {
                       <h3 className="text-pretty text-base font-semibold tracking-tight text-zinc-950 dark:text-white sm:text-lg md:text-xl">
                         {role.role}
                       </h3>
-                      <p className="mt-1 text-sm font-medium text-blue-500 dark:text-blue-400">
+                      <p className="mt-1 text-sm font-medium text-vision-accent-secondary">
                         {role.company}
                       </p>
 
@@ -117,7 +117,7 @@ export function ExperienceSection() {
                     {role.highlights.map((h) => (
                       <li key={h} className="flex gap-2 sm:gap-3">
                         <span
-                          className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-violet-400/80 sm:mt-2"
+                          className="bg-vision-bullet mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full sm:mt-2"
                           aria-hidden="true"
                         />
                         <span className="text-pretty">{h}</span>

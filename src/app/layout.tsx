@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { VisionProfileProvider } from "@/components/vision-profile-provider";
+import { DeveloperTerminalProvider } from "@/components/developer-terminal/developer-terminal-context";
+import { DeveloperTerminal } from "@/components/developer-terminal/developer-terminal";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,13 +47,18 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <a
-            href="#content"
-            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-zinc-950 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white focus:ring-2 focus:ring-white/20"
-          >
-            Skip to content
-          </a>
-          {children}
+          <VisionProfileProvider>
+            <DeveloperTerminalProvider>
+              <a
+                href="#content"
+                className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-zinc-950 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white focus:ring-2 focus:ring-white/20"
+              >
+                Skip to content
+              </a>
+              {children}
+              <DeveloperTerminal />
+            </DeveloperTerminalProvider>
+          </VisionProfileProvider>
         </ThemeProvider>
       </body>
     </html>

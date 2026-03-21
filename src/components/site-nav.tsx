@@ -4,6 +4,7 @@ import * as React from "react";
 import Link from "next/link";
 import { portfolioData } from "@/lib/portfolio-data";
 import { ThemeToggle } from "@/components/theme-toggle";
+import { VisionModeSwitcher } from "@/components/vision-mode-switcher";
 import { cn } from "@/lib/cn";
 
 export function SiteNav({ className }: { className?: string }) {
@@ -20,9 +21,9 @@ export function SiteNav({ className }: { className?: string }) {
       >
         <Link
           href="#top"
-          className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-semibold tracking-tight text-zinc-950 hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60 dark:text-white dark:hover:bg-white/10"
+          className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-semibold tracking-tight text-zinc-950 hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring dark:text-white dark:hover:bg-white/10"
         >
-          <span className="h-2 w-2 rounded-full bg-violet-400" aria-hidden="true" />
+          <span className="h-2 w-2 rounded-full bg-vision-accent" aria-hidden="true" />
           <span className="hidden sm:inline">{portfolioData.name}</span>
           <span className="sm:hidden">Dave</span>
         </Link>
@@ -32,7 +33,7 @@ export function SiteNav({ className }: { className?: string }) {
             <a
               key={item.href}
               href={item.href}
-              className="rounded-full px-3 py-2 text-sm font-medium text-zinc-700 hover:bg-black/5 hover:text-zinc-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60 dark:text-zinc-200 dark:hover:bg-white/10 dark:hover:text-white"
+              className="rounded-full px-3 py-2 text-sm font-medium text-zinc-700 hover:bg-black/5 hover:text-zinc-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring dark:text-zinc-200 dark:hover:bg-white/10 dark:hover:text-white"
             >
               {item.label}
             </a>
@@ -44,10 +45,11 @@ export function SiteNav({ className }: { className?: string }) {
             href={portfolioData.contact.github}
             target="_blank"
             rel="noreferrer"
-            className="hidden rounded-full px-3 py-2 text-sm font-medium text-zinc-700 hover:bg-black/5 hover:text-zinc-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-violet-400/60 dark:text-zinc-200 dark:hover:bg-white/10 dark:hover:text-white sm:inline-flex"
+            className="hidden rounded-full px-3 py-2 text-sm font-medium text-zinc-700 hover:bg-black/5 hover:text-zinc-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring dark:text-zinc-200 dark:hover:bg-white/10 dark:hover:text-white sm:inline-flex"
           >
             GitHub
           </a>
+          <VisionModeSwitcher />
           <ThemeToggle />
         </div>
       </nav>
