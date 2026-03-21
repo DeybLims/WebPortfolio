@@ -4,6 +4,7 @@ import { SkillsSection } from "@/components/sections/skills";
 import { ProjectsSection } from "@/components/sections/projects";
 import { ExperienceSection } from "@/components/sections/experience";
 import { SystemArchitectureSection } from "@/components/sections/system-architecture";
+import { LiveIDESnippetSection } from "@/components/sections/live-ide-snippet";
 import { Footer } from "@/components/sections/footer";
 import { FloatingPageArtifacts } from "@/components/floating-page-artifacts";
 
@@ -18,6 +19,7 @@ export default function Home() {
           <ProjectsSection />
           <SkillsSection />
           <SystemArchitectureSection />
+          <LiveIDESnippetSection />
           <ExperienceSection />
           <Footer />
         </div>

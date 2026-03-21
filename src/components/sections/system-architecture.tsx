@@ -63,7 +63,7 @@ const NODE_COPY: Record<
   backend: {
     iconClass: "text-emerald-600 dark:text-emerald-400",
     label: "Backend",
-    sub: "Laravel / Python",
+    sub: "PHP / Python",
   },
   database: {
     iconClass: "text-amber-600 dark:text-amber-400",

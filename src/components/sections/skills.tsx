@@ -2,9 +2,8 @@
 
 import * as React from "react";
 import { motion, useAnimation, AnimatePresence } from "framer-motion";
-import { Cpu, Database, Globe, Layers, Wrench, Fingerprint } from "lucide-react";
+import { Cpu, Database, Gamepad2, Globe, Layers, Wrench, Fingerprint } from "lucide-react";
 import { portfolioData } from "@/lib/portfolio-data";
-import { Section } from "@/components/ui/section";
 import { Pill } from "@/components/ui/pill";
 import { cn } from "@/lib/cn";
 
@@ -315,47 +314,151 @@ function SkillCard({ group, span, isTouch }: SkillCardProps) {
 
 export function SkillsSection() {
   const isTouch = useIsTouchDevice();
+  const [isGamingMode, setIsGamingMode] = React.useState(false);
+
+  const statRows = [
+    { label: "Frontend Magic", level: 99, color: "from-cyan-400 to-sky-500" },
+    { label: "Backend Strength", level: 85, color: "from-emerald-400 to-lime-500" },
+    { label: "Database Stamina", level: 90, color: "from-amber-400 to-orange-500" },
+    { label: "Cloud Agility", level: 83, color: "from-indigo-400 to-violet-500" },
+    { label: "Tool Mastery", level: 88, color: "from-fuchsia-400 to-pink-500" },
+  ] as const;
 
   return (
-    <Section
-      id="skills"
-      eyebrow="SKILLS"
-      title="A toolkit for shipping real products"
-      description="Grouped by the things I build and maintain day-to-day."
-    >
-      <motion.div
-        className="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-12"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={{
-          hidden: {},
-          visible: {
-            transition: { staggerChildren: 0.1 },
-          },
-        }}
-      >
-        {portfolioData.skills.map((group) => {
-          const span =
-            group.title === "Tools"
-              ? "md:col-span-6"
-              : group.title === "Databases"
-                ? "md:col-span-5"
-                : group.title === "Cloud/Deploy"
-                  ? "md:col-span-7"
-                  : "md:col-span-6";
+    <section id="skills" className="scroll-mt-28 py-16 sm:py-20">
+      <header className="mb-8">
+        <p className="font-mono text-xs font-medium tracking-widest text-zinc-500 dark:text-zinc-400">
+          SKILLS
+        </p>
 
-          return (
-            <SkillCard
-              key={group.title}
-              group={group}
-              span={span}
-              isTouch={isTouch}
-            />
-          );
-        })}
-      </motion.div>
-    </Section>
+        <div className="mt-2 flex flex-wrap items-center justify-between gap-3">
+          <h2 className="text-balance text-2xl font-semibold tracking-tight text-zinc-950 dark:text-white sm:text-3xl">
+            A toolkit for shipping real products
+          </h2>
+
+          <button
+            type="button"
+            onClick={() => setIsGamingMode((v) => !v)}
+            className={cn(
+              "inline-flex items-center gap-2 rounded-full border px-3 py-1.5 font-mono text-xs uppercase tracking-wide transition",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring",
+              isGamingMode
+                ? "border-cyan-400/60 bg-cyan-500/15 text-cyan-200 shadow-[0_0_20px_rgba(34,211,238,0.25)]"
+                : "border-black/15 bg-black/5 text-zinc-700 hover:bg-black/10 dark:border-white/20 dark:bg-white/5 dark:text-zinc-200 dark:hover:bg-white/10",
+            )}
+            aria-pressed={isGamingMode}
+            title="Toggle player card mode"
+          >
+            <Gamepad2 className="h-3.5 w-3.5" aria-hidden />
+            {isGamingMode ? "Gaming Mode On" : "Gaming Mode"}
+          </button>
+        </div>
+
+        <p className="mt-3 max-w-2xl text-pretty text-sm leading-7 text-zinc-700 dark:text-zinc-300 sm:text-base">
+          Grouped by the things I build and maintain day-to-day.
+        </p>
+      </header>
+
+      <div className="relative [perspective:1400px]">
+        <motion.div
+          className="relative"
+          style={{ transformStyle: "preserve-3d" }}
+          animate={{ rotateY: isGamingMode ? 180 : 0 }}
+          transition={{ duration: 0.7, type: "spring", stiffness: 120, damping: 20 }}
+        >
+          <div
+            className="relative"
+            style={{ backfaceVisibility: "hidden", WebkitBackfaceVisibility: "hidden" }}
+          >
+            <motion.div
+              className="grid grid-cols-1 gap-3 sm:gap-4 md:grid-cols-12"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: { staggerChildren: 0.1 },
+                },
+              }}
+            >
+              {portfolioData.skills.map((group) => {
+                const span =
+                  group.title === "Tools"
+                    ? "md:col-span-6"
+                    : group.title === "Databases"
+                      ? "md:col-span-5"
+                      : group.title === "Cloud/Deploy"
+                        ? "md:col-span-7"
+                        : "md:col-span-6";
+
+                return (
+                  <SkillCard
+                    key={group.title}
+                    group={group}
+                    span={span}
+                    isTouch={isTouch}
+                  />
+                );
+              })}
+            </motion.div>
+          </div>
+
+          <div
+            className="absolute inset-0"
+            style={{
+              transform: "rotateY(180deg)",
+              backfaceVisibility: "hidden",
+              WebkitBackfaceVisibility: "hidden",
+            }}
+          >
+            <motion.div
+              initial={{ opacity: 0.8, scale: 0.985 }}
+              animate={{ opacity: isGamingMode ? 1 : 0.75, scale: isGamingMode ? 1 : 0.985 }}
+              className="relative overflow-hidden rounded-2xl border border-cyan-400/30 bg-[radial-gradient(120%_120%_at_50%_0%,rgba(14,165,233,0.2),rgba(2,6,23,0.96))] p-5 shadow-[0_0_40px_rgba(8,145,178,0.2)] md:p-7"
+            >
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_bottom,transparent_0%,rgba(34,211,238,0.08)_50%,transparent_100%)] opacity-70" />
+              <div className="pointer-events-none absolute inset-0 bg-[repeating-linear-gradient(to_bottom,rgba(255,255,255,0.06)_0px,rgba(255,255,255,0.06)_1px,transparent_2px,transparent_4px)] opacity-20" />
+
+              <div className="relative z-10">
+                <div className="mb-5 flex items-center justify-between gap-3">
+                  <div>
+                    <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-cyan-300/90">
+                      Character Stats
+                    </p>
+                    <h3 className="mt-1 font-mono text-lg text-cyan-100 sm:text-xl">
+                      Full-Stack Vanguard
+                    </h3>
+                  </div>
+                  <div className="rounded-lg border border-cyan-300/30 bg-cyan-500/10 px-3 py-1.5 font-mono text-xs text-cyan-200">
+                    LVL 92
+                  </div>
+                </div>
+
+                <div className="space-y-4">
+                  {statRows.map((stat, idx) => (
+                    <div key={stat.label}>
+                      <div className="mb-1.5 flex items-center justify-between font-mono text-xs">
+                        <span className="text-cyan-100/95">{stat.label}</span>
+                        <span className="text-cyan-300">{stat.level}</span>
+                      </div>
+                      <div className="h-2.5 overflow-hidden rounded-full border border-cyan-300/25 bg-cyan-950/60">
+                        <motion.div
+                          className={cn("h-full rounded-full bg-gradient-to-r", stat.color)}
+                          initial={{ width: 0 }}
+                          animate={{ width: isGamingMode ? `${stat.level}%` : 0 }}
+                          transition={{ duration: 0.8, delay: idx * 0.08, ease: "easeOut" }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
   );
 }
 
