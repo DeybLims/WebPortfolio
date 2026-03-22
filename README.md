@@ -38,3 +38,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 ## Resume PDF (deploy button)
 
 Place your resume at `public/Dave_Lima_Resume.pdf` so the **\[Deploy Resume.pdf\]** signature interaction can download it. Path is configurable via `contact.resumePdfPath` in `src/lib/portfolio-data.ts`.
+
+## Machine-readable resume (AI / scrapers)
+
+- **`public/resume.json`** — [JSON Resume](https://jsonresume.org/schema/) v1-shaped export (basics, work, skills, projects). Update when `portfolio-data.ts` changes.
+- **`public/llms.txt`** — Markdown context file for LLMs (no HTML). Linked from the footer as `[llms.txt]`.

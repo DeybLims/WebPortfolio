@@ -215,9 +215,27 @@ export function Footer() {
         <FooterTechPlayground />
 
         <div className="mt-10 flex flex-col gap-2 border-t border-black/10 pt-6 text-sm text-zinc-500 dark:border-white/10 dark:text-zinc-400 sm:flex-row sm:items-center sm:justify-between">
-          <p className="inline-flex items-center gap-2">
+          <p className="inline-flex flex-wrap items-center gap-x-2 gap-y-1">
             © {new Date().getFullYear()} {portfolioData.name}. All rights
             reserved.
+            <span className="inline-flex items-center gap-2 font-mono text-[10px] text-zinc-400/80 dark:text-zinc-500/80">
+              <a
+                href="/resume.json"
+                target="_blank"
+                rel="noreferrer"
+                className="transition hover:text-zinc-600 dark:hover:text-zinc-300"
+              >
+                [JSON]
+              </a>
+              <a
+                href="/llms.txt"
+                target="_blank"
+                rel="noreferrer"
+                className="transition hover:text-zinc-600 dark:hover:text-zinc-300"
+              >
+                [llms.txt]
+              </a>
+            </span>
             <button
               type="button"
               onClick={toggleDebugMode}

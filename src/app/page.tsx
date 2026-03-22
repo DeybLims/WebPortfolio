@@ -7,6 +7,7 @@ import { ExperienceSection } from "@/components/sections/experience";
 import { SystemArchitectureSection } from "@/components/sections/system-architecture";
 import { LiveIDESnippetSection } from "@/components/sections/live-ide-snippet";
 import { OperatingManualSection } from "@/components/sections/operating-manual";
+import { RecruiterFAQSection } from "@/components/sections/recruiter-faq";
 import { Footer } from "@/components/sections/footer";
 import { FloatingPageArtifacts } from "@/components/floating-page-artifacts";
 
@@ -25,6 +26,7 @@ export default function Home() {
           <LiveIDESnippetSection />
           <ExperienceSection />
           <OperatingManualSection />
+          <RecruiterFAQSection />
           <Footer />
         </div>
       </main>

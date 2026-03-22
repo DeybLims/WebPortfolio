@@ -1,0 +1,173 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "meta": {
+    "version": "1.0.0",
+    "lastModified": "2026-03-18T12:00:00"
+  },
+  "basics": {
+    "name": "Dave Emanuel G. Lima",
+    "label": "Versatile Software Developer specializing in full-stack web and mobile application development.",
+    "email": "daveemanuel.lima@wvsu.edu.ph",
+    "url": "https://github.com/DeybLims",
+    "summary": "Skilled in building data-driven and AI-powered solutions using modern technologies. Passionate about developing innovative tools that solve practical problems and collaborating in team environments to deliver impactful digital experiences.",
+    "location": {
+      "city": "Iloilo City",
+      "region": "Western Visayas",
+      "countryCode": "PH"
+    },
+    "profiles": [
+      {
+        "network": "GitHub",
+        "username": "DeybLims",
+        "url": "https://github.com/DeybLims"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Quirao Group of Companies",
+      "position": "Junior ERPNext Developer",
+      "location": "La Paz, Iloilo City, Philippines",
+      "startDate": "2026-01-01",
+      "summary": "Develop and maintain ERP features in Frappe/ERPNext for internal operations; customize workflows and modules to match business processes.",
+      "highlights": [
+        "Develop and maintain ERP features using Frappe/ERPNext to support internal operations.",
+        "Build, customize, and improve ERP workflows and modules based on business requirements.",
+        "Collaborate with stakeholders to translate processes into reliable, maintainable ERP solutions.",
+        "Support deployments and operational checkups to keep systems stable and available."
+      ]
+    },
+    {
+      "name": "MSL Philippines",
+      "position": "Front-End Web Developer",
+      "location": "Philippines",
+      "startDate": "2026-01-01",
+      "summary": "Front-end development for the official MSL Philippines website; dynamic interfaces with React and Laravel integration.",
+      "highlights": [
+        "Developed and maintained dynamic user interfaces using React (JSX/TSX) within a Laravel-based backend framework.",
+        "Collaborated with backend developers to integrate RESTful APIs for seamless data flow and performance.",
+        "Applied responsive design principles and component-based architecture for scalable, maintainable UI.",
+        "Improved front-end build processes and code quality through modern development practices and tooling."
+      ]
+    },
+    {
+      "name": "BuildMaster",
+      "position": "Junior Software Engineer (formerly Intern)",
+      "location": "Philippines",
+      "startDate": "2025-01-01",
+      "endDate": "2026-12",
+      "url": "https://buildmaster.ph",
+      "summary": "Commercial construction marketplace; full-stack web features and APIs for mobile, deployment monitoring via Dokploy.",
+      "highlights": [
+        "Started as an intern and transitioned into a Junior Software Engineer role.",
+        "Developed and shipped new features for the website (full-stack ownership where needed).",
+        "Built backend API endpoints to support mobile development (handoff to a dedicated mobile developer).",
+        "Performed deployment checkups and basic operational monitoring using Dokploy."
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "name": "Frontend",
+      "keywords": [
+        "React.js",
+        "Next.js",
+        "Flutter (Dart)",
+        "HTML5",
+        "CSS3",
+        "Tailwind CSS",
+        "Laravel"
+      ]
+    },
+    {
+      "name": "Backend",
+      "keywords": [
+        "Python",
+        "Flask",
+        "Streamlit",
+        "Frappe",
+        "ERPNext",
+        "Node.js",
+        "RESTful APIs",
+        "Google Cloud Functions"
+      ]
+    },
+    {
+      "name": "Databases",
+      "keywords": [
+        "PostgreSQL",
+        "MySQL",
+        "MariaDB",
+        "Firebase",
+        "Google Sheets API"
+      ]
+    },
+    {
+      "name": "Cloud & Deploy",
+      "keywords": [
+        "Vercel",
+        "Google Cloud Platform",
+        "Render.com",
+        "DigitalOcean",
+        "Contabo",
+        "Dokploy"
+      ]
+    },
+    {
+      "name": "Tools",
+      "keywords": ["Git", "GitHub", "Figma", "Postman", "Jira"]
+    }
+  ],
+  "projects": [
+    {
+      "name": "PinPoint — Smart Attendance Platform",
+      "description": "Geofenced attendance and time-aware student portal with Laravel 9 backend and React SPA; server-enforced GPS and schedule rules, REST APIs.",
+      "keywords": ["Laravel", "React", "Geofencing", "Attendance"],
+      "startDate": "2025-01-01"
+    },
+    {
+      "name": "ERPNext (Frappe) — Internal ERP",
+      "description": "Customization of Frappe/ERPNext doctypes, workflows, and reports for internal business operations.",
+      "keywords": ["ERPNext", "Frappe", "Python", "Business workflows"],
+      "startDate": "2026-01-01"
+    },
+    {
+      "name": "BuildMaster App & Website",
+      "description": "Full-stack marketplace features, REST APIs for mobile clients, deployment health via Dokploy.",
+      "keywords": ["Full-stack", "APIs", "Dokploy"],
+      "url": "https://buildmaster.ph",
+      "startDate": "2025-01-01"
+    },
+    {
+      "name": "MSL Philippines Website",
+      "description": "Official Mobile Legends esports Philippines site; React (TSX) within Laravel, REST integrations.",
+      "keywords": ["React", "Laravel", "TypeScript", "RESTful APIs"],
+      "url": "https://www.moontonslph.org",
+      "startDate": "2026-01-01"
+    },
+    {
+      "name": "ColorAid",
+      "description": "Accessibility-focused web app for adaptive color correction; Python, Firebase, GCP.",
+      "keywords": ["Python", "Firebase", "GCP"],
+      "startDate": "2024-01-01"
+    },
+    {
+      "name": "Paluto Reservation Website",
+      "description": "Reservations and ordering with Python backend and Google Sheets API; HTML/CSS/JS frontend.",
+      "keywords": ["Python", "Google Sheets API", "JavaScript"],
+      "url": "https://unli-paluto.render.com/unli-paluto"
+    },
+    {
+      "name": "Story Creation with Gemini",
+      "description": "Streamlit app using Gemini API with conversation history for iterative story generation.",
+      "keywords": ["Streamlit", "Python", "Gemini API"],
+      "startDate": "2023-01-01"
+    },
+    {
+      "name": "Káon",
+      "description": "Flutter mobile app for meal logging, calories, and nutrition trends with Python-backed services.",
+      "keywords": ["Dart", "Flutter", "Python"],
+      "startDate": "2023-01-01"
+    }
+  ]
+}
