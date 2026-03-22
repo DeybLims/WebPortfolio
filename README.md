@@ -35,4 +35,6 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 
-//try
+## Resume PDF (deploy button)
+
+Place your resume at `public/Dave_Lima_Resume.pdf` so the **\[Deploy Resume.pdf\]** signature interaction can download it. Path is configurable via `contact.resumePdfPath` in `src/lib/portfolio-data.ts`.

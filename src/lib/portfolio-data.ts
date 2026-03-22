@@ -67,6 +67,15 @@ export const portfolioData: PortfolioData = {
       },
       imageFit: "contain",
       links: [{ label: "Contact", href: "#contact" }],
+      problem:
+        "Faculty needed trustworthy attendance that reflected real classroom presence without paper sign-in sheets or easy-to-game manual logs. Students needed a mobile-friendly flow that still respected schedules and campus boundaries.",
+      constraints:
+        "Thesis-grade quality with Laravel 9 + React SPA, deployable architecture, server-enforced rules (not UI-only), and a path toward future mobile clients via REST.",
+      solution:
+        "Built role-separated panels for admins, teachers, and students; configured geofenced classroom points and time windows; implemented GPS + schedule validation on the server; shipped time-stamped event logs, dashboards for live views, and REST endpoints consumed by the web app.",
+      metrics: `Demonstrated a full production-minded loop from requirements to deployable stack.
+
+Geofencing and device variability reinforced designing explicit error states, auditability, and backend as the source of truth.`,
     },
     {
       title: "ERPNext (Frappe) — Internal ERP",
@@ -82,6 +91,15 @@ export const portfolioData: PortfolioData = {
       },
       imageFit: "contain",
       links: [{ label: "Contact", href: "#contact" }],
+      problem:
+        "Internal teams needed ERP workflows that matched how the business actually operates—not generic defaults—without breaking upgrades or day-to-day reliability.",
+      constraints:
+        "Frappe/ERPNext platform conventions, stakeholder-driven customization, maintainable server-side logic, and safe iteration alongside live operations.",
+      solution:
+        "Extended ERPNext with tailored doctypes, workflows, and reports; translated approvals, inventory, and finance-adjacent processes into clear forms and dashboards; kept customizations structured for upgrades and performance.",
+      metrics: `Delivered repeatable patterns for turning messy process notes into shippable ERP changes.
+
+Learned to balance stakeholder urgency with long-term maintainability: naming, documentation, and avoiding one-off scripts that become silent debt.`,
     },
     {
       title: "BuildMaster App & Website",
@@ -98,6 +116,15 @@ export const portfolioData: PortfolioData = {
         { label: "Website", href: "https://buildmaster.ph" },
         { label: "Contact", href: "#contact" },
       ],
+      problem:
+        "A marketplace product needs continuous feature delivery across web and mobile, with stable APIs and healthy deployments—not one-off heroics.",
+      constraints:
+        "Legacy views mixed with new flows, cross-team API contracts for mobile, Dokploy-based ops awareness, and pragmatic refactors that don’t stall shipping.",
+      solution:
+        "Shipped end-to-end web features (UX + wiring to APIs), implemented REST endpoints with solid validation and error handling for mobile handoff, and participated in deployment checkups to keep services reliable.",
+      metrics: `Grew from intern to junior engineer by owning real tickets and communicating API shape clearly to another team.
+
+Reinforced that good DX for API consumers is part of the feature—not an afterthought.`,
     },
     {
       title: "MSL Philippines Website",
@@ -115,6 +142,15 @@ export const portfolioData: PortfolioData = {
         { label: "Website", href: "https://www.moontonslph.org" },
         { label: "Contact", href: "#contact" },
       ],
+      problem:
+        "Esports publishing sites need fast, dynamic interfaces that stay maintainable as content and integrations evolve.",
+      constraints:
+        "React (TSX) inside a Laravel-backed app, REST integrations with backend collaborators, responsive UI, and component architecture suitable for ongoing iteration.",
+      solution:
+        "Built and maintained dynamic UI surfaces, integrated RESTful APIs with clear loading and error states, and applied component-based structure so pages could scale without turning into copy-paste sprawl.",
+      metrics: `Improved consistency and velocity on UI changes through disciplined component boundaries.
+
+Learned to coordinate closely with backend peers early—schema and error contracts save weeks of UI rework.`,
     },
     {
       title: "ColorAid",
@@ -130,6 +166,15 @@ export const portfolioData: PortfolioData = {
       },
       imageFit: "contain",
       links: [{ label: "GitHub", href: "https://github.com/DeybLims" }],
+      problem:
+        "Color vision differences make everyday interfaces harder to parse; users need guided assessment and adaptive rendering—not a one-size palette tweak.",
+      constraints:
+        "Python + Firebase + GCP stack, accessibility-first UX goals, and a small product scope that still needed a credible end-to-end story.",
+      solution:
+        "Implemented a vision test flow and real-time adaptive color tooling; connected services on Firebase/GCP to persist progress and support interactive adjustments with acceptable latency.",
+      metrics: `Shipped a cohesive MVP that balanced science-y UX with approachable copy and controls.
+
+Deepened intuition for inclusive design: measure, adapt, and explain—don't assume "normal" vision defaults.`,
     },
     {
       title: "Paluto Reservation Website",
@@ -144,6 +189,15 @@ export const portfolioData: PortfolioData = {
           href: "https://unli-paluto.render.com/unli-paluto",
         },
       ],
+      problem:
+        "A small food business needed reservations without standing up a heavy database—fast to iterate, easy to operate.",
+      constraints:
+        "Python backend, Google Sheets as lightweight storage, and a deliberately simple HTML/CSS/JS front end for reliability on modest hosting.",
+      solution:
+        "Built the customer reservation journey and admin views; implemented Sheets-backed persistence and sync logic so orders stayed consistent without over-engineering infrastructure.",
+      metrics: `Proved you can ship a real booking loop with boring tech if the data model and validation are disciplined.
+
+Sheets-as-DB is a tradeoff: great for speed, but you earn your keep with careful writes and guardrails.`,
     },
     {
       title: "Story Creation with Gemini",
@@ -154,6 +208,15 @@ export const portfolioData: PortfolioData = {
         "Story Creation with Gemini lets users define prompts such as setting, theme, and character details, then generates complete narratives using the Gemini API. It keeps a running conversation history so users can refine their stories over multiple interactions. The project was a way to experiment with LLM-powered UX, prompt design, and how to present AI responses in a way that feels approachable for non-technical users.",
       tags: ["Streamlit", "Python", "Gemini API"],
       links: [{ label: "GitHub", href: "https://github.com/DeybLims" }],
+      problem:
+        "Non-technical users want iterative storytelling with an LLM, without feeling like they’re “prompt engineering” in a terminal.",
+      constraints:
+        "Streamlit + Python, Gemini API usage, conversation memory, reset/clear flows, and latency-conscious UX.",
+      solution:
+        "Shipped prompt-driven story generation with structured inputs, preserved conversation history for refinement passes, and added controls to reset state safely when users wanted a fresh narrative.",
+      metrics: `Validated a simple pattern: progressive disclosure beats dumping raw model output.
+
+Learned prompt UX is product design—constraints, examples, and recovery paths matter as much as the model.`,
     },
     {
       title: "Káon",
@@ -169,6 +232,15 @@ export const portfolioData: PortfolioData = {
       },
       imageFit: "contain",
       links: [{ label: "GitHub", href: "https://github.com/DeybLims" }],
+      problem:
+        "People struggle to build consistent nutrition habits when logging feels like chores and insights feel judgmental.",
+      constraints:
+        "Flutter/Dart client, Python-backed services, mobile-first UX, and offline-ish considerations for flaky connectivity.",
+      solution:
+        "Built meal logging, calorie tracking, and trend views with a friendly UI language; structured data flows so summaries stayed understandable as history grew.",
+      metrics: `Focused on habit-forming clarity: fewer taps, clearer feedback loops, less "spreadsheet energy."
+
+Mobile performance and empty states are features—if onboarding feels brittle, retention dies early.`,
     },
   ],
   experience: [
@@ -210,6 +282,7 @@ export const portfolioData: PortfolioData = {
   contact: {
     email: "daveemanuel.lima@wvsu.edu.ph",
     github: "https://github.com/DeybLims",
+    resumePdfPath: "/Dave_Lima_Resume.pdf",
   },
 };
 
