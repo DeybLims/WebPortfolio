@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { VisionProfileProvider } from "@/components/vision-profile-provider";
 import { DeveloperTerminalProvider } from "@/components/developer-terminal/developer-terminal-context";
 import { DeveloperTerminal } from "@/components/developer-terminal/developer-terminal";
+import { Chatbot } from "@/components/chatbot";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -57,6 +58,7 @@ export default function RootLayout({
               </a>
               {children}
               <DeveloperTerminal />
+              <Chatbot />
             </DeveloperTerminalProvider>
           </VisionProfileProvider>
         </ThemeProvider>
