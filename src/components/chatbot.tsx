@@ -20,7 +20,7 @@ const SYSTEM_PROMPT =
 const WELCOME_MESSAGE: ChatMessage = {
   role: "assistant",
   content:
-    "Hi! I'm Dave's AI assistant. Ask me about his skills, projects, experience, or availability — happy to help recruiters and collaborators.",
+    "Hi! I'm Dave's AI assistant. Ask me about his skills, projects, experience, or availability — happy to help recruiters and collaborators.", 
 };
 
 function MessageBody({ role, content }: { role: ChatRole; content: string }) {
