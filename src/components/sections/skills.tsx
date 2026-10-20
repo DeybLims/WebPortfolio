@@ -1,10 +1,9 @@
 "use client";
 
 import * as React from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { portfolioData } from "@/lib/portfolio-data";
 import { Pill } from "@/components/ui/pill";
-import { cn } from "@/lib/cn";
 
 const BARS = [
   { label: "Frontend", level: 99 },
@@ -16,6 +15,7 @@ const BARS = [
 
 export function SkillsSection() {
   const [showBars, setShowBars] = React.useState(false);
+  const reduce = useReducedMotion();
 
   return (
     <section id="skills" className="scroll-mt-24 border-t border-[var(--line)] py-16 sm:py-20">
@@ -53,9 +53,9 @@ export function SkillsSection() {
               <div className="h-1.5 bg-[var(--soft)]">
                 <motion.div
                   className="h-full bg-[var(--vision-accent)]"
-                  initial={{ width: 0 }}
+                  initial={{ width: reduce ? `${stat.level}%` : 0 }}
                   animate={{ width: `${stat.level}%` }}
-                  transition={{ duration: 0.45, ease: "easeOut" }}
+                  transition={{ duration: reduce ? 0 : 0.45, ease: "easeOut" }}
                 />
               </div>
             </div>
@@ -64,7 +64,10 @@ export function SkillsSection() {
       ) : (
         <div className="grid gap-px border border-[var(--line)] bg-[var(--line)] md:grid-cols-2">
           {portfolioData.skills.map((group) => (
-            <div key={group.title} className={cn("bg-[var(--paper)] p-5 sm:p-6")}>
+            <div
+              key={group.title}
+              className="bg-[var(--paper)] p-5 transition-colors hover:bg-vision-accent-soft motion-reduce:transition-none sm:p-6"
+            >
               <h3 className="font-serif text-xl">{group.title}</h3>
               <ul className="mt-4 flex flex-wrap gap-2">
                 {group.items.map((item) => (

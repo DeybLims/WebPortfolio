@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { X } from "lucide-react";
 import type { Project } from "@/lib/types";
 import { portfolioData } from "@/lib/portfolio-data";
@@ -25,6 +25,7 @@ function CaseStudyModal({
   onClose: () => void;
 }) {
   const closeRef = React.useRef<HTMLButtonElement>(null);
+  const reduce = useReducedMotion();
   const metricBlocks = splitMetricsCallouts(project.metrics);
 
   React.useEffect(() => {
@@ -46,13 +47,13 @@ function CaseStudyModal({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.18 }}
+      transition={{ duration: reduce ? 0 : 0.18 }}
       className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-[color-mix(in_oklab,var(--ink)_72%,transparent)] p-4 py-10"
       onClick={onClose}
       role="presentation"
     >
       <div
-        className="modal-scroll my-auto w-full max-w-3xl overflow-y-auto overscroll-contain border border-[var(--line)] bg-[var(--paper)] text-[var(--ink)] shadow-2xl"
+        className="modal-scroll my-auto w-full max-w-3xl overflow-y-auto overscroll-contain border border-[var(--line)] border-t-4 border-t-[var(--vision-accent)] bg-[var(--paper)] text-[var(--ink)] shadow-2xl"
         style={{ maxHeight: "min(90vh, 860px)" }}
         onClick={(event) => event.stopPropagation()}
         role="dialog"
@@ -177,6 +178,7 @@ function CaseStudyModal({
 export function ProjectsSection() {
   const [selectedProject, setSelectedProject] = React.useState<Project | null>(null);
   const closeModal = React.useCallback(() => setSelectedProject(null), []);
+  const reduce = useReducedMotion();
 
   React.useEffect(() => {
     if (!selectedProject) return undefined;
@@ -195,20 +197,24 @@ export function ProjectsSection() {
       description="A short note on each project. I open the longer write-up only when I can share it."
     >
       <div className="border-t border-[var(--line)]">
-        {portfolioData.projects.map((project) => (
-          <article
+        {portfolioData.projects.map((project, index) => (
+          <motion.article
             key={project.title}
-            className="grid gap-6 border-b border-[var(--line)] py-8 md:grid-cols-12 md:py-10"
+            initial={reduce ? false : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.45, delay: Math.min(index * 0.04, 0.16), ease: [0.22, 1, 0.36, 1] }}
+            className="group grid gap-6 border-b border-[var(--line)] py-8 md:grid-cols-12 md:py-10"
           >
             {project.image ? (
-              <div className="md:col-span-4">
+              <div className="overflow-hidden border border-[var(--line)] md:col-span-5">
                 <Image
                   src={project.image.src}
                   alt={project.image.alt}
                   width={1400}
                   height={800}
                   className={cn(
-                    "h-44 w-full border border-[var(--line)]",
+                    "h-56 w-full transition-transform duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100 sm:h-64",
                     project.imageFit === "contain"
                       ? "bg-[var(--soft)] object-contain p-8"
                       : "object-cover",
@@ -217,9 +223,14 @@ export function ProjectsSection() {
               </div>
             ) : null}
 
-            <div className={project.image ? "md:col-span-8" : "md:col-span-12"}>
-              <div className="flex items-baseline justify-between gap-4">
-                <h3 className="font-serif text-2xl tracking-[-0.02em]">{project.title}</h3>
+            <div className={project.image ? "md:col-span-7" : "md:col-span-12"}>
+              <p className="font-serif text-3xl leading-none text-vision-accent">
+                {String(index + 1).padStart(2, "0")}
+              </p>
+              <div className="mt-3 flex items-baseline justify-between gap-4">
+                <h3 className="font-serif text-3xl tracking-[-0.03em] transition-colors duration-300 group-hover:text-vision-accent motion-reduce:transition-none">
+                  {project.title}
+                </h3>
                 {project.year ? (
                   <span className="shrink-0 font-mono text-xs text-[var(--muted)]">
                     {project.year}
@@ -264,14 +275,14 @@ export function ProjectsSection() {
                   <button
                     type="button"
                     onClick={() => setSelectedProject(project)}
-                    className="border-b border-[var(--ink)] text-[var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring"
+                    className="border-b border-[var(--vision-accent)] text-vision-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring"
                   >
                     Read notes
                   </button>
                 )}
               </div>
             </div>
-          </article>
+          </motion.article>
         ))}
       </div>
 

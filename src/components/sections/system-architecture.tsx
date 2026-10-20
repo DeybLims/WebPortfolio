@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { motion, useAnimate } from "framer-motion";
+import { motion, useAnimate, useReducedMotion } from "framer-motion";
 import { Monitor, Server, Database, Loader2 } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { cn } from "@/lib/cn";
@@ -82,21 +82,22 @@ function ArchitectureNode({
   isActive: boolean;
 }) {
   const cfg = NODE_COPY[id];
+  const reduce = useReducedMotion();
   return (
     <motion.div
       className={cn(
-        "relative z-10 flex min-h-[168px] flex-col border border-[var(--line)] bg-[var(--paper)] p-5",
-        isActive && "border-[var(--vision-accent)]",
+        "relative z-10 flex min-h-[180px] flex-col border border-[var(--line)] bg-[var(--paper)] p-5 transition-colors",
+        isActive && "border-[var(--vision-accent)] bg-vision-accent-soft",
       )}
       animate={{
-        scale: isActive ? 1.02 : 1,
+        scale: !reduce && isActive ? 1.03 : 1,
       }}
       transition={{ type: "spring", stiffness: 380, damping: 26 }}
     >
       <div className="mb-3 flex items-center gap-3">
         <div
           className={cn(
-            "flex h-11 w-11 items-center justify-center border border-[var(--line)]",
+            "flex h-11 w-11 items-center justify-center border border-[var(--line)] bg-[var(--paper)]",
           )}
         >
           {id === "frontend" ? (
@@ -210,7 +211,7 @@ export function SystemArchitectureSection() {
     >
       <div
         ref={scope}
-        className="relative mx-auto min-h-[300px] w-full max-w-4xl py-4 md:min-h-[280px]"
+        className="relative mx-auto min-h-[340px] w-full border border-[var(--line)] bg-[var(--soft)] px-4 py-8 md:min-h-[320px] md:px-8"
       >
         <svg
           className="pointer-events-none absolute inset-0 h-full w-full overflow-visible"
@@ -227,7 +228,7 @@ export function SystemArchitectureSection() {
             strokeDasharray="3 4"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="text-zinc-400/55 dark:text-zinc-500/50"
+            className={isSimulating || showSuccess ? "text-[var(--vision-accent)]" : "text-zinc-400/70 dark:text-zinc-500/70"}
           />
         </svg>
 
@@ -239,7 +240,7 @@ export function SystemArchitectureSection() {
                 onClick={() => void handleSimulation()}
                 disabled={isSimulating || showSuccess}
                 className={cn(
-                  "inline-flex w-full items-center justify-center gap-2 border border-[var(--ink)] px-3 py-2.5 text-sm text-[var(--ink)]",
+                  "bg-accent-solid inline-flex w-full items-center justify-center gap-2 px-3 py-2.5 text-sm",
                   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring",
                   "disabled:pointer-events-none disabled:opacity-50",
                 )}
@@ -265,7 +266,7 @@ export function SystemArchitectureSection() {
 
         <motion.div
           data-arch-packet
-          className="pointer-events-none absolute z-20 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 bg-[var(--vision-accent)]"
+          className="pointer-events-none absolute z-20 h-4 w-4 -translate-x-1/2 -translate-y-1/2 bg-[var(--vision-accent)] shadow-[0_0_0_7px_var(--vision-node-glow)]"
           style={{
             left: positions.fe.left,
             top: positions.fe.top,
@@ -273,6 +274,13 @@ export function SystemArchitectureSection() {
           initial={{ opacity: 0, scale: 0.85 }}
           aria-hidden
         />
+        <p aria-live="polite" className="relative z-10 mt-6 font-mono text-[11px] uppercase tracking-[0.16em] text-vision-accent">
+          {isSimulating && activeNode
+            ? NODE_COPY[activeNode].label
+            : showSuccess
+              ? "Success"
+              : "Ready"}
+        </p>
       </div>
     </Section>
   );

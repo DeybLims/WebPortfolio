@@ -5,9 +5,9 @@ import { VisionModeSwitcher } from "@/components/vision-mode-switcher";
 
 export function SiteNav() {
   return (
-    <header className="sticky top-0 z-40 border-b border-[var(--line)] bg-[var(--paper)]/95 backdrop-blur-sm">
+    <header className="sticky top-0 z-40 border-b-[3px] border-[var(--vision-accent)] bg-[var(--paper)]/95 backdrop-blur-sm">
       <nav
-        className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-3 sm:px-6"
+        className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-2 px-4 py-3 sm:px-6"
         aria-label="Primary"
       >
         <Link
@@ -22,7 +22,7 @@ export function SiteNav() {
             <a
               key={item.href}
               href={item.href}
-              className="whitespace-nowrap text-[var(--muted)] hover:text-[var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring"
+              className="whitespace-nowrap text-[var(--muted)] underline decoration-transparent underline-offset-4 transition-colors hover:text-[var(--ink)] hover:decoration-[var(--vision-accent)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring motion-reduce:transition-none"
             >
               {item.label}
             </a>

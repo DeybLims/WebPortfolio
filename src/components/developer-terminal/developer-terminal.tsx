@@ -224,7 +224,7 @@ export function DeveloperTerminal() {
             dragMomentum={false}
             dragElastic={0.06}
             dragConstraints={constraintsRef}
-            className="pointer-events-auto absolute bottom-4 left-4 right-4 max-h-[min(520px,70vh)] w-[min(100%,28rem)] cursor-default overflow-hidden rounded-xl border border-white/10 bg-gray-950/90 shadow-[0_24px_80px_-12px_rgba(0,0,0,0.75)] backdrop-blur-md sm:left-auto sm:right-6 sm:bottom-6"
+            className="pointer-events-auto absolute bottom-4 left-4 right-4 max-h-[min(520px,70vh)] w-[min(100%,28rem)] cursor-default overflow-hidden border border-white/10 border-t-4 border-t-[var(--vision-accent)] bg-gray-950/95 shadow-[0_24px_80px_-12px_rgba(0,0,0,0.75)] sm:bottom-6 sm:left-auto sm:right-6"
           >
             {/* macOS-style title bar (drag handle) */}
             <div

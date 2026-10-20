@@ -16,7 +16,7 @@ export default function Home() {
       <SiteNav />
       <main id="content">
         <Hero />
-        <div className="mx-auto max-w-5xl px-4 sm:px-6">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <SignatureDeploymentSection />
           <ProjectsSection />
           <SkillsSection />

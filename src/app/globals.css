@@ -20,6 +20,7 @@
   --vision-muted: #8c3d2c;
   --vision-glow: transparent;
   --vision-node-glow: rgba(140, 61, 44, 0.18);
+  --on-accent: #f7f3ea;
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
@@ -36,6 +37,7 @@
   --vision-muted: #e4b08a;
   --vision-glow: transparent;
   --vision-node-glow: rgba(228, 176, 138, 0.22);
+  --on-accent: #1c1915;
 }
 
 /* Protanopia-friendly: blue + gold */
@@ -99,6 +101,10 @@ html.dark[data-vision="tritanopia"] {
   .bg-vision-accent {
     background-color: var(--vision-accent);
   }
+  .bg-accent-solid {
+    background-color: var(--vision-accent);
+    color: var(--on-accent);
+  }
   .border-vision-accent {
     border-color: var(--vision-accent);
   }
@@ -136,4 +142,19 @@ main {
 .modal-scroll {
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: contain;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

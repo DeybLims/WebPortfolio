@@ -46,7 +46,7 @@ export function VisionModeSwitcher() {
         whileTap={{ scale: 0.96 }}
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          "inline-flex h-9 w-9 items-center justify-center text-[var(--muted)] hover:text-[var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring",
+          "relative inline-flex h-9 w-9 items-center justify-center text-[var(--muted)] hover:text-[var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring",
           open && "ring-2 ring-vision-ring-soft",
         )}
         aria-expanded={open}
@@ -55,6 +55,7 @@ export function VisionModeSwitcher() {
         title={`Vision mode: ${profileLabel(profile)}`}
       >
         <Palette className="h-4 w-4" aria-hidden="true" />
+        <span aria-hidden className="absolute bottom-1 left-1.5 right-1.5 h-0.5 bg-vision-accent" />
       </motion.button>
 
       <AnimatePresence>
