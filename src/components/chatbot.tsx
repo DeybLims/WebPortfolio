@@ -65,7 +65,7 @@ function MessageBody({ role, content }: { role: ChatRole; content: string }) {
           </a>
         ),
         code: ({ children }) => (
-          <code className="bg-black/30 px-1 py-0.5 font-mono text-[12px]">
+          <code className="bg-[var(--soft)] px-1 py-0.5 font-mono text-[12px]">
             {children}
           </code>
         ),
@@ -179,7 +179,7 @@ export function Chatbot() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 16 }}
             transition={{ type: "spring", stiffness: 380, damping: 28 }}
-            className="pointer-events-auto flex h-[min(500px,70vh)] w-[min(100vw-2rem,22rem)] flex-col overflow-hidden border border-[var(--line)] bg-[var(--paper)] text-[var(--ink)] shadow-xl"
+            className="pointer-events-auto flex h-[min(500px,70vh)] w-[min(100vw-2rem,22rem)] flex-col overflow-hidden border border-[var(--line)] bg-[var(--paper)] text-[var(--ink)]"
             role="dialog"
             aria-label="Questions about Dave"
           >
@@ -269,13 +269,16 @@ export function Chatbot() {
       <motion.button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="pointer-events-auto inline-flex h-12 w-12 items-center justify-center border border-[var(--line)] bg-[var(--paper)] text-[var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring"
-        aria-label={open ? "Close chat" : "Open chat"}
+        className="pointer-events-auto inline-flex h-12 items-center gap-2 border border-[var(--line)] bg-[var(--ink)] px-4 text-sm text-[var(--paper)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--paper)]"
+        aria-label={open ? "Close chat" : "Ask"}
       >
         {open ? (
           <X className="h-5 w-5" aria-hidden />
         ) : (
-          <MessageCircle className="h-5 w-5" aria-hidden />
+          <>
+            <MessageCircle className="h-5 w-5" aria-hidden />
+            <span>Ask</span>
+          </>
         )}
       </motion.button>
     </div>

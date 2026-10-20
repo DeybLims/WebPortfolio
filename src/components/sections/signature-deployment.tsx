@@ -5,7 +5,8 @@ import { flushSync } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { RotateCcw, Terminal } from "lucide-react";
 import { portfolioData } from "@/lib/portfolio-data";
-import { cn } from "@/lib/cn";
+import { KineticText } from "@/components/motion/kinetic-text";
+import { Magnetic } from "@/components/motion/magnetic";
 
 type Phase = "idle" | "building" | "testing" | "deploying" | "success";
 type PipelineMode = "resume" | "contact";
@@ -143,24 +144,22 @@ export function SignatureDeploymentSection() {
   return (
     <section
       id="deploy"
-      className="relative z-10 scroll-mt-24 py-16 sm:py-20"
-      aria-label="Signature deployment interaction"
+      className="deploy-band"
+      aria-labelledby="deploy-title"
     >
-      <div className="mb-6">
-        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--muted)]">
-          A small handoff
-        </p>
-        <h2 className="mt-3 font-serif text-3xl tracking-[-0.02em] sm:text-4xl">
-          Resume, or a way to write me
+      <div>
+        <p className="meta">A small handoff</p>
+        <h2 id="deploy-title" tabIndex={-1} className="type-section mt-3">
+          <KineticText text="Resume, or a way to write me" />
         </h2>
-        <p className="mt-4 max-w-2xl text-base leading-7 text-[var(--muted)]">
+        <p className="site-section-copy">
           This runs a short staged log, then downloads the PDF or scrolls to contact.
         </p>
       </div>
 
       <motion.div
         layout
-        className="mx-auto w-full max-w-xl"
+        className="w-full"
         transition={{ type: "spring", stiffness: 320, damping: 30 }}
       >
         <AnimatePresence initial={false}>
@@ -173,28 +172,32 @@ export function SignatureDeploymentSection() {
               transition={{ duration: 0.2 }}
               className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
             >
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  void runPipeline("resume");
-                }}
-                className="inline-flex min-h-12 items-center justify-center bg-[var(--ink)] px-5 text-sm text-[var(--paper)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--paper)]"
-              >
-                Download resume
-              </button>
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  void runPipeline("contact");
-                }}
-                className="inline-flex min-h-12 items-center justify-center border border-[var(--line)] px-5 text-sm text-[var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring"
-              >
-                Go to contact
-              </button>
+              <Magnetic>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    void runPipeline("resume");
+                  }}
+                  className="inline-flex min-h-12 items-center justify-center bg-[var(--ink)] px-5 text-sm text-[var(--paper)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--paper)]"
+                >
+                  Download resume
+                </button>
+              </Magnetic>
+              <Magnetic>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    void runPipeline("contact");
+                  }}
+                  className="inline-flex min-h-12 items-center justify-center border border-[var(--line)] px-5 text-sm text-[var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring"
+                >
+                  Go to contact
+                </button>
+              </Magnetic>
             </motion.div>
           ) : (
             <motion.div
@@ -207,42 +210,26 @@ export function SignatureDeploymentSection() {
                 transition: { type: "spring", stiffness: 280, damping: 28 },
               }}
               exit={{ opacity: 0, scale: 0.98 }}
-              className={cn(
-                "relative overflow-hidden rounded-xl border bg-[#0c0e12] text-left shadow-2xl ring-1",
-                phase === "success"
-                  ? "border-emerald-500/50 ring-emerald-500/30"
-                  : "border-zinc-700/80 ring-black/20 dark:ring-white/10",
-              )}
+              className="bg-code relative overflow-hidden border border-code text-left"
             >
-              <motion.div
-                className="pointer-events-none absolute inset-0 bg-emerald-500/25"
-                initial={false}
-                animate={
-                  phase === "success"
-                    ? { opacity: [0, 0.85, 0.15, 0.4, 0] }
-                    : { opacity: 0 }
-                }
-                transition={{ duration: 0.85, ease: "easeOut" }}
-              />
-
-              <div className="relative flex items-center gap-2 border-b border-zinc-800 bg-zinc-900/95 px-3 py-2">
-                <span className="h-2 w-2 rounded-full bg-[#ff5f57]" aria-hidden />
-                <span className="h-2 w-2 rounded-full bg-[#febc2e]" aria-hidden />
-                <span className="h-2 w-2 rounded-full bg-[#28c840]" aria-hidden />
-                <Terminal className="ml-1 h-3.5 w-3.5 text-zinc-500" aria-hidden />
-                <span className="font-mono text-[11px] text-zinc-400">
+              <div className="bg-code-surface relative flex items-center gap-2 border-b border-code px-3 py-2">
+                <span className="bg-dot-1 h-2 w-2 rounded-full" aria-hidden />
+                <span className="bg-dot-2 h-2 w-2 rounded-full" aria-hidden />
+                <span className="bg-dot-3 h-2 w-2 rounded-full" aria-hidden />
+                <Terminal className="text-code-dim ml-1 h-3.5 w-3.5" aria-hidden />
+                <span className="text-code-muted font-mono text-[11px]">
                   {mode === "resume" ? "deploy-resume.yml" : "init-contact.yml"}
                 </span>
-                <span className="ml-2 hidden rounded bg-zinc-800 px-1.5 py-0.5 font-mono text-[10px] text-zinc-300 sm:inline">
+                <span className="bg-code-elevated text-code-fg ml-2 hidden rounded px-1.5 py-0.5 font-mono text-[10px] sm:inline">
                   {phase === "success" ? "main" : "workflow"}
                 </span>
-                <span className="ml-auto font-mono text-[10px] text-zinc-500">
+                <span className={`ml-auto font-mono text-[10px] ${phase === "success" ? "text-status-ok" : "text-code-dim"}`}>
                   {phase === "success" ? "● live" : `● ${PHASE_LABEL[phase]}`}
                 </span>
                 <button
                   type="button"
                   onClick={cancelRun}
-                  className="ml-2 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-zinc-500 transition hover:bg-zinc-800 hover:text-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60"
+                  className="text-code-dim hover:bg-code-chip hover:text-code-fg ml-2 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-md transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-syn"
                   aria-label="Reset pipeline"
                   title="Reset"
                 >
@@ -250,10 +237,10 @@ export function SignatureDeploymentSection() {
                 </button>
               </div>
 
-              <div className="relative min-h-[200px] px-4 py-4 font-mono text-[13px] leading-relaxed text-zinc-300 sm:min-h-[220px] sm:px-5 sm:text-sm">
-                <p className="mb-3 text-zinc-500">
-                  <span className="text-emerald-400">$</span> pipeline run{" "}
-                  <span className="text-sky-400">
+              <div className="text-code-muted relative min-h-[200px] px-4 py-4 font-mono text-[13px] leading-relaxed sm:min-h-[220px] sm:px-5 sm:text-sm">
+                <p className="text-code-dim mb-3">
+                  <span className="text-status-ok">$</span> pipeline run{" "}
+                  <span className="text-syn-function">
                     {mode === "resume" ? "--target=resume" : "--target=contact"}
                   </span>
                 </p>
@@ -261,7 +248,7 @@ export function SignatureDeploymentSection() {
                   {lines.map((line) => (
                     <p key={line}>{line}</p>
                   ))}
-                  {typing ? <p className="text-zinc-200">{typing}</p> : null}
+                  {typing ? <p className="text-code-fg">{typing}</p> : null}
                 </div>
                 <AnimatePresence>
                   {phase === "success" ? (
@@ -269,7 +256,7 @@ export function SignatureDeploymentSection() {
                       initial={{ opacity: 0, y: 6 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ type: "spring", stiffness: 400, damping: 28 }}
-                      className="mt-4 font-mono text-sm font-bold tracking-wide text-emerald-400"
+                      className="text-status-ok mt-4 font-mono text-sm font-bold tracking-wide"
                     >
                       [DEPLOYMENT SUCCESSFUL]
                     </motion.p>
@@ -282,11 +269,11 @@ export function SignatureDeploymentSection() {
       </motion.div>
 
       {phase === "success" ? (
-        <p className="mt-4 text-center text-xs text-zinc-500 dark:text-zinc-400">
+        <p className="mt-4 text-center text-xs text-[var(--muted)]">
           <button
             type="button"
             onClick={cancelRun}
-            className="font-mono underline decoration-zinc-400/50 underline-offset-2 hover:text-zinc-700 dark:hover:text-zinc-300"
+            className="font-mono underline decoration-[var(--line)] underline-offset-2 hover:text-[var(--ink)]"
           >
             Run again
           </button>

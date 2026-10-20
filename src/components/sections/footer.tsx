@@ -6,6 +6,8 @@ import { Bug, Github, Mail, MapPin, Terminal } from "lucide-react";
 import { portfolioData } from "@/lib/portfolio-data";
 import { useDeveloperTerminal } from "@/components/developer-terminal/developer-terminal-context";
 import { FooterTechPlayground } from "@/components/sections/footer-tech-playground";
+import { KineticText } from "@/components/motion/kinetic-text";
+import { Magnetic } from "@/components/motion/magnetic";
 
 function TerminalTrigger() {
   const { toggle } = useDeveloperTerminal();
@@ -86,7 +88,7 @@ export function Footer() {
   }, [isDebugMode, bugs.length, totalBugs]);
 
   return (
-    <footer id="contact" className="scroll-mt-24 border-t border-[var(--line)] py-16 sm:py-20">
+    <footer id="contact" className="site-section site-section--stack">
       <AnimatePresence>
         {isDebugMode ? (
           <>
@@ -94,7 +96,7 @@ export function Footer() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="fixed right-4 top-4 z-[210] rounded-full border border-emerald-400/30 bg-zinc-950/90 px-3 py-1.5 font-mono text-xs text-emerald-300 shadow-lg backdrop-blur"
+              className="bg-code text-status-ok fixed right-4 top-4 z-[210] rounded-full border border-status-ok px-3 py-1.5 font-mono text-xs backdrop-blur"
             >
               Bugs Fixed: {fixedCount}
             </motion.div>
@@ -105,7 +107,7 @@ export function Footer() {
                   <motion.button
                     key={bug.id}
                     type="button"
-                    className="pointer-events-auto absolute inline-flex h-7 w-7 items-center justify-center rounded-full bg-black/10 text-zinc-700 transition hover:bg-black/20 dark:bg-white/10 dark:text-zinc-100 dark:hover:bg-white/20"
+                    className="pointer-events-auto absolute inline-flex h-7 w-7 items-center justify-center rounded-full bg-[var(--soft)] text-[var(--ink)] transition hover:bg-[var(--line)]"
                     style={{ left: `${bug.x}%`, top: `${bug.y}%` }}
                     onClick={() => handleBugFix(bug.id)}
                     initial={{ opacity: 0, scale: 0.7 }}
@@ -149,7 +151,7 @@ export function Footer() {
                   initial={{ opacity: 0, y: 12, scale: 0.98 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 12, scale: 0.98 }}
-                  className="fixed bottom-6 left-1/2 z-[215] -translate-x-1/2 rounded-xl border border-emerald-400/35 bg-zinc-950/95 px-4 py-2.5 text-sm text-emerald-200 shadow-xl backdrop-blur"
+                  className="bg-code text-status-ok fixed bottom-6 left-1/2 z-[215] -translate-x-1/2 rounded-xl border border-status-ok px-4 py-2.5 text-sm backdrop-blur"
                 >
                   That is the last one.
                 </motion.div>
@@ -162,45 +164,47 @@ export function Footer() {
       <div>
         <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-7">
-            <h2 className="font-serif text-3xl tracking-[-0.02em] sm:text-4xl">
-              If you have a role or a project in mind, write me.
+            <h2 id="contact-title" tabIndex={-1} className="type-section">
+              <KineticText text="If you have a role or a project in mind, write me." />
             </h2>
             <p className="mt-4 max-w-xl text-base leading-7 text-[var(--muted)]">
               {portfolioData.contact.email}
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <a
-                href={`mailto:${portfolioData.contact.email}`}
-                className="inline-flex h-11 items-center justify-center gap-2 bg-[var(--ink)] px-5 text-sm text-[var(--paper)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--paper)]"
-              >
-                <Mail className="h-4 w-4" aria-hidden="true" />
-                Email
-              </a>
-              <a
-                href={portfolioData.contact.github}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex h-11 items-center justify-center gap-2 border border-[var(--line)] px-5 text-sm text-[var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring"
-              >
-                <Github className="h-4 w-4" aria-hidden="true" />
-                GitHub
-              </a>
+              <Magnetic>
+                <a
+                  href={`mailto:${portfolioData.contact.email}`}
+                  className="inline-flex h-11 items-center justify-center gap-2 bg-[var(--ink)] px-5 text-sm text-[var(--paper)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--paper)]"
+                >
+                  <Mail className="h-4 w-4" aria-hidden="true" />
+                  Email
+                </a>
+              </Magnetic>
+              <Magnetic>
+                <a
+                  href={portfolioData.contact.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex h-11 items-center justify-center gap-2 border border-[var(--line)] px-5 text-sm text-[var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring"
+                >
+                  <Github className="h-4 w-4" aria-hidden="true" />
+                  GitHub
+                </a>
+              </Magnetic>
             </div>
           </div>
 
-          <div className="md:col-span-5">
-            <div className="border border-[var(--line)] p-6">
-              <div className="flex items-start gap-3">
-                <MapPin className="mt-0.5 h-4 w-4 text-[var(--muted)]" aria-hidden="true" />
-                <div>
-                  <p className="text-sm text-[var(--muted)]">Location</p>
-                  <p className="mt-1 text-base">{portfolioData.location}</p>
-                  <div className="mt-4 flex items-center gap-3">
-                    <p className="font-mono text-xs text-[var(--muted)]">
-                      Next.js, Tailwind, Framer Motion
-                    </p>
-                    <TerminalTrigger />
-                  </div>
+          <div className="md:col-span-5 md:pt-2">
+            <div className="flex items-start gap-3">
+              <MapPin className="mt-0.5 h-4 w-4 text-[var(--muted)]" aria-hidden="true" />
+              <div>
+                <p className="text-sm text-[var(--muted)]">Location</p>
+                <p className="mt-1 text-base">{portfolioData.location}</p>
+                <div className="mt-4 flex items-center gap-3">
+                  <p className="font-mono text-xs text-[var(--muted)]">
+                    Next.js, Tailwind, Framer Motion
+                  </p>
+                  <TerminalTrigger />
                 </div>
               </div>
             </div>

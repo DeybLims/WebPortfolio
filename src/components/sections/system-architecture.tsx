@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { motion, useAnimate } from "framer-motion";
+import { motion, useAnimate, useReducedMotion } from "framer-motion";
 import { Monitor, Server, Database, Loader2 } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { cn } from "@/lib/cn";
@@ -31,9 +31,9 @@ function useIsDesktopLayout() {
 function getPacketPositions(isDesktop: boolean) {
   if (isDesktop) {
     return {
-      fe: { left: "16%", top: "42%" },
-      be: { left: "50%", top: "42%" },
-      db: { left: "84%", top: "42%" },
+      fe: { left: "16%", top: "34%" },
+      be: { left: "50%", top: "34%" },
+      db: { left: "84%", top: "34%" },
     };
   }
   return {
@@ -46,27 +46,24 @@ function getPacketPositions(isDesktop: boolean) {
 /** SVG path in viewBox 0 0 100 100 — stretches with container via preserveAspectRatio="none" */
 function getPathD(isDesktop: boolean) {
   if (isDesktop) {
-    return "M 16 42 L 50 42 L 84 42 L 50 42 L 16 42";
+    return "M 16 34 L 50 34 L 84 34 L 50 34 L 16 34";
   }
   return "M 50 20 L 50 50 L 50 80 L 50 50 L 50 20";
 }
 
 const NODE_COPY: Record<
   NodeId,
-  { iconClass: string; label: string; sub: string }
+  { label: string; sub: string }
 > = {
   frontend: {
-    iconClass: "text-sky-500 dark:text-sky-400",
     label: "Frontend",
     sub: "React / Next.js",
   },
   backend: {
-    iconClass: "text-emerald-600 dark:text-emerald-400",
     label: "Backend",
     sub: "PHP / Python",
   },
   database: {
-    iconClass: "text-amber-600 dark:text-amber-400",
     label: "Database",
     sub: "PostgreSQL / Firebase",
   },
@@ -82,29 +79,25 @@ function ArchitectureNode({
   isActive: boolean;
 }) {
   const cfg = NODE_COPY[id];
+  const reduce = useReducedMotion();
   return (
     <motion.div
-      className={cn(
-        "relative z-10 flex min-h-[168px] flex-col border border-[var(--line)] bg-[var(--paper)] p-5",
-        isActive && "border-[var(--vision-accent)]",
-      )}
-      animate={{
-        scale: isActive ? 1.02 : 1,
-      }}
-      transition={{ type: "spring", stiffness: 380, damping: 26 }}
+      className={cn("arch-node", isActive && "is-active")}
+      animate={{ opacity: 1 }}
+      transition={{ duration: reduce ? 0 : 0.2 }}
     >
       <div className="mb-3 flex items-center gap-3">
         <div
           className={cn(
-            "flex h-11 w-11 items-center justify-center border border-[var(--line)]",
+            "flex h-11 w-11 items-center justify-center border border-[var(--line)] bg-[var(--paper)]",
           )}
         >
           {id === "frontend" ? (
-            <Monitor className={cn("h-5 w-5", cfg.iconClass)} aria-hidden />
+            <Monitor className="h-5 w-5 text-[var(--ink)]" aria-hidden />
           ) : id === "backend" ? (
-            <Server className={cn("h-5 w-5", cfg.iconClass)} aria-hidden />
+            <Server className="h-5 w-5 text-[var(--ink)]" aria-hidden />
           ) : (
-            <Database className={cn("h-5 w-5", cfg.iconClass)} aria-hidden />
+            <Database className="h-5 w-5 text-[var(--ink)]" aria-hidden />
           )}
         </div>
         <div>
@@ -119,6 +112,7 @@ function ArchitectureNode({
 
 export function SystemArchitectureSection() {
   const isDesktop = useIsDesktopLayout();
+  const reduce = useReducedMotion();
   const [scope, animate] = useAnimate();
 
   const [isSimulating, setIsSimulating] = React.useState(false);
@@ -133,6 +127,8 @@ export function SystemArchitectureSection() {
 
     const pos = getPacketPositions(isDesktop);
     const { fe, be, db } = pos;
+    const hop = reduce ? 0 : 0.55;
+    const dwell = reduce ? 0 : 500;
 
     setIsSimulating(true);
     setShowSuccess(false);
@@ -142,45 +138,45 @@ export function SystemArchitectureSection() {
     await animate(
       "[data-arch-packet]",
       { left: fe.left, top: fe.top, opacity: 1, scale: 1 },
-      { duration: 0.15 },
+      { duration: reduce ? 0 : 0.15 },
     );
-    await sleep(500);
+    await sleep(dwell);
     await animate(
       "[data-arch-packet]",
       { left: be.left, top: be.top },
-      { duration: 0.55, ease: "easeInOut" },
+      { duration: hop, ease: "easeInOut" },
     );
 
     // Step 3–4
     setActiveNode("backend");
-    await sleep(500);
+    await sleep(dwell);
     await animate(
       "[data-arch-packet]",
       { left: db.left, top: db.top },
-      { duration: 0.55, ease: "easeInOut" },
+      { duration: hop, ease: "easeInOut" },
     );
 
     // Step 5–6
     setActiveNode("database");
-    await sleep(500);
+    await sleep(dwell);
     await animate(
       "[data-arch-packet]",
       { left: be.left, top: be.top },
-      { duration: 0.55, ease: "easeInOut" },
+      { duration: hop, ease: "easeInOut" },
     );
 
     // Step 7–8
     setActiveNode("backend");
-    await sleep(500);
+    await sleep(dwell);
     await animate(
       "[data-arch-packet]",
       { left: fe.left, top: fe.top },
-      { duration: 0.55, ease: "easeInOut" },
+      { duration: hop, ease: "easeInOut" },
     );
 
     // Step 9: frontend receives, success, reset
     setActiveNode("frontend");
-    await sleep(400);
+    await sleep(reduce ? 0 : 400);
     setIsSimulating(false);
     setShowSuccess(true);
     setActiveNode(null);
@@ -199,19 +195,17 @@ export function SystemArchitectureSection() {
       { left: fe.left, top: fe.top, scale: 1, opacity: 0 },
       { duration: 0.01 },
     );
-  }, [isSimulating, isDesktop, animate]);
+  }, [isSimulating, isDesktop, animate, reduce]);
 
   return (
     <Section
       id="architecture"
+      className="band-soft"
       eyebrow="Visualization"
       title="System architecture"
       description="A simplified request flow across the stack. Simulate a round-trip from the browser to persistence and back."
     >
-      <div
-        ref={scope}
-        className="relative mx-auto min-h-[300px] w-full max-w-4xl py-4 md:min-h-[280px]"
-      >
+      <div ref={scope} className="arch-stage">
         <svg
           className="pointer-events-none absolute inset-0 h-full w-full overflow-visible"
           viewBox="0 0 100 100"
@@ -227,7 +221,7 @@ export function SystemArchitectureSection() {
             strokeDasharray="3 4"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="text-zinc-400/55 dark:text-zinc-500/50"
+            className={isSimulating || showSuccess ? "text-[var(--vision-accent)]" : "text-[var(--muted)]"}
           />
         </svg>
 
@@ -239,7 +233,7 @@ export function SystemArchitectureSection() {
                 onClick={() => void handleSimulation()}
                 disabled={isSimulating || showSuccess}
                 className={cn(
-                  "inline-flex w-full items-center justify-center gap-2 border border-[var(--ink)] px-3 py-2.5 text-sm text-[var(--ink)]",
+                  "inline-flex w-full items-center justify-center gap-2 bg-[var(--ink)] px-3 py-2.5 text-sm text-[var(--paper)]",
                   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring",
                   "disabled:pointer-events-none disabled:opacity-50",
                 )}
@@ -273,6 +267,13 @@ export function SystemArchitectureSection() {
           initial={{ opacity: 0, scale: 0.85 }}
           aria-hidden
         />
+        <p aria-live="polite" className="relative z-10 mt-6 font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--muted)]">
+          {isSimulating && activeNode
+            ? NODE_COPY[activeNode].label
+            : showSuccess
+              ? "Success"
+              : "Ready"}
+        </p>
       </div>
     </Section>
   );

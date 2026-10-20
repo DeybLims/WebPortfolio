@@ -2,13 +2,15 @@
 
 import * as React from "react";
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { X } from "lucide-react";
 import type { Project } from "@/lib/types";
 import { portfolioData } from "@/lib/portfolio-data";
 import { Section } from "@/components/ui/section";
 import { Pill } from "@/components/ui/pill";
+import { workAnchor } from "@/lib/work-anchor";
 import { cn } from "@/lib/cn";
+import { useProjectPreview } from "@/components/motion/hover-preview";
 
 function splitMetricsCallouts(metrics: string): string[] {
   return metrics
@@ -17,7 +19,7 @@ function splitMetricsCallouts(metrics: string): string[] {
     .filter(Boolean);
 }
 
-function CaseStudyModal({
+function CaseStudySheet({
   project,
   onClose,
 }: {
@@ -25,13 +27,35 @@ function CaseStudyModal({
   onClose: () => void;
 }) {
   const closeRef = React.useRef<HTMLButtonElement>(null);
+  const panelRef = React.useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
   const metricBlocks = splitMetricsCallouts(project.metrics);
 
   React.useEffect(() => {
     const previous = document.activeElement as HTMLElement | null;
     closeRef.current?.focus();
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose();
+      if (event.key === "Escape") {
+        event.preventDefault();
+        onClose();
+        return;
+      }
+      if (event.key !== "Tab") return;
+      const root = panelRef.current;
+      if (!root) return;
+      const items = Array.from(
+        root.querySelectorAll<HTMLElement>("a, button, input, textarea, select, [tabindex]:not([tabindex='-1'])"),
+      ).filter((el) => !el.hasAttribute("disabled"));
+      if (!items.length) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => {
@@ -43,50 +67,46 @@ function CaseStudyModal({
   return (
     <motion.div
       key={project.title}
+      className="sheet-layer"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.18 }}
-      className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto bg-[color-mix(in_oklab,var(--ink)_72%,transparent)] p-4 py-10"
-      onClick={onClose}
+      transition={{ duration: reduce ? 0 : 0.18 }}
       role="presentation"
     >
-      <div
-        className="modal-scroll my-auto w-full max-w-3xl overflow-y-auto overscroll-contain border border-[var(--line)] bg-[var(--paper)] text-[var(--ink)] shadow-2xl"
-        style={{ maxHeight: "min(90vh, 860px)" }}
-        onClick={(event) => event.stopPropagation()}
+      <button type="button" className="sheet-backdrop" aria-label="Close case study" onClick={onClose} />
+      <motion.div
+        ref={panelRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby="case-study-title"
+        className="sheet"
+        initial={reduce ? false : { x: 28, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        exit={reduce ? { opacity: 0 } : { x: 28, opacity: 0 }}
+        transition={{ duration: reduce ? 0 : 0.28, ease: [0.22, 1, 0.36, 1] }}
       >
-        <div className="px-6 py-7 sm:px-8 sm:py-9">
-          <header className="flex items-start justify-between gap-6 border-b border-[var(--line)] pb-6">
-            <div className="min-w-0">
-              <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--muted)]">
-                Case study
-              </p>
-              <h2
-                id="case-study-title"
-                className="mt-2 font-serif text-3xl tracking-[-0.02em]"
-              >
-                {project.title}
-              </h2>
-              {project.year ? (
-                <p className="mt-2 font-mono text-xs text-[var(--muted)]">{project.year}</p>
-              ) : null}
-            </div>
-            <button
-              ref={closeRef}
-              type="button"
-              onClick={onClose}
-              className="inline-flex h-10 w-10 shrink-0 items-center justify-center border border-[var(--line)] text-[var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring"
-              aria-label="Close case study"
-            >
-              <X className="h-4 w-4" aria-hidden />
-            </button>
-          </header>
+        <header className="sheet-head">
+          <div className="min-w-0">
+            <p className="meta">Case study</p>
+            <h2 id="case-study-title" className="type-title">
+              {project.title}
+            </h2>
+            {project.year ? <p className="sheet-year">{project.year}</p> : null}
+          </div>
+          <button
+            ref={closeRef}
+            type="button"
+            onClick={onClose}
+            className="icon-button"
+            aria-label="Close case study"
+          >
+            <X className="h-4 w-4" aria-hidden />
+          </button>
+        </header>
 
-          <p className="mt-6 text-base leading-7 text-[var(--muted)]">{project.description}</p>
+        <div className="sheet-body">
+          <p className="sheet-lede">{project.description}</p>
 
           {project.tags.length > 0 ? (
             <ul className="mt-4 flex flex-wrap gap-2">
@@ -99,7 +119,7 @@ function CaseStudyModal({
           ) : null}
 
           {project.links.length > 0 ? (
-            <div className="mt-5 flex flex-wrap gap-4 text-sm">
+            <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm">
               {project.links.map((link) => {
                 const isInternal = link.href.startsWith("#");
                 return (
@@ -108,7 +128,10 @@ function CaseStudyModal({
                     href={link.href}
                     target={isInternal ? undefined : "_blank"}
                     rel={isInternal ? undefined : "noreferrer"}
-                    className="border-b border-[var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring"
+                    className="text-link"
+                    onClick={() => {
+                      if (isInternal) onClose();
+                    }}
                   >
                     {link.label}
                   </a>
@@ -124,52 +147,40 @@ function CaseStudyModal({
               width={1600}
               height={900}
               className={cn(
-                "mt-8 max-h-[min(48vh,380px)] w-full border border-[var(--line)]",
-                project.imageFit === "contain"
-                  ? "bg-[var(--soft)] object-contain p-8"
-                  : "object-cover",
+                "sheet-figure",
+                project.imageFit === "contain" && "is-contain",
               )}
             />
           ) : null}
 
-          <div className="mt-10 grid gap-8 md:grid-cols-2">
+          <div className="sheet-grid">
             <div>
-              <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--muted)]">
-                Problem
-              </h3>
-              <p className="mt-3 text-base leading-7">{project.problem}</p>
-              <h3 className="mt-8 font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--muted)]">
-                Constraints
-              </h3>
-              <p className="mt-3 text-base leading-7">{project.constraints}</p>
+              <h3 className="meta">Problem</h3>
+              <p className="sheet-copy">{project.problem}</p>
+              <h3 className="meta mt-8">Constraints</h3>
+              <p className="sheet-copy">{project.constraints}</p>
             </div>
             <div>
-              <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--muted)]">
-                What I did
-              </h3>
-              <p className="mt-3 text-base leading-7">{project.solution}</p>
+              <h3 className="meta">What I did</h3>
+              <p className="sheet-copy">{project.solution}</p>
               {project.longDescription ? (
-                <p className="mt-4 text-base leading-7 text-[var(--muted)]">
-                  {project.longDescription}
-                </p>
+                <p className="sheet-copy is-muted">{project.longDescription}</p>
               ) : null}
             </div>
           </div>
 
-          <div className="mt-10 border-t border-[var(--line)] pt-6">
-            <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--muted)]">
-              What came out of it
-            </h3>
+          <div className="sheet-outcome">
+            <h3 className="meta">What came out of it</h3>
             <div className="mt-4 space-y-4">
               {metricBlocks.map((block) => (
-                <p key={block} className="text-base leading-7">
+                <p key={block} className="sheet-copy">
                   {block}
                 </p>
               ))}
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   );
 }
@@ -177,6 +188,8 @@ function CaseStudyModal({
 export function ProjectsSection() {
   const [selectedProject, setSelectedProject] = React.useState<Project | null>(null);
   const closeModal = React.useCallback(() => setSelectedProject(null), []);
+  const [lead, ...rest] = portfolioData.projects;
+  const { bind, clear, preview } = useProjectPreview();
 
   React.useEffect(() => {
     if (!selectedProject) return undefined;
@@ -194,92 +207,104 @@ export function ProjectsSection() {
       title="Selected work"
       description="A short note on each project. I open the longer write-up only when I can share it."
     >
-      <div className="border-t border-[var(--line)]">
-        {portfolioData.projects.map((project) => (
-          <article
-            key={project.title}
-            className="grid gap-6 border-b border-[var(--line)] py-8 md:grid-cols-12 md:py-10"
-          >
-            {project.image ? (
-              <div className="md:col-span-4">
-                <Image
-                  src={project.image.src}
-                  alt={project.image.alt}
-                  width={1400}
-                  height={800}
-                  className={cn(
-                    "h-44 w-full border border-[var(--line)]",
-                    project.imageFit === "contain"
-                      ? "bg-[var(--soft)] object-contain p-8"
-                      : "object-cover",
-                  )}
-                />
-              </div>
-            ) : null}
+      {lead ? (
+        <ProjectLead project={lead} onOpen={setSelectedProject} {...bind(lead)} onPointerLeave={clear} />
+      ) : null}
 
-            <div className={project.image ? "md:col-span-8" : "md:col-span-12"}>
-              <div className="flex items-baseline justify-between gap-4">
-                <h3 className="font-serif text-2xl tracking-[-0.02em]">{project.title}</h3>
-                {project.year ? (
-                  <span className="shrink-0 font-mono text-xs text-[var(--muted)]">
-                    {project.year}
-                  </span>
-                ) : null}
-              </div>
-              <p className="mt-3 max-w-2xl text-base leading-7 text-[var(--muted)]">
-                {project.description}
-              </p>
-              {project.nda ? (
-                <p className="mt-3 font-mono text-xs uppercase tracking-[0.14em] text-[var(--muted)]">
-                  Details under NDA
-                </p>
-              ) : null}
-
+      <ol className="work-index" onPointerLeave={clear}>
+        {rest.map((project) => (
+          <li key={project.title} id={workAnchor(project.title)} className="work-row" {...bind(project)}>
+            <span className="work-year">{project.year ?? ""}</span>
+            <div className="min-w-0">
+              <h3 className="work-title">{project.title}</h3>
+              <p className="work-desc">{project.description}</p>
+              {project.nda ? <p className="work-nda">Details under NDA</p> : null}
               {project.tags.length > 0 ? (
-                <ul className="mt-4 flex flex-wrap gap-2">
-                  {project.tags.map((tag) => (
-                    <li key={tag}>
-                      <Pill>{tag}</Pill>
-                    </li>
-                  ))}
-                </ul>
+                <p className="work-tags">{project.tags.join(" · ")}</p>
               ) : null}
-
-              <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
-                {project.links.map((link) => {
-                  const isInternal = link.href.startsWith("#");
-                  return (
-                    <a
-                      key={`${link.href}-${link.label}`}
-                      href={link.href}
-                      target={isInternal ? undefined : "_blank"}
-                      rel={isInternal ? undefined : "noreferrer"}
-                      className="border-b border-[var(--line)] text-[var(--ink)] hover:border-[var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring"
-                    >
-                      {link.label}
-                    </a>
-                  );
-                })}
-                {project.nda ? null : (
-                  <button
-                    type="button"
-                    onClick={() => setSelectedProject(project)}
-                    className="border-b border-[var(--ink)] text-[var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring"
-                  >
-                    Read notes
-                  </button>
-                )}
-              </div>
             </div>
-          </article>
+            <div className="work-actions">
+              {project.links.map((link) => {
+                const isInternal = link.href.startsWith("#");
+                return (
+                  <a
+                    key={`${link.href}-${link.label}`}
+                    href={link.href}
+                    target={isInternal ? undefined : "_blank"}
+                    rel={isInternal ? undefined : "noreferrer"}
+                    className="text-link"
+                  >
+                    {link.label}
+                  </a>
+                );
+              })}
+              {project.nda ? null : (
+                <button type="button" className="notes-cue" onClick={() => setSelectedProject(project)}>
+                  Read notes
+                </button>
+              )}
+            </div>
+          </li>
         ))}
-      </div>
+      </ol>
 
       <AnimatePresence>
-        {selectedProject ? (
-          <CaseStudyModal project={selectedProject} onClose={closeModal} />
-        ) : null}
+        {selectedProject ? <CaseStudySheet project={selectedProject} onClose={closeModal} /> : null}
       </AnimatePresence>
+      {preview}
     </Section>
+  );
+}
+
+function ProjectLead({
+  project,
+  onOpen,
+  ...pointer
+}: {
+  project: Project;
+  onOpen: (project: Project) => void;
+} & React.HTMLAttributes<HTMLElement>) {
+  return (
+    <article id={workAnchor(project.title)} className="work-lead" {...pointer}>
+      <div className="min-w-0">
+        <p className="work-year">{project.year ?? ""}</p>
+        <h3 className="work-lead-title">{project.title}</h3>
+        <p className="work-desc is-lead">{project.description}</p>
+        {project.nda ? <p className="work-nda">Details under NDA</p> : null}
+        {project.tags.length > 0 ? <p className="work-tags">{project.tags.join(" · ")}</p> : null}
+        <div className="work-actions is-lead">
+          {project.links.map((link) => {
+            const isInternal = link.href.startsWith("#");
+            return (
+              <a
+                key={`${link.href}-${link.label}`}
+                href={link.href}
+                target={isInternal ? undefined : "_blank"}
+                rel={isInternal ? undefined : "noreferrer"}
+                className="text-link"
+              >
+                {link.label}
+              </a>
+            );
+          })}
+          {project.nda ? null : (
+            <button type="button" className="notes-cue" onClick={() => onOpen(project)}>
+              Read notes
+            </button>
+          )}
+        </div>
+      </div>
+      {project.image ? (
+        <div className={cn("work-figure", project.imageFit === "contain" && "is-contain")}>
+          <Image
+            src={project.image.src}
+            alt={project.image.alt}
+            width={1400}
+            height={800}
+            className={project.imageFit === "contain" ? "object-contain" : "object-cover"}
+          />
+        </div>
+      ) : null}
+    </article>
   );
 }

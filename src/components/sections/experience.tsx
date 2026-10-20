@@ -17,7 +17,9 @@ export function ExperienceSection() {
             className="grid gap-3 border-b border-[var(--line)] py-8 sm:grid-cols-12 sm:gap-6"
           >
             <div className="sm:col-span-4">
-              <p className="font-mono text-xs text-[var(--muted)]">{role.year}</p>
+              <p className="font-mono text-xs tracking-[0.04em] text-[var(--muted)]">
+                {role.year}
+              </p>
               <p className="mt-2 text-base text-[var(--ink)]">{role.company}</p>
               {role.location ? (
                 <p className="mt-1 inline-flex items-center gap-1.5 text-sm text-[var(--muted)]">

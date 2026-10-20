@@ -7,11 +7,11 @@ import { portfolioData } from "@/lib/portfolio-data";
 import { useDeveloperTerminal } from "@/components/developer-terminal/developer-terminal-context";
 
 const SKILL_COLORS: Record<string, string> = {
-  Frontend: "text-sky-400",
-  Backend: "text-emerald-400",
-  Databases: "text-amber-400",
-  "Cloud/Deploy": "text-cyan-400",
-  Tools: "text-violet-400",
+  Frontend: "text-cat-1",
+  Backend: "text-cat-2",
+  Databases: "text-cat-3",
+  "Cloud/Deploy": "text-cat-4",
+  Tools: "text-cat-5",
 };
 
 type LogEntry = {
@@ -40,34 +40,34 @@ function runCommand(cmd: ReturnType<typeof parseCommand>): React.ReactNode {
       return null;
     case "help":
       return (
-        <div className="space-y-1 text-emerald-400/95">
-          <p className="font-semibold text-white">Available commands</p>
+        <div className="text-status-ok space-y-1">
+          <p className="text-code-fg font-semibold">Available commands</p>
           <ul className="list-inside list-disc space-y-0.5 text-sm">
             <li>
-              <span className="text-white">help</span> — this list
+              <span className="text-code-fg">help</span> — this list
             </li>
             <li>
-              <span className="text-white">about</span> — short bio
+              <span className="text-code-fg">about</span> — short bio
             </li>
             <li>
-              <span className="text-white">skills</span> — tech stack by category
+              <span className="text-code-fg">skills</span> — tech stack by category
             </li>
             <li>
-              <span className="text-white">projects</span> — recent work (table)
+              <span className="text-code-fg">projects</span> — recent work (table)
             </li>
             <li>
-              <span className="text-white">clear</span> — clear the log
+              <span className="text-code-fg">clear</span> — clear the log
             </li>
             <li>
-              <span className="text-white">sudo rm -rf /</span> — try it
+              <span className="text-code-fg">sudo rm -rf /</span> — try it
             </li>
           </ul>
         </div>
       );
     case "about":
       return (
-        <p className="text-sm leading-relaxed text-emerald-400/95">
-          <span className="font-semibold text-white">{portfolioData.name}</span> —{" "}
+        <p className="text-status-ok text-sm leading-relaxed">
+          <span className="text-code-fg font-semibold">{portfolioData.name}</span> —{" "}
           {portfolioData.summary} Based in {portfolioData.location}.
         </p>
       );
@@ -76,11 +76,11 @@ function runCommand(cmd: ReturnType<typeof parseCommand>): React.ReactNode {
         <div className="space-y-2 text-sm">
           {portfolioData.skills.map((g) => (
             <div key={g.title}>
-              <span className={`font-semibold ${SKILL_COLORS[g.title] ?? "text-zinc-400"}`}>
+              <span className={`font-semibold ${SKILL_COLORS[g.title] ?? "text-code-muted"}`}>
                 [{g.title}]
               </span>
-              <span className="text-zinc-500"> → </span>
-              <span className="text-emerald-300/90">{g.items.join(", ")}</span>
+              <span className="text-code-dim"> → </span>
+              <span className="text-syn-string">{g.items.join(", ")}</span>
             </div>
           ))}
         </div>
@@ -89,9 +89,9 @@ function runCommand(cmd: ReturnType<typeof parseCommand>): React.ReactNode {
       const rows = portfolioData.projects.slice(0, 8);
       return (
         <div className="overflow-x-auto text-xs">
-          <table className="w-full border-collapse font-mono text-left text-emerald-400/90">
+          <table className="text-status-ok w-full border-collapse font-mono text-left">
             <thead>
-              <tr className="border-b border-white/10 text-white/80">
+              <tr className="text-code-muted border-b border-code">
                 <th className="py-1 pr-2 font-medium">Project</th>
                 <th className="py-1 pr-2 font-medium">Year</th>
                 <th className="py-1 font-medium">Stack</th>
@@ -99,14 +99,14 @@ function runCommand(cmd: ReturnType<typeof parseCommand>): React.ReactNode {
             </thead>
             <tbody>
               {rows.map((p) => (
-                <tr key={p.title} className="border-b border-white/5">
-                  <td className="max-w-[140px] truncate py-1 pr-2 align-top text-white/90">
+                <tr key={p.title} className="border-b border-code">
+                  <td className="text-code-fg max-w-[140px] truncate py-1 pr-2 align-top">
                     {p.title.replace(/ — .*/, "")}
                   </td>
-                  <td className="whitespace-nowrap py-1 pr-2 align-top text-cyan-400/90">
+                  <td className="text-syn-function whitespace-nowrap py-1 pr-2 align-top">
                     {p.year ?? "—"}
                   </td>
-                  <td className="py-1 align-top text-amber-200/80">
+                  <td className="text-syn-type py-1 align-top">
                     {p.nda ? "Details under NDA" : p.tags.slice(0, 4).join(", ") || "—"}
                   </td>
                 </tr>
@@ -119,17 +119,17 @@ function runCommand(cmd: ReturnType<typeof parseCommand>): React.ReactNode {
     case "sudo":
       return (
         <p className="text-sm">
-          <span className="text-red-400">sudo: </span>
-          <span className="text-amber-200">
+          <span className="text-status-error">sudo: </span>
+          <span className="text-status-warn">
             Nice try. Permission denied — this portfolio runs in user space only.
           </span>
         </p>
       );
     case "unknown":
       return (
-        <p className="text-sm text-red-400/90">
-          command not found: <span className="text-white">{cmd.line}</span>. Type{" "}
-          <span className="text-emerald-400">help</span> for a list of commands.
+        <p className="text-status-error text-sm">
+          command not found: <span className="text-code-fg">{cmd.line}</span>. Type{" "}
+          <span className="text-status-ok">help</span> for a list of commands.
         </p>
       );
     default:
@@ -148,12 +148,12 @@ export function DeveloperTerminal() {
       id: "welcome",
       kind: "out",
       content: (
-        <div className="text-sm text-emerald-500/80">
-          <p className="text-white/90">Dave Lima — dev terminal v1.0</p>
+        <div className="text-status-ok text-sm">
+          <p className="text-code-fg">Dave Lima — dev terminal v1.0</p>
           <p className="mt-1">
-            Type <kbd className="rounded bg-white/10 px-1">help</kbd> for commands. Press{" "}
-            <kbd className="rounded bg-white/10 px-1">⌘K</kbd> /{" "}
-            <kbd className="rounded bg-white/10 px-1">Ctrl+K</kbd> to toggle.
+            Type <kbd className="bg-code-chip rounded px-1">help</kbd> for commands. Press{" "}
+            <kbd className="bg-code-chip rounded px-1">⌘K</kbd> /{" "}
+            <kbd className="bg-code-chip rounded px-1">Ctrl+K</kbd> to toggle.
           </p>
         </div>
       ),
@@ -190,7 +190,7 @@ export function DeveloperTerminal() {
           {
             id: `${idBase}-cleared`,
             kind: "out",
-            content: <p className="text-sm text-zinc-500">Console cleared.</p>,
+            content: <p className="text-code-dim text-sm">Console cleared.</p>,
           },
         ];
       }
@@ -224,26 +224,26 @@ export function DeveloperTerminal() {
             dragMomentum={false}
             dragElastic={0.06}
             dragConstraints={constraintsRef}
-            className="pointer-events-auto absolute bottom-4 left-4 right-4 max-h-[min(520px,70vh)] w-[min(100%,28rem)] cursor-default overflow-hidden rounded-xl border border-white/10 bg-gray-950/90 shadow-[0_24px_80px_-12px_rgba(0,0,0,0.75)] backdrop-blur-md sm:left-auto sm:right-6 sm:bottom-6"
+            className="bg-code pointer-events-auto absolute bottom-4 left-4 right-4 max-h-[min(520px,70vh)] w-[min(100%,28rem)] cursor-default overflow-hidden border border-code sm:bottom-6 sm:left-auto sm:right-6"
           >
             {/* macOS-style title bar (drag handle) */}
             <div
-              className="flex cursor-grab items-center gap-3 border-b border-white/10 bg-zinc-900/95 px-3 py-2.5 active:cursor-grabbing"
+              className="bg-code-surface flex cursor-grab items-center gap-3 border-b border-code px-3 py-2.5 active:cursor-grabbing"
               onPointerDown={(e) => dragControls.start(e)}
             >
               <div className="flex gap-1.5" aria-hidden="true">
-                <span className="h-3 w-3 rounded-full bg-[#ff5f57]" />
-                <span className="h-3 w-3 rounded-full bg-[#febc2e]" />
-                <span className="h-3 w-3 rounded-full bg-[#28c840]" />
+                <span className="bg-dot-1 h-3 w-3 rounded-full" />
+                <span className="bg-dot-2 h-3 w-3 rounded-full" />
+                <span className="bg-dot-3 h-3 w-3 rounded-full" />
               </div>
-              <span className="flex-1 text-center font-mono text-[11px] font-medium text-zinc-500">
+              <span className="text-code-dim flex-1 text-center font-mono text-[11px] font-medium">
                 zsh — portfolio
               </span>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
                 onPointerDown={(e) => e.stopPropagation()}
-                className="rounded-md p-1 text-zinc-400 transition hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60"
+                className="text-code-muted hover:bg-code-chip hover:text-code-fg rounded-md p-1 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-syn"
                 aria-label="Close terminal"
               >
                 <X className="h-4 w-4" />
@@ -259,12 +259,12 @@ export function DeveloperTerminal() {
               {log.map((entry) => (
                 <div key={entry.id} className="mb-3 last:mb-0">
                   {entry.kind === "in" ? (
-                    <p className="text-emerald-500">
-                      <span className="text-white/50">$ </span>
+                    <p className="text-status-ok">
+                      <span className="text-code-dim">$ </span>
                       {entry.content as string}
                     </p>
                   ) : (
-                    <div className="border-l-2 border-emerald-500/30 pl-2 text-emerald-100/90">
+                    <div className="border-status-ok text-code-fg border-l-2 pl-2">
                       {entry.content}
                     </div>
                   )}
@@ -275,9 +275,9 @@ export function DeveloperTerminal() {
             {/* Input line */}
             <form
               onSubmit={submit}
-              className="flex items-center gap-2 border-t border-white/10 bg-black/40 px-3 py-2.5"
+              className="bg-code-elevated flex items-center gap-2 border-t border-code px-3 py-2.5"
             >
-              <span className="shrink-0 font-mono text-emerald-500">$</span>
+              <span className="text-status-ok shrink-0 font-mono">$</span>
               <input
                 ref={inputRef}
                 type="text"
@@ -285,7 +285,7 @@ export function DeveloperTerminal() {
                 onChange={(e) => setInput(e.target.value)}
                 autoComplete="off"
                 spellCheck={false}
-                className="min-w-0 flex-1 bg-transparent font-mono text-[13px] text-emerald-100 caret-emerald-400 outline-none placeholder:text-zinc-600"
+                className="code-input min-w-0 flex-1 bg-transparent font-mono text-[13px] outline-none"
                 placeholder="type a command…"
                 aria-label="Terminal command input"
               />
