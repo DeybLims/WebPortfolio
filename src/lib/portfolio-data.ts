@@ -3,10 +3,9 @@ import type { PortfolioData } from "@/lib/types";
 export const portfolioData: PortfolioData = {
   name: "Dave Emanuel G. Lima",
   location: "Iloilo City, Philippines",
-  headline:
-    "Versatile Software Developer specializing in full-stack web and mobile application development.",
+  headline: "I build full-stack web and mobile applications.",
   summary:
-    "Skilled in building data-driven and AI-powered solutions using modern technologies. Passionate about developing innovative tools that solve practical problems and collaborating in team environments to deliver impactful digital experiences.",
+    "I work on data-heavy and AI-assisted tools, usually with a team. I like problems that have a practical use.",
   nav: [
     { label: "Projects", href: "#projects" },
     { label: "Skills", href: "#skills" },
@@ -102,29 +101,18 @@ Geofencing and device variability reinforced designing explicit error states, au
 Learned to balance stakeholder urgency with long-term maintainability: naming, documentation, and avoiding one-off scripts that become silent debt.`,
     },
     {
-      title: "BuildMaster App & Website",
+      title: "BuildMaster",
+      year: "2025–2026",
       description:
-        "Started as an intern and was hired as a Junior Software Engineer. Shipped new features for the website and built API endpoints to support the mobile team, while keeping deployments healthy through routine checkups.",
-      longDescription:
-        "BuildMaster is a commercial construction marketplace where I contributed first as an intern and later as a Junior Software Engineer. I owned full-stack tickets on the web app: building new UX flows, refactoring legacy views, and wiring them to new and existing APIs. I also designed and implemented REST endpoints used by a separate mobile team, making sure contracts, validation, and error handling were solid. Part of the role involved monitoring deployments and health checks via Dokploy, helping keep the platform stable for end users.",
-      tags: ["Full-stack", "APIs", "Dokploy"],
-      image: {
-        src: "/images/projects/buildmaster.png",
-        alt: "BuildMaster product page screenshot",
-      },
-      links: [
-        { label: "Website", href: "https://buildmaster.ph" },
-        { label: "Contact", href: "#contact" },
-      ],
-      problem:
-        "A marketplace product needs continuous feature delivery across web and mobile, with stable APIs and healthy deployments—not one-off heroics.",
-      constraints:
-        "Legacy views mixed with new flows, cross-team API contracts for mobile, Dokploy-based ops awareness, and pragmatic refactors that don’t stall shipping.",
-      solution:
-        "Shipped end-to-end web features (UX + wiring to APIs), implemented REST endpoints with solid validation and error handling for mobile handoff, and participated in deployment checkups to keep services reliable.",
-      metrics: `Grew from intern to junior engineer by owning real tickets and communicating API shape clearly to another team.
-
-Reinforced that good DX for API consumers is part of the feature—not an afterthought.`,
+        "I worked on a commercial construction product, first as an intern and later as a junior software engineer.",
+      longDescription: "Details under NDA.",
+      tags: [],
+      links: [],
+      nda: true,
+      problem: "Details under NDA.",
+      constraints: "Details under NDA.",
+      solution: "Details under NDA.",
+      metrics: "Details under NDA.",
     },
     {
       title: "MSL Philippines Website",
@@ -262,9 +250,9 @@ Mobile performance and empty states are features—if onboarding feels brittle, 
       year: "2026",
       highlights: [
         "Developed and maintained dynamic user interfaces using React (JSX/TSX) within a Laravel-based backend framework.",
-        "Collaborated with backend developers to integrate RESTful APIs for seamless data flow and performance.",
-        "Applied responsive design principles and component-based architecture for scalable, maintainable UI.",
-        "Improved front-end build processes and code quality through modern development practices and tooling.",
+        "Worked with backend developers to connect the interface to REST APIs.",
+        "Built responsive, component-based screens that stayed maintainable as the site grew.",
+        "Improved the front-end build and kept the UI code easier to change.",
       ],
     },
     {
@@ -272,10 +260,8 @@ Mobile performance and empty states are features—if onboarding feels brittle, 
       company: "BuildMaster",
       year: "2025–2026",
       highlights: [
-        "Started as an intern and transitioned into a Junior Software Engineer role.",
-        "Developed and shipped new features for the website (full-stack ownership where needed).",
-        "Built backend API endpoints to support mobile development (handoff to a dedicated mobile developer).",
-        "Performed deployment checkups and basic operational monitoring using Dokploy.",
+        "Started as an intern and later continued as a junior software engineer.",
+        "Worked on a commercial construction product. Details under NDA.",
       ],
     },
   ],

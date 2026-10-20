@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { IBM_Plex_Mono, Newsreader, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { VisionProfileProvider } from "@/components/vision-profile-provider";
@@ -7,14 +7,23 @@ import { DeveloperTerminalProvider } from "@/components/developer-terminal/devel
 import { DeveloperTerminal } from "@/components/developer-terminal/developer-terminal";
 import { Chatbot } from "@/components/chatbot";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const sourceSans = Source_Sans_3({
+  variable: "--font-source-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -23,11 +32,11 @@ export const metadata: Metadata = {
     template: "%s | Dave Emanuel G. Lima",
   },
   description:
-    "Versatile Software Developer specializing in full-stack web and mobile application development from Iloilo City, Philippines.",
+    "Software developer in Iloilo City, Philippines, working on full-stack web and mobile applications.",
   openGraph: {
     title: "Dave Emanuel G. Lima | Software Developer",
     description:
-      "Versatile Software Developer specializing in full-stack web and mobile application development from Iloilo City, Philippines.",
+      "Software developer in Iloilo City, Philippines, working on full-stack web and mobile applications.",
     type: "website",
   },
 };
@@ -40,7 +49,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${sourceSans.variable} ${newsreader.variable} ${plexMono.variable} antialiased`}
       >
         <ThemeProvider
           attribute="class"
@@ -52,7 +61,7 @@ export default function RootLayout({
             <DeveloperTerminalProvider>
               <a
                 href="#content"
-                className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-zinc-950 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white focus:ring-2 focus:ring-white/20"
+                className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:bg-[var(--ink)] focus:px-3 focus:py-2 focus:text-sm focus:text-[var(--paper)]"
               >
                 Skip to content
               </a>

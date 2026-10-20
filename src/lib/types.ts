@@ -27,6 +27,8 @@ export type Project = {
   metrics: string;
   tags: string[];
   links: ProjectLink[];
+  /** When true, the public site shows only a short description and an NDA note. */
+  nda?: boolean;
   image?: {
     src: string;
     alt: string;

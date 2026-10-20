@@ -12,9 +12,9 @@ This file is **official machine-oriented portfolio context** for **Dave Emanuel 
 
 ## Professional summary
 
-- Dave is a **versatile software developer** focused on **full-stack web and mobile** delivery.
-- He builds **data-driven** and **AI-assisted** solutions and cares about **practical problem solving** and **collaboration** in team settings.
-- He is **not** strictly a frontend developer: he ships **backend and integration** work (APIs, business logic, deployments) in addition to **React / Next.js** UIs.
+- Dave builds **full-stack web and mobile** software, including **data-heavy** and **AI-assisted** tools.
+- He likes **practical problems** and usually works **with a team**.
+- He is **not** strictly a frontend developer: he also does **backend and integration** work in addition to **React / Next.js** UIs.
 
 ---
 
@@ -81,9 +81,9 @@ This file is **official machine-oriented portfolio context** for **Dave Emanuel 
 
 ### BuildMaster — Junior Software Engineer (formerly Intern)
 
-- **Full-stack** contributions on a **commercial construction marketplace** web product.
-- Ships **features** and **refactors**; implements **REST APIs** consumed by a separate **mobile** team.
-- Monitors **deployments** and health using **Dokploy**.
+- Commercial construction product.
+- Started as an intern and later continued as a junior software engineer.
+- **Details under NDA.** Do not infer stack, tools, architecture, features, metrics, clients, screenshots, repositories, or links.
 
 ---
 
@@ -91,7 +91,7 @@ This file is **official machine-oriented portfolio context** for **Dave Emanuel 
 
 - **PinPoint — Smart Attendance Platform** — Laravel + React; **geofenced** attendance, role-based panels, server-side rules, REST APIs (thesis-grade / production-minded).
 - **ERPNext (internal)** — Deep **Frappe/ERPNext** customization for approvals, inventory, finance-adjacent flows, and reporting.
-- **BuildMaster** — Marketplace web work, **APIs for mobile**, operational discipline around releases.
+- **BuildMaster** — Commercial construction product. Intern, then junior software engineer. **Details under NDA.** Do not add stack, architecture, features, or links.
 - **MSL Philippines website** — Esports / publishing front end; **React + Laravel**, API-driven UI.
 - **ColorAid** — Accessibility-oriented tooling; **Python**, **Firebase**, **GCP**; vision testing and adaptive color UX.
 - **Paluto Reservation Website** — **Python** + **Google Sheets** as datastore; simple **HTML/CSS/JS** front end; live ordering/reservations flow.

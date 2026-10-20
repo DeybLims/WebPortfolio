@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUp, Loader2, MessageCircle, Sparkles, X } from "lucide-react";
+import { ArrowUp, Loader2, MessageCircle, X } from "lucide-react";
 import puter from "@heyputer/puter.js";
 import ReactMarkdown from "react-markdown";
 import { cn } from "@/lib/cn";
@@ -14,13 +14,26 @@ type ChatMessage = {
   content: string;
 };
 
-const SYSTEM_PROMPT =
-  "You are the personal AI assistant for Dave Emanuel G. Lima, a versatile Software Engineer based in Iloilo City, Philippines. You are integrated into his portfolio website. Your job is to answer questions from recruiters and clients about Dave concisely, professionally, and enthusiastically. Key facts about Dave: He is a full-stack developer skilled in Next.js, React, Tailwind, Flutter, Python, Laravel, and ERPNext (Frappe framework). He graduated in 2025 with a BS in Computer Science (Major in AI) and a GWA of 1.52. His notable projects include 'PinPoint' (geofenced attendance platform in Laravel/React), 'ColorAid' (accessibility tool in Python/GCP), and extensive internal ERP customization using Frappe. He is currently looking for remote freelance or full-time roles. If you don't know the answer to something, direct the user to email him at daveemanuel.lima@wvsu.edu.ph. Formatting rules: use clean Markdown with short paragraphs and bullet lists on their own lines (use '- ' bullets). Keep answers scannable and recruiter-friendly. Avoid walls of text.";
+const SYSTEM_PROMPT = `You answer questions on the portfolio of Dave Emanuel G. Lima, a software developer in Iloilo City, Philippines. Use plain sentences. Do not use hype words such as passionate, cutting-edge, leveraging, seamless, innovative, or impactful. Do not invent jobs, metrics, clients, or project details.
+
+Public facts:
+- Email: daveemanuel.lima@wvsu.edu.ph
+- GitHub: https://github.com/DeybLims
+- He builds full-stack web and mobile applications, including data-heavy and AI-assisted tools, usually with a team.
+- He graduated in 2025 with a BS in Computer Science (Major in AI) and a GWA of 1.52.
+- Skills he lists: React, Next.js, Tailwind, Flutter, Python, Laravel, ERPNext (Frappe), and the databases, cloud tools, and other tools shown on the site.
+- Projects he can discuss: PinPoint (geofenced attendance, Laravel and React), an internal ERPNext customization at Quirao Group of Companies, the MSL Philippines website (React and Laravel), ColorAid (color-vision accessibility, Python, Firebase, GCP), Paluto reservations (Python and Google Sheets), Story Creation with Gemini (Streamlit), and Káon (Flutter food logging).
+- Work he can discuss: Junior ERPNext Developer at Quirao Group of Companies; Front-End Web Developer at MSL Philippines.
+- He is open to remote full-time roles and contract work, and can overlap with US, EU, or AU hours.
+
+BuildMaster is under NDA. If asked, say only this: Dave worked at BuildMaster, first as an intern and later as a junior software engineer, on a commercial construction product, and the details are under NDA. Do not mention or guess any tech stack, tools, architecture, features, APIs, databases, deployments, metrics, client names, screenshots, repositories, or links for BuildMaster. Do not elaborate beyond that sentence.
+
+If you do not know something, say so and point to daveemanuel.lima@wvsu.edu.ph. Use short Markdown paragraphs and '- ' bullets.`;
 
 const WELCOME_MESSAGE: ChatMessage = {
   role: "assistant",
   content:
-    "Hi! I'm Dave's AI assistant. Ask me about his skills, projects, experience, or availability — happy to help recruiters and collaborators.", 
+    "Ask about Dave's work, the tools he uses, or whether he is available.",
 };
 
 function MessageBody({ role, content }: { role: ChatRole; content: string }) {
@@ -39,22 +52,20 @@ function MessageBody({ role, content }: { role: ChatRole; content: string }) {
           <ol className="my-2 list-decimal space-y-1 pl-4 last:mb-0">{children}</ol>
         ),
         li: ({ children }) => <li className="leading-snug">{children}</li>,
-        strong: ({ children }) => (
-          <strong className="font-semibold text-white">{children}</strong>
-        ),
-        em: ({ children }) => <em className="italic text-gray-200">{children}</em>,
+        strong: ({ children }) => <strong className="font-semibold">{children}</strong>,
+        em: ({ children }) => <em className="italic">{children}</em>,
         a: ({ href, children }) => (
           <a
             href={href}
             target="_blank"
             rel="noreferrer"
-            className="underline decoration-emerald-400/60 underline-offset-2 hover:text-emerald-300"
+            className="underline underline-offset-2"
           >
             {children}
           </a>
         ),
         code: ({ children }) => (
-          <code className="rounded bg-black/40 px-1 py-0.5 font-mono text-[12px] text-emerald-300">
+          <code className="bg-black/30 px-1 py-0.5 font-mono text-[12px]">
             {children}
           </code>
         ),
@@ -168,24 +179,19 @@ export function Chatbot() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 16 }}
             transition={{ type: "spring", stiffness: 380, damping: 28 }}
-            className="pointer-events-auto flex h-[min(500px,70vh)] w-[min(100vw-2rem,350px)] flex-col overflow-hidden rounded-2xl border border-white/10 bg-gray-900/90 shadow-[0_24px_80px_-12px_rgba(0,0,0,0.75)] backdrop-blur-xl"
+            className="pointer-events-auto flex h-[min(500px,70vh)] w-[min(100vw-2rem,22rem)] flex-col overflow-hidden border border-[var(--line)] bg-[var(--paper)] text-[var(--ink)] shadow-xl"
             role="dialog"
-            aria-label="Dave's AI Assistant"
+            aria-label="Questions about Dave"
           >
-            <header className="flex items-center justify-between border-b border-gray-800 bg-gray-950/80 px-4 py-3">
-              <div className="flex items-center gap-2">
-                <span className="flex h-8 w-8 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-400">
-                  <Sparkles className="h-4 w-4" aria-hidden />
-                </span>
-                <div>
-                  <p className="text-sm font-semibold text-white">Dave&apos;s AI Assistant</p>
-                  <p className="text-[11px] text-gray-400">Ask about skills, projects & availability</p>
-                </div>
+            <header className="flex items-center justify-between border-b border-[var(--line)] px-4 py-3">
+              <div>
+                <p className="font-serif text-lg">Ask about Dave</p>
+                <p className="text-xs text-[var(--muted)]">Work, tools, availability</p>
               </div>
               <button
                 type="button"
                 onClick={() => setOpen(false)}
-                className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-gray-400 transition hover:bg-gray-800 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500/60"
+                className="inline-flex h-8 w-8 items-center justify-center text-[var(--muted)] hover:text-[var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring"
                 aria-label="Close chat"
               >
                 <X className="h-4 w-4" />
@@ -206,10 +212,10 @@ export function Chatbot() {
                 >
                   <div
                     className={cn(
-                      "max-w-[85%] rounded-2xl px-3 py-2 text-sm leading-relaxed",
+                      "max-w-[85%] px-3 py-2 text-sm leading-relaxed",
                       msg.role === "user"
-                        ? "rounded-br-md bg-emerald-500 text-white"
-                        : "rounded-bl-md border border-gray-800 bg-gray-800 text-gray-100",
+                        ? "bg-[var(--ink)] text-[var(--paper)]"
+                        : "border border-[var(--line)] text-[var(--ink)]",
                     )}
                   >
                     <MessageBody role={msg.role} content={msg.content} />
@@ -219,8 +225,8 @@ export function Chatbot() {
 
               {loading ? (
                 <div className="flex justify-start">
-                  <div className="inline-flex items-center gap-2 rounded-2xl rounded-bl-md border border-gray-800 bg-gray-800 px-3 py-2 text-xs text-gray-300">
-                    <Loader2 className="h-3.5 w-3.5 animate-spin text-emerald-400" aria-hidden />
+                  <div className="inline-flex items-center gap-2 border border-[var(--line)] px-3 py-2 text-xs text-[var(--muted)]">
+                    <Loader2 className="h-3.5 w-3.5 animate-spin" aria-hidden />
                     typing...
                   </div>
                 </div>
@@ -229,23 +235,23 @@ export function Chatbot() {
 
             <form
               onSubmit={(e) => void handleSendMessage(e)}
-              className="border-t border-gray-800 bg-gray-950/70 p-3"
+              className="border-t border-[var(--line)] p-3"
             >
-              <div className="flex items-center gap-2 rounded-xl border border-gray-800 bg-gray-900 px-2 py-1.5 focus-within:border-emerald-500/40">
+              <div className="flex items-center gap-2 border border-[var(--line)] px-2 py-1.5">
                 <input
                   ref={inputRef}
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   disabled={loading}
-                  placeholder="Ask about Dave..."
-                  className="min-w-0 flex-1 bg-transparent px-2 py-1.5 text-sm text-white outline-none placeholder:text-gray-500 disabled:opacity-50"
-                  aria-label="Message Dave's AI assistant"
+                  placeholder="Ask about Dave"
+                  className="min-w-0 flex-1 bg-transparent px-2 py-1.5 text-sm text-[var(--ink)] outline-none placeholder:text-[var(--muted)] disabled:opacity-50"
+                  aria-label="Message about Dave"
                 />
                 <button
                   type="submit"
                   disabled={loading || !input.trim()}
-                  className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-emerald-500 text-white transition hover:bg-emerald-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/70 disabled:cursor-not-allowed disabled:opacity-40"
+                  className="inline-flex h-9 w-9 shrink-0 items-center justify-center bg-[var(--ink)] text-[var(--paper)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring disabled:cursor-not-allowed disabled:opacity-40"
                   aria-label="Send message"
                 >
                   {loading ? (
@@ -263,24 +269,13 @@ export function Chatbot() {
       <motion.button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="pointer-events-auto relative inline-flex h-14 w-14 items-center justify-center rounded-full border border-emerald-400/30 bg-gray-950 text-emerald-300 shadow-[0_0_30px_rgba(16,185,129,0.35)] transition hover:bg-gray-900 hover:text-emerald-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/70"
-        aria-label={open ? "Close Ask My AI chat" : "Open Ask My AI chat"}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.96 }}
+        className="pointer-events-auto inline-flex h-12 w-12 items-center justify-center border border-[var(--line)] bg-[var(--paper)] text-[var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring"
+        aria-label={open ? "Close chat" : "Open chat"}
       >
-        <motion.span
-          className="absolute inset-0 rounded-full bg-emerald-400/20"
-          animate={{ scale: [1, 1.35, 1], opacity: [0.55, 0, 0.55] }}
-          transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
-          aria-hidden
-        />
         {open ? (
-          <X className="relative h-5 w-5" aria-hidden />
+          <X className="h-5 w-5" aria-hidden />
         ) : (
-          <span className="relative inline-flex items-center gap-0.5">
-            <Sparkles className="h-3.5 w-3.5" aria-hidden />
-            <MessageCircle className="h-5 w-5" aria-hidden />
-          </span>
+          <MessageCircle className="h-5 w-5" aria-hidden />
         )}
       </motion.button>
     </div>

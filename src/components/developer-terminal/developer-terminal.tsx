@@ -106,7 +106,9 @@ function runCommand(cmd: ReturnType<typeof parseCommand>): React.ReactNode {
                   <td className="whitespace-nowrap py-1 pr-2 align-top text-cyan-400/90">
                     {p.year ?? "—"}
                   </td>
-                  <td className="py-1 align-top text-amber-200/80">{p.tags.slice(0, 4).join(", ")}</td>
+                  <td className="py-1 align-top text-amber-200/80">
+                    {p.nda ? "Details under NDA" : p.tags.slice(0, 4).join(", ") || "—"}
+                  </td>
                 </tr>
               ))}
             </tbody>

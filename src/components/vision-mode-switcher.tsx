@@ -46,7 +46,7 @@ export function VisionModeSwitcher() {
         whileTap={{ scale: 0.96 }}
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          "inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-black/5 text-zinc-900 shadow-sm backdrop-blur transition hover:bg-black/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring dark:border-white/10 dark:bg-white/5 dark:text-zinc-100 dark:hover:bg-white/10",
+          "inline-flex h-9 w-9 items-center justify-center text-[var(--muted)] hover:text-[var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring",
           open && "ring-2 ring-vision-ring-soft",
         )}
         aria-expanded={open}
@@ -68,7 +68,7 @@ export function VisionModeSwitcher() {
             role="listbox"
             aria-label="Choose vision profile"
           >
-            <div className="rounded-2xl border border-black/10 bg-white/90 p-2 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.25)] backdrop-blur-xl dark:border-white/10 dark:bg-zinc-950/90 dark:shadow-[0_20px_50px_-12px_rgba(0,0,0,0.6)]">
+            <div className="border border-[var(--line)] bg-[var(--paper)] p-2 shadow-lg">
               <p className="border-b border-black/5 px-2 pb-2 pt-1 text-[10px] font-semibold uppercase tracking-wider text-zinc-500 dark:border-white/10 dark:text-zinc-400">
                 Vision mode
               </p>

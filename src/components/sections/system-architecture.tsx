@@ -85,11 +85,8 @@ function ArchitectureNode({
   return (
     <motion.div
       className={cn(
-        "relative z-10 flex min-h-[168px] flex-col rounded-2xl border border-white/25 bg-white/40 p-5 shadow-lg backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.06] dark:shadow-black/40",
-        "ring-1 ring-black/5 transition-[box-shadow,background-color] duration-300 dark:ring-white/10",
-        isActive &&
-          "ring-1 ring-blue-500/50 shadow-[0_0_15px_rgba(59,130,246,0.2)] dark:ring-blue-400/50 dark:shadow-[0_0_18px_rgba(96,165,250,0.25)]",
-        isActive && "bg-blue-500/[0.06] dark:bg-blue-500/10",
+        "relative z-10 flex min-h-[168px] flex-col border border-[var(--line)] bg-[var(--paper)] p-5",
+        isActive && "border-[var(--vision-accent)]",
       )}
       animate={{
         scale: isActive ? 1.02 : 1,
@@ -99,7 +96,7 @@ function ArchitectureNode({
       <div className="mb-3 flex items-center gap-3">
         <div
           className={cn(
-            "flex h-11 w-11 items-center justify-center rounded-xl border border-black/5 bg-white/60 dark:border-white/10 dark:bg-white/10",
+            "flex h-11 w-11 items-center justify-center border border-[var(--line)]",
           )}
         >
           {id === "frontend" ? (
@@ -111,8 +108,8 @@ function ArchitectureNode({
           )}
         </div>
         <div>
-          <h3 className="text-base font-semibold text-zinc-950 dark:text-white">{cfg.label}</h3>
-          <p className="text-xs text-zinc-600 dark:text-zinc-400">{cfg.sub}</p>
+          <h3 className="font-serif text-xl">{cfg.label}</h3>
+          <p className="text-sm text-[var(--muted)]">{cfg.sub}</p>
         </div>
       </div>
       {children}
@@ -242,12 +239,9 @@ export function SystemArchitectureSection() {
                 onClick={() => void handleSimulation()}
                 disabled={isSimulating || showSuccess}
                 className={cn(
-                  "inline-flex w-full items-center justify-center gap-2 rounded-xl border border-sky-500/30 bg-sky-500/15 px-3 py-2.5 text-sm font-semibold text-sky-900 transition",
-                  "hover:bg-sky-500/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/50",
+                  "inline-flex w-full items-center justify-center gap-2 border border-[var(--ink)] px-3 py-2.5 text-sm text-[var(--ink)]",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring",
                   "disabled:pointer-events-none disabled:opacity-50",
-                  "dark:border-sky-400/25 dark:bg-sky-500/10 dark:text-sky-100 dark:hover:bg-sky-500/20",
-                  showSuccess &&
-                    "border-emerald-500/40 bg-emerald-500/15 text-emerald-900 dark:text-emerald-100",
                 )}
               >
                 {isSimulating ? (
@@ -271,7 +265,7 @@ export function SystemArchitectureSection() {
 
         <motion.div
           data-arch-packet
-          className="pointer-events-none absolute z-20 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-400 shadow-[0_0_12px_#60a5fa] ring-2 ring-blue-300/60 dark:ring-blue-400/50"
+          className="pointer-events-none absolute z-20 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 bg-[var(--vision-accent)]"
           style={{
             left: positions.fe.left,
             top: positions.fe.top,
