@@ -39,6 +39,20 @@
       ]
     },
     {
+      "name": "Quirao Group of Companies",
+      "position": "Web Development Intern, Web Dev / Tech Ops Team",
+      "location": "La Paz, Iloilo City, Philippines",
+      "startDate": "2025-01",
+      "endDate": "2025-04",
+      "summary": "Built and deployed the Unli-Paluto reservation system, QA-tested a commercial e-commerce platform under NDA, managed product data, and wrote manuals and training materials.",
+      "highlights": [
+        "Built and deployed the Unli-Paluto reservation system for a local dining brand: mobile-first UI, unique reservation IDs, and HTTP(S) uptime monitoring.",
+        "QA-tested web and Android builds of a commercial e-commerce platform (under NDA), documenting bugs and acceptance criteria for the dev team.",
+        "Managed backend product data: bulk CSV uploads, SKU and inventory cleanup, and category standardization.",
+        "Wrote admin, logistics, and POS user manuals, a driver FAQ, and video tutorials; helped onboard and train delivery staff."
+      ]
+    },
+    {
       "name": "Independent / Contract",
       "position": "Freelance Web Developer",
       "location": "Iloilo, Philippines",

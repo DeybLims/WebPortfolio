@@ -35,6 +35,19 @@ export const resumeJobs: ResumeJob[] = [
     ],
   },
   {
+    role: "Web Development Intern, Web Dev / Tech Ops Team",
+    dates: "January 2025 – April 2025",
+    company: "Quirao Group of Companies",
+    location: "La Paz, Iloilo City",
+    bullets: [
+      "Built and deployed the Unli-Paluto reservation system for a local dining brand: mobile-first UI, unique reservation IDs, and HTTP(S) uptime monitoring.",
+      "QA-tested web and Android builds of a commercial e-commerce platform (under NDA), documenting bugs and acceptance criteria for the dev team.",
+      "Managed backend product data: bulk CSV uploads, SKU and inventory cleanup, and category standardization.",
+      "Wrote admin, logistics, and POS user manuals, a driver FAQ, and video tutorials; helped onboard and train delivery staff.",
+    ],
+    projects: [],
+  },
+  {
     role: "Freelance Web Developer",
     dates: "",
     company: "Independent / Contract",

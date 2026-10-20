@@ -64,14 +64,24 @@ function runCommand(cmd: ReturnType<typeof parseCommand>): React.ReactNode {
           </ul>
         </div>
       );
-    case "about":
+    case "about": {
+      const intern = portfolioData.experience.find((item) =>
+        item.role.startsWith("Web Development Intern"),
+      );
       return (
         <p className="text-status-ok text-sm leading-relaxed">
           <span className="text-code-fg font-semibold">{portfolioData.name}</span> —{" "}
           {portfolioData.experience[0].role} at {portfolioData.experience[0].company}.{" "}
+          {intern ? (
+            <>
+              Earlier, {intern.role} at {intern.company}
+              {intern.year ? `, ${intern.year}` : ""}.{" "}
+            </>
+          ) : null}
           {portfolioData.summary} Based in {portfolioData.location}.
         </p>
       );
+    }
     case "skills":
       return (
         <div className="space-y-2 text-sm">

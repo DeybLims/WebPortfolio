@@ -25,13 +25,13 @@ const line = "#d9d3c7";
 
 const styles = StyleSheet.create({
   page: {
-    paddingTop: 36,
-    paddingBottom: 36,
+    paddingTop: 32,
+    paddingBottom: 28,
     paddingHorizontal: 44,
     fontFamily: "Source Sans 3",
-    fontSize: 10,
+    fontSize: 9.5,
     color: ink,
-    lineHeight: 1.35,
+    lineHeight: 1.28,
   },
   name: {
     fontFamily: "Newsreader",
@@ -56,21 +56,21 @@ const styles = StyleSheet.create({
     borderBottomColor: line,
   },
   section: {
-    marginTop: 11,
+    marginTop: 6,
   },
   sectionLabel: {
     fontFamily: "IBM Plex Mono",
     fontSize: 8,
     letterSpacing: 1.4,
     color: muted,
-    marginBottom: 6,
+    marginBottom: 4,
   },
   summary: {
-    fontSize: 10,
-    lineHeight: 1.4,
+    fontSize: 9.5,
+    lineHeight: 1.3,
   },
   job: {
-    marginBottom: 9,
+    marginBottom: 6,
   },
   roleRow: {
     flexDirection: "row",
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   },
   bullet: {
     flexDirection: "row",
-    marginTop: 2,
+    marginTop: 1,
     paddingRight: 4,
   },
   mark: {
@@ -109,20 +109,20 @@ const styles = StyleSheet.create({
   },
   bulletText: {
     flex: 1,
-    fontSize: 10,
-    lineHeight: 1.35,
+    fontSize: 9.5,
+    lineHeight: 1.28,
   },
   projectsLabel: {
-    marginTop: 4,
+    marginTop: 2,
     fontFamily: "IBM Plex Mono",
     fontSize: 8,
     letterSpacing: 0.6,
     color: muted,
   },
   skill: {
-    marginTop: 2,
-    fontSize: 10,
-    lineHeight: 1.35,
+    marginTop: 1,
+    fontSize: 9.5,
+    lineHeight: 1.28,
   },
   skillName: {
     fontFamily: "IBM Plex Mono",
