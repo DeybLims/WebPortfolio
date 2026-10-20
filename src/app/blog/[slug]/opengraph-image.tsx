@@ -1,6 +1,5 @@
 import { formatPostDate, getPublishedPost, plainSnippet } from "@/lib/blog";
-import { blogShareImage, loadOgFonts, ogContentType, ogSize } from "@/lib/og";
-import { clipLine } from "@/lib/og";
+import { blogShareImage, clipLine, coverDataUrl, loadOgFonts, ogContentType, ogSize } from "@/lib/og";
 
 export const alt = "Writing";
 export const size = ogSize;
@@ -20,11 +19,12 @@ export default async function Image({ params }: { params: Promise<{ slug: string
   }
 
   const excerpt = clipLine(post.excerpt?.trim() || plainSnippet(post.content, 140), 140);
+  const cover = await coverDataUrl(post.cover_image_url);
 
   return blogShareImage(fonts, {
     title: post.title,
     excerpt,
     date: formatPostDate(post.published_at),
-    cover: post.cover_image_url,
+    cover,
   });
 }

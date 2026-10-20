@@ -53,11 +53,26 @@ export function shareImage(
   });
 }
 
+export async function coverDataUrl(url: string | null | undefined) {
+  if (!url) return null;
+  try {
+    const response = await fetch(url);
+    if (!response.ok) return null;
+    const bytes = await response.arrayBuffer();
+    if (!bytes.byteLength) return null;
+    const type = response.headers.get("content-type")?.split(";")[0]?.trim() || "image/jpeg";
+    if (!type.startsWith("image/")) return null;
+    return `data:${type};base64,${Buffer.from(bytes).toString("base64")}`;
+  } catch {
+    return null;
+  }
+}
+
 export function blogShareImage(
   fonts: OgFont[],
   card: { title: string; excerpt: string; date: string; cover?: string | null },
 ) {
-  const titleSize = card.title.length > 42 ? 46 : card.title.length > 28 ? 56 : 64;
+  const titleSize = card.title.length > 48 ? 46 : card.title.length > 32 ? 56 : 68;
   return new ImageResponse(<BlogOgCard {...card} titleSize={titleSize} />, {
     ...ogSize,
     fonts,
@@ -171,6 +186,71 @@ function BlogOgCard({
   cover?: string | null;
   titleSize: number;
 }) {
+  if (cover) {
+    return (
+      <div
+        style={{
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          position: "relative",
+          background: paper,
+          color: ink,
+        }}
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={cover}
+          alt=""
+          width={1200}
+          height={630}
+          style={{ position: "absolute", top: 0, left: 0, width: 1200, height: 630, objectFit: "cover" }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            left: 0,
+            right: 0,
+            bottom: 0,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-end",
+            height: 280,
+            padding: "28px 56px 40px",
+            background: "rgba(19, 18, 16, 0.82)",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              fontFamily: "IBM Plex Mono",
+              fontSize: 18,
+              letterSpacing: 3.2,
+              textTransform: "uppercase",
+              color: accent,
+            }}
+          >
+            {date ? `Writing · ${date}` : "Writing"}
+          </div>
+          <div
+            style={{
+              display: "flex",
+              width: 1040,
+              marginTop: 14,
+              fontFamily: "Newsreader",
+              fontSize: titleSize,
+              lineHeight: 1.05,
+              letterSpacing: -1.1,
+              color: ink,
+            }}
+          >
+            {title}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div
       style={{
@@ -207,7 +287,7 @@ function BlogOgCard({
           <div
             style={{
               display: "flex",
-              width: cover ? 720 : 980,
+              width: 980,
               fontFamily: "Newsreader",
               fontSize: titleSize,
               lineHeight: 1.08,
@@ -223,7 +303,7 @@ function BlogOgCard({
               style={{
                 display: "flex",
                 marginTop: 22,
-                width: cover ? 700 : 960,
+                width: 960,
                 fontFamily: "Source Sans 3",
                 fontSize: 28,
                 lineHeight: 1.35,
@@ -250,18 +330,6 @@ function BlogOgCard({
           <div style={{ display: "flex" }}>Software engineer</div>
         </div>
       </div>
-      {cover ? (
-        <div style={{ display: "flex", width: 340, height: "100%" }}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={cover}
-            alt=""
-            width={340}
-            height={630}
-            style={{ width: 340, height: 630, objectFit: "cover" }}
-          />
-        </div>
-      ) : null}
     </div>
   );
 }

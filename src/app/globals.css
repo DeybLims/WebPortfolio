@@ -1640,11 +1640,15 @@ main {
   letter-spacing: 0.04em;
 }
 
+.blog-hero {
+  max-width: 52rem;
+  margin-top: var(--space-6);
+}
+
 .blog-cover {
   display: block;
-  width: min(100%, 46rem);
+  width: 100%;
   height: auto;
-  margin-top: var(--space-6);
   border: 1px solid var(--line);
 }
 
@@ -1661,6 +1665,45 @@ main {
   align-items: start;
   padding-block: 1.15rem;
   border-top: 1px solid var(--line);
+}
+
+.writing-row.has-cover {
+  grid-template-columns: 7.5rem minmax(0, 1fr) 7.25rem;
+}
+
+.writing-thumb-link {
+  display: block;
+  width: 7.25rem;
+  height: 5.4rem;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.writing-thumb-link:focus-visible {
+  outline: 2px solid var(--vision-accent);
+  outline-offset: 3px;
+}
+
+.writing-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.share-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.45rem 1.1rem;
+  max-width: var(--measure);
+  margin-top: var(--space-5);
+  border-top: 1px solid var(--line);
+  padding-top: var(--space-4);
+}
+
+.share-status {
+  color: var(--muted);
+  font-size: 0.9rem;
 }
 
 .writing-title-link {
@@ -1993,6 +2036,14 @@ main {
   .editor-split,
   .writing-row {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .writing-row.has-cover {
+    grid-template-columns: minmax(0, 1fr) 7.25rem;
+  }
+
+  .writing-row.has-cover time {
+    grid-column: 1 / -1;
   }
 
   .editor-preview {
