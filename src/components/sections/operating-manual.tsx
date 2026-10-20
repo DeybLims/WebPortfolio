@@ -39,11 +39,12 @@ export function OperatingManualSection() {
   return (
     <Section
       id="how-i-work"
+      className="site-section--stack"
       eyebrow="How I work"
       title="A short operating manual"
       description="How I break down work, review changes, handle incidents, and keep a small learning log."
     >
-      <div className="grid gap-12 md:grid-cols-2 md:gap-10">
+      <div className="grid gap-10">
         <div>
           <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--muted)]">
             The process

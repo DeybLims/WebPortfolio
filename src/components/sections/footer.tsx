@@ -86,7 +86,7 @@ export function Footer() {
   }, [isDebugMode, bugs.length, totalBugs]);
 
   return (
-    <footer id="contact" className="scroll-mt-24 border-t border-[var(--line)] py-16 sm:py-20">
+    <footer id="contact" className="site-section site-section--stack">
       <AnimatePresence>
         {isDebugMode ? (
           <>
@@ -162,7 +162,7 @@ export function Footer() {
       <div>
         <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-7">
-            <h2 className="font-serif text-3xl tracking-[-0.02em] sm:text-4xl">
+            <h2 id="contact-title" tabIndex={-1} className="type-section">
               If you have a role or a project in mind, write me.
             </h2>
             <p className="mt-4 max-w-xl text-base leading-7 text-[var(--muted)]">
@@ -188,19 +188,17 @@ export function Footer() {
             </div>
           </div>
 
-          <div className="md:col-span-5">
-            <div className="border border-[var(--line)] p-6">
-              <div className="flex items-start gap-3">
-                <MapPin className="mt-0.5 h-4 w-4 text-[var(--muted)]" aria-hidden="true" />
-                <div>
-                  <p className="text-sm text-[var(--muted)]">Location</p>
-                  <p className="mt-1 text-base">{portfolioData.location}</p>
-                  <div className="mt-4 flex items-center gap-3">
-                    <p className="font-mono text-xs text-[var(--muted)]">
-                      Next.js, Tailwind, Framer Motion
-                    </p>
-                    <TerminalTrigger />
-                  </div>
+          <div className="md:col-span-5 md:pt-2">
+            <div className="flex items-start gap-3">
+              <MapPin className="mt-0.5 h-4 w-4 text-[var(--muted)]" aria-hidden="true" />
+              <div>
+                <p className="text-sm text-[var(--muted)]">Location</p>
+                <p className="mt-1 text-base">{portfolioData.location}</p>
+                <div className="mt-4 flex items-center gap-3">
+                  <p className="font-mono text-xs text-[var(--muted)]">
+                    Next.js, Tailwind, Framer Motion
+                  </p>
+                  <TerminalTrigger />
                 </div>
               </div>
             </div>

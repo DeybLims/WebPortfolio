@@ -103,7 +103,7 @@ export function VisionModeSwitcher() {
                           className={cn(
                             "mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border",
                             active
-                              ? "border-vision-accent bg-vision-accent text-white"
+                              ? "border-vision-accent bg-vision-accent text-[var(--on-accent)]"
                               : "border-black/15 dark:border-white/20",
                           )}
                         >

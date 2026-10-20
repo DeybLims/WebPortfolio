@@ -4,6 +4,7 @@ import * as React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Minus, Plus } from "lucide-react";
 import { portfolioData } from "@/lib/portfolio-data";
+import { Section } from "@/components/ui/section";
 
 const FAQ_ITEMS = [
   {
@@ -31,25 +32,14 @@ export function RecruiterFAQSection() {
   const mailto = `mailto:${portfolioData.contact.email}`;
 
   return (
-    <section
+    <Section
       id="recruiter-faq"
-      className="scroll-mt-24 border-t border-[var(--line)] py-16 sm:py-20"
-      aria-labelledby="recruiter-faq-heading"
+      titleId="recruiter-faq-heading"
+      className="site-section--stack"
+      eyebrow="For recruiters"
+      title="Quick answers"
+      description="The questions that usually come up first."
     >
-      <header className="mb-8">
-        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--muted)]">
-          For recruiters
-        </p>
-        <h2
-          id="recruiter-faq-heading"
-          className="mt-3 font-serif text-3xl tracking-[-0.02em] sm:text-4xl"
-        >
-          Quick answers
-        </h2>
-        <p className="mt-4 max-w-2xl text-base leading-7 text-[var(--muted)]">
-          The questions that usually come up first.
-        </p>
-      </header>
 
       <div className="border-t border-[var(--line)]">
         {FAQ_ITEMS.map((item) => {
@@ -111,6 +101,6 @@ export function RecruiterFAQSection() {
           <ArrowRight className="h-4 w-4" aria-hidden />
         </a>
       </div>
-    </section>
+    </Section>
   );
 }

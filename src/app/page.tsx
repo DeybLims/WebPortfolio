@@ -1,4 +1,4 @@
-import { SiteNav } from "@/components/site-nav";
+import { SiteFrame } from "@/components/site-frame";
 import { Hero } from "@/components/sections/hero";
 import { SignatureDeploymentSection } from "@/components/sections/signature-deployment";
 import { SkillsSection } from "@/components/sections/skills";
@@ -12,22 +12,19 @@ import { Footer } from "@/components/sections/footer";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen overflow-x-hidden">
-      <SiteNav />
-      <main id="content">
-        <Hero />
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <SignatureDeploymentSection />
-          <ProjectsSection />
-          <SkillsSection />
-          <SystemArchitectureSection />
-          <LiveIDESnippetSection />
-          <ExperienceSection />
-          <OperatingManualSection />
-          <RecruiterFAQSection />
-          <Footer />
-        </div>
-      </main>
-    </div>
+    <SiteFrame>
+      <Hero />
+      <SignatureDeploymentSection />
+      <ProjectsSection />
+      <SkillsSection />
+      <SystemArchitectureSection />
+      <LiveIDESnippetSection />
+      <ExperienceSection />
+      <div className="note-spread">
+        <OperatingManualSection />
+        <RecruiterFAQSection />
+      </div>
+      <Footer />
+    </SiteFrame>
   );
 }

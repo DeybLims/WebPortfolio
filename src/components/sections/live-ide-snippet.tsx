@@ -154,7 +154,7 @@ export function LiveIDESnippetSection() {
       title="Live IDE snippet"
       description="A short Python function you can run here. It prints a sample reservation payload."
     >
-      <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#0f1117] shadow-[0_24px_70px_-24px_rgba(0,0,0,0.7)]">
+      <div className="overflow-hidden border border-[var(--line)] bg-[#0f1117]">
         <div className="flex items-center justify-between border-b border-white/10 bg-[#171a23] px-4 py-2.5">
           <div className="flex items-center gap-2">
             <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" aria-hidden />

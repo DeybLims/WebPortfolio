@@ -5,7 +5,6 @@ import { flushSync } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { RotateCcw, Terminal } from "lucide-react";
 import { portfolioData } from "@/lib/portfolio-data";
-import { cn } from "@/lib/cn";
 
 type Phase = "idle" | "building" | "testing" | "deploying" | "success";
 type PipelineMode = "resume" | "contact";
@@ -143,24 +142,22 @@ export function SignatureDeploymentSection() {
   return (
     <section
       id="deploy"
-      className="relative z-10 scroll-mt-24 py-16 sm:py-20"
-      aria-label="Signature deployment interaction"
+      className="deploy-band"
+      aria-labelledby="deploy-title"
     >
-      <div className="mb-6">
-        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--muted)]">
-          A small handoff
-        </p>
-        <h2 className="mt-3 font-serif text-3xl tracking-[-0.02em] sm:text-4xl">
+      <div>
+        <p className="meta">A small handoff</p>
+        <h2 id="deploy-title" tabIndex={-1} className="type-section mt-3">
           Resume, or a way to write me
         </h2>
-        <p className="mt-4 max-w-2xl text-base leading-7 text-[var(--muted)]">
+        <p className="site-section-copy">
           This runs a short staged log, then downloads the PDF or scrolls to contact.
         </p>
       </div>
 
       <motion.div
         layout
-        className="mx-auto w-full max-w-xl"
+        className="w-full"
         transition={{ type: "spring", stiffness: 320, damping: 30 }}
       >
         <AnimatePresence initial={false}>
@@ -207,24 +204,8 @@ export function SignatureDeploymentSection() {
                 transition: { type: "spring", stiffness: 280, damping: 28 },
               }}
               exit={{ opacity: 0, scale: 0.98 }}
-              className={cn(
-                "relative overflow-hidden rounded-xl border bg-[#0c0e12] text-left shadow-2xl ring-1",
-                phase === "success"
-                  ? "border-emerald-500/50 ring-emerald-500/30"
-                  : "border-zinc-700/80 ring-black/20 dark:ring-white/10",
-              )}
+              className="relative overflow-hidden border border-zinc-700/80 bg-[#0c0e12] text-left"
             >
-              <motion.div
-                className="pointer-events-none absolute inset-0 bg-emerald-500/25"
-                initial={false}
-                animate={
-                  phase === "success"
-                    ? { opacity: [0, 0.85, 0.15, 0.4, 0] }
-                    : { opacity: 0 }
-                }
-                transition={{ duration: 0.85, ease: "easeOut" }}
-              />
-
               <div className="relative flex items-center gap-2 border-b border-zinc-800 bg-zinc-900/95 px-3 py-2">
                 <span className="h-2 w-2 rounded-full bg-[#ff5f57]" aria-hidden />
                 <span className="h-2 w-2 rounded-full bg-[#febc2e]" aria-hidden />
