@@ -53,6 +53,17 @@ export function shareImage(
   });
 }
 
+export function blogShareImage(
+  fonts: OgFont[],
+  card: { title: string; excerpt: string; date: string; cover?: string | null },
+) {
+  const titleSize = card.title.length > 42 ? 46 : card.title.length > 28 ? 56 : 64;
+  return new ImageResponse(<BlogOgCard {...card} titleSize={titleSize} />, {
+    ...ogSize,
+    fonts,
+  });
+}
+
 function OgCard({
   kicker,
   title,
@@ -143,6 +154,114 @@ function OgCard({
           <div style={{ display: "flex" }}>Software engineer</div>
         </div>
       </div>
+    </div>
+  );
+}
+
+function BlogOgCard({
+  title,
+  excerpt,
+  date,
+  cover,
+  titleSize,
+}: {
+  title: string;
+  excerpt: string;
+  date: string;
+  cover?: string | null;
+  titleSize: number;
+}) {
+  return (
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        background: paper,
+        color: ink,
+      }}
+    >
+      <div style={{ width: 16, background: accent }} />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          flex: 1,
+          padding: "56px 56px 48px",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            fontFamily: "IBM Plex Mono",
+            fontSize: 20,
+            letterSpacing: 3.5,
+            textTransform: "uppercase",
+            color: muted,
+          }}
+        >
+          {date ? `Writing · ${date}` : "Writing"}
+        </div>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <div
+            style={{
+              display: "flex",
+              width: cover ? 720 : 980,
+              fontFamily: "Newsreader",
+              fontSize: titleSize,
+              lineHeight: 1.08,
+              letterSpacing: -1.1,
+              color: ink,
+            }}
+          >
+            {title}
+          </div>
+          <div style={{ width: 72, height: 4, background: accent, marginTop: 24 }} />
+          {excerpt ? (
+            <div
+              style={{
+                display: "flex",
+                marginTop: 22,
+                width: cover ? 700 : 960,
+                fontFamily: "Source Sans 3",
+                fontSize: 28,
+                lineHeight: 1.35,
+                color: muted,
+              }}
+            >
+              {excerpt}
+            </div>
+          ) : null}
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            borderTop: "1px solid rgba(243, 238, 228, 0.16)",
+            paddingTop: 22,
+            fontFamily: "IBM Plex Mono",
+            fontSize: 18,
+            letterSpacing: 1,
+            color: muted,
+          }}
+        >
+          <div style={{ display: "flex" }}>davelims.vercel.app</div>
+          <div style={{ display: "flex" }}>Software engineer</div>
+        </div>
+      </div>
+      {cover ? (
+        <div style={{ display: "flex", width: 340, height: "100%" }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={cover}
+            alt=""
+            width={340}
+            height={630}
+            style={{ width: 340, height: 630, objectFit: "cover" }}
+          />
+        </div>
+      ) : null}
     </div>
   );
 }
