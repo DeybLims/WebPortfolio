@@ -2,7 +2,10 @@
 
 import * as React from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { portfolioData } from "@/lib/portfolio-data";
+import type { WritingNavItem } from "@/lib/blog-types";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { VisionModeSwitcher } from "@/components/vision-mode-switcher";
 import { CommandPalette } from "@/components/command-palette";
@@ -10,7 +13,14 @@ import { CursorMark } from "@/components/motion/cursor-mark";
 
 const SPY = ["top", "projects", "skills", "experience", "contact"] as const;
 
-export function SiteFrame({ children }: { children: React.ReactNode }) {
+export function SiteFrame({
+  children,
+  writing = [],
+}: {
+  children: React.ReactNode;
+  writing?: WritingNavItem[];
+}) {
+  const pathname = usePathname();
   const [active, setActive] = React.useState<string>("top");
   const [palette, setPalette] = React.useState(false);
   const barRef = React.useRef<HTMLDivElement>(null);
@@ -96,11 +106,12 @@ export function SiteFrame({ children }: { children: React.ReactNode }) {
         <nav className="rail-nav" aria-label="Primary">
           {portfolioData.nav.map((item) => {
             const id = item.href.replace("#", "");
-            const current = active === id;
+            const href = pathname === "/" ? item.href : `/${item.href}`;
+            const current = pathname === "/" && active === id;
             return (
               <a
                 key={item.href}
-                href={item.href}
+                href={href}
                 className="rail-link"
                 aria-current={current ? "true" : undefined}
               >
@@ -109,6 +120,25 @@ export function SiteFrame({ children }: { children: React.ReactNode }) {
               </a>
             );
           })}
+          <Link
+            href="/blog"
+            className="rail-link"
+            aria-current={pathname === "/blog" || pathname.startsWith("/blog/") ? "true" : undefined}
+          >
+            <span className="rail-mark" aria-hidden="true" />
+            Writing
+          </Link>
+          {writing.length > 0 ? (
+            <ul className="rail-notes">
+              {writing.map((post) => (
+                <li key={post.slug}>
+                  <Link href={`/blog/${post.slug}`} className="rail-note">
+                    {post.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          ) : null}
         </nav>
 
         <div className="rail-tools">
@@ -137,7 +167,7 @@ export function SiteFrame({ children }: { children: React.ReactNode }) {
       <main id="content" className="shell-main">
         {children}
       </main>
-      <CommandPalette open={palette} onOpenChange={setPalette} />
+      <CommandPalette open={palette} onOpenChange={setPalette} writing={writing} />
     </div>
   );
 }

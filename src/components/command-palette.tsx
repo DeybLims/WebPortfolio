@@ -1,8 +1,10 @@
 "use client";
 
 import * as React from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
 import { useDeveloperTerminal } from "@/components/developer-terminal/developer-terminal-context";
+import type { WritingNavItem } from "@/lib/blog-types";
 import { withViewTransition } from "@/lib/view-transition";
 
 type Item = {
@@ -15,12 +17,16 @@ type Item = {
 export function CommandPalette({
   open,
   onOpenChange,
+  writing = [],
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  writing?: WritingNavItem[];
 }) {
   const { toggle } = useDeveloperTerminal();
   const { resolvedTheme, setTheme } = useTheme();
+  const pathname = usePathname();
+  const router = useRouter();
   const [query, setQuery] = React.useState("");
   const [active, setActive] = React.useState(0);
   const inputRef = React.useRef<HTMLInputElement>(null);
@@ -44,6 +50,14 @@ export function CommandPalette({
     [close],
   );
 
+  const goHref = React.useCallback(
+    (href: string) => {
+      close();
+      router.push(href);
+    },
+    [close, router],
+  );
+
   const items = React.useMemo<Item[]>(() => {
     const jumps: Item[] = [
       { key: "top", label: "Intro", hint: "Top", run: () => go("top") },
@@ -56,6 +70,18 @@ export function CommandPalette({
       { key: "how-i-work", label: "A short operating manual", hint: "Process", run: () => go("how-i-work") },
       { key: "recruiter-faq", label: "Quick answers", hint: "Recruiters", run: () => go("recruiter-faq") },
       { key: "contact", label: "Contact", hint: "Email", run: () => go("contact") },
+      {
+        key: "writing",
+        label: "Writing",
+        hint: "Notes",
+        run: () => (pathname === "/" ? go("writing") : goHref("/blog")),
+      },
+      ...writing.map((post) => ({
+        key: `post-${post.slug}`,
+        label: post.title,
+        hint: "Writing",
+        run: () => goHref(`/blog/${post.slug}`),
+      })),
     ];
     const actions: Item[] = [
       {
@@ -83,7 +109,7 @@ export function CommandPalette({
       },
     ];
     return [...jumps, ...actions];
-  }, [close, go, resolvedTheme, setTheme, toggle]);
+  }, [close, go, goHref, pathname, resolvedTheme, setTheme, toggle, writing]);
 
   const filtered = React.useMemo(() => {
     const q = query.trim().toLowerCase();
