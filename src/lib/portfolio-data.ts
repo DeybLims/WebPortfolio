@@ -103,7 +103,7 @@ Learned to balance stakeholder urgency with long-term maintainability: naming, d
       title: "BuildMaster",
       year: "2025–2026",
       description:
-        "I worked on a commercial construction product, first as an intern and later as a junior software engineer.",
+        "I worked on a commercial construction product, first as an intern, then as a junior software engineer, and now as a senior software engineer.",
       longDescription: "Details under NDA.",
       tags: [],
       links: [],
@@ -232,6 +232,15 @@ Mobile performance and empty states are features—if onboarding feels brittle, 
   ],
   experience: [
     {
+      role: "Senior Software Engineer",
+      company: "BuildMaster",
+      year: "2025–2026",
+      highlights: [
+        "Started as an intern, continued as a junior software engineer, and now work as a senior software engineer.",
+        "Worked on a commercial construction product. Details under NDA.",
+      ],
+    },
+    {
       role: "Junior ERPNext Developer",
       company: "Quirao Group of Companies",
       location: "La Paz, Iloilo City",
@@ -252,15 +261,6 @@ Mobile performance and empty states are features—if onboarding feels brittle, 
         "Worked with backend developers to connect the interface to REST APIs.",
         "Built responsive, component-based screens that stayed maintainable as the site grew.",
         "Improved the front-end build and kept the UI code easier to change.",
-      ],
-    },
-    {
-      role: "Junior Software Engineer (formerly Intern)",
-      company: "BuildMaster",
-      year: "2025–2026",
-      highlights: [
-        "Started as an intern and later continued as a junior software engineer.",
-        "Worked on a commercial construction product. Details under NDA.",
       ],
     },
   ],

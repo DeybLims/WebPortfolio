@@ -25,6 +25,18 @@
   },
   "work": [
     {
+      "name": "BuildMaster",
+      "position": "Senior Software Engineer",
+      "location": "Philippines",
+      "startDate": "2025-01-01",
+      "endDate": "2026-12",
+      "summary": "Commercial construction product. Started as an intern, continued as a junior software engineer, and now works as a senior software engineer. Details under NDA.",
+      "highlights": [
+        "Worked on a commercial construction product, first as an intern, then as a junior software engineer, and now as a senior software engineer.",
+        "Details under NDA."
+      ]
+    },
+    {
       "name": "Quirao Group of Companies",
       "position": "Junior ERPNext Developer",
       "location": "La Paz, Iloilo City, Philippines",
@@ -48,18 +60,6 @@
         "Worked with backend developers to connect the interface to REST APIs.",
         "Built responsive, component-based screens that stayed maintainable as the site grew.",
         "Improved the front-end build and kept the UI code easier to change."
-      ]
-    },
-    {
-      "name": "BuildMaster",
-      "position": "Junior Software Engineer (formerly Intern)",
-      "location": "Philippines",
-      "startDate": "2025-01-01",
-      "endDate": "2026-12",
-      "summary": "Commercial construction product. Started as an intern and later continued as a junior software engineer. Details under NDA.",
-      "highlights": [
-        "Worked on a commercial construction product, first as an intern and later as a junior software engineer.",
-        "Details under NDA."
       ]
     }
   ],
@@ -130,7 +130,7 @@
     },
     {
       "name": "BuildMaster",
-      "description": "Commercial construction product. I worked on it as an intern and later as a junior software engineer. Details under NDA.",
+      "description": "Commercial construction product. I worked on it as an intern, then as a junior software engineer, and now as a senior software engineer. Details under NDA.",
       "startDate": "2025-01-01"
     },
     {

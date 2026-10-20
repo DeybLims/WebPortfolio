@@ -68,6 +68,7 @@ function runCommand(cmd: ReturnType<typeof parseCommand>): React.ReactNode {
       return (
         <p className="text-status-ok text-sm leading-relaxed">
           <span className="text-code-fg font-semibold">{portfolioData.name}</span> —{" "}
+          {portfolioData.experience[0].role} at {portfolioData.experience[0].company}.{" "}
           {portfolioData.summary} Based in {portfolioData.location}.
         </p>
       );

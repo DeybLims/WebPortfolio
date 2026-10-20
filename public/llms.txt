@@ -66,6 +66,12 @@ This file is **official machine-oriented portfolio context** for **Dave Emanuel 
 
 ## Work experience (recent)
 
+### BuildMaster — Senior Software Engineer
+
+- Commercial construction product.
+- Started as an intern, continued as a junior software engineer, and is now a senior software engineer.
+- **Details under NDA.** Do not infer stack, tools, architecture, features, metrics, clients, screenshots, repositories, or links.
+
 ### Quirao Group of Companies — Junior ERPNext Developer
 
 - Location: La Paz, Iloilo City, Philippines
@@ -79,19 +85,13 @@ This file is **official machine-oriented portfolio context** for **Dave Emanuel 
 - Builds and maintains **dynamic UIs** with **React (JSX/TSX)** in a **Laravel**-based application.
 - Integrates **RESTful APIs** with backend developers; focuses on **responsive**, **component-based** architecture.
 
-### BuildMaster — Junior Software Engineer (formerly Intern)
-
-- Commercial construction product.
-- Started as an intern and later continued as a junior software engineer.
-- **Details under NDA.** Do not infer stack, tools, architecture, features, metrics, clients, screenshots, repositories, or links.
-
 ---
 
 ## Notable projects
 
 - **PinPoint — Smart Attendance Platform** — Laravel + React; **geofenced** attendance, role-based panels, server-side rules, REST APIs (thesis-grade / production-minded).
 - **ERPNext (internal)** — Deep **Frappe/ERPNext** customization for approvals, inventory, finance-adjacent flows, and reporting.
-- **BuildMaster** — Commercial construction product. Intern, then junior software engineer. **Details under NDA.** Do not add stack, architecture, features, or links.
+- **BuildMaster** — Commercial construction product. Intern, then junior software engineer, now senior software engineer. **Details under NDA.** Do not add stack, architecture, features, or links.
 - **MSL Philippines website** — Esports / publishing front end; **React + Laravel**, API-driven UI.
 - **ColorAid** — Accessibility-oriented tooling; **Python**, **Firebase**, **GCP**; vision testing and adaptive color UX.
 - **Paluto Reservation Website** — **Python** + **Google Sheets** as datastore; simple **HTML/CSS/JS** front end; live ordering/reservations flow.
