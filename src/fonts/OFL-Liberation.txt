@@ -1,0 +1,7 @@
+Arrow-Regular.ttf is a one-glyph subset of Liberation Sans, used only so the résumé can print U+2192.
+
+Digitized data copyright (c) 2010 Google Corporation.
+Copyright (c) 2012 Red Hat, Inc.
+Liberation is a trademark of Red Hat, Inc.
+Licensed under the SIL Open Font License, Version 1.1.
+The full license text is at https://scripts.sil.org/OFL

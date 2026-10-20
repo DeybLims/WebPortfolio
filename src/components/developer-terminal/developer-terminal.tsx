@@ -9,9 +9,9 @@ import { useDeveloperTerminal } from "@/components/developer-terminal/developer-
 const SKILL_COLORS: Record<string, string> = {
   Frontend: "text-cat-1",
   Backend: "text-cat-2",
-  Databases: "text-cat-3",
-  "Cloud/Deploy": "text-cat-4",
-  Tools: "text-cat-5",
+  Database: "text-cat-3",
+  ERP: "text-cat-4",
+  "Cloud & tools": "text-cat-5",
 };
 
 type LogEntry = {
@@ -64,13 +64,24 @@ function runCommand(cmd: ReturnType<typeof parseCommand>): React.ReactNode {
           </ul>
         </div>
       );
-    case "about":
+    case "about": {
+      const intern = portfolioData.experience.find((item) =>
+        item.role.startsWith("Web Development Intern"),
+      );
       return (
         <p className="text-status-ok text-sm leading-relaxed">
           <span className="text-code-fg font-semibold">{portfolioData.name}</span> —{" "}
+          {portfolioData.experience[0].role} at {portfolioData.experience[0].company}.{" "}
+          {intern ? (
+            <>
+              Earlier, {intern.role} at {intern.company}
+              {intern.year ? `, ${intern.year}` : ""}.{" "}
+            </>
+          ) : null}
           {portfolioData.summary} Based in {portfolioData.location}.
         </p>
       );
+    }
     case "skills":
       return (
         <div className="space-y-2 text-sm">
@@ -86,7 +97,7 @@ function runCommand(cmd: ReturnType<typeof parseCommand>): React.ReactNode {
         </div>
       );
     case "projects": {
-      const rows = portfolioData.projects.slice(0, 8);
+      const rows = portfolioData.projects;
       return (
         <div className="overflow-x-auto text-xs">
           <table className="text-status-ok w-full border-collapse font-mono text-left">

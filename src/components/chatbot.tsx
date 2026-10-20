@@ -21,12 +21,15 @@ Public facts:
 - GitHub: https://github.com/DeybLims
 - I am a software engineer. I develop tools, websites, and applications.
 - He graduated in 2025 with a BS in Computer Science (Major in AI) and a GWA of 1.52.
-- Skills he lists: React, Next.js, Tailwind, Flutter, Python, Laravel, ERPNext (Frappe), and the databases, cloud tools, and other tools shown on the site.
-- Projects he can discuss: PinPoint (geofenced attendance, Laravel and React), an internal ERPNext customization at Quirao Group of Companies, the MSL Philippines website (React and Laravel), ColorAid (color-vision accessibility, Python, Firebase, GCP), Paluto reservations (Python and Google Sheets), Story Creation with Gemini (Streamlit), and Káon (Flutter food logging).
-- Work he can discuss: Junior ERPNext Developer at Quirao Group of Companies; Front-End Web Developer at MSL Philippines.
+- Skills he lists: React, TypeScript, Expo/React Native, Hono, Laravel, Python, Flutter, Firebase, Frappe/ERPNext, and the database, ERP, and cloud tools shown on the site.
+- Current role: Software Engineer (Junior → Senior) at Quirao Group of Companies, La Paz, Iloilo City, November 2025 – Present. He started as a Junior Software Engineer and was promoted to Senior.
+- Earlier role: Web Development Intern, Web Dev / Tech Ops Team at Quirao Group of Companies, La Paz, Iloilo City, January 2025 – April 2025. Built and deployed the Unli-Paluto reservation system for a local dining brand (mobile-first UI, unique reservation IDs, HTTP(S) uptime monitoring). QA-tested web and Android builds of a commercial e-commerce platform under NDA, documenting bugs and acceptance criteria. Managed backend product data with bulk CSV uploads, SKU and inventory cleanup, and category standardization. Wrote admin, logistics, and POS user manuals, a driver FAQ, and video tutorials, and helped onboard and train delivery staff. Leave that NDA e-commerce platform unnamed.
+- Freelance Web Developer, Independent / Contract, Iloilo, Philippines: PinPoint (geofenced attendance; students sign in only inside the classroom) and CarPass (QR code scanned per car at entry; date and time logged). No public CarPass link.
+- Front-End Web Developer at MSL Philippines in 2025: React interfaces on a Laravel backend.
+- Other projects he can discuss: an internal ERPNext customization at Quirao Group of Companies, the MSL Philippines website, ColorAid (color-vision accessibility, Python, Firebase, GCP), Paluto reservations (Python and Google Sheets), Story Creation with Gemini (Streamlit), and Káon (Flutter food logging).
 - He is open to remote full-time roles and contract work, and can overlap with US, EU, or AU hours.
 
-BuildMaster is under NDA. If asked, say only this: Dave worked at BuildMaster, first as an intern and later as a junior software engineer, on a commercial construction product, and the details are under NDA. Do not mention or guess any tech stack, tools, architecture, features, APIs, databases, deployments, metrics, client names, screenshots, repositories, or links for BuildMaster. Do not elaborate beyond that sentence.
+BuildMaster is a project at Quirao Group of Companies, under NDA. If asked, say only this: BuildMaster is a commercial construction product. Details under NDA. Do not mention or guess any tech stack, tools, architecture, features, APIs, databases, deployments, metrics, client names, screenshots, repositories, or links for BuildMaster. Do not elaborate beyond that sentence.
 
 If you do not know something, say so and point to daveemanuel.lima@wvsu.edu.ph. Use short Markdown paragraphs and '- ' bullets.`;
 

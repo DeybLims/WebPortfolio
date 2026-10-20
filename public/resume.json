@@ -9,7 +9,7 @@
     "label": "I am a software engineer. I develop tools, websites, and applications.",
     "email": "daveemanuel.lima@wvsu.edu.ph",
     "url": "https://github.com/DeybLims",
-    "summary": "I am a software engineer. I develop tools, websites, and applications.",
+    "summary": "Software engineer with hands-on experience in full-stack web and mobile development. Builds production systems using React, TypeScript, Expo/React Native, Hono, Laravel, Python, Flutter, Firebase, and Frappe/ERPNext. Comfortable owning APIs, product features, and database work from implementation through testing and release.",
     "location": {
       "city": "Iloilo City",
       "region": "Western Visayas",
@@ -26,40 +26,54 @@
   "work": [
     {
       "name": "Quirao Group of Companies",
-      "position": "Junior ERPNext Developer",
+      "position": "Software Engineer (Junior → Senior)",
       "location": "La Paz, Iloilo City, Philippines",
-      "startDate": "2026-01-01",
-      "summary": "Develop and maintain ERP features in Frappe/ERPNext for internal operations; customize workflows and modules to match business processes.",
+      "startDate": "2025-11",
+      "summary": "Started as a Junior Software Engineer and was promoted to Senior. Owns backend APIs, mobile and web features, and production reliability.",
       "highlights": [
-        "Develop and maintain ERP features using Frappe/ERPNext to support internal operations.",
-        "Build, customize, and improve ERP workflows and modules based on business requirements.",
-        "Collaborate with stakeholders to translate processes into reliable, maintainable ERP solutions.",
-        "Support deployments and operational checkups to keep systems stable and available."
+        "Started as a Junior Software Engineer and was promoted to Senior, taking ownership of backend APIs, mobile/web features, and production reliability.",
+        "Shipped features end-to-end with product and QA — design, implementation, testing, code review, and release.",
+        "Administered application databases, keeping data integrity, security, and availability across platforms.",
+        "BuildMaster — Commercial construction product. Details under NDA.",
+        "Quirao Group ERP (Frappe / ERPNext): Customized the company ERP on Frappe/ERPNext for operations, finance, and inventory across Quirao Group of Companies. Implemented DocTypes, workflows, reports, and role-based permissions to match internal processes. Supported integration, deployment, data setup, and day-to-day process improvements."
+      ]
+    },
+    {
+      "name": "Quirao Group of Companies",
+      "position": "Web Development Intern, Web Dev / Tech Ops Team",
+      "location": "La Paz, Iloilo City, Philippines",
+      "startDate": "2025-01",
+      "endDate": "2025-04",
+      "summary": "Built and deployed the Unli-Paluto reservation system, QA-tested a commercial e-commerce platform under NDA, managed product data, and wrote manuals and training materials.",
+      "highlights": [
+        "Built and deployed the Unli-Paluto reservation system for a local dining brand: mobile-first UI, unique reservation IDs, and HTTP(S) uptime monitoring.",
+        "QA-tested web and Android builds of a commercial e-commerce platform (under NDA), documenting bugs and acceptance criteria for the dev team.",
+        "Managed backend product data: bulk CSV uploads, SKU and inventory cleanup, and category standardization.",
+        "Wrote admin, logistics, and POS user manuals, a driver FAQ, and video tutorials; helped onboard and train delivery staff."
+      ]
+    },
+    {
+      "name": "Independent / Contract",
+      "position": "Freelance Web Developer",
+      "location": "Iloilo, Philippines",
+      "summary": "Designed, built, and delivered two production systems for clients — from requirements through deployment and handoff.",
+      "highlights": [
+        "Designed, built, and delivered two production systems for clients — from requirements through deployment and handoff.",
+        "PinPoint — Geofenced Attendance System: Attendance system using geofencing so students can sign in only when they are physically inside the classroom. Blocked remote check-ins and stored timestamped attendance logs.",
+        "CarPass — QR Vehicle Entry System: Vehicle entry system that scans a unique QR code per car when it enters an establishment. Logged the date and time of each scan for a clear entry history."
       ]
     },
     {
       "name": "MSL Philippines",
       "position": "Front-End Web Developer",
       "location": "Philippines",
-      "startDate": "2026-01-01",
-      "summary": "Front-end development for the official MSL Philippines website; dynamic interfaces with React and Laravel integration.",
+      "startDate": "2025",
+      "summary": "Built and maintained React interfaces on a Laravel backend.",
       "highlights": [
-        "Developed and maintained dynamic user interfaces using React (JSX/TSX) within a Laravel-based backend framework.",
-        "Worked with backend developers to connect the interface to REST APIs.",
-        "Built responsive, component-based screens that stayed maintainable as the site grew.",
-        "Improved the front-end build and kept the UI code easier to change."
-      ]
-    },
-    {
-      "name": "BuildMaster",
-      "position": "Junior Software Engineer (formerly Intern)",
-      "location": "Philippines",
-      "startDate": "2025-01-01",
-      "endDate": "2026-12",
-      "summary": "Commercial construction product. Started as an intern and later continued as a junior software engineer. Details under NDA.",
-      "highlights": [
-        "Worked on a commercial construction product, first as an intern and later as a junior software engineer.",
-        "Details under NDA."
+        "Built and maintained React (JSX/TSX) interfaces on a Laravel backend.",
+        "Worked with backend developers on REST APIs for reliable data flow and performance.",
+        "Used responsive, component-based patterns so the UI stayed maintainable as it grew.",
+        "Helped improve front-end build process and code quality with consistent tooling."
       ]
     }
   ],
@@ -67,55 +81,49 @@
     {
       "name": "Frontend",
       "keywords": [
-        "React.js",
-        "Next.js",
+        "React.js (JSX/TSX)",
+        "Expo / React Native",
         "Flutter (Dart)",
         "HTML5",
         "CSS3",
-        "Tailwind CSS",
+        "JavaScript",
+        "TypeScript",
         "Laravel"
       ]
     },
     {
       "name": "Backend",
-      "keywords": [
-        "Python",
-        "Flask",
-        "Streamlit",
-        "Frappe",
-        "ERPNext",
-        "Node.js",
-        "RESTful APIs",
-        "Google Cloud Functions"
-      ]
+      "keywords": ["Hono", "Node.js", "Python (Flask, Streamlit)", "REST APIs", "Google Cloud Functions"]
     },
     {
-      "name": "Databases",
-      "keywords": [
-        "PostgreSQL",
-        "MySQL",
-        "MariaDB",
-        "Firebase",
-        "Google Sheets API"
-      ]
+      "name": "Database",
+      "keywords": ["MySQL", "PostgreSQL", "Firebase (Realtime DB & Firestore)", "SQL"]
     },
     {
-      "name": "Cloud & Deploy",
+      "name": "ERP",
+      "keywords": ["Frappe", "ERPNext", "Oracle"]
+    },
+    {
+      "name": "Cloud & tools",
       "keywords": [
         "Vercel",
-        "Google Cloud Platform",
-        "Render.com",
-        "DigitalOcean",
-        "Contabo",
-        "Dokploy"
+        "GCP",
+        "Render",
+        "Firebase Hosting",
+        "Git",
+        "GitHub",
+        "Figma",
+        "Jira",
+        "Selenium",
+        "Canva"
       ]
-    },
-    {
-      "name": "Tools",
-      "keywords": ["Git", "GitHub", "Figma", "Postman", "Jira"]
     }
   ],
   "projects": [
+    {
+      "name": "CarPass — QR Vehicle Entry System",
+      "description": "Vehicle entry system that scans a unique QR code per car when it enters an establishment. Logged the date and time of each scan for a clear entry history."
+    },
     {
       "name": "PinPoint — Smart Attendance Platform",
       "description": "Geofenced attendance and time-aware student portal with Laravel 9 backend and React SPA; server-enforced GPS and schedule rules, REST APIs.",
@@ -126,19 +134,19 @@
       "name": "ERPNext (Frappe) — Internal ERP",
       "description": "Customization of Frappe/ERPNext doctypes, workflows, and reports for internal business operations.",
       "keywords": ["ERPNext", "Frappe", "Python", "Business workflows"],
-      "startDate": "2026-01-01"
+      "startDate": "2025-11"
     },
     {
       "name": "BuildMaster",
-      "description": "Commercial construction product. I worked on it as an intern and later as a junior software engineer. Details under NDA.",
-      "startDate": "2025-01-01"
+      "description": "Commercial construction product. Details under NDA.",
+      "startDate": "2025-11"
     },
     {
       "name": "MSL Philippines Website",
       "description": "Official Mobile Legends esports Philippines site; React (TSX) within Laravel, REST integrations.",
       "keywords": ["React", "Laravel", "TypeScript", "RESTful APIs"],
       "url": "https://www.moontonslph.org",
-      "startDate": "2026-01-01"
+      "startDate": "2025"
     },
     {
       "name": "ColorAid",
