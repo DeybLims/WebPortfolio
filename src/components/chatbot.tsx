@@ -270,7 +270,7 @@ export function Chatbot() {
         type="button"
         onClick={() => setOpen((v) => !v)}
         className="pointer-events-auto inline-flex h-12 items-center gap-2 border border-[var(--line)] bg-[var(--ink)] px-4 text-sm text-[var(--paper)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--paper)]"
-        aria-label={open ? "Close chat" : "Open chat"}
+        aria-label={open ? "Close chat" : "Ask"}
       >
         {open ? (
           <X className="h-5 w-5" aria-hidden />

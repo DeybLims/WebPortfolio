@@ -27,7 +27,7 @@ export function FooterTechPlayground() {
       >
         {/* Background hint */}
         <p
-          className="pointer-events-none absolute inset-0 flex items-center justify-center px-6 text-center text-sm text-[var(--muted)]/50 select-none"
+          className="pointer-events-none absolute inset-0 flex items-center justify-center px-6 text-center text-sm text-[var(--muted)] select-none"
           aria-hidden="true"
         >
           Grab and toss these around.

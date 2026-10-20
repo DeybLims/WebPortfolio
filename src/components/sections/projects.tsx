@@ -10,6 +10,7 @@ import { Section } from "@/components/ui/section";
 import { Pill } from "@/components/ui/pill";
 import { workAnchor } from "@/lib/work-anchor";
 import { cn } from "@/lib/cn";
+import { useProjectPreview } from "@/components/motion/hover-preview";
 
 function splitMetricsCallouts(metrics: string): string[] {
   return metrics
@@ -188,6 +189,7 @@ export function ProjectsSection() {
   const [selectedProject, setSelectedProject] = React.useState<Project | null>(null);
   const closeModal = React.useCallback(() => setSelectedProject(null), []);
   const [lead, ...rest] = portfolioData.projects;
+  const { bind, clear, preview } = useProjectPreview();
 
   React.useEffect(() => {
     if (!selectedProject) return undefined;
@@ -205,11 +207,13 @@ export function ProjectsSection() {
       title="Selected work"
       description="A short note on each project. I open the longer write-up only when I can share it."
     >
-      {lead ? <ProjectLead project={lead} onOpen={setSelectedProject} /> : null}
+      {lead ? (
+        <ProjectLead project={lead} onOpen={setSelectedProject} {...bind(lead)} onPointerLeave={clear} />
+      ) : null}
 
-      <ol className="work-index">
+      <ol className="work-index" onPointerLeave={clear}>
         {rest.map((project) => (
-          <li key={project.title} id={workAnchor(project.title)} className="work-row">
+          <li key={project.title} id={workAnchor(project.title)} className="work-row" {...bind(project)}>
             <span className="work-year">{project.year ?? ""}</span>
             <div className="min-w-0">
               <h3 className="work-title">{project.title}</h3>
@@ -247,6 +251,7 @@ export function ProjectsSection() {
       <AnimatePresence>
         {selectedProject ? <CaseStudySheet project={selectedProject} onClose={closeModal} /> : null}
       </AnimatePresence>
+      {preview}
     </Section>
   );
 }
@@ -254,12 +259,13 @@ export function ProjectsSection() {
 function ProjectLead({
   project,
   onOpen,
+  ...pointer
 }: {
   project: Project;
   onOpen: (project: Project) => void;
-}) {
+} & React.HTMLAttributes<HTMLElement>) {
   return (
-    <article id={workAnchor(project.title)} className="work-lead">
+    <article id={workAnchor(project.title)} className="work-lead" {...pointer}>
       <div className="min-w-0">
         <p className="work-year">{project.year ?? ""}</p>
         <h3 className="work-lead-title">{project.title}</h3>

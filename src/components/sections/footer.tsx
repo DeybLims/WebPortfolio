@@ -6,6 +6,8 @@ import { Bug, Github, Mail, MapPin, Terminal } from "lucide-react";
 import { portfolioData } from "@/lib/portfolio-data";
 import { useDeveloperTerminal } from "@/components/developer-terminal/developer-terminal-context";
 import { FooterTechPlayground } from "@/components/sections/footer-tech-playground";
+import { KineticText } from "@/components/motion/kinetic-text";
+import { Magnetic } from "@/components/motion/magnetic";
 
 function TerminalTrigger() {
   const { toggle } = useDeveloperTerminal();
@@ -163,28 +165,32 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-7">
             <h2 id="contact-title" tabIndex={-1} className="type-section">
-              If you have a role or a project in mind, write me.
+              <KineticText text="If you have a role or a project in mind, write me." />
             </h2>
             <p className="mt-4 max-w-xl text-base leading-7 text-[var(--muted)]">
               {portfolioData.contact.email}
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-              <a
-                href={`mailto:${portfolioData.contact.email}`}
-                className="inline-flex h-11 items-center justify-center gap-2 bg-[var(--ink)] px-5 text-sm text-[var(--paper)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--paper)]"
-              >
-                <Mail className="h-4 w-4" aria-hidden="true" />
-                Email
-              </a>
-              <a
-                href={portfolioData.contact.github}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex h-11 items-center justify-center gap-2 border border-[var(--line)] px-5 text-sm text-[var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring"
-              >
-                <Github className="h-4 w-4" aria-hidden="true" />
-                GitHub
-              </a>
+              <Magnetic>
+                <a
+                  href={`mailto:${portfolioData.contact.email}`}
+                  className="inline-flex h-11 items-center justify-center gap-2 bg-[var(--ink)] px-5 text-sm text-[var(--paper)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--paper)]"
+                >
+                  <Mail className="h-4 w-4" aria-hidden="true" />
+                  Email
+                </a>
+              </Magnetic>
+              <Magnetic>
+                <a
+                  href={portfolioData.contact.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex h-11 items-center justify-center gap-2 border border-[var(--line)] px-5 text-sm text-[var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring"
+                >
+                  <Github className="h-4 w-4" aria-hidden="true" />
+                  GitHub
+                </a>
+              </Magnetic>
             </div>
           </div>
 

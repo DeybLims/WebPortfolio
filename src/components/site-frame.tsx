@@ -6,6 +6,7 @@ import { portfolioData } from "@/lib/portfolio-data";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { VisionModeSwitcher } from "@/components/vision-mode-switcher";
 import { CommandPalette } from "@/components/command-palette";
+import { CursorMark } from "@/components/motion/cursor-mark";
 
 const SPY = ["top", "projects", "skills", "experience", "contact"] as const;
 
@@ -68,6 +69,7 @@ export function SiteFrame({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="shell">
+      <CursorMark />
       <div ref={barRef} className="scroll-progress" aria-hidden="true" />
       <aside className="rail">
         <div className="rail-id">

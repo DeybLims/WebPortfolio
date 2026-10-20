@@ -1,4 +1,5 @@
 import * as React from "react";
+import { KineticText } from "@/components/motion/kinetic-text";
 import { cn } from "@/lib/cn";
 
 export function Section({
@@ -32,7 +33,7 @@ export function Section({
       <div className="min-w-0">
         <header className="site-section-head">
           <h2 id={headingId} tabIndex={-1} className="type-section">
-            {title}
+            <KineticText text={title} />
           </h2>
           {description ? <p className="site-section-copy">{description}</p> : null}
         </header>

@@ -2,6 +2,7 @@ import { SiteFrame } from "@/components/site-frame";
 import { Hero } from "@/components/sections/hero";
 import { SignatureDeploymentSection } from "@/components/sections/signature-deployment";
 import { SkillsSection } from "@/components/sections/skills";
+import { PublicRecordSection } from "@/components/sections/public-record";
 import { ProjectsSection } from "@/components/sections/projects";
 import { ExperienceSection } from "@/components/sections/experience";
 import { SystemArchitectureSection } from "@/components/sections/system-architecture";
@@ -17,6 +18,7 @@ export default function Home() {
       <SignatureDeploymentSection />
       <ProjectsSection />
       <SkillsSection />
+      <PublicRecordSection />
       <SystemArchitectureSection />
       <LiveIDESnippetSection />
       <ExperienceSection />

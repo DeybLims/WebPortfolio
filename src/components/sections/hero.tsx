@@ -1,5 +1,7 @@
 import { portfolioData } from "@/lib/portfolio-data";
-import { workAnchor } from "@/lib/work-anchor";
+import { KineticText } from "@/components/motion/kinetic-text";
+import { Magnetic } from "@/components/motion/magnetic";
+import { ProjectIndex } from "@/components/sections/project-index";
 
 export function Hero() {
   const role = portfolioData.experience[0];
@@ -15,56 +17,35 @@ export function Hero() {
           </span>
         </p>
         <h1 id="top-title" tabIndex={-1} className="type-display">
-          {portfolioData.name}
+          <KineticText text={portfolioData.name} mode="load" />
         </h1>
         <p className="lede">{portfolioData.summary}</p>
         <p className="masthead-availability">Open to remote work.</p>
         <div className="masthead-actions">
-          <a href="#projects" className="button-ink">
-            See the work
-          </a>
-          <a
-            href="https://drive.google.com/file/d/1ddasoyRpPdOBtGby4caY9QVizrnQi1sb/view?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-link"
-          >
-            Resume
-          </a>
-          <a href="#contact" className="text-link">
-            Contact
-          </a>
+          <Magnetic>
+            <a href="#projects" className="button-ink">
+              See the work
+            </a>
+          </Magnetic>
+          <Magnetic>
+            <a
+              href="https://drive.google.com/file/d/1ddasoyRpPdOBtGby4caY9QVizrnQi1sb/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-link"
+            >
+              Resume
+            </a>
+          </Magnetic>
+          <Magnetic>
+            <a href="#contact" className="text-link">
+              Contact
+            </a>
+          </Magnetic>
         </div>
       </div>
 
-      <div className="masthead-index">
-        <p className="meta">Selected work</p>
-        <table className="index-table">
-          <caption className="sr-only">Selected work</caption>
-          <thead className="sr-only">
-            <tr>
-              <th scope="col">Year</th>
-              <th scope="col">Project</th>
-            </tr>
-          </thead>
-          <tbody>
-            {portfolioData.projects.map((project) => (
-              <tr key={project.title}>
-                <th scope="row" className="index-year">
-                  {project.year ?? ""}
-                </th>
-                <td>
-                  <a href={`#${workAnchor(project.title)}`} className="index-link">
-                    <span className="index-title">{project.title}</span>
-                    <span className="index-desc">{project.description}</span>
-                    {project.nda ? <span className="index-nda">Details under NDA</span> : null}
-                  </a>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      <ProjectIndex />
     </section>
   );
 }

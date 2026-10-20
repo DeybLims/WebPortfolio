@@ -5,6 +5,8 @@ import { flushSync } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { RotateCcw, Terminal } from "lucide-react";
 import { portfolioData } from "@/lib/portfolio-data";
+import { KineticText } from "@/components/motion/kinetic-text";
+import { Magnetic } from "@/components/motion/magnetic";
 
 type Phase = "idle" | "building" | "testing" | "deploying" | "success";
 type PipelineMode = "resume" | "contact";
@@ -148,7 +150,7 @@ export function SignatureDeploymentSection() {
       <div>
         <p className="meta">A small handoff</p>
         <h2 id="deploy-title" tabIndex={-1} className="type-section mt-3">
-          Resume, or a way to write me
+          <KineticText text="Resume, or a way to write me" />
         </h2>
         <p className="site-section-copy">
           This runs a short staged log, then downloads the PDF or scrolls to contact.
@@ -170,28 +172,32 @@ export function SignatureDeploymentSection() {
               transition={{ duration: 0.2 }}
               className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center"
             >
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  void runPipeline("resume");
-                }}
-                className="inline-flex min-h-12 items-center justify-center bg-[var(--ink)] px-5 text-sm text-[var(--paper)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--paper)]"
-              >
-                Download resume
-              </button>
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  void runPipeline("contact");
-                }}
-                className="inline-flex min-h-12 items-center justify-center border border-[var(--line)] px-5 text-sm text-[var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring"
-              >
-                Go to contact
-              </button>
+              <Magnetic>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    void runPipeline("resume");
+                  }}
+                  className="inline-flex min-h-12 items-center justify-center bg-[var(--ink)] px-5 text-sm text-[var(--paper)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--paper)]"
+                >
+                  Download resume
+                </button>
+              </Magnetic>
+              <Magnetic>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    void runPipeline("contact");
+                  }}
+                  className="inline-flex min-h-12 items-center justify-center border border-[var(--line)] px-5 text-sm text-[var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring"
+                >
+                  Go to contact
+                </button>
+              </Magnetic>
             </motion.div>
           ) : (
             <motion.div
