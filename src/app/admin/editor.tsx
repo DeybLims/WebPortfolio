@@ -55,6 +55,7 @@ export function PostEditor({ posts }: { posts: Post[] }) {
   const [status, setStatus] = React.useState("");
   const [pending, setPending] = React.useState(false);
   const [confirming, setConfirming] = React.useState(false);
+  const [linkCopied, setLinkCopied] = React.useState(false);
   const dialogRef = React.useRef<HTMLDialogElement>(null);
 
   function load(post: Post) {
@@ -279,8 +280,23 @@ export function PostEditor({ posts }: { posts: Post[] }) {
               Delete
             </button>
           ) : null}
+          {draft.published && draft.previousSlug ? (
+            <button
+              type="button"
+              className="text-button"
+              onClick={() => {
+                const link = new URL(`/blog/${draft.previousSlug}`, window.location.origin).href;
+                void navigator.clipboard.writeText(link).then(() => {
+                  setLinkCopied(true);
+                  window.setTimeout(() => setLinkCopied(false), 2000);
+                });
+              }}
+            >
+              {linkCopied ? "Link copied" : "Copy post link"}
+            </button>
+          ) : null}
           <p className="admin-status" role="status">
-            {pending ? "Saving…" : status}
+            {pending ? "Saving…" : linkCopied ? "Link copied" : status}
           </p>
         </div>
       </form>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import type { PostSummary } from "@/lib/blog-types";
 import { formatPostDate } from "@/lib/blog";
@@ -7,7 +8,7 @@ export function PostList({ posts }: { posts: PostSummary[] }) {
     <ol className="writing-index">
       {posts.map((post) => (
         <li key={post.slug}>
-          <article className="writing-row">
+          <article className={post.cover_image_url ? "writing-row has-cover" : "writing-row"}>
             <time className="work-year" dateTime={post.published_at ?? undefined}>
               {formatPostDate(post.published_at)}
             </time>
@@ -20,6 +21,18 @@ export function PostList({ posts }: { posts: PostSummary[] }) {
               {post.excerpt ? <p className="work-desc">{post.excerpt}</p> : null}
               {post.tags.length > 0 ? <p className="work-tags">{post.tags.join(" · ")}</p> : null}
             </div>
+            {post.cover_image_url ? (
+              <Link href={`/blog/${post.slug}`} className="writing-thumb-link">
+                <Image
+                  src={post.cover_image_url}
+                  alt={post.title}
+                  width={320}
+                  height={220}
+                  className="writing-thumb"
+                  sizes="116px"
+                />
+              </Link>
+            ) : null}
           </article>
         </li>
       ))}
