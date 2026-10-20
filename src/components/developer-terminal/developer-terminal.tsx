@@ -9,9 +9,9 @@ import { useDeveloperTerminal } from "@/components/developer-terminal/developer-
 const SKILL_COLORS: Record<string, string> = {
   Frontend: "text-cat-1",
   Backend: "text-cat-2",
-  Databases: "text-cat-3",
-  "Cloud/Deploy": "text-cat-4",
-  Tools: "text-cat-5",
+  Database: "text-cat-3",
+  ERP: "text-cat-4",
+  "Cloud & tools": "text-cat-5",
 };
 
 type LogEntry = {
@@ -87,7 +87,7 @@ function runCommand(cmd: ReturnType<typeof parseCommand>): React.ReactNode {
         </div>
       );
     case "projects": {
-      const rows = portfolioData.projects.slice(0, 8);
+      const rows = portfolioData.projects;
       return (
         <div className="overflow-x-auto text-xs">
           <table className="text-status-ok w-full border-collapse font-mono text-left">

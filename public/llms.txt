@@ -22,68 +22,65 @@ This file is **official machine-oriented portfolio context** for **Dave Emanuel 
 
 ### Frontend
 
-- React.js
-- Next.js
+- React.js (JSX/TSX)
+- Expo / React Native
 - Flutter (Dart)
-- HTML5 / CSS3
-- Tailwind CSS
-- Laravel (also used in full-stack contexts)
+- HTML5, CSS3, JavaScript, TypeScript
+- Laravel
 
 ### Backend
 
-- Python (including Flask, Streamlit)
-- Frappe / ERPNext
+- Hono
 - Node.js
-- RESTful APIs
+- Python (Flask, Streamlit)
+- REST APIs
 - Google Cloud Functions
 
-### Databases & data stores
+### Database
 
-- PostgreSQL
 - MySQL
-- MariaDB
-- Firebase
-- Google Sheets API (lightweight integrations)
+- PostgreSQL
+- Firebase (Realtime DB and Firestore)
+- SQL
 
-### Cloud & deploy
+### ERP
 
-- Vercel
-- Google Cloud Platform
-- Render.com
-- DigitalOcean
-- Contabo
-- Dokploy
+- Frappe
+- ERPNext
+- Oracle
 
-### Tools
+### Cloud and tools
 
-- Git
-- GitHub
-- Figma
-- Postman
-- Jira
+- Vercel, GCP, Render, Firebase Hosting
+- Git, GitHub, Figma, Jira, Selenium, Canva
 
 ---
 
 ## Work experience (recent)
 
-### BuildMaster — Senior Software Engineer
+### Quirao Group of Companies — Software Engineer (Junior → Senior)
 
-- Commercial construction product.
-- Started as an intern, continued as a junior software engineer, and is now a senior software engineer.
-- **Details under NDA.** Do not infer stack, tools, architecture, features, metrics, clients, screenshots, repositories, or links.
+- November 2025 – Present. La Paz, Iloilo City.
+- Started as a Junior Software Engineer and was promoted to Senior.
+- Owns backend APIs, mobile/web features, and production reliability.
+- Ships features with product and QA through design, implementation, testing, code review, and release.
+- Administers application databases for integrity, security, and availability.
+- **BuildMaster** is a project on this job: commercial construction product. **Details under NDA.** Do not infer stack, tools, architecture, features, metrics, clients, screenshots, repositories, or links. His titles on this job are Junior Software Engineer, then Senior Software Engineer.
+- **Quirao Group ERP (Frappe / ERPNext):** customized the company ERP for operations, finance, and inventory. DocTypes, workflows, reports, and role-based permissions. Supported integration, deployment, data setup, and day-to-day process improvements.
 
-### Quirao Group of Companies — Junior ERPNext Developer
+### Freelance Web Developer — Independent / Contract
 
-- Location: La Paz, Iloilo City, Philippines
-- Develops and maintains **Frappe / ERPNext** features for internal operations.
-- Customizes **workflows, doctypes, and reports** to match real business processes.
-- Works with stakeholders to turn requirements into **maintainable** server-side logic and usable forms/dashboards.
-- Supports **deployments** and operational stability.
+- Iloilo, Philippines. No public dates beyond the contract work itself.
+- Designed, built, and delivered two production systems for clients, from requirements through deployment and handoff.
+- **PinPoint — Geofenced Attendance System:** students can sign in only when physically inside the classroom. Remote check-ins are blocked. Timestamped attendance logs.
+- **CarPass — QR Vehicle Entry System:** scans a unique QR code per car at entry and logs the date and time. No public link.
 
 ### MSL Philippines — Front-End Web Developer
 
-- Builds and maintains **dynamic UIs** with **React (JSX/TSX)** in a **Laravel**-based application.
-- Integrates **RESTful APIs** with backend developers; focuses on **responsive**, **component-based** architecture.
+- 2025.
+- Built and maintained React (JSX/TSX) interfaces on a Laravel backend.
+- Worked with backend developers on REST APIs.
+- Responsive, component-based UI. Helped improve the front-end build and code quality.
 
 ---
 
@@ -91,7 +88,8 @@ This file is **official machine-oriented portfolio context** for **Dave Emanuel 
 
 - **PinPoint — Smart Attendance Platform** — Laravel + React; **geofenced** attendance, role-based panels, server-side rules, REST APIs (thesis-grade / production-minded).
 - **ERPNext (internal)** — Deep **Frappe/ERPNext** customization for approvals, inventory, finance-adjacent flows, and reporting.
-- **BuildMaster** — Commercial construction product. Intern, then junior software engineer, now senior software engineer. **Details under NDA.** Do not add stack, architecture, features, or links.
+- **CarPass — QR Vehicle Entry System** — Scans a unique QR code per car at entry and logs the date and time. No public link.
+- **BuildMaster** — Commercial construction product. **Details under NDA.** Do not add stack, architecture, features, or links.
 - **MSL Philippines website** — Esports / publishing front end; **React + Laravel**, API-driven UI.
 - **ColorAid** — Accessibility-oriented tooling; **Python**, **Firebase**, **GCP**; vision testing and adaptive color UX.
 - **Paluto Reservation Website** — **Python** + **Google Sheets** as datastore; simple **HTML/CSS/JS** front end; live ordering/reservations flow.
@@ -109,4 +107,4 @@ This file is **official machine-oriented portfolio context** for **Dave Emanuel 
 
 ## Human-readable resume file
 
-- A PDF resume may be published at **`/Dave_Lima_Resume.pdf`** on this site when provided by the author. If the file is missing, use this document and **`/resume.json`** instead.
+- The public PDF is **`/Dave_Lima_Resume.pdf`**, generated by `npm run resume` from `scripts/build-resume.tsx`. It is the NDA-safe résumé: no phone number, references available upon request only.

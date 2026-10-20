@@ -43,6 +43,7 @@ export type ExperienceItem = {
   location?: string;
   year: string;
   highlights: string[];
+  projects?: string[];
 };
 
 export type PortfolioData = {

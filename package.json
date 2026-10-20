@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "resume": "esbuild scripts/build-resume.tsx --bundle --platform=node --format=esm --outfile=scripts/.resume-build.mjs --external:@react-pdf/renderer --external:react --external:react/jsx-runtime && node scripts/.resume-build.mjs"
   },
   "dependencies": {
     "@heyputer/puter.js": "^2.6.0",
@@ -23,10 +24,12 @@
     "remark-gfm": "^4.0.1"
   },
   "devDependencies": {
+    "@react-pdf/renderer": "^4.9.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "esbuild": "^0.28.2",
     "eslint": "^9",
     "eslint-config-next": "16.1.7",
     "tailwindcss": "^4",

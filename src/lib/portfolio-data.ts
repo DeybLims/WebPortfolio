@@ -1,4 +1,5 @@
 import type { PortfolioData } from "@/lib/types";
+import { buildMasterPublic, resumeJobs, resumeSkillGroups } from "@/lib/resume-public";
 
 export const portfolioData: PortfolioData = {
   name: "Dave Emanuel G. Lima",
@@ -11,46 +12,22 @@ export const portfolioData: PortfolioData = {
     { label: "Experience", href: "#experience" },
     { label: "Contact", href: "#contact" },
   ],
-  skills: [
-    {
-      title: "Frontend",
-      items: [
-        "React.js",
-        "Next.js",
-        "Flutter (Dart)",
-        "HTML5/CSS3",
-        "Tailwind CSS",
-        "Laravel",
-      ],
-    },
-    {
-      title: "Backend",
-      items: [
-        "Python (Flask, Streamlit)",
-        "Frappe / ERPNext",
-        "Node.js",
-        "RESTful APIs",
-        "Google Cloud Functions",
-      ],
-    },
-    {
-      title: "Databases",
-      items: ["PostgreSQL", "MySQL", "MariaDB", "Firebase", "Google Sheets API"],
-    },
-    {
-      title: "Cloud/Deploy",
-      items: [
-        "Vercel",
-        "Google Cloud Platform",
-        "Render.com",
-        "DigitalOcean",
-        "Contabo",
-        "Dokploy",
-      ],
-    },
-    { title: "Tools", items: ["Git", "GitHub", "Figma", "Postman", "Jira"] },
-  ],
+  skills: resumeSkillGroups,
   projects: [
+    {
+      title: "CarPass — QR Vehicle Entry System",
+      description:
+        "Vehicle entry system that scans a unique QR code per car when it enters an establishment. Logged the date and time of each scan for a clear entry history.",
+      longDescription:
+        "Vehicle entry system that scans a unique QR code per car when it enters an establishment. Logged the date and time of each scan for a clear entry history.",
+      tags: [],
+      links: [],
+      problem:
+        "Vehicle entry system that scans a unique QR code per car when it enters an establishment.",
+      constraints: "Each car has a unique QR code.",
+      solution: "Logged the date and time of each scan for a clear entry history.",
+      metrics: "Logged the date and time of each scan for a clear entry history.",
+    },
     {
       title: "PinPoint — Smart Attendance Platform",
       year: "2025",
@@ -77,7 +54,7 @@ Geofencing and device variability reinforced designing explicit error states, au
     },
     {
       title: "ERPNext (Frappe) — Internal ERP",
-      year: "2026",
+      year: "2025–Present",
       description:
         "Develop and maintain ERP features in Frappe/ERPNext for internal operations customizing workflows and modules to match business processes and keep day-to-day systems reliable.",
       longDescription:
@@ -101,9 +78,8 @@ Learned to balance stakeholder urgency with long-term maintainability: naming, d
     },
     {
       title: "BuildMaster",
-      year: "2025–2026",
-      description:
-        "I worked on a commercial construction product, first as an intern, then as a junior software engineer, and now as a senior software engineer.",
+      year: "2025–Present",
+      description: buildMasterPublic,
       longDescription: "Details under NDA.",
       tags: [],
       links: [],
@@ -115,7 +91,7 @@ Learned to balance stakeholder urgency with long-term maintainability: naming, d
     },
     {
       title: "MSL Philippines Website",
-      year: "2026",
+      year: "2025",
       description:
         "Front-end development for the official MSL Philippines website, building dynamic interfaces with React and Laravel integration.",
       longDescription:
@@ -230,40 +206,14 @@ Learned prompt UX is product design—constraints, examples, and recovery paths 
 Mobile performance and empty states are features—if onboarding feels brittle, retention dies early.`,
     },
   ],
-  experience: [
-    {
-      role: "Senior Software Engineer",
-      company: "BuildMaster",
-      year: "2025–2026",
-      highlights: [
-        "Started as an intern, continued as a junior software engineer, and now work as a senior software engineer.",
-        "Worked on a commercial construction product. Details under NDA.",
-      ],
-    },
-    {
-      role: "Junior ERPNext Developer",
-      company: "Quirao Group of Companies",
-      location: "La Paz, Iloilo City",
-      year: "2026",
-      highlights: [
-        "Develop and maintain ERP features using Frappe/ERPNext to support internal operations.",
-        "Build, customize, and improve ERP workflows and modules based on business requirements.",
-        "Collaborate with stakeholders to translate processes into reliable, maintainable ERP solutions.",
-        "Support deployments and operational checkups to keep systems stable and available.",
-      ],
-    },
-    {
-      role: "Front-End Web Developer",
-      company: "MSL Philippines",
-      year: "2026",
-      highlights: [
-        "Developed and maintained dynamic user interfaces using React (JSX/TSX) within a Laravel-based backend framework.",
-        "Worked with backend developers to connect the interface to REST APIs.",
-        "Built responsive, component-based screens that stayed maintainable as the site grew.",
-        "Improved the front-end build and kept the UI code easier to change.",
-      ],
-    },
-  ],
+  experience: resumeJobs.map((job) => ({
+    role: job.role,
+    company: job.company,
+    location: job.location,
+    year: job.dates,
+    highlights: job.bullets,
+    projects: job.projects,
+  })),
   contact: {
     email: "daveemanuel.lima@wvsu.edu.ph",
     github: "https://github.com/DeybLims",
