@@ -1488,50 +1488,173 @@ main {
   margin-top: 0.45rem;
 }
 
-.record-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.9fr) minmax(0, 0.7fr);
-  gap: var(--space-6);
-  margin-top: var(--space-5);
-}
-
-.record-list,
-.record-langs {
-  margin: 0.85rem 0 0;
+.activity-stats,
+.activity-streaks {
+  margin: var(--space-5) 0 0;
   padding: 0;
   list-style: none;
 }
 
-.record-list li,
-.record-langs li {
+.activity-stats {
   display: grid;
-  gap: 0.15rem;
-  padding-block: 0.7rem;
-  border-top: 1px solid var(--line);
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1.25rem 1rem;
 }
 
-.record-list a {
-  color: inherit;
-  text-decoration: none;
+.activity-stats li,
+.activity-streaks p {
+  display: grid;
+  gap: 0.28rem;
+  min-width: 0;
+  margin: 0;
 }
 
-.record-list a:hover,
-.record-list a:focus-visible {
-  color: var(--vision-accent);
+.activity-value {
+  font-family: var(--font-serif);
+  font-size: clamp(1.7rem, 2.6vw, 2.3rem);
+  letter-spacing: -0.03em;
+  line-height: 1;
 }
 
-.record-list span,
+.activity-label,
 .record-note {
   color: var(--muted);
   font-size: 0.84rem;
   line-height: 1.45;
 }
 
-.record-langs li {
-  grid-template-columns: minmax(0, 1fr) auto;
+.activity-streaks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 16rem));
+  margin-top: var(--space-6);
+  border-top: 1px solid var(--line);
+  padding-top: var(--space-5);
+}
+
+.activity-range {
+  color: var(--muted);
   font-family: var(--font-mono);
   font-size: 0.75rem;
+  letter-spacing: 0.03em;
+}
+
+.activity-langs,
+.activity-heat {
+  margin-top: var(--space-6);
+}
+
+.lang-bar {
+  display: flex;
+  width: min(100%, 40rem);
+  height: 0.45rem;
+  margin-top: 0.85rem;
+  gap: 2px;
+}
+
+.lang-seg {
+  display: block;
+  height: 100%;
+  min-width: 2px;
+}
+
+.lang-seg:nth-child(1),
+.lang-legend li:nth-child(1) .lang-swatch { background: var(--cat-1); }
+.lang-seg:nth-child(2),
+.lang-legend li:nth-child(2) .lang-swatch { background: var(--cat-2); }
+.lang-seg:nth-child(3),
+.lang-legend li:nth-child(3) .lang-swatch { background: var(--cat-3); }
+.lang-seg:nth-child(4),
+.lang-legend li:nth-child(4) .lang-swatch { background: var(--cat-4); }
+.lang-seg:nth-child(5),
+.lang-legend li:nth-child(5) .lang-swatch { background: var(--cat-5); }
+.lang-seg:nth-child(6),
+.lang-legend li:nth-child(6) .lang-swatch { background: var(--vision-accent-secondary); }
+.lang-seg:nth-child(7),
+.lang-legend li:nth-child(7) .lang-swatch { background: var(--muted); }
+
+.lang-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1.15rem;
+  margin: 0.8rem 0 0;
+  padding: 0;
+  list-style: none;
+  max-width: 40rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.02em;
+}
+
+.lang-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.lang-swatch {
+  width: 0.55rem;
+  height: 0.55rem;
+}
+
+.lang-pct {
+  color: var(--muted);
+}
+
+.heat-wrap {
+  max-width: 100%;
+  margin-top: 0.85rem;
+  overflow-x: auto;
+}
+
+.heat-table {
+  border-collapse: separate;
+  border-spacing: 3px;
+  width: max-content;
+  max-width: 100%;
+}
+
+.heat-table th {
+  padding: 0;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 500;
   letter-spacing: 0.04em;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.heat-table th[scope="row"] {
+  padding-right: 0.4rem;
+  width: 1.8rem;
+}
+
+.heat-cell,
+.heat-pad {
+  width: 0.68rem;
+  height: 0.68rem;
+  padding: 0;
+}
+
+.heat-cell[data-level="0"] { background: color-mix(in oklab, var(--ink) 12%, transparent); }
+.heat-cell[data-level="1"] { background: color-mix(in oklab, var(--vision-accent) 34%, var(--paper)); }
+.heat-cell[data-level="2"] { background: color-mix(in oklab, var(--vision-accent) 55%, var(--paper)); }
+.heat-cell[data-level="3"] { background: color-mix(in oklab, var(--vision-accent) 76%, var(--paper)); }
+.heat-cell[data-level="4"] { background: var(--vision-accent); }
+
+.heat-legend {
+  display: flex;
+  align-items: center;
+  gap: 0.28rem;
+  margin: 0.7rem 0 0;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+}
+
+.heat-legend .heat-cell {
+  display: inline-block;
 }
 
 .record-note {
@@ -1600,7 +1723,11 @@ main {
 }
 
 @media (max-width: 860px) {
-  .record-grid,
+  .activity-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .activity-streaks,
   .record-scores ul {
     grid-template-columns: minmax(0, 1fr);
   }
