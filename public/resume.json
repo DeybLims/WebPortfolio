@@ -6,10 +6,10 @@
   },
   "basics": {
     "name": "Dave Emanuel G. Lima",
-    "label": "Versatile Software Developer specializing in full-stack web and mobile application development.",
+    "label": "I am a software engineer. I develop tools, websites, and applications.",
     "email": "daveemanuel.lima@wvsu.edu.ph",
     "url": "https://github.com/DeybLims",
-    "summary": "Skilled in building data-driven and AI-powered solutions using modern technologies. Passionate about developing innovative tools that solve practical problems and collaborating in team environments to deliver impactful digital experiences.",
+    "summary": "I am a software engineer. I develop tools, websites, and applications.",
     "location": {
       "city": "Iloilo City",
       "region": "Western Visayas",
@@ -45,9 +45,9 @@
       "summary": "Front-end development for the official MSL Philippines website; dynamic interfaces with React and Laravel integration.",
       "highlights": [
         "Developed and maintained dynamic user interfaces using React (JSX/TSX) within a Laravel-based backend framework.",
-        "Collaborated with backend developers to integrate RESTful APIs for seamless data flow and performance.",
-        "Applied responsive design principles and component-based architecture for scalable, maintainable UI.",
-        "Improved front-end build processes and code quality through modern development practices and tooling."
+        "Worked with backend developers to connect the interface to REST APIs.",
+        "Built responsive, component-based screens that stayed maintainable as the site grew.",
+        "Improved the front-end build and kept the UI code easier to change."
       ]
     },
     {
@@ -56,13 +56,10 @@
       "location": "Philippines",
       "startDate": "2025-01-01",
       "endDate": "2026-12",
-      "url": "https://buildmaster.ph",
-      "summary": "Commercial construction marketplace; full-stack web features and APIs for mobile, deployment monitoring via Dokploy.",
+      "summary": "Commercial construction product. Started as an intern and later continued as a junior software engineer. Details under NDA.",
       "highlights": [
-        "Started as an intern and transitioned into a Junior Software Engineer role.",
-        "Developed and shipped new features for the website (full-stack ownership where needed).",
-        "Built backend API endpoints to support mobile development (handoff to a dedicated mobile developer).",
-        "Performed deployment checkups and basic operational monitoring using Dokploy."
+        "Worked on a commercial construction product, first as an intern and later as a junior software engineer.",
+        "Details under NDA."
       ]
     }
   ],
@@ -132,10 +129,8 @@
       "startDate": "2026-01-01"
     },
     {
-      "name": "BuildMaster App & Website",
-      "description": "Full-stack marketplace features, REST APIs for mobile clients, deployment health via Dokploy.",
-      "keywords": ["Full-stack", "APIs", "Dokploy"],
-      "url": "https://buildmaster.ph",
+      "name": "BuildMaster",
+      "description": "Commercial construction product. I worked on it as an intern and later as a junior software engineer. Details under NDA.",
       "startDate": "2025-01-01"
     },
     {

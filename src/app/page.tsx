@@ -9,14 +9,12 @@ import { LiveIDESnippetSection } from "@/components/sections/live-ide-snippet";
 import { OperatingManualSection } from "@/components/sections/operating-manual";
 import { RecruiterFAQSection } from "@/components/sections/recruiter-faq";
 import { Footer } from "@/components/sections/footer";
-import { FloatingPageArtifacts } from "@/components/floating-page-artifacts";
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen overflow-x-hidden bg-white text-zinc-950 dark:bg-black dark:text-white">
+    <div className="relative min-h-screen overflow-x-hidden">
       <SiteNav />
-      <FloatingPageArtifacts />
-      <main id="content" className="overflow-x-hidden">
+      <main id="content">
         <Hero />
         <div className="mx-auto max-w-5xl px-4 sm:px-6">
           <SignatureDeploymentSection />

@@ -12,7 +12,7 @@ export const VISION_PROFILES: {
     id: "default",
     label: "Default",
     shortLabel: "Default",
-    description: "Standard violet & sky accents",
+    description: "Default copper and green accents",
   },
   {
     id: "protanopia",

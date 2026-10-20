@@ -17,24 +17,24 @@ export function Section({
   className?: string;
 }) {
   return (
-    <section id={id} className={cn("scroll-mt-28 py-16 sm:py-20", className)}>
-      <header className="mb-8">
+    <section
+      id={id}
+      className={cn("scroll-mt-24 border-t border-[var(--line)] py-16 sm:py-20", className)}
+    >
+      <header className="mb-10 max-w-2xl">
         {eyebrow ? (
-          <p className="font-mono text-xs font-medium tracking-widest text-zinc-500 dark:text-zinc-400">
+          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--muted)]">
             {eyebrow}
           </p>
         ) : null}
-        <h2 className="mt-2 text-balance text-2xl font-semibold tracking-tight text-zinc-950 dark:text-white sm:text-3xl">
+        <h2 className="mt-3 font-serif text-3xl tracking-[-0.02em] text-[var(--ink)] sm:text-4xl">
           {title}
         </h2>
         {description ? (
-          <p className="mt-3 max-w-2xl text-pretty text-sm leading-7 text-zinc-700 dark:text-zinc-300 sm:text-base">
-            {description}
-          </p>
+          <p className="mt-4 text-base leading-7 text-[var(--muted)]">{description}</p>
         ) : null}
       </header>
       {children}
     </section>
   );
 }
-

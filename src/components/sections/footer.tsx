@@ -13,7 +13,7 @@ function TerminalTrigger() {
     <button
       type="button"
       onClick={toggle}
-      className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-black/10 bg-black/5 text-zinc-600 transition hover:bg-black/10 hover:text-zinc-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring dark:border-white/10 dark:bg-white/5 dark:text-zinc-300 dark:hover:bg-white/10 dark:hover:text-white"
+      className="inline-flex h-9 w-9 items-center justify-center border border-[var(--line)] text-[var(--muted)] hover:text-[var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring"
       aria-label="Open developer terminal"
       title="Developer terminal (⌘K / Ctrl+K)"
     >
@@ -86,7 +86,7 @@ export function Footer() {
   }, [isDebugMode, bugs.length, totalBugs]);
 
   return (
-    <footer id="contact" className="scroll-mt-28 border-t border-black/10 py-14 dark:border-white/10">
+    <footer id="contact" className="scroll-mt-24 border-t border-[var(--line)] py-16 sm:py-20">
       <AnimatePresence>
         {isDebugMode ? (
           <>
@@ -151,7 +151,7 @@ export function Footer() {
                   exit={{ opacity: 0, y: 12, scale: 0.98 }}
                   className="fixed bottom-6 left-1/2 z-[215] -translate-x-1/2 rounded-xl border border-emerald-400/35 bg-zinc-950/95 px-4 py-2.5 text-sm text-emerald-200 shadow-xl backdrop-blur"
                 >
-                  System Optimized. Great job!
+                  That is the last one.
                 </motion.div>
               ) : null}
             </AnimatePresence>
@@ -159,29 +159,28 @@ export function Footer() {
         ) : null}
       </AnimatePresence>
 
-      <div className="mx-auto max-w-5xl px-4 sm:px-6">
+      <div>
         <div className="grid gap-10 md:grid-cols-12">
           <div className="md:col-span-7">
-            <h2 className="text-2xl font-semibold tracking-tight text-zinc-950 dark:text-white sm:text-3xl">
-              Let’s build something useful.
+            <h2 className="font-serif text-3xl tracking-[-0.02em] sm:text-4xl">
+              If you have a role or a project in mind, write me.
             </h2>
-            <p className="mt-3 max-w-2xl text-pretty text-sm leading-7 text-zinc-700 dark:text-zinc-300 sm:text-base">
-              Have an opportunity, project, or idea? Send a message — I respond
-              quickly and I’m happy to collaborate.
+            <p className="mt-4 max-w-xl text-base leading-7 text-[var(--muted)]">
+              {portfolioData.contact.email}
             </p>
-            <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
               <a
                 href={`mailto:${portfolioData.contact.email}`}
-                className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-white px-5 text-sm font-semibold text-black transition hover:bg-zinc-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring"
+                className="inline-flex h-11 items-center justify-center gap-2 bg-[var(--ink)] px-5 text-sm text-[var(--paper)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--paper)]"
               >
                 <Mail className="h-4 w-4" aria-hidden="true" />
-                Email Me
+                Email
               </a>
               <a
                 href={portfolioData.contact.github}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-black/10 bg-black/5 px-5 text-sm font-semibold text-zinc-950 transition hover:bg-black/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring dark:border-white/10 dark:bg-white/5 dark:text-white dark:backdrop-blur dark:hover:bg-white/10"
+                className="inline-flex h-11 items-center justify-center gap-2 border border-[var(--line)] px-5 text-sm text-[var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring"
               >
                 <Github className="h-4 w-4" aria-hidden="true" />
                 GitHub
@@ -190,19 +189,15 @@ export function Footer() {
           </div>
 
           <div className="md:col-span-5">
-            <div className="rounded-2xl border border-black/10 bg-white p-6 shadow-sm dark:border-white/10 dark:bg-white/5 dark:backdrop-blur">
+            <div className="border border-[var(--line)] p-6">
               <div className="flex items-start gap-3">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-black/10 bg-black/5 dark:border-white/10 dark:bg-white/5">
-                  <MapPin className="h-4 w-4 text-zinc-700 dark:text-zinc-200" aria-hidden="true" />
-                </div>
+                <MapPin className="mt-0.5 h-4 w-4 text-[var(--muted)]" aria-hidden="true" />
                 <div>
-                  <p className="text-sm font-semibold text-zinc-950 dark:text-white">Location</p>
-                  <p className="mt-1 text-sm text-zinc-700 dark:text-zinc-300">
-                    {portfolioData.location}
-                  </p>
-                  <div className="mt-3 flex items-center gap-3">
-                    <p className="font-mono text-xs text-zinc-500 dark:text-zinc-400">
-                      Built with Next.js + Tailwind + Framer Motion
+                  <p className="text-sm text-[var(--muted)]">Location</p>
+                  <p className="mt-1 text-base">{portfolioData.location}</p>
+                  <div className="mt-4 flex items-center gap-3">
+                    <p className="font-mono text-xs text-[var(--muted)]">
+                      Next.js, Tailwind, Framer Motion
                     </p>
                     <TerminalTrigger />
                   </div>
@@ -214,16 +209,16 @@ export function Footer() {
 
         <FooterTechPlayground />
 
-        <div className="mt-10 flex flex-col gap-2 border-t border-black/10 pt-6 text-sm text-zinc-500 dark:border-white/10 dark:text-zinc-400 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-2 border-t border-[var(--line)] pt-6 text-sm text-[var(--muted)] sm:flex-row sm:items-center sm:justify-between">
           <p className="inline-flex flex-wrap items-center gap-x-2 gap-y-1">
             © {new Date().getFullYear()} {portfolioData.name}. All rights
             reserved.
-            <span className="inline-flex items-center gap-2 font-mono text-[10px] text-zinc-400/80 dark:text-zinc-500/80">
+            <span className="inline-flex items-center gap-2 font-mono text-[10px]">
               <a
                 href="/resume.json"
                 target="_blank"
                 rel="noreferrer"
-                className="transition hover:text-zinc-600 dark:hover:text-zinc-300"
+                className="underline decoration-[var(--line)] underline-offset-2 hover:text-[var(--ink)]"
               >
                 [JSON]
               </a>
@@ -231,7 +226,7 @@ export function Footer() {
                 href="/llms.txt"
                 target="_blank"
                 rel="noreferrer"
-                className="transition hover:text-zinc-600 dark:hover:text-zinc-300"
+                className="underline decoration-[var(--line)] underline-offset-2 hover:text-[var(--ink)]"
               >
                 [llms.txt]
               </a>
@@ -239,16 +234,14 @@ export function Footer() {
             <button
               type="button"
               onClick={toggleDebugMode}
-              className="inline-flex h-5 w-5 items-center justify-center rounded-full text-zinc-400/40 transition hover:text-zinc-500 dark:text-zinc-500/40 dark:hover:text-zinc-300"
+              className="inline-flex h-5 w-5 items-center justify-center text-[var(--muted)] hover:text-[var(--ink)]"
               title="Toggle debug mode"
               aria-label="Toggle debug mode"
             >
               <Bug className="h-3.5 w-3.5" />
             </button>
           </p>
-          <p className="font-mono text-xs">
-            Engineering the full stack of possibilities.
-          </p>
+          <p className="font-mono text-xs">Open to remote work.</p>
         </div>
       </div>
     </footer>

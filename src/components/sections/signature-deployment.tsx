@@ -143,18 +143,18 @@ export function SignatureDeploymentSection() {
   return (
     <section
       id="deploy"
-      className="relative z-10 scroll-mt-28 border-b border-black/5 py-12 dark:border-white/5 sm:py-14"
+      className="relative z-10 scroll-mt-24 py-16 sm:py-20"
       aria-label="Signature deployment interaction"
     >
       <div className="mb-6">
-        <p className="font-mono text-xs font-medium uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
-          Signature interaction
+        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-[var(--muted)]">
+          A small handoff
         </p>
-        <h2 className="mt-2 text-xl font-semibold tracking-tight text-zinc-950 dark:text-white sm:text-2xl">
-          Fake CI/CD — deploy something real
+        <h2 className="mt-3 font-serif text-3xl tracking-[-0.02em] sm:text-4xl">
+          Resume, or a way to write me
         </h2>
-        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-          Trigger a mini pipeline: watch the terminal, then grab the resume PDF or jump to contact.
+        <p className="mt-4 max-w-2xl text-base leading-7 text-[var(--muted)]">
+          This runs a short staged log, then downloads the PDF or scrolls to contact.
         </p>
       </div>
 
@@ -180,9 +180,9 @@ export function SignatureDeploymentSection() {
                   e.stopPropagation();
                   void runPipeline("resume");
                 }}
-                className="inline-flex min-h-[48px] items-center justify-center rounded-lg border border-zinc-900 bg-zinc-950 px-6 py-3 text-sm font-semibold text-white shadow-lg transition hover:bg-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:ring-offset-2 dark:border-zinc-100 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-100 dark:focus-visible:ring-white"
+                className="inline-flex min-h-12 items-center justify-center bg-[var(--ink)] px-5 text-sm text-[var(--paper)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--paper)]"
               >
-                [Deploy Resume.pdf]
+                Download resume
               </button>
               <button
                 type="button"
@@ -191,9 +191,9 @@ export function SignatureDeploymentSection() {
                   e.stopPropagation();
                   void runPipeline("contact");
                 }}
-                className="inline-flex min-h-[48px] items-center justify-center rounded-lg border border-zinc-300 bg-white px-6 py-3 text-sm font-semibold text-zinc-900 shadow-sm transition hover:bg-zinc-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-zinc-400 focus-visible:ring-offset-2 dark:border-zinc-600 dark:bg-zinc-900 dark:text-white dark:hover:bg-zinc-800 dark:focus-visible:ring-zinc-500"
+                className="inline-flex min-h-12 items-center justify-center border border-[var(--line)] px-5 text-sm text-[var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring"
               >
-                [Initialize Contact]
+                Go to contact
               </button>
             </motion.div>
           ) : (

@@ -54,16 +54,16 @@ function renderCodeLine(line: number) {
       return (
         <>
           {"        "}
-          <span className={str}>"model"</span>: <span className={str}>"gemini-2.5-flash"</span>,
+          <span className={str}>{'"model"'}</span>: <span className={str}>{'"gemini-2.5-flash"'}</span>,
         </>
       );
     case 5:
       return (
         <>
           {"        "}
-          <span className={str}>"prompt"</span>:{" "}
+          <span className={str}>{'"prompt"'}</span>:{" "}
           <span className={str}>
-            f"Book a table for {"{name}"} at {"{time_slot}"} for {"{party_size}"} guests."
+            {'f"Book a table for {name} at {time_slot} for {party_size} guests."'}
           </span>
           ,
         </>
@@ -72,21 +72,21 @@ function renderCodeLine(line: number) {
       return (
         <>
           {"        "}
-          <span className={str}>"metadata"</span>: {"{"}
+          <span className={str}>{'"metadata"'}</span>: {"{"}
         </>
       );
     case 7:
       return (
         <>
           {"            "}
-          <span className={str}>"channel"</span>: <span className={str}>"web"</span>,
+          <span className={str}>{'"channel"'}</span>: <span className={str}>{'"web"'}</span>,
         </>
       );
     case 8:
       return (
         <>
           {"            "}
-          <span className={str}>"intent"</span>: <span className={str}>"food_reservation"</span>,
+          <span className={str}>{'"intent"'}</span>: <span className={str}>{'"food_reservation"'}</span>,
         </>
       );
     case 9:
@@ -152,7 +152,7 @@ export function LiveIDESnippetSection() {
       id="live-ide"
       eyebrow="Interactive Snippet"
       title="Live IDE snippet"
-      description="A compact VS Code-style mock editor that simulates running a backend script and printing structured output."
+      description="A short Python function you can run here. It prints a sample reservation payload."
     >
       <div className="overflow-hidden rounded-2xl border border-white/10 bg-[#0f1117] shadow-[0_24px_70px_-24px_rgba(0,0,0,0.7)]">
         <div className="flex items-center justify-between border-b border-white/10 bg-[#171a23] px-4 py-2.5">
