@@ -19,7 +19,7 @@ const SYSTEM_PROMPT = `You answer questions on the portfolio of Dave Emanuel G. 
 Public facts:
 - Email: daveemanuel.lima@wvsu.edu.ph
 - GitHub: https://github.com/DeybLims
-- He builds full-stack web and mobile applications, including data-heavy and AI-assisted tools, usually with a team.
+- I am a software engineer. I develop tools, websites, and applications.
 - He graduated in 2025 with a BS in Computer Science (Major in AI) and a GWA of 1.52.
 - Skills he lists: React, Next.js, Tailwind, Flutter, Python, Laravel, ERPNext (Frappe), and the databases, cloud tools, and other tools shown on the site.
 - Projects he can discuss: PinPoint (geofenced attendance, Laravel and React), an internal ERPNext customization at Quirao Group of Companies, the MSL Philippines website (React and Laravel), ColorAid (color-vision accessibility, Python, Firebase, GCP), Paluto reservations (Python and Google Sheets), Story Creation with Gemini (Streamlit), and Káon (Flutter food logging).
@@ -33,7 +33,7 @@ If you do not know something, say so and point to daveemanuel.lima@wvsu.edu.ph. 
 const WELCOME_MESSAGE: ChatMessage = {
   role: "assistant",
   content:
-    "Ask about Dave's work, the tools he uses, or whether he is available.",
+    "I am a software engineer. I develop tools, websites, and applications. Ask about the work or whether I am available.",
 };
 
 function MessageBody({ role, content }: { role: ChatRole; content: string }) {

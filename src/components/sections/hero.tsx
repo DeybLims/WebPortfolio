@@ -16,7 +16,7 @@ export function Hero() {
             {portfolioData.summary}
           </p>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-[var(--ink)]">
-            {portfolioData.headline} Open to remote work.
+            Open to remote work.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
             <a

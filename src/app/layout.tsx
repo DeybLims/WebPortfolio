@@ -32,11 +32,11 @@ export const metadata: Metadata = {
     template: "%s | Dave Emanuel G. Lima",
   },
   description:
-    "Software developer in Iloilo City, Philippines, working on full-stack web and mobile applications.",
+    "I am a software engineer. I develop tools, websites, and applications.",
   openGraph: {
     title: "Dave Emanuel G. Lima | Software Developer",
     description:
-      "Software developer in Iloilo City, Philippines, working on full-stack web and mobile applications.",
+      "I am a software engineer. I develop tools, websites, and applications.",
     type: "website",
   },
 };

@@ -68,7 +68,7 @@ function runCommand(cmd: ReturnType<typeof parseCommand>): React.ReactNode {
       return (
         <p className="text-sm leading-relaxed text-emerald-400/95">
           <span className="font-semibold text-white">{portfolioData.name}</span> —{" "}
-          {portfolioData.headline} Based in {portfolioData.location}. {portfolioData.summary}
+          {portfolioData.summary} Based in {portfolioData.location}.
         </p>
       );
     case "skills":

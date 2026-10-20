@@ -3,9 +3,8 @@ import type { PortfolioData } from "@/lib/types";
 export const portfolioData: PortfolioData = {
   name: "Dave Emanuel G. Lima",
   location: "Iloilo City, Philippines",
-  headline: "I build full-stack web and mobile applications.",
-  summary:
-    "I work on data-heavy and AI-assisted tools, usually with a team. I like problems that have a practical use.",
+  headline: "I am a software engineer. I develop tools, websites, and applications.",
+  summary: "I am a software engineer. I develop tools, websites, and applications.",
   nav: [
     { label: "Projects", href: "#projects" },
     { label: "Skills", href: "#skills" },

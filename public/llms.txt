@@ -12,7 +12,7 @@ This file is **official machine-oriented portfolio context** for **Dave Emanuel 
 
 ## Professional summary
 
-- Dave builds **full-stack web and mobile** software, including **data-heavy** and **AI-assisted** tools.
+- I am a software engineer. I develop tools, websites, and applications.
 - He likes **practical problems** and usually works **with a team**.
 - He is **not** strictly a frontend developer: he also does **backend and integration** work in addition to **React / Next.js** UIs.
 
