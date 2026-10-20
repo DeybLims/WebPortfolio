@@ -23,12 +23,12 @@ function sleep(ms: number) {
 }
 
 function renderCodeLine(line: number) {
-  const kw = "text-fuchsia-300";
-  const fn = "text-sky-300";
-  const str = "text-emerald-300";
-  const type = "text-amber-200";
-  const varColor = "text-zinc-200";
-  const com = "text-zinc-500";
+  const kw = "text-syn-keyword";
+  const fn = "text-syn-function";
+  const str = "text-syn-string";
+  const type = "text-syn-type";
+  const varColor = "text-syn-var";
+  const com = "text-syn-comment";
 
   switch (line) {
     case 1:
@@ -154,13 +154,13 @@ export function LiveIDESnippetSection() {
       title="Live IDE snippet"
       description="A short Python function you can run here. It prints a sample reservation payload."
     >
-      <div className="overflow-hidden border border-[var(--line)] bg-[#0f1117]">
-        <div className="flex items-center justify-between border-b border-white/10 bg-[#171a23] px-4 py-2.5">
+      <div className="bg-code overflow-hidden border border-code">
+        <div className="bg-code-surface flex items-center justify-between border-b border-code px-4 py-2.5">
           <div className="flex items-center gap-2">
-            <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" aria-hidden />
-            <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" aria-hidden />
-            <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" aria-hidden />
-            <span className="ml-2 font-mono text-[11px] text-zinc-400">reservation_runner.py</span>
+            <span className="bg-dot-1 h-2.5 w-2.5 rounded-full" aria-hidden />
+            <span className="bg-dot-2 h-2.5 w-2.5 rounded-full" aria-hidden />
+            <span className="bg-dot-3 h-2.5 w-2.5 rounded-full" aria-hidden />
+            <span className="text-code-dim ml-2 font-mono text-[11px]">reservation_runner.py</span>
           </div>
 
           <button
@@ -168,10 +168,10 @@ export function LiveIDESnippetSection() {
             onClick={() => void handleRun()}
             disabled={isRunning}
             className={cn(
-              "inline-flex items-center gap-1.5 rounded-md border border-sky-400/25 bg-sky-500/15 px-2.5 py-1.5 text-xs font-semibold text-sky-200 transition",
-              "hover:bg-sky-500/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/50",
+              "code-btn inline-flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold",
+              "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-syn",
               "disabled:cursor-not-allowed disabled:opacity-50",
-              showSuccess && "border-emerald-400/30 bg-emerald-500/20 text-emerald-200",
+              showSuccess && "is-ok",
             )}
           >
             {isRunning ? (
@@ -191,16 +191,16 @@ export function LiveIDESnippetSection() {
         </div>
 
         <div className="grid min-h-[420px] grid-rows-[1.2fr_0.8fr]">
-          <div className="overflow-auto border-b border-white/10 bg-[#11151f]">
+          <div className="bg-code overflow-auto border-b border-code">
             <div className="grid grid-cols-[44px_1fr] font-mono text-[13px] leading-6">
-              <div className="select-none border-r border-white/10 bg-[#0d1018] py-4 text-right text-zinc-500">
+              <div className="bg-code-elevated text-code-dim select-none border-r border-code py-4 text-right">
                 {Array.from({ length: 10 }, (_, i) => (
                   <p key={i} className="pr-3">
                     {i + 1}
                   </p>
                 ))}
               </div>
-              <div className="py-4 pl-4 pr-5 text-zinc-100">
+              <div className="text-code-fg py-4 pl-4 pr-5">
                 {Array.from({ length: 10 }, (_, i) => (
                   <p key={i}>{renderCodeLine(i + 1)}</p>
                 ))}
@@ -208,11 +208,11 @@ export function LiveIDESnippetSection() {
             </div>
           </div>
 
-          <div className="bg-[#0b0d14] px-4 py-3 font-mono text-xs">
-            <p className="mb-2 text-[11px] uppercase tracking-wide text-zinc-500">Terminal / Output</p>
-            <div className="rounded-md border border-white/10 bg-black/30 p-3 text-emerald-300">
+          <div className="bg-code px-4 py-3 font-mono text-xs">
+            <p className="text-code-dim mb-2 text-[11px] uppercase tracking-wide">Terminal / Output</p>
+            <div className="text-status-ok rounded-md border border-code bg-code-chip p-3">
               {isRunning && output.length === 0 ? (
-                <p className="inline-flex items-center gap-2 text-zinc-300">
+                <p className="text-code-muted inline-flex items-center gap-2">
                   <Loader2 className="h-3.5 w-3.5 animate-spin" aria-hidden />
                   Executing script...
                 </p>

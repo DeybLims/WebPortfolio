@@ -65,7 +65,7 @@ function MessageBody({ role, content }: { role: ChatRole; content: string }) {
           </a>
         ),
         code: ({ children }) => (
-          <code className="bg-black/30 px-1 py-0.5 font-mono text-[12px]">
+          <code className="bg-[var(--soft)] px-1 py-0.5 font-mono text-[12px]">
             {children}
           </code>
         ),

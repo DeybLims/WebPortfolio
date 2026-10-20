@@ -48,6 +48,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var p=localStorage.getItem("portfolio-vision-profile");if(p==="protanopia"||p==="deuteranopia"||p==="tritanopia"){document.documentElement.setAttribute("data-vision",p);}}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body
         className={`${sourceSans.variable} ${newsreader.variable} ${plexMono.variable} antialiased`}
       >

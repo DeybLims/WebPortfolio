@@ -21,6 +21,30 @@
   --vision-glow: transparent;
   --vision-node-glow: rgba(140, 61, 44, 0.18);
   --on-accent: #f7f3ea;
+  --code-bg: #12110f;
+  --code-surface: #1c1a17;
+  --code-elevated: #24211c;
+  --code-fg: #f3eee4;
+  --code-muted: #b7b0a4;
+  --code-dim: #a3988c;
+  --code-line: rgba(243, 238, 228, 0.14);
+  --syn-keyword: #e4b08a;
+  --syn-function: #8fbfb4;
+  --syn-string: #f0e2c4;
+  --syn-type: #d4a574;
+  --syn-comment: #a3988c;
+  --syn-var: #f3eee4;
+  --status-ok: #8fbfb4;
+  --status-warn: #e4b08a;
+  --status-error: #e8a598;
+  --cat-1: #e4b08a;
+  --cat-2: #8fbfb4;
+  --cat-3: #d4a574;
+  --cat-4: #f0e2c4;
+  --cat-5: #e8a598;
+  --dot-1: #c98474;
+  --dot-2: #d4a574;
+  --dot-3: #8fbfb4;
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -60,12 +84,32 @@
   --on-accent: #1c1915;
 }
 
-/* Protanopia-friendly: blue + gold */
+/*
+ * Categorical hues (syntax, status, skill groups, window dots) are tuned per
+ * vision mode and always sit on the dark code surface, so light and dark
+ * page themes share them. Page accents stay separate so text on paper passes.
+ */
 html[data-vision="protanopia"] {
   --vision-accent: #1d4ed8;
-  --vision-accent-secondary: #b45309;
+  --vision-accent-secondary: #9a3412;
   --vision-muted: #1d4ed8;
   --vision-node-glow: rgba(29, 78, 216, 0.16);
+  --syn-keyword: #93c5fd;
+  --syn-function: #fbbf24;
+  --syn-string: #fde68a;
+  --syn-type: #bfdbfe;
+  --syn-comment: #a8b3c4;
+  --status-ok: #93c5fd;
+  --status-warn: #fbbf24;
+  --status-error: #e2e8f0;
+  --cat-1: #93c5fd;
+  --cat-2: #fbbf24;
+  --cat-3: #bfdbfe;
+  --cat-4: #fde68a;
+  --cat-5: #e2e8f0;
+  --dot-1: #60a5fa;
+  --dot-2: #fbbf24;
+  --dot-3: #e2e8f0;
 }
 html.dark[data-vision="protanopia"] {
   --vision-accent: #93c5fd;
@@ -74,12 +118,27 @@ html.dark[data-vision="protanopia"] {
   --vision-node-glow: rgba(147, 197, 253, 0.22);
 }
 
-/* Deuteranopia-friendly: magenta + deep blue */
 html[data-vision="deuteranopia"] {
   --vision-accent: #a21caf;
   --vision-accent-secondary: #1e3a8a;
   --vision-muted: #a21caf;
   --vision-node-glow: rgba(162, 28, 175, 0.16);
+  --syn-keyword: #f0abfc;
+  --syn-function: #a5b4fc;
+  --syn-string: #f9a8d4;
+  --syn-type: #c4b5fd;
+  --syn-comment: #c4b6c8;
+  --status-ok: #a5b4fc;
+  --status-warn: #f0abfc;
+  --status-error: #fbcfe8;
+  --cat-1: #f0abfc;
+  --cat-2: #a5b4fc;
+  --cat-3: #f9a8d4;
+  --cat-4: #c4b5fd;
+  --cat-5: #fbcfe8;
+  --dot-1: #e879f9;
+  --dot-2: #818cf8;
+  --dot-3: #fbcfe8;
 }
 html.dark[data-vision="deuteranopia"] {
   --vision-accent: #f0abfc;
@@ -88,12 +147,27 @@ html.dark[data-vision="deuteranopia"] {
   --vision-node-glow: rgba(240, 171, 252, 0.2);
 }
 
-/* Tritanopia-friendly: red + cyan */
 html[data-vision="tritanopia"] {
   --vision-accent: #b91c1c;
   --vision-accent-secondary: #0e7490;
   --vision-muted: #b91c1c;
   --vision-node-glow: rgba(185, 28, 28, 0.16);
+  --syn-keyword: #fca5a5;
+  --syn-function: #5eead4;
+  --syn-string: #fecdd3;
+  --syn-type: #99f6e4;
+  --syn-comment: #c4b4b0;
+  --status-ok: #5eead4;
+  --status-warn: #fca5a5;
+  --status-error: #ffe4e6;
+  --cat-1: #fca5a5;
+  --cat-2: #5eead4;
+  --cat-3: #fecdd3;
+  --cat-4: #99f6e4;
+  --cat-5: #ffe4e6;
+  --dot-1: #f87171;
+  --dot-2: #fb7185;
+  --dot-3: #2dd4bf;
 }
 html.dark[data-vision="tritanopia"] {
   --vision-accent: #fca5a5;
@@ -135,10 +209,55 @@ html.dark[data-vision="tritanopia"] {
     background-color: var(--vision-accent);
   }
   .ring-vision-ring {
-    --tw-ring-color: color-mix(in oklab, var(--vision-accent) 55%, transparent);
+    --tw-ring-color: var(--vision-accent);
   }
   .ring-vision-ring-soft {
-    --tw-ring-color: color-mix(in oklab, var(--vision-accent) 35%, transparent);
+    --tw-ring-color: color-mix(in oklab, var(--vision-accent) 55%, transparent);
+  }
+  .ring-syn {
+    --tw-ring-color: var(--syn-keyword);
+  }
+  .bg-code { background-color: var(--code-bg); }
+  .bg-code-surface { background-color: var(--code-surface); }
+  .bg-code-elevated { background-color: var(--code-elevated); }
+  .bg-code-chip { background-color: color-mix(in oklab, var(--code-fg) 10%, transparent); }
+  .text-code-fg { color: var(--code-fg); }
+  .text-code-muted { color: var(--code-muted); }
+  .text-code-dim { color: var(--code-dim); }
+  .border-code { border-color: var(--code-line); }
+  .text-syn-keyword { color: var(--syn-keyword); }
+  .text-syn-function { color: var(--syn-function); }
+  .text-syn-string { color: var(--syn-string); }
+  .text-syn-type { color: var(--syn-type); }
+  .text-syn-comment { color: var(--syn-comment); }
+  .text-syn-var { color: var(--syn-var); }
+  .text-status-ok { color: var(--status-ok); }
+  .text-status-warn { color: var(--status-warn); }
+  .text-status-error { color: var(--status-error); }
+  .text-cat-1 { color: var(--cat-1); }
+  .text-cat-2 { color: var(--cat-2); }
+  .text-cat-3 { color: var(--cat-3); }
+  .text-cat-4 { color: var(--cat-4); }
+  .text-cat-5 { color: var(--cat-5); }
+  .bg-dot-1 { background-color: var(--dot-1); }
+  .bg-dot-2 { background-color: var(--dot-2); }
+  .bg-dot-3 { background-color: var(--dot-3); }
+  .border-status-ok { border-color: color-mix(in oklab, var(--status-ok) 50%, transparent); }
+  .bg-status-ok-soft { background-color: color-mix(in oklab, var(--status-ok) 16%, transparent); }
+  .code-input {
+    color: var(--code-fg);
+    caret-color: var(--status-ok);
+  }
+  .code-input::placeholder { color: var(--code-dim); }
+  .code-btn {
+    border: 1px solid color-mix(in oklab, var(--syn-function) 45%, transparent);
+    background: color-mix(in oklab, var(--syn-function) 16%, transparent);
+    color: var(--syn-function);
+  }
+  .code-btn.is-ok {
+    border-color: color-mix(in oklab, var(--status-ok) 50%, transparent);
+    background: color-mix(in oklab, var(--status-ok) 18%, transparent);
+    color: var(--status-ok);
   }
 }
 
@@ -451,6 +570,11 @@ main {
 .type-display:focus-visible {
   outline: 2px solid var(--vision-accent);
   outline-offset: 3px;
+}
+
+.bg-code :focus-visible,
+.bg-code-surface :focus-visible {
+  outline-color: var(--syn-keyword);
 }
 
 .masthead,

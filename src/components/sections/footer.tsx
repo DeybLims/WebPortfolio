@@ -94,7 +94,7 @@ export function Footer() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="fixed right-4 top-4 z-[210] rounded-full border border-emerald-400/30 bg-zinc-950/90 px-3 py-1.5 font-mono text-xs text-emerald-300 shadow-lg backdrop-blur"
+              className="bg-code text-status-ok fixed right-4 top-4 z-[210] rounded-full border border-status-ok px-3 py-1.5 font-mono text-xs backdrop-blur"
             >
               Bugs Fixed: {fixedCount}
             </motion.div>
@@ -105,7 +105,7 @@ export function Footer() {
                   <motion.button
                     key={bug.id}
                     type="button"
-                    className="pointer-events-auto absolute inline-flex h-7 w-7 items-center justify-center rounded-full bg-black/10 text-zinc-700 transition hover:bg-black/20 dark:bg-white/10 dark:text-zinc-100 dark:hover:bg-white/20"
+                    className="pointer-events-auto absolute inline-flex h-7 w-7 items-center justify-center rounded-full bg-[var(--soft)] text-[var(--ink)] transition hover:bg-[var(--line)]"
                     style={{ left: `${bug.x}%`, top: `${bug.y}%` }}
                     onClick={() => handleBugFix(bug.id)}
                     initial={{ opacity: 0, scale: 0.7 }}
@@ -149,7 +149,7 @@ export function Footer() {
                   initial={{ opacity: 0, y: 12, scale: 0.98 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 12, scale: 0.98 }}
-                  className="fixed bottom-6 left-1/2 z-[215] -translate-x-1/2 rounded-xl border border-emerald-400/35 bg-zinc-950/95 px-4 py-2.5 text-sm text-emerald-200 shadow-xl backdrop-blur"
+                  className="bg-code text-status-ok fixed bottom-6 left-1/2 z-[215] -translate-x-1/2 rounded-xl border border-status-ok px-4 py-2.5 text-sm backdrop-blur"
                 >
                   That is the last one.
                 </motion.div>

@@ -221,7 +221,7 @@ export function SystemArchitectureSection() {
             strokeDasharray="3 4"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className={isSimulating || showSuccess ? "text-[var(--vision-accent)]" : "text-zinc-400/70 dark:text-zinc-500/70"}
+            className={isSimulating || showSuccess ? "text-[var(--vision-accent)]" : "text-[var(--muted)]"}
           />
         </svg>
 

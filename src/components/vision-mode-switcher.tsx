@@ -70,10 +70,10 @@ export function VisionModeSwitcher() {
             aria-label="Choose vision profile"
           >
             <div className="border border-[var(--line)] bg-[var(--paper)] p-2 shadow-lg">
-              <p className="border-b border-black/5 px-2 pb-2 pt-1 text-[10px] font-semibold uppercase tracking-wider text-zinc-500 dark:border-white/10 dark:text-zinc-400">
+              <p className="border-b border-[var(--line)] px-2 pb-2 pt-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--muted)]">
                 Vision mode
               </p>
-              <p className="px-2 py-1.5 text-[11px] leading-snug text-zinc-600 dark:text-zinc-400">
+              <p className="px-2 py-1.5 text-[11px] leading-snug text-[var(--muted)]">
                 Accent colors tuned for different color-vision profiles. Light/dark still uses the
                 sun/moon toggle.
               </p>
@@ -96,7 +96,7 @@ export function VisionModeSwitcher() {
                           "flex w-full items-start gap-2 rounded-xl px-2.5 py-2 text-left text-sm transition-colors",
                           active
                             ? "bg-vision-accent-soft text-vision-accent"
-                            : "text-zinc-800 hover:bg-black/5 dark:text-zinc-200 dark:hover:bg-white/10",
+                            : "text-[var(--ink)] hover:bg-[var(--soft)]",
                         )}
                       >
                         <span
@@ -104,14 +104,14 @@ export function VisionModeSwitcher() {
                             "mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border",
                             active
                               ? "border-vision-accent bg-vision-accent text-[var(--on-accent)]"
-                              : "border-black/15 dark:border-white/20",
+                              : "border-[var(--line)]",
                           )}
                         >
                           {active ? <Check className="h-3 w-3" strokeWidth={3} /> : null}
                         </span>
                         <span>
                           <span className="block font-semibold">{item.label}</span>
-                          <span className="mt-0.5 block text-xs font-normal text-zinc-500 dark:text-zinc-400">
+                          <span className="mt-0.5 block text-xs font-normal text-[var(--muted)]">
                             {item.description}
                           </span>
                         </span>

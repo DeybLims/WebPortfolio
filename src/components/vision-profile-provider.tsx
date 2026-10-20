@@ -23,30 +23,32 @@ export function useVisionProfile() {
   return ctx;
 }
 
+function applyVisionProfile(profile: VisionProfile) {
+  const root = document.documentElement;
+  if (profile === "default") root.removeAttribute("data-vision");
+  else root.setAttribute("data-vision", profile);
+}
+
 export function VisionProfileProvider({ children }: { children: React.ReactNode }) {
   const [profile, setProfileState] = React.useState<VisionProfile>("default");
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
-    setMounted(true);
+    let next: VisionProfile = "default";
     try {
       const raw = localStorage.getItem(VISION_PROFILE_STORAGE_KEY);
-      if (isVisionProfile(raw)) {
-        setProfileState(raw);
-      }
+      if (isVisionProfile(raw)) next = raw;
     } catch {
       /* ignore */
     }
+    applyVisionProfile(next);
+    setProfileState(next);
+    setMounted(true);
   }, []);
 
   React.useEffect(() => {
     if (!mounted) return;
-    const root = document.documentElement;
-    if (profile === "default") {
-      root.removeAttribute("data-vision");
-    } else {
-      root.setAttribute("data-vision", profile);
-    }
+    applyVisionProfile(profile);
     try {
       localStorage.setItem(VISION_PROFILE_STORAGE_KEY, profile);
     } catch {
