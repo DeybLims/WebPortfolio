@@ -22,7 +22,7 @@ export const nowEntries: NowEntry[] = [
     id: "work",
     label: "Work",
     paragraphs: [
-      "I lead engineering on a commercial construction product at Quirao Group. Details under NDA.",
+      "I own the backend infrastructure for a commercial construction product at Quirao Group. Details under NDA.",
     ],
   },
   {
