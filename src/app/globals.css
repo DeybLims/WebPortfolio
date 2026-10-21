@@ -2019,6 +2019,38 @@ main {
   margin-left: auto;
 }
 
+.admin-switch {
+  display: flex;
+  gap: 0.9rem;
+}
+
+.admin-switch a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.admin-switch a[aria-current="page"] {
+  color: var(--ink);
+}
+
+.admin-switch a:focus-visible {
+  outline: 2px solid var(--vision-accent);
+  outline-offset: 3px;
+}
+
+.now-admin-sections {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.now-admin-section {
+  display: grid;
+  gap: 0.75rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--line);
+}
+
 .admin-main {
   padding: var(--space-6) max(var(--gutter), 7rem) var(--space-8) var(--gutter);
 }

@@ -3,6 +3,8 @@
 import { redirect } from "next/navigation";
 import { refreshBlog } from "@/lib/blog";
 import type { PostInput } from "@/lib/blog-types";
+import type { NowEntry, NowPageContent } from "@/lib/now";
+import { refreshNow } from "@/lib/now-content";
 import { isSlug } from "@/lib/slug";
 import { createClient } from "@/lib/supabase/server";
 
@@ -104,6 +106,78 @@ export async function deletePost(id: string, slug: string): Promise<{ ok: true }
   if (error) return { error: "Could not delete the post." };
 
   refreshBlog([slug]);
+  return { ok: true };
+}
+
+const DATE = /^\d{4}-\d{2}(-\d{2})?$/;
+const SECTION_ID = /^[a-z0-9-]{1,40}$/;
+
+function cleanSection(section: NowEntry): NowEntry | { error: string } {
+  const id = section.id.trim();
+  const label = section.label.trim();
+  if (!SECTION_ID.test(id)) return { error: "Each section needs a short id." };
+  if (!label || label.length > 40) return { error: "Each section needs a short label." };
+  const paragraphs = section.paragraphs.map((paragraph) => paragraph.trim()).filter(Boolean).slice(0, 4);
+  if (paragraphs.some((paragraph) => paragraph.length > 600)) return { error: "A paragraph is too long." };
+  const items = (section.items ?? []).map((item) => item.trim()).filter(Boolean).slice(0, 12);
+  if (items.some((item) => item.length > 120)) return { error: "A list item is too long." };
+  const href = section.href?.trim() ?? "";
+  const linkLabel = section.linkLabel?.trim() ?? "";
+  if ((href && !linkLabel) || (!href && linkLabel)) return { error: "A link needs both an address and a label." };
+  if (href && !href.startsWith("/") && !href.startsWith("https://")) {
+    return { error: "Links must start with / or https://." };
+  }
+  if (linkLabel.length > 160) return { error: "A link label is too long." };
+  const entry: NowEntry = { id, label, paragraphs };
+  if (items.length > 0) entry.items = items;
+  if (href && linkLabel) {
+    entry.href = href;
+    entry.linkLabel = linkLabel;
+  }
+  return entry;
+}
+
+export async function saveNowPage(
+  input: NowPageContent,
+): Promise<{ ok: true } | { error: string }> {
+  const { supabase, error: authError } = await requireAdmin();
+  if (!supabase || authError) return { error: authError ?? "Not authorized." };
+
+  const updatedLabel = input.updatedLabel.trim();
+  const updatedDate = input.updatedDate.trim();
+  const intro = input.intro.trim();
+  if (!updatedLabel || updatedLabel.length > 40) return { error: "Add a short last-updated line." };
+  if (!DATE.test(updatedDate)) return { error: "Use a month for the date." };
+  if (!intro || intro.length > 1000) return { error: "The intro needs to stay under 1000 characters." };
+  if (input.sections.length < 1 || input.sections.length > 8) return { error: "Keep between 1 and 8 sections." };
+
+  const sections: NowEntry[] = [];
+  for (const section of input.sections) {
+    const cleaned = cleanSection(section);
+    if ("error" in cleaned) return cleaned;
+    sections.push(cleaned);
+  }
+
+  const { error } = await supabase.from("now_page").upsert(
+    {
+      id: 1,
+      updated_label: updatedLabel,
+      updated_date: updatedDate,
+      intro,
+      sections,
+      updated_at: new Date().toISOString(),
+    },
+    { onConflict: "id" },
+  );
+
+  if (error) {
+    if (error.code === "42P01" || error.code === "PGRST205") {
+      return { error: "Apply supabase/migrations/20261021_now_page.sql, then save again." };
+    }
+    return { error: "Could not save the Now page." };
+  }
+
+  refreshNow();
   return { ok: true };
 }
 
