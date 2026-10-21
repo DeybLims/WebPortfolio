@@ -6,6 +6,7 @@ import { ArrowUp, Loader2, MessageCircle, X } from "lucide-react";
 import puter from "@heyputer/puter.js";
 import ReactMarkdown from "react-markdown";
 import { cn } from "@/lib/cn";
+import { useDeveloperTerminal } from "@/components/developer-terminal/developer-terminal-context";
 
 type ChatRole = "user" | "assistant" | "system";
 
@@ -20,9 +21,9 @@ Public facts:
 - Email: davelima2@gmail.com
 - GitHub: https://github.com/DeybLims
 - LinkedIn: https://www.linkedin.com/in/dave-emanuel-lima-a65856326
-- I am a software engineer. I develop tools, websites, and applications.
+- I am a senior software engineer. I develop tools, websites, and applications.
 - He graduated in 2025 with a BS in Computer Science (Major in AI) and a GWA of 1.52.
-- Current role: Software Engineer (Junior → Senior) at Quirao Group of Companies, La Paz, Iloilo City, November 2025 – Present. He started as a Junior Software Engineer and was promoted to Senior. He owns the backend infrastructure. He is not the tech lead. Do not name a stack for this role.
+- Current role: Senior Software Engineer at Quirao Group of Companies, La Paz, Iloilo City, November 2025 – Present. He started as a Junior Software Engineer and was promoted to Senior. He owns the backend infrastructure. He is not the tech lead. Do not name a stack for this role. The experience timeline may still show Software Engineer (Junior → Senior).
 - Earlier role: Web Development Intern, Web Dev / Tech Ops Team at Quirao Group of Companies, La Paz, Iloilo City, January 2025 – April 2025. Built and deployed the Unli-Paluto reservation system for a local dining brand (mobile-first UI, unique reservation IDs, HTTP(S) uptime monitoring). QA-tested web and Android builds of a commercial e-commerce platform under NDA, documenting bugs and acceptance criteria. Managed backend product data with bulk CSV uploads, SKU and inventory cleanup, and category standardization. Wrote admin, logistics, and POS user manuals, a driver FAQ, and video tutorials, and helped onboard and train delivery staff. Leave that NDA e-commerce platform unnamed.
 - BuildMaster is a construction materials marketplace app at Quirao Group of Companies. If asked, say only this: Contractors, builders and homeowners in the Philippines usually source construction materials by calling several suppliers, comparing prices by hand and chasing deliveries. Dave is a Senior Software Engineer. He owns the backend infrastructure behind the mobile app, including the APIs, data, integrations and production reliability. He works with the tech lead, product and QA from design through release. He is not the tech lead. The app is live on iOS and Android, connecting buyers with verified suppliers in one place. Technical details are under NDA. The only public links are the App Store listing https://apps.apple.com/us/app/buildmasterph/id6757141909 and the Google Play listing https://play.google.com/store/apps/details?id=com.buildmasterph. Do not describe, quote, or summarize those listings. If asked for anything deeper, refuse and say the technical details are under NDA. Do not mention or guess any tech stack, vendors, architecture, metrics, web storefront, admin, tools, databases, deployments, client names, or repositories. Do not say he leads engineering.
 - Freelance Web Developer, Independent / Contract, Iloilo, Philippines: TenantHub (a rental and tenant management dashboard built for a private client; do not link to it or describe billing figures, tenant names, or a public URL), PinPoint (geofenced attendance; students sign in only inside the classroom), and CarPass. CarPass is freelance work: a QR vehicle-entry system built for a student team's thesis. Each car has a unique QR code, and a scan logs the date and time. The public page is a sign-in screen. Do not publish owner names, plate numbers, emails, or QR images from the signed-in screens. Do not describe it as work for a school or other institution.
@@ -39,7 +40,7 @@ If you do not know something, say so and point to davelima2@gmail.com. Use short
 const WELCOME_MESSAGE: ChatMessage = {
   role: "assistant",
   content:
-    "I am a software engineer. I develop tools, websites, and applications. Ask about the work or whether I am available.",
+    "I am a senior software engineer. I develop tools, websites, and applications. Ask about the work or whether I am available.",
 };
 
 function MessageBody({ role, content }: { role: ChatRole; content: string }) {
@@ -111,6 +112,7 @@ function extractReply(result: unknown): string {
 }
 
 export function Chatbot() {
+  const { open: terminalOpen } = useDeveloperTerminal();
   const [open, setOpen] = React.useState(false);
   const [input, setInput] = React.useState("");
   const [loading, setLoading] = React.useState(false);
@@ -176,7 +178,10 @@ export function Chatbot() {
   );
 
   return (
-    <div className="pointer-events-none fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+    <div
+      className="ask-dock pointer-events-none fixed z-50 flex flex-col items-end gap-3"
+      hidden={terminalOpen}
+    >
       <AnimatePresence>
         {open ? (
           <motion.div

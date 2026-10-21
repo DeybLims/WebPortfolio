@@ -4,8 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { VisionProfileProvider } from "@/components/vision-profile-provider";
 import { DeveloperTerminalProvider } from "@/components/developer-terminal/developer-terminal-context";
-import { DeveloperTerminal } from "@/components/developer-terminal/developer-terminal";
-import { Chatbot } from "@/components/chatbot";
+import { DeferredChrome } from "@/components/deferred-chrome";
 
 const sourceSans = Source_Sans_3({
   variable: "--font-source-sans",
@@ -25,6 +24,7 @@ const plexMono = IBM_Plex_Mono({
   subsets: ["latin"],
   weight: ["400", "500"],
   display: "swap",
+  preload: false,
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://davelims.vercel.app";
@@ -85,8 +85,7 @@ export default function RootLayout({
                 Skip to content
               </a>
               {children}
-              <DeveloperTerminal />
-              <Chatbot />
+              <DeferredChrome />
             </DeveloperTerminalProvider>
           </VisionProfileProvider>
         </ThemeProvider>

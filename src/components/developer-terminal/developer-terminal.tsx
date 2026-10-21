@@ -256,11 +256,11 @@ export function DeveloperTerminal() {
             dragMomentum={false}
             dragElastic={0.06}
             dragConstraints={constraintsRef}
-            className="bg-code pointer-events-auto absolute bottom-4 left-4 right-4 max-h-[min(520px,70vh)] w-[min(100%,28rem)] cursor-default overflow-hidden border border-code sm:bottom-6 sm:left-auto sm:right-6"
+            className="dev-terminal bg-code pointer-events-auto absolute bottom-4 left-4 right-4 flex max-h-[min(520px,70vh)] w-[min(100%,28rem)] cursor-default flex-col overflow-hidden border border-code sm:bottom-6 sm:left-auto sm:right-6"
           >
             {/* macOS-style title bar (drag handle) */}
             <div
-              className="bg-code-surface flex cursor-grab items-center gap-3 border-b border-code px-3 py-2.5 active:cursor-grabbing"
+              className="dev-terminal-bar bg-code-surface flex cursor-grab items-center gap-3 border-b border-code px-3 py-2.5 active:cursor-grabbing"
               onPointerDown={(e) => dragControls.start(e)}
             >
               <div className="flex gap-1.5" aria-hidden="true">
@@ -285,7 +285,7 @@ export function DeveloperTerminal() {
             {/* Log */}
             <div
               ref={scrollRef}
-              className="max-h-[min(340px,45vh)] overflow-y-auto overscroll-contain px-3 py-3 font-mono text-[13px] leading-relaxed"
+              className="dev-terminal-log max-h-[min(340px,45vh)] overflow-y-auto overscroll-contain px-3 py-3 font-mono text-[13px] leading-relaxed"
               style={{ WebkitOverflowScrolling: "touch" }}
             >
               {log.map((entry) => (
@@ -307,7 +307,7 @@ export function DeveloperTerminal() {
             {/* Input line */}
             <form
               onSubmit={submit}
-              className="bg-code-elevated flex items-center gap-2 border-t border-code px-3 py-2.5"
+              className="dev-terminal-input bg-code-elevated flex items-center gap-2 border-t border-code px-3 py-2.5"
             >
               <span className="text-status-ok shrink-0 font-mono">$</span>
               <input

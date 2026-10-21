@@ -11,8 +11,8 @@ import {
 export const portfolioData: PortfolioData = {
   name: "Dave Emanuel G. Lima",
   location: "Iloilo City, Philippines",
-  headline: "I am a software engineer. I develop tools, websites, and applications.",
-  summary: "I am a software engineer. I develop tools, websites, and applications.",
+  headline: "I am a senior software engineer. I develop tools, websites, and applications.",
+  summary: "I am a senior software engineer. I develop tools, websites, and applications.",
   nav: [
     { label: "Projects", href: "#projects" },
     { label: "Skills", href: "#skills" },
@@ -208,16 +208,14 @@ Learned to balance stakeholder urgency with long-term maintainability: naming, d
         alt: "ColorAid logo",
       },
       imageFit: "contain",
-      links: [{ label: "GitHub", href: "https://github.com/DeybLims" }],
+      links: [],
       problem:
         "Color vision differences make everyday interfaces harder to parse; users need guided assessment and adaptive rendering—not a one-size palette tweak.",
       constraints:
         "Python + Firebase + GCP stack, accessibility-first UX goals, and a small product scope that still needed a credible end-to-end story.",
       solution:
         "Implemented a vision test flow and real-time adaptive color tooling; connected services on Firebase/GCP to persist progress and support interactive adjustments with acceptable latency.",
-      metrics: `Shipped a cohesive MVP that balanced science-y UX with approachable copy and controls.
-
-Deepened intuition for inclusive design: measure, adapt, and explain—don't assume "normal" vision defaults.`,
+      metrics: "2024 college thesis. It is finished, and I do not work on it now.",
     },
     {
       title: "Paluto Reservation Website",
@@ -226,12 +224,7 @@ Deepened intuition for inclusive design: measure, adapt, and explain—don't ass
       longDescription:
         "Paluto is a reservation and ordering website that connects customers to a food business. The backend uses Python and the Google Sheets API as a lightweight data store, while the frontend is kept intentionally simple with HTML, CSS, and JavaScript so it can run reliably in low-resource environments. I built the reservation flow, admin views for managing orders, and the integration that keeps Google Sheets data in sync.",
       tags: ["Python", "Google Sheets API", "HTML", "CSS", "JavaScript"],
-      links: [
-        {
-          label: "Live",
-          href: "https://unli-paluto.render.com/unli-paluto",
-        },
-      ],
+      links: [],
       problem:
         "A small food business needed reservations without standing up a heavy database—fast to iterate, easy to operate.",
       constraints:
@@ -250,7 +243,7 @@ Sheets-as-DB is a tradeoff: great for speed, but you earn your keep with careful
       longDescription:
         "Story Creation with Gemini lets users define prompts such as setting, theme, and character details, then generates complete narratives using the Gemini API. It keeps a running conversation history so users can refine their stories over multiple interactions. The project was a way to experiment with LLM-powered UX, prompt design, and how to present AI responses in a way that feels approachable for non-technical users.",
       tags: ["Streamlit", "Python", "Gemini API"],
-      links: [{ label: "GitHub", href: "https://github.com/DeybLims" }],
+      links: [{ label: "GitHub", href: "https://github.com/DeybLims/CCS229-FinalProj" }],
       problem:
         "Non-technical users want iterative storytelling with an LLM, without feeling like they’re “prompt engineering” in a terminal.",
       constraints:
@@ -274,7 +267,7 @@ Learned prompt UX is product design—constraints, examples, and recovery paths 
         alt: "Káon app logo",
       },
       imageFit: "contain",
-      links: [{ label: "GitHub", href: "https://github.com/DeybLims" }],
+      links: [{ label: "GitHub", href: "https://github.com/DeybLims/CC206_Kaon" }],
       problem:
         "People struggle to build consistent nutrition habits when logging feels like chores and insights feel judgmental.",
       constraints:

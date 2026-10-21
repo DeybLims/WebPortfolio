@@ -71,6 +71,7 @@ export function ProjectGallery({ project, className }: { project: Project; class
             alt={shot.alt}
             width={1400}
             height={800}
+            sizes="(max-width: 860px) 100vw, 72rem"
             className={fit === "contain" ? "object-contain" : fit === "shot" ? "object-contain" : "object-cover"}
           />
         </figure>

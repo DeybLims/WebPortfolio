@@ -89,7 +89,6 @@ export function SiteFrame({
               alt="Portrait of Dave Emanuel G. Lima"
               width={240}
               height={300}
-              priority
               sizes="88px"
               className="rail-photo"
             />

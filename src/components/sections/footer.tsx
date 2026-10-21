@@ -16,7 +16,7 @@ function TerminalTrigger() {
     <button
       type="button"
       onClick={toggle}
-      className="inline-flex h-9 w-9 items-center justify-center border border-[var(--line)] text-[var(--muted)] hover:text-[var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring"
+      className="inline-flex h-11 w-11 items-center justify-center border border-[var(--line)] text-[var(--muted)] hover:text-[var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring"
       aria-label="Open developer terminal"
       title="Developer terminal (⌘K / Ctrl+K)"
     >
