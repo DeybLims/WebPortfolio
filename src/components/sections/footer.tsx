@@ -217,6 +217,12 @@ export function Footer() {
           <p className="inline-flex flex-wrap items-center gap-x-2 gap-y-1">
             © {new Date().getFullYear()} {portfolioData.name}. All rights
             reserved.
+            <a
+              href="/now"
+              className="underline decoration-[var(--line)] underline-offset-2 hover:text-[var(--ink)]"
+            >
+              Now
+            </a>
             <span className="inline-flex items-center gap-2 font-mono text-[10px]">
               <a
                 href="/resume.json"

@@ -76,6 +76,7 @@ export function CommandPalette({
         hint: "Notes",
         run: () => (pathname === "/" ? go("writing") : goHref("/blog")),
       },
+      { key: "now", label: "What I'm doing now", hint: "Now", run: () => goHref("/now") },
       ...writing.map((post) => ({
         key: `post-${post.slug}`,
         label: post.title,
