@@ -998,8 +998,7 @@ main {
   outline-offset: 3px;
 }
 
-.ide-tab:focus-visible,
-.ide-input:focus-visible {
+.ide-tab:focus-visible {
   outline: 2px solid var(--syn-keyword);
   outline-offset: 3px;
 }
@@ -1289,45 +1288,29 @@ main {
 .ide-editor-wrap {
   position: relative;
   height: 24rem;
+  overflow: hidden;
   border-bottom: 1px solid var(--code-line);
   background: var(--code-bg);
 }
 
-.ide-highlight,
-.ide-input {
-  box-sizing: border-box;
-  position: absolute;
-  inset: 0;
-  width: 100%;
+.ide-cm,
+.ide-editor-loading {
   height: 100%;
-  margin: 0;
-  padding: 1rem 1.05rem 1.25rem;
-  overflow: auto;
-  border: 0;
-  background: transparent;
+}
+
+.ide-editor-loading {
+  display: grid;
+  place-items: center;
+  color: var(--code-dim);
   font-family: var(--font-mono);
-  font-size: 13px;
-  line-height: 1.55;
-  tab-size: 2;
-  white-space: pre;
+  font-size: 0.75rem;
+  letter-spacing: 0;
 }
 
-.ide-highlight {
-  pointer-events: none;
-  color: var(--code-fg);
-}
-
-.ide-input {
-  z-index: 1;
-  display: block;
-  resize: none;
-  color: transparent;
-  caret-color: var(--code-fg);
-}
-
-.ide-input::selection {
-  background: color-mix(in oklab, var(--syn-keyword) 35%, transparent);
-  color: transparent;
+@media (prefers-reduced-motion: reduce) {
+  .cm-editor .cm-cursorLayer {
+    animation: none !important;
+  }
 }
 
 .ide-console {

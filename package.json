@@ -10,7 +10,13 @@
     "resume": "esbuild scripts/build-resume.tsx --bundle --platform=node --format=esm --outfile=scripts/.resume-build.mjs --external:@react-pdf/renderer --external:react --external:react/jsx-runtime && node scripts/.resume-build.mjs"
   },
   "dependencies": {
+    "@codemirror/commands": "^6.11.1",
+    "@codemirror/lang-javascript": "^6.2.5",
+    "@codemirror/language": "^6.13.1",
+    "@codemirror/state": "^6.7.6",
+    "@codemirror/view": "^6.43.15",
     "@heyputer/puter.js": "^2.6.0",
+    "@lezer/highlight": "^1.2.5",
     "@supabase/ssr": "^0.12.7",
     "@supabase/supabase-js": "^2.118.0",
     "framer-motion": "^12.38.0",
