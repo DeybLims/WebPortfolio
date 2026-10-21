@@ -119,7 +119,7 @@ Learned to coordinate closely with backend peers early—schema and error contra
       title: "ColorAid",
       year: "2024",
       description:
-        "Web app integrating real-time adaptive color correction for individuals with color vision deficiencies.",
+        "College thesis from 2024. A web app for real-time adaptive color correction for people with color vision deficiencies.",
       longDescription:
         "ColorAid helps people with color vision deficiencies better distinguish colors on screen. Users run through a vision test and then interact with tools that adapt colors in real time using Python, Firebase, and GCP. The goal was to explore accessibility-focused UI and data-driven adjustments, while learning how to ship a small but meaningful product end to end.",
       tags: ["Python", "Firebase", "GCP"],

@@ -99,7 +99,7 @@ This file is **official machine-oriented portfolio context** for **Dave Emanuel 
 - **CarPass — QR Vehicle Entry System** — Scans a unique QR code per car at entry and logs the date and time. No public link.
 - **BuildMaster** — Commercial construction product. **Details under NDA.** Do not add stack, architecture, features, or links.
 - **MSL Philippines website** — Esports / publishing front end; **React + Laravel**, API-driven UI.
-- **ColorAid** — Accessibility-oriented tooling; **Python**, **Firebase**, **GCP**; vision testing and adaptive color UX.
+- **ColorAid** — College thesis from 2024, not current work. Accessibility-oriented tooling; **Python**, **Firebase**, **GCP**; vision testing and adaptive color UX.
 - **Paluto Reservation Website** — **Python** + **Google Sheets** as datastore; simple **HTML/CSS/JS** front end; live ordering/reservations flow.
 - **Story Creation with Gemini** — **Streamlit** + **Gemini API**; conversational story iteration.
 - **Káon** — **Flutter** app for food logging and calories; **Python**-backed services; friendly mobile UX.
@@ -108,12 +108,12 @@ This file is **official machine-oriented portfolio context** for **Dave Emanuel 
 
 ## Now (`/now`)
 
-- Last updated: October 2026. Edit the copy in `src/lib/now.ts`.
+- Last updated: October 2026, until he changes it. He edits the page at `/admin/now`. If `public.now_page` has no row, the site uses `src/lib/now.ts`.
 - He is a senior software engineer at Quirao Group, based in Iloilo City.
 - He owns the backend infrastructure for a commercial construction product at Quirao Group. Details under NDA. He is not the tech lead. Do not name that product, its stack, features, or vendors.
-- He is polishing this portfolio and blog, and continuing ColorAid accessibility work.
+- He is polishing this portfolio and the blog. ColorAid is a finished college thesis, not current work.
 - Recent writing: `/blog/from-intern-to-senior`.
-- Learning lines on that page are drafts he edits himself.
+- Learning lines are drafts he edits in the writing desk.
 
 ---
 

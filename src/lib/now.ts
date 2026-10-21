@@ -1,4 +1,7 @@
-/** What Dave is doing now. Edit this file; `/now` reads it and nothing else. */
+/**
+ * Defaults for /now. The writing desk (/admin/now) can replace this from Supabase.
+ * If public.now_page has no row, or Supabase is not configured, the site uses this file.
+ */
 
 export const nowUpdated = {
   label: "October 2026",
@@ -29,7 +32,7 @@ export const nowEntries: NowEntry[] = [
     id: "building",
     label: "Building",
     paragraphs: [
-      "I'm polishing this portfolio and the blog, and continuing ColorAid, the accessibility work around color vision.",
+      "I'm polishing this portfolio and the blog.",
     ],
   },
   {
@@ -53,3 +56,17 @@ export const nowEntries: NowEntry[] = [
     paragraphs: ["I'm based in Iloilo City."],
   },
 ];
+
+export type NowPageContent = {
+  updatedLabel: string;
+  updatedDate: string;
+  intro: string;
+  sections: NowEntry[];
+};
+
+export const defaultNowPage: NowPageContent = {
+  updatedLabel: nowUpdated.label,
+  updatedDate: nowUpdated.dateTime,
+  intro: nowIntro,
+  sections: nowEntries,
+};

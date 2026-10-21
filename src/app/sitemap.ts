@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { listPublishedPosts } from "@/lib/blog";
-import { nowUpdated } from "@/lib/now";
+import { getNowPage } from "@/lib/now-content";
 import { portfolioData } from "@/lib/portfolio-data";
 import { siteUrl } from "@/lib/site";
 import { workSlug } from "@/lib/work-anchor";
@@ -10,13 +10,14 @@ export const revalidate = 60;
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const origin = siteUrl();
   const posts = await listPublishedPosts();
+  const now = await getNowPage();
 
   const pages: MetadataRoute.Sitemap = [
     { url: origin, changeFrequency: "weekly", priority: 1 },
     { url: `${origin}/blog`, changeFrequency: "daily", priority: 0.8 },
     {
       url: `${origin}/now`,
-      lastModified: nowUpdated.dateTime,
+      lastModified: now.updatedDate,
       changeFrequency: "monthly",
       priority: 0.7,
     },

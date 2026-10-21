@@ -2,14 +2,14 @@
 
 import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
-import { nowEntries } from "@/lib/now";
+import type { NowEntry } from "@/lib/now";
 
-export function NowBoard() {
+export function NowBoard({ entries }: { entries: NowEntry[] }) {
   const reduce = useReducedMotion();
 
   return (
     <ol className="now-list">
-      {nowEntries.map((entry, index) => (
+      {entries.map((entry, index) => (
         <motion.li
           key={entry.id}
           className="now-row"

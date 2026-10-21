@@ -1,6 +1,6 @@
 import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
-export function createPublicClient(): SupabaseClient | null {
+export function createPublicClient(tag = "blog"): SupabaseClient | null {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY;
   if (!url || !key) return null;
@@ -11,7 +11,7 @@ export function createPublicClient(): SupabaseClient | null {
       fetch: (input, init) =>
         fetch(input, {
           ...init,
-          next: { revalidate: 60, tags: ["blog"] },
+          next: { revalidate: 60, tags: [tag] },
         }),
     },
   });
