@@ -5,13 +5,6 @@
  * CarPass — TODO(Dave): add a result you can verify. Do not publish owner
  * names, plate numbers, emails, or QR images. Do not invent scan counts.
  *
- * TenantHub — TODO(Dave): replace this with a result you want public. The
- * September 2026 dashboard displays utility charges ₱454, tenant collections
- * ₱454, outstanding balance ₱2,700, net income ₱900, collection ₱1,354,
- * apartment occupancy 6/6, and commercial occupancy 2/2. Those figures are on
- * the screen. Do not publish them as your impact unless you confirm they are
- * real outcomes.
- *
  * BuildMaster — TODO(Dave): leave this under NDA. Do not add metrics, stack,
  * features, or text from the store listings.
  *

@@ -61,32 +61,14 @@ export const portfolioData: PortfolioData = {
     },
     {
       title: "TenantHub",
-      year: "2026",
-      description:
-        "Rental dashboard with tenants, billing, and expenses. The public site shows a month view for utility charges, collections, outstanding balance, net income, and occupancy.",
+      description: "A rental and tenant management dashboard built for a private client.",
       tags: [],
-      links: [{ label: "Visit", href: "https://tenant-hub-two.vercel.app/" }],
-      image: {
-        src: "/images/projects/tenanthub-desktop.jpg",
-        alt: "TenantHub rental dashboard for September 2026 on a desktop browser",
-      },
-      images: [
-        {
-          src: "/images/projects/tenanthub-desktop.jpg",
-          alt: "TenantHub rental dashboard for September 2026 on a desktop browser",
-        },
-        {
-          src: "/images/projects/tenanthub-mobile.jpg",
-          alt: "TenantHub rental dashboard on a phone",
-        },
-      ],
-      imageFit: "shot",
-      problem:
-        "The public site is a rental dashboard. It is organized around tenants, billing, and expenses for a selected month.",
+      links: [],
+      problem: "A private client needed a dashboard for rentals and tenants.",
       constraints: "",
       solution:
-        "I built TenantHub as a freelance project. The live dashboard shows utility charges, tenant collections, outstanding balance, net income, operating expenses for electricity and water, and occupancy for apartment and commercial units.",
-      metrics: "The dashboard is live, with a month view for billing, expenses, and occupancy.",
+        "I built TenantHub as a freelance project: a rental and tenant management dashboard. The work stays private.",
+      metrics: "",
     },
     {
       title: "PinPoint — Smart Attendance Platform",
