@@ -96,7 +96,7 @@ export function SiteFrame({
             <figcaption className="rail-caption">Dave Emanuel G. Lima</figcaption>
           </figure>
           <div className="min-w-0">
-            <a href="#top" className="rail-name">
+            <a href={pathname === "/" ? "#top" : "/"} className="rail-name">
               Dave Lima
             </a>
             <p className="rail-loc">{portfolioData.location}</p>
@@ -128,6 +128,10 @@ export function SiteFrame({
             <span className="rail-mark" aria-hidden="true" />
             Writing
           </Link>
+          <Link href="/now" className="rail-link" aria-current={pathname === "/now" ? "page" : undefined}>
+            <span className="rail-mark" aria-hidden="true" />
+            Now
+          </Link>
           {writing.length > 0 ? (
             <ul className="rail-notes">
               {writing.map((post) => (
@@ -142,6 +146,9 @@ export function SiteFrame({
         </nav>
 
         <div className="rail-tools">
+          <Link href="/now" className="rail-now">
+            Now
+          </Link>
           <button type="button" className="jump-button" onClick={() => setPalette(true)}>
             Jump
             <kbd>/</kbd>
