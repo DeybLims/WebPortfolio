@@ -82,7 +82,7 @@ This file is **official machine-oriented portfolio context** for **Dave Emanuel 
 
 - Iloilo, Philippines. No public dates beyond the contract work itself.
 - Designed, built, and delivered three production systems for clients, from requirements through deployment and handoff.
-- **TenantHub:** rental dashboard at https://tenant-hub-two.vercel.app/. The public site shows tenants, billing, expenses, utility charges, collections, and occupancy for apartment and commercial units.
+- **TenantHub:** a rental and tenant management dashboard built for a private client. Do not link to it or describe billing figures, tenant names, or a public URL.
 - **PinPoint — Geofenced Attendance System:** students can sign in only when physically inside the classroom. Remote check-ins are blocked. Timestamped attendance logs.
 - **CarPass — QR Vehicle Entry System:** Freelance: built a QR vehicle-entry system for a student team's thesis. Each car has a unique QR code, and a scan logs the date and time. The public page is a sign-in screen: https://other-projects-qr-carpass-frontend.62.146.237.193.nip.io/dashboard
 
@@ -99,7 +99,7 @@ This file is **official machine-oriented portfolio context** for **Dave Emanuel 
 
 - **PinPoint — Smart Attendance Platform** — Laravel + React; **geofenced** attendance, role-based panels, server-side rules, REST APIs (thesis-grade / production-minded).
 - **ERPNext (internal)** — Deep **Frappe/ERPNext** customization for approvals, inventory, finance-adjacent flows, and reporting.
-- **TenantHub** — Freelance rental dashboard. https://tenant-hub-two.vercel.app/. Tenants, billing, expenses, and occupancy. Describe only what that site shows.
+- **TenantHub** — A rental and tenant management dashboard built for a private client. No public link.
 - **CarPass — QR Vehicle Entry System** — Freelance: built a QR vehicle-entry system for a student team's thesis. Public page is a sign-in screen. Do not publish owner names, plate numbers, emails, or QR images from the signed-in screens.
 - **BuildMaster** — Commercial construction product. **Details under NDA.** Do not add stack, architecture, or features. Do not quote the store listings. The only links are the App Store and Google Play URLs in the work-experience section.
 - **MSL Philippines website** — https://msl2026.moontonslph.org/. React on a Laravel backend. The live site presents the official student leader body of Mobile Legends: Bang Bang in the Philippines.
