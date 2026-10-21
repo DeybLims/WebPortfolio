@@ -167,19 +167,20 @@
     {
       "name": "Paluto Reservation Website",
       "description": "Reservations and ordering with Python backend and Google Sheets API; HTML/CSS/JS frontend.",
-      "keywords": ["Python", "Google Sheets API", "JavaScript"],
-      "url": "https://unli-paluto.render.com/unli-paluto"
+      "keywords": ["Python", "Google Sheets API", "JavaScript"]
     },
     {
       "name": "Story Creation with Gemini",
       "description": "Streamlit app using Gemini API with conversation history for iterative story generation.",
       "keywords": ["Streamlit", "Python", "Gemini API"],
+      "url": "https://github.com/DeybLims/CCS229-FinalProj",
       "startDate": "2023-01-01"
     },
     {
       "name": "Káon",
       "description": "Flutter mobile app for meal logging, calories, and nutrition trends with Python-backed services.",
       "keywords": ["Dart", "Flutter", "Python"],
+      "url": "https://github.com/DeybLims/CC206_Kaon",
       "startDate": "2023-01-01"
     }
   ]

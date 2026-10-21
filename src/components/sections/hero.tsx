@@ -12,9 +12,7 @@ export function Hero() {
         <p className="masthead-kicker">
           <span>{portfolioData.location}</span>
           <span className="masthead-dot" aria-hidden="true" />
-          <span>
-            {role.role}, {role.company}
-          </span>
+          <span>Senior Software Engineer, {role.company}</span>
         </p>
         <h1 id="top-title" tabIndex={-1} className="type-display">
           <KineticText text={portfolioData.name} mode="load" />
@@ -29,9 +27,8 @@ export function Hero() {
           </Magnetic>
           <Magnetic>
             <a
-              href="https://drive.google.com/file/d/1ddasoyRpPdOBtGby4caY9QVizrnQi1sb/view?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
+              href={portfolioData.contact.resumePdfPath ?? "/Dave_Lima_Resume.pdf"}
+              download="Dave_Lima_Resume.pdf"
               className="text-link"
             >
               Resume
@@ -43,6 +40,14 @@ export function Hero() {
             </a>
           </Magnetic>
         </div>
+        <p className="masthead-demos">
+          <a href="#architecture" className="text-link">
+            Try the interactive demos
+          </a>
+          <a href="#live-ide" className="text-link">
+            Code playground
+          </a>
+        </p>
       </div>
 
       <ProjectIndex />

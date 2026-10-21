@@ -217,6 +217,7 @@ function ProjectLead({
             alt={project.image.alt}
             width={1400}
             height={800}
+            sizes="(max-width: 860px) 100vw, 42rem"
             className={project.imageFit === "cover" || !project.imageFit ? "object-cover" : "object-contain"}
           />
         </div>

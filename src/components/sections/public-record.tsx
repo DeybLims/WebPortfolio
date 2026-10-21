@@ -1,8 +1,7 @@
 import { KineticText } from "@/components/motion/kinetic-text";
+import { ContributionCalendar } from "@/components/sections/contribution-calendar";
 import { getGithubActivity, type GithubActivity } from "@/lib/github";
 import { LIGHTHOUSE_LABELS, readLighthouse } from "@/lib/lighthouse";
-
-const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
 function formatCount(value: number) {
   return value.toLocaleString("en");
@@ -69,51 +68,7 @@ function Activity({ activity }: { activity: GithubActivity }) {
         </div>
       ) : null}
 
-      <div className="activity-heat">
-        <h3 className="meta">Last 52 weeks</h3>
-        <div className="heat-wrap">
-          <table className="heat-table">
-            <caption className="sr-only">{activity.heatmap.summary}</caption>
-            <thead aria-hidden="true">
-              <tr>
-                <th />
-                {activity.heatmap.months.map((month, index) => (
-                  <th key={`${month}-${index}`} scope="col">
-                    {month}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {WEEKDAYS.map((weekday, row) => (
-                <tr key={weekday}>
-                  <th scope="row" aria-hidden="true">
-                    {row % 2 === 1 ? weekday : ""}
-                  </th>
-                  {activity.heatmap.weeks.map((week, column) => {
-                    const cell = week[row];
-                    if (!cell) return <td key={`${weekday}-${column}`} className="heat-pad" aria-hidden="true" />;
-                    return (
-                      <td key={cell.date} className="heat-cell" data-level={cell.level} title={cell.label} aria-label={cell.label}>
-                        <span className="sr-only">{cell.label}</span>
-                      </td>
-                    );
-                  })}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-        <p className="heat-legend" aria-hidden="true">
-          <span>Less</span>
-          <span className="heat-cell" data-level={0} />
-          <span className="heat-cell" data-level={1} />
-          <span className="heat-cell" data-level={2} />
-          <span className="heat-cell" data-level={3} />
-          <span className="heat-cell" data-level={4} />
-          <span>More</span>
-        </p>
-      </div>
+      <ContributionCalendar heatmap={activity.heatmap} />
     </div>
   );
 }

@@ -13,7 +13,7 @@ This file is **official machine-oriented portfolio context** for **Dave Emanuel 
 
 ## Professional summary
 
-- I am a software engineer. I develop tools, websites, and applications.
+- I am a senior software engineer. I develop tools, websites, and applications.
 - I like **practical problems** and I usually work **with a team**.
 - I am **not** strictly a frontend developer. I also do **backend and integration** work in addition to **React / Next.js** interfaces.
 - I am a senior software engineer in Iloilo. I build production web and mobile systems, and I am comfortable owning APIs, product features, and database work from implementation through testing and release.

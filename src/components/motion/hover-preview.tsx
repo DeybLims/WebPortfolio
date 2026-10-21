@@ -91,6 +91,7 @@ const ProjectPreview = React.forwardRef<HTMLDivElement, { project: Project | nul
             alt=""
             width={560}
             height={320}
+            sizes="280px"
             className={project.imageFit === "contain" || project.imageFit === "shot" ? "object-contain" : "object-cover"}
           />
         </div>

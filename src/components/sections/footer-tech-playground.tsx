@@ -19,19 +19,15 @@ export function FooterTechPlayground() {
 
   return (
     <div className="mt-10">
+      <p className="playground-caption" id="playground-hint">
+        Grab and toss these around.
+      </p>
       <div
         ref={constraintsRef}
-        className="relative h-56 w-full overflow-hidden border border-[var(--line)] bg-[var(--soft)]"
+        className="playground-stage relative h-56 w-full overflow-hidden border border-[var(--line)] bg-[var(--soft)]"
         role="region"
-        aria-label="Interactive tech stack — drag the labels"
+        aria-labelledby="playground-hint"
       >
-        {/* Background hint */}
-        <p
-          className="pointer-events-none absolute inset-0 flex items-center justify-center px-6 text-center text-sm text-[var(--muted)] select-none"
-          aria-hidden="true"
-        >
-          Grab and toss these around.
-        </p>
 
         {TECH_PILLS.map((label, i) => {
           const { left, top } = SCATTER[i] ?? { left: 10 + i * 15, top: 30 };
