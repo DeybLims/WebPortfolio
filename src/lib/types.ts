@@ -11,6 +11,8 @@ export type SkillGroup = {
 export type ProjectLink = {
   label: string;
   href: string;
+  /** Renders a theme-safe store badge. The label is the accessible name. */
+  badge?: "app-store" | "google-play";
 };
 
 export type Project = {
@@ -23,17 +25,27 @@ export type Project = {
   constraints: string;
   /** Case study: what you shipped (solution) */
   solution: string;
-  /** Case study: metrics, outcomes, and lessons learned (use blank lines for multiple callouts) */
+  /** Public result. Leave empty when the only outcome is still a TODO. */
   metrics: string;
+  /**
+   * Notes for Dave. Never render these. They are placeholders for numbers
+   * he still needs to confirm.
+   */
+  metricTodos?: string[];
   tags: string[];
   links: ProjectLink[];
-  /** When true, the public site shows only a short description and an NDA note. */
+  /** When true, hide stack tags. Description stays the NDA sentence. */
   nda?: boolean;
   image?: {
     src: string;
     alt: string;
   };
-  imageFit?: "cover" | "contain";
+  /** Extra screenshots for the project page. `image` is the first, if set. */
+  images?: {
+    src: string;
+    alt: string;
+  }[];
+  imageFit?: "cover" | "contain" | "shot";
   year?: string;
 };
 
@@ -58,6 +70,7 @@ export type PortfolioData = {
   contact: {
     email: string;
     github: string;
+    linkedin: string;
     /** Public URL for resume PDF (e.g. `/Dave_Lima_Resume.pdf` in `public/`) */
     resumePdfPath?: string;
   };

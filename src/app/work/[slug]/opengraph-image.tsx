@@ -19,15 +19,13 @@ export default async function Image({ params }: { params: Promise<{ slug: string
     return shareImage(fonts, {
       kicker: "Portfolio",
       title: "Dave Emanuel G. Lima",
-      lines: ["Software engineer: tools, websites, and applications"],
+      lines: ["Senior Software Engineer in Iloilo, Philippines"],
     });
   }
 
   return shareImage(fonts, {
     kicker: project.year ?? "Case study",
     title: project.title,
-    lines: project.nda
-      ? [project.description, "Details under NDA."]
-      : [clipLine(project.description)],
+    lines: [clipLine(project.description)],
   });
 }

@@ -11,7 +11,7 @@ export function AdminShell({
 }: {
   children: ReactNode;
   signedIn?: boolean;
-  section?: "writing" | "now";
+  section?: "writing" | "now" | "messages";
 }) {
   return (
     <div className="admin-shell">
@@ -25,6 +25,9 @@ export function AdminShell({
           </Link>
           <Link href="/admin/now" aria-current={section === "now" ? "page" : undefined}>
             Now
+          </Link>
+          <Link href="/admin/messages" aria-current={section === "messages" ? "page" : undefined}>
+            Messages
           </Link>
         </nav>
         <div className="admin-bar-tools">

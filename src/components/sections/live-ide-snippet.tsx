@@ -1,11 +1,17 @@
 "use client";
 
 import * as React from "react";
+import dynamic from "next/dynamic";
 import { Play } from "lucide-react";
 import { Section } from "@/components/ui/section";
 import { cn } from "@/lib/cn";
-import { highlight, readSeries } from "@/lib/ide-highlight";
+import { readSeries } from "@/lib/ide-highlight";
 import type { SandboxResult } from "@/lib/run-sandbox";
+
+const IdeEditor = dynamic(() => import("@/components/sections/ide-editor").then((mod) => mod.IdeEditor), {
+  ssr: false,
+  loading: () => <div className="ide-editor-loading">Loading editor…</div>,
+});
 
 type Preset = {
   id: string;
@@ -65,14 +71,6 @@ series(8);
   },
 ];
 
-const KIND_CLASS = {
-  plain: "",
-  keyword: "text-syn-keyword",
-  string: "text-syn-string",
-  comment: "text-syn-comment",
-  number: "text-syn-type",
-} as const;
-
 export function LiveIDESnippetSection() {
   const [files, setFiles] = React.useState(PRESETS);
   const [active, setActive] = React.useState(0);
@@ -80,14 +78,11 @@ export function LiveIDESnippetSection() {
   const [running, setRunning] = React.useState(false);
   const [notice, setNotice] = React.useState("Ready. Edit a file, then run it in the sandbox.");
   const tabRefs = React.useRef<Array<HTMLButtonElement | null>>([]);
-  const editorRef = React.useRef<HTMLTextAreaElement>(null);
-  const highlightRef = React.useRef<HTMLPreElement>(null);
   const runToken = React.useRef(0);
 
   const file = files[active] ?? files[0];
   const output = outputs[active];
   const series = readSeries(output?.ok ? output.result : undefined);
-  const tokens = React.useMemo(() => highlight(file.code), [file.code]);
 
   function updateCode(code: string) {
     setFiles((current) => current.map((item, index) => (index === active ? { ...item, code } : item)));
@@ -100,35 +95,6 @@ export function LiveIDESnippetSection() {
     const next = (active + dir + files.length) % files.length;
     setActive(next);
     tabRefs.current[next]?.focus();
-  }
-
-  function onEditorKeyDown(event: React.KeyboardEvent<HTMLTextAreaElement>) {
-    if (event.key === "Tab") {
-      event.preventDefault();
-      const el = event.currentTarget;
-      const start = el.selectionStart;
-      const end = el.selectionEnd;
-      const next = `${file.code.slice(0, start)}  ${file.code.slice(end)}`;
-      updateCode(next);
-      requestAnimationFrame(() => {
-        const node = editorRef.current;
-        if (!node) return;
-        node.selectionStart = start + 2;
-        node.selectionEnd = start + 2;
-      });
-    }
-    if (event.key === "Enter" && (event.metaKey || event.ctrlKey)) {
-      event.preventDefault();
-      void run();
-    }
-  }
-
-  function syncScroll() {
-    const editor = editorRef.current;
-    const layer = highlightRef.current;
-    if (!editor || !layer) return;
-    layer.scrollTop = editor.scrollTop;
-    layer.scrollLeft = editor.scrollLeft;
   }
 
   async function run() {
@@ -226,31 +192,12 @@ export function LiveIDESnippetSection() {
             aria-labelledby={`ide-tab-${file.id}`}
             className="ide-editor-wrap border-code"
           >
-            <pre ref={highlightRef} className="ide-highlight" aria-hidden>
-              <code>
-                {tokens.map((token, index) => (
-                  <span key={index} className={KIND_CLASS[token.kind]}>
-                    {token.text}
-                  </span>
-                ))}
-                {"\n"}
-              </code>
-            </pre>
-            <label className="sr-only" htmlFor="ide-editor">
-              Editor, {file.name}
-            </label>
-            <textarea
-              id="ide-editor"
-              ref={editorRef}
-              className="ide-input code-input"
-              value={file.code}
-              spellCheck={false}
-              autoCapitalize="off"
-              autoCorrect="off"
-              wrap="off"
-              onChange={(event) => updateCode(event.target.value)}
-              onKeyDown={onEditorKeyDown}
-              onScroll={syncScroll}
+            <IdeEditor
+              key={file.id}
+              code={file.code}
+              filename={file.name}
+              onChange={updateCode}
+              onRun={() => void run()}
             />
           </div>
 

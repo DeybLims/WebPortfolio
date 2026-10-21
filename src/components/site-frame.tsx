@@ -161,6 +161,14 @@ export function SiteFrame({
           >
             GitHub
           </a>
+          <a
+            href={portfolioData.contact.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            className="rail-github"
+          >
+            LinkedIn
+          </a>
           <div className="rail-toggles">
             <VisionModeSwitcher />
             <ThemeToggle />

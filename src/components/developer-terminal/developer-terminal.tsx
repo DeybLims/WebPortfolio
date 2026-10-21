@@ -26,6 +26,7 @@ function parseCommand(raw: string) {
   if (line === "clear") return { cmd: "clear" as const };
   if (line === "help") return { cmd: "help" as const };
   if (line === "about") return { cmd: "about" as const };
+  if (line === "contact") return { cmd: "contact" as const };
   if (line === "skills") return { cmd: "skills" as const };
   if (line === "projects") return { cmd: "projects" as const };
   if (line === "sudo rm -rf /") return { cmd: "sudo" as const };
@@ -48,6 +49,9 @@ function runCommand(cmd: ReturnType<typeof parseCommand>): React.ReactNode {
             </li>
             <li>
               <span className="text-code-fg">about</span> — short bio
+            </li>
+            <li>
+              <span className="text-code-fg">contact</span> — email and links
             </li>
             <li>
               <span className="text-code-fg">skills</span> — tech stack by category
@@ -82,6 +86,23 @@ function runCommand(cmd: ReturnType<typeof parseCommand>): React.ReactNode {
         </p>
       );
     }
+    case "contact":
+      return (
+        <div className="text-status-ok space-y-1 text-sm">
+          <p>
+            <span className="text-code-muted">email</span>{" "}
+            <span className="text-code-fg">{portfolioData.contact.email}</span>
+          </p>
+          <p>
+            <span className="text-code-muted">github</span>{" "}
+            <span className="text-code-fg">{portfolioData.contact.github}</span>
+          </p>
+          <p>
+            <span className="text-code-muted">linkedin</span>{" "}
+            <span className="text-code-fg">{portfolioData.contact.linkedin}</span>
+          </p>
+        </div>
+      );
     case "skills":
       return (
         <div className="space-y-2 text-sm">

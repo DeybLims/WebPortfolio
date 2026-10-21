@@ -1,5 +1,12 @@
 import type { PortfolioData } from "@/lib/types";
-import { buildMasterPublic, resumeJobs, resumeSkillGroups } from "@/lib/resume-public";
+import {
+  buildMasterPublic,
+  resumeEmail,
+  resumeGitHub,
+  resumeJobs,
+  resumeLinkedIn,
+  resumeSkillGroups,
+} from "@/lib/resume-public";
 
 export const portfolioData: PortfolioData = {
   name: "Dave Emanuel G. Lima",
@@ -16,17 +23,70 @@ export const portfolioData: PortfolioData = {
   projects: [
     {
       title: "CarPass — QR Vehicle Entry System",
+      year: "2026",
       description:
-        "Vehicle entry system that scans a unique QR code per car when it enters an establishment. Logged the date and time of each scan for a clear entry history.",
-      longDescription:
-        "Vehicle entry system that scans a unique QR code per car when it enters an establishment. Logged the date and time of each scan for a clear entry history.",
+        "Freelance: built a QR vehicle-entry system for a student team's thesis. Each car gets a QR code, and a scan logs the date and time. The public site is a sign-in screen.",
       tags: [],
-      links: [],
+      links: [
+        {
+          label: "Visit",
+          href: "https://other-projects-qr-carpass-frontend.62.146.237.193.nip.io/dashboard",
+        },
+      ],
+      image: {
+        src: "/images/projects/carpass-dashboard.jpg",
+        alt: "CarPass dashboard",
+      },
+      images: [
+        {
+          src: "/images/projects/carpass-dashboard.jpg",
+          alt: "CarPass dashboard",
+        },
+        {
+          src: "/images/projects/carpass-cars.jpg",
+          alt: "CarPass list of registered cars, with personal details hidden",
+        },
+        {
+          src: "/images/projects/carpass-register.jpg",
+          alt: "Empty CarPass form to register a car",
+        },
+      ],
+      imageFit: "shot",
       problem:
-        "Vehicle entry system that scans a unique QR code per car when it enters an establishment.",
-      constraints: "Each car has a unique QR code.",
-      solution: "Logged the date and time of each scan for a clear entry history.",
-      metrics: "Logged the date and time of each scan for a clear entry history.",
+        "A student team needed a vehicle-entry system for their thesis: one QR code per car, and a log of the date and time of each scan.",
+      constraints: "",
+      solution:
+        "Freelance: I built a QR vehicle-entry system for that thesis. The signed-in app has a dashboard, a list of registered cars, and a form to register a car and generate its QR code. The public site stops at a sign-in screen.",
+      metrics: "The public page is the sign-in screen.",
+    },
+    {
+      title: "TenantHub",
+      year: "2026",
+      description:
+        "Rental dashboard with tenants, billing, and expenses. The public site shows a month view for utility charges, collections, outstanding balance, net income, and occupancy.",
+      tags: [],
+      links: [{ label: "Visit", href: "https://tenant-hub-two.vercel.app/" }],
+      image: {
+        src: "/images/projects/tenanthub-desktop.jpg",
+        alt: "TenantHub rental dashboard for September 2026 on a desktop browser",
+      },
+      images: [
+        {
+          src: "/images/projects/tenanthub-desktop.jpg",
+          alt: "TenantHub rental dashboard for September 2026 on a desktop browser",
+        },
+        {
+          src: "/images/projects/tenanthub-mobile.jpg",
+          alt: "TenantHub rental dashboard on a phone",
+        },
+      ],
+      imageFit: "shot",
+      problem:
+        "The public site is a rental dashboard. It is organized around tenants, billing, and expenses for a selected month.",
+      constraints: "",
+      solution:
+        "I built TenantHub as a freelance project. The live dashboard shows utility charges, tenant collections, outstanding balance, net income, operating expenses for electricity and water, and occupancy for apartment and commercial units.",
+      metrics: "The dashboard is live, with a month view for billing, expenses, and occupancy.",
     },
     {
       title: "PinPoint — Smart Attendance Platform",
@@ -82,10 +142,44 @@ Learned to balance stakeholder urgency with long-term maintainability: naming, d
       description: buildMasterPublic,
       longDescription: "Details under NDA.",
       tags: [],
-      links: [],
+      links: [
+        {
+          label: "App Store",
+          href: "https://apps.apple.com/us/app/buildmasterph/id6757141909",
+          badge: "app-store",
+        },
+        {
+          label: "Google Play",
+          href: "https://play.google.com/store/apps/details?id=com.buildmasterph",
+          badge: "google-play",
+        },
+      ],
       nda: true,
+      image: {
+        src: "/images/projects/buildmaster-app-store.jpg",
+        alt: "BuildMaster listing header on the App Store",
+      },
+      images: [
+        {
+          src: "/images/projects/buildmaster-app-store.jpg",
+          alt: "BuildMaster listing header on the App Store",
+        },
+        {
+          src: "/images/projects/buildmaster-play.jpg",
+          alt: "BuildMaster listing header on Google Play",
+        },
+        {
+          src: "/images/projects/buildmaster-app-store-mobile.jpg",
+          alt: "BuildMaster listing header on the App Store, phone width",
+        },
+        {
+          src: "/images/projects/buildmaster-play-mobile.jpg",
+          alt: "BuildMaster listing header on Google Play, phone width",
+        },
+      ],
+      imageFit: "shot",
       problem: "Details under NDA.",
-      constraints: "Details under NDA.",
+      constraints: "",
       solution: "Details under NDA.",
       metrics: "Details under NDA.",
     },
@@ -93,27 +187,30 @@ Learned to balance stakeholder urgency with long-term maintainability: naming, d
       title: "MSL Philippines Website",
       year: "2025",
       description:
-        "Front-end development for the official MSL Philippines website, building dynamic interfaces with React and Laravel integration.",
-      longDescription:
-        "MSL Philippines is the official website for Mobile Legends: Bang Bang esports in the Philippines. I developed and maintained dynamic user interfaces using React (JSX/TSX) within a Laravel-based backend framework. The role involved collaborating with backend developers to integrate RESTful APIs, applying responsive design principles, and implementing component-based architecture for a scalable, maintainable UI.",
+        "I built the React interfaces for the MSL Philippines site, on a Laravel backend. The live site is the official student leader body of Mobile Legends: Bang Bang in the Philippines.",
       tags: ["React", "Laravel", "TypeScript", "RESTful APIs"],
       image: {
-        src: "/images/projects/MSL.png",
-        alt: "MSL Philippines website screenshot",
+        src: "/images/projects/msl-desktop.jpg",
+        alt: "MSL Philippines homepage on a desktop browser",
       },
-      links: [
-        { label: "Website", href: "https://www.moontonslph.org" },
-        { label: "Contact", href: "#contact" },
+      images: [
+        {
+          src: "/images/projects/msl-desktop.jpg",
+          alt: "MSL Philippines homepage on a desktop browser",
+        },
+        {
+          src: "/images/projects/msl-mobile.jpg",
+          alt: "MSL Philippines homepage on a phone",
+        },
       ],
+      imageFit: "shot",
+      links: [{ label: "Visit", href: "https://msl2026.moontonslph.org/" }],
       problem:
-        "Esports publishing sites need fast, dynamic interfaces that stay maintainable as content and integrations evolve.",
-      constraints:
-        "React (TSX) inside a Laravel-backed app, REST integrations with backend collaborators, responsive UI, and component architecture suitable for ongoing iteration.",
+        "MSL Philippines needed a public site for student-gamers and campus communities, with programs, events, and news.",
+      constraints: "",
       solution:
-        "Built and maintained dynamic UI surfaces, integrated RESTful APIs with clear loading and error states, and applied component-based structure so pages could scale without turning into copy-paste sprawl.",
-      metrics: `Improved consistency and velocity on UI changes through disciplined component boundaries.
-
-Learned to coordinate closely with backend peers early—schema and error contracts save weeks of UI rework.`,
+        "I built and maintained the React interfaces on the Laravel backend, and worked with backend developers on the REST APIs. The site at msl2026.moontonslph.org presents MSL Philippines as the official student leader body of Mobile Legends: Bang Bang in the Philippines.",
+      metrics: "The site is live for students and partners.",
     },
     {
       title: "ColorAid",
@@ -215,8 +312,9 @@ Mobile performance and empty states are features—if onboarding feels brittle, 
     projects: job.projects,
   })),
   contact: {
-    email: "daveemanuel.lima@wvsu.edu.ph",
-    github: "https://github.com/DeybLims",
+    email: resumeEmail,
+    github: resumeGitHub,
+    linkedin: resumeLinkedIn,
     resumePdfPath: "/Dave_Lima_Resume.pdf",
   },
 };

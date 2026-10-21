@@ -32,24 +32,24 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://davelims.vercel.app
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Dave Emanuel G. Lima | Software Developer",
+    default: "Dave Emanuel G. Lima | Senior Software Engineer",
     template: "%s | Dave Emanuel G. Lima",
   },
   description:
-    "I am a software engineer. I develop tools, websites, and applications.",
+    "Senior Software Engineer (backend and full-stack) in Iloilo, Philippines.",
   openGraph: {
-    title: "Dave Emanuel G. Lima | Software Developer",
+    title: "Dave Emanuel G. Lima | Senior Software Engineer",
     description:
-      "I am a software engineer. I develop tools, websites, and applications.",
+      "Senior Software Engineer (backend and full-stack) in Iloilo, Philippines.",
     type: "website",
     url: "/",
     siteName: "Dave Emanuel G. Lima",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Dave Emanuel G. Lima | Software Developer",
+    title: "Dave Emanuel G. Lima | Senior Software Engineer",
     description:
-      "I am a software engineer. I develop tools, websites, and applications.",
+      "Senior Software Engineer (backend and full-stack) in Iloilo, Philippines.",
   },
 };
 

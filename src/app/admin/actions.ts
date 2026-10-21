@@ -181,6 +181,16 @@ export async function saveNowPage(
   return { ok: true };
 }
 
+export async function deleteContactMessage(formData: FormData) {
+  const { supabase, error: authError } = await requireAdmin();
+  if (!supabase || authError) return;
+
+  const id = String(formData.get("id") ?? "");
+  if (!/^[0-9a-f-]{36}$/i.test(id)) return;
+  await supabase.from("contact_messages").delete().eq("id", id);
+  redirect("/admin/messages");
+}
+
 export async function uploadCover(formData: FormData): Promise<{ url: string } | { error: string }> {
   const { supabase, error: authError } = await requireAdmin();
   if (!supabase || authError) return { error: authError ?? "Not authorized." };

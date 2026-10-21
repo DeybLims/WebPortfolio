@@ -4,20 +4,15 @@ import * as React from "react";
 import Image from "next/image";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { X } from "lucide-react";
+import Link from "next/link";
 import type { Project } from "@/lib/types";
 import { portfolioData } from "@/lib/portfolio-data";
 import { Section } from "@/components/ui/section";
 import { Pill } from "@/components/ui/pill";
-import { workAnchor } from "@/lib/work-anchor";
+import { CaseStudyBody, ProjectGallery, ProjectLinkList } from "@/components/project-links";
+import { workAnchor, workSlug } from "@/lib/work-anchor";
 import { cn } from "@/lib/cn";
 import { useProjectPreview } from "@/components/motion/hover-preview";
-
-function splitMetricsCallouts(metrics: string): string[] {
-  return metrics
-    .split(/\n\n+/)
-    .map((s) => s.trim())
-    .filter(Boolean);
-}
 
 function CaseStudySheet({
   project,
@@ -29,7 +24,6 @@ function CaseStudySheet({
   const closeRef = React.useRef<HTMLButtonElement>(null);
   const panelRef = React.useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
-  const metricBlocks = splitMetricsCallouts(project.metrics);
 
   React.useEffect(() => {
     const previous = document.activeElement as HTMLElement | null;
@@ -118,67 +112,9 @@ function CaseStudySheet({
             </ul>
           ) : null}
 
-          {project.links.length > 0 ? (
-            <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-sm">
-              {project.links.map((link) => {
-                const isInternal = link.href.startsWith("#");
-                return (
-                  <a
-                    key={`${link.href}-${link.label}`}
-                    href={link.href}
-                    target={isInternal ? undefined : "_blank"}
-                    rel={isInternal ? undefined : "noreferrer"}
-                    className="text-link"
-                    onClick={() => {
-                      if (isInternal) onClose();
-                    }}
-                  >
-                    {link.label}
-                  </a>
-                );
-              })}
-            </div>
-          ) : null}
-
-          {project.image ? (
-            <Image
-              src={project.image.src}
-              alt={project.image.alt}
-              width={1600}
-              height={900}
-              className={cn(
-                "sheet-figure",
-                project.imageFit === "contain" && "is-contain",
-              )}
-            />
-          ) : null}
-
-          <div className="sheet-grid">
-            <div>
-              <h3 className="meta">Problem</h3>
-              <p className="sheet-copy">{project.problem}</p>
-              <h3 className="meta mt-8">Constraints</h3>
-              <p className="sheet-copy">{project.constraints}</p>
-            </div>
-            <div>
-              <h3 className="meta">What I did</h3>
-              <p className="sheet-copy">{project.solution}</p>
-              {project.longDescription ? (
-                <p className="sheet-copy is-muted">{project.longDescription}</p>
-              ) : null}
-            </div>
-          </div>
-
-          <div className="sheet-outcome">
-            <h3 className="meta">What came out of it</h3>
-            <div className="mt-4 space-y-4">
-              {metricBlocks.map((block) => (
-                <p key={block} className="sheet-copy">
-                  {block}
-                </p>
-              ))}
-            </div>
-          </div>
+          <ProjectLinkList links={project.links} onInternal={onClose} />
+          <ProjectGallery project={project} />
+          <CaseStudyBody project={project} heading="h3" />
         </div>
       </motion.div>
     </motion.div>
@@ -224,20 +160,10 @@ export function ProjectsSection() {
               ) : null}
             </div>
             <div className="work-actions">
-              {project.links.map((link) => {
-                const isInternal = link.href.startsWith("#");
-                return (
-                  <a
-                    key={`${link.href}-${link.label}`}
-                    href={link.href}
-                    target={isInternal ? undefined : "_blank"}
-                    rel={isInternal ? undefined : "noreferrer"}
-                    className="text-link"
-                  >
-                    {link.label}
-                  </a>
-                );
-              })}
+              <ProjectLinkList links={project.links} className="is-inline" />
+              <Link href={`/work/${workSlug(project.title)}`} className="text-link">
+                Project page
+              </Link>
               {project.nda ? null : (
                 <button type="button" className="notes-cue" onClick={() => setSelectedProject(project)}>
                   Read notes
@@ -273,20 +199,10 @@ function ProjectLead({
         {project.nda ? <p className="work-nda">Details under NDA</p> : null}
         {project.tags.length > 0 ? <p className="work-tags">{project.tags.join(" · ")}</p> : null}
         <div className="work-actions is-lead">
-          {project.links.map((link) => {
-            const isInternal = link.href.startsWith("#");
-            return (
-              <a
-                key={`${link.href}-${link.label}`}
-                href={link.href}
-                target={isInternal ? undefined : "_blank"}
-                rel={isInternal ? undefined : "noreferrer"}
-                className="text-link"
-              >
-                {link.label}
-              </a>
-            );
-          })}
+          <ProjectLinkList links={project.links} className="is-inline" />
+          <Link href={`/work/${workSlug(project.title)}`} className="text-link">
+            Project page
+          </Link>
           {project.nda ? null : (
             <button type="button" className="notes-cue" onClick={() => onOpen(project)}>
               Read notes
@@ -295,13 +211,13 @@ function ProjectLead({
         </div>
       </div>
       {project.image ? (
-        <div className={cn("work-figure", project.imageFit === "contain" && "is-contain")}>
+        <div className={cn("work-figure", project.imageFit === "contain" && "is-contain", project.imageFit === "shot" && "is-shot")}>
           <Image
             src={project.image.src}
             alt={project.image.alt}
             width={1400}
             height={800}
-            className={project.imageFit === "contain" ? "object-contain" : "object-cover"}
+            className={project.imageFit === "cover" || !project.imageFit ? "object-cover" : "object-contain"}
           />
         </div>
       ) : null}
