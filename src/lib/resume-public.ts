@@ -33,7 +33,7 @@ export const resumeJobs: ResumeJob[] = [
       "Administered application databases, keeping data integrity, security, and availability across platforms.",
     ],
     projects: [
-      "BuildMaster — Commercial construction product. Details under NDA.",
+      "BuildMaster — A construction materials marketplace app. Technical details are under NDA.",
       "Quirao Group ERP (Frappe / ERPNext): Customized the company ERP on Frappe/ERPNext for operations, finance, and inventory across Quirao Group of Companies. Implemented DocTypes, workflows, reports, and role-based permissions to match internal processes. Supported integration, deployment, data setup, and day-to-day process improvements.",
     ],
   },
@@ -122,4 +122,5 @@ export const resumeSkillGroups: { title: string; items: string[] }[] = [
 
 export const resumeReferences = "Available upon request.";
 
-export const buildMasterPublic = "Commercial construction product. Details under NDA.";
+export const buildMasterPublic =
+  "A construction materials marketplace app for contractors, builders and homeowners in the Philippines. I own the backend infrastructure behind the mobile app. The app is live on iOS and Android, connecting buyers with verified suppliers in one place. Technical details are under NDA.";

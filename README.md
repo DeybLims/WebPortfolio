@@ -14,4 +14,4 @@ Personal site for Dave Emanuel G. Lima. Next.js, React, TypeScript, and Tailwind
 - `public/resume.json` — JSON Resume export. Update it when the portfolio data changes.
 - `public/llms.txt` — plain-text context for language models. Linked from the footer.
 
-BuildMaster is described only at a high level. The details are under NDA. Do not add a stack, architecture, features, metrics, or links for it.
+BuildMaster may be described as a construction materials marketplace app, using the approved problem, role, and result. Technical details stay under NDA. Do not add a tech stack, vendors, architecture, metrics, or a web storefront or admin. Do not quote the store listings. The only links are the App Store and Google Play badges.

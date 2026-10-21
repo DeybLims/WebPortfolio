@@ -5,8 +5,9 @@
  * CarPass — TODO(Dave): add a result you can verify. Do not publish owner
  * names, plate numbers, emails, or QR images. Do not invent scan counts.
  *
- * BuildMaster — TODO(Dave): leave this under NDA. Do not add metrics, stack,
- * features, or text from the store listings.
+ * BuildMaster — TODO(Dave): the public result is already approved. Do not add
+ * metrics, a tech stack, vendors, architecture, a web storefront, an admin,
+ * or text from the store listings.
  *
  * MSL Philippines — TODO(Dave): add your own outcome. The homepage publishes
  * organization figures of 22K+ student gamers, 150+ campus communities, 110+
