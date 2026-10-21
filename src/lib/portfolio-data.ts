@@ -122,7 +122,6 @@ Learned to balance stakeholder urgency with long-term maintainability: naming, d
       title: "BuildMaster",
       year: "2025–Present",
       description: buildMasterPublic,
-      longDescription: "Details under NDA.",
       tags: [],
       links: [
         {
@@ -136,7 +135,6 @@ Learned to balance stakeholder urgency with long-term maintainability: naming, d
           badge: "google-play",
         },
       ],
-      nda: true,
       image: {
         src: "/images/projects/buildmaster-app-store.jpg",
         alt: "BuildMaster listing header on the App Store",
@@ -160,10 +158,13 @@ Learned to balance stakeholder urgency with long-term maintainability: naming, d
         },
       ],
       imageFit: "shot",
-      problem: "Details under NDA.",
+      problem:
+        "Contractors, builders and homeowners in the Philippines usually source construction materials by calling several suppliers, comparing prices by hand and chasing deliveries.",
       constraints: "",
-      solution: "Details under NDA.",
-      metrics: "Details under NDA.",
+      solution:
+        "Senior Software Engineer. I own the backend infrastructure behind the mobile app, including the APIs, data, integrations and production reliability. I work with the tech lead, product and QA from design through release.",
+      metrics:
+        "The app is live on iOS and Android, connecting buyers with verified suppliers in one place. Technical details are under NDA.",
     },
     {
       title: "MSL Philippines Website",

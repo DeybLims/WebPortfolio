@@ -29,7 +29,7 @@ const PROCESS_STEPS = [
 
 const ACTIVE_LOG = {
   learning: ["Advanced Next.js Caching", "Rust basics"],
-  shipped: ["Refactored MSL Frontend", "BuildMaster — details under NDA"],
+  shipped: ["Refactored MSL Frontend", "BuildMaster — construction materials marketplace app; technical details under NDA"],
   evaluating: ["Supabase", "Bun"],
 } as const;
 
