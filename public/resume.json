@@ -6,10 +6,10 @@
   },
   "basics": {
     "name": "Dave Emanuel G. Lima",
-    "label": "I am a software engineer. I develop tools, websites, and applications.",
-    "email": "daveemanuel.lima@wvsu.edu.ph",
-    "url": "https://github.com/DeybLims",
-    "summary": "Software engineer with hands-on experience in full-stack web and mobile development. Builds production systems using React, TypeScript, Expo/React Native, Hono, Laravel, Python, Flutter, Firebase, and Frappe/ERPNext. Comfortable owning APIs, product features, and database work from implementation through testing and release.",
+    "label": "Senior Software Engineer",
+    "email": "davelima2@gmail.com",
+    "url": "https://davelims.vercel.app",
+    "summary": "I am a senior software engineer in Iloilo. I build production web and mobile systems, and I am comfortable owning APIs, product features, and database work from implementation through testing and release.",
     "location": {
       "city": "Iloilo City",
       "region": "Western Visayas",
@@ -20,6 +20,11 @@
         "network": "GitHub",
         "username": "DeybLims",
         "url": "https://github.com/DeybLims"
+      },
+      {
+        "network": "LinkedIn",
+        "username": "dave-emanuel-lima-a65856326",
+        "url": "https://www.linkedin.com/in/dave-emanuel-lima-a65856326"
       }
     ]
   },
@@ -56,11 +61,12 @@
       "name": "Independent / Contract",
       "position": "Freelance Web Developer",
       "location": "Iloilo, Philippines",
-      "summary": "Designed, built, and delivered two production systems for clients — from requirements through deployment and handoff.",
+      "summary": "Designed, built, and delivered three production systems for clients — from requirements through deployment and handoff.",
       "highlights": [
-        "Designed, built, and delivered two production systems for clients — from requirements through deployment and handoff.",
+        "Designed, built, and delivered three production systems for clients — from requirements through deployment and handoff.",
+        "TenantHub — Rental dashboard. The public site shows tenants, billing, expenses, utility charges, collections, and occupancy for apartment and commercial units.",
         "PinPoint — Geofenced Attendance System: Attendance system using geofencing so students can sign in only when they are physically inside the classroom. Blocked remote check-ins and stored timestamped attendance logs.",
-        "CarPass — QR Vehicle Entry System: Vehicle entry system that scans a unique QR code per car when it enters an establishment. Logged the date and time of each scan for a clear entry history."
+        "CarPass — QR Vehicle Entry System: Vehicle entry system that scans a unique QR code per car when it enters an establishment. Logged the date and time of each scan for a clear entry history. The public page is a sign-in screen."
       ]
     },
     {
@@ -82,18 +88,17 @@
       "name": "Frontend",
       "keywords": [
         "React.js (JSX/TSX)",
-        "Expo / React Native",
         "Flutter (Dart)",
         "HTML5",
         "CSS3",
         "JavaScript",
         "TypeScript",
-        "Laravel"
+        "Expo / React Native"
       ]
     },
     {
       "name": "Backend",
-      "keywords": ["Hono", "Node.js", "Python (Flask, Streamlit)", "REST APIs", "Google Cloud Functions"]
+      "keywords": ["Node.js", "Laravel", "Python (Flask, Streamlit)", "REST APIs", "Google Cloud Functions", "Hono"]
     },
     {
       "name": "Database",
@@ -122,7 +127,13 @@
   "projects": [
     {
       "name": "CarPass — QR Vehicle Entry System",
-      "description": "Vehicle entry system that scans a unique QR code per car when it enters an establishment. Logged the date and time of each scan for a clear entry history."
+      "description": "Vehicle entry system that scans a unique QR code per car when it enters an establishment. Logged the date and time of each scan for a clear entry history. The public page is a sign-in screen.",
+      "url": "https://other-projects-qr-carpass-frontend.62.146.237.193.nip.io/dashboard"
+    },
+    {
+      "name": "TenantHub",
+      "description": "Rental dashboard. The public site shows tenants, billing, expenses, utility charges, collections, and occupancy for apartment and commercial units.",
+      "url": "https://tenant-hub-two.vercel.app/"
     },
     {
       "name": "PinPoint — Smart Attendance Platform",
@@ -145,7 +156,7 @@
       "name": "MSL Philippines Website",
       "description": "Official Mobile Legends esports Philippines site; React (TSX) within Laravel, REST integrations.",
       "keywords": ["React", "Laravel", "TypeScript", "RESTful APIs"],
-      "url": "https://www.moontonslph.org",
+      "url": "https://msl2026.moontonslph.org/",
       "startDate": "2025"
     },
     {

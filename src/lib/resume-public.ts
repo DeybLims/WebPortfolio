@@ -1,13 +1,16 @@
 /** NDA-safe public résumé. The PDF and the site timeline both read this. */
 
+export const resumeEmail = "davelima2@gmail.com";
+export const resumeLinkedIn = "https://www.linkedin.com/in/dave-emanuel-lima-a65856326";
+export const resumeGitHub = "https://github.com/DeybLims";
+
 export const resumeIdentity = {
   name: "Dave Emanuel G. Lima",
-  contact:
-    "Iloilo City, Iloilo, Philippines · daveemanuel.lima@wvsu.edu.ph · github.com/DeybLims · davelims.vercel.app",
+  contact: `Iloilo City, Iloilo, Philippines · ${resumeEmail} · github.com/DeybLims · LinkedIn · davelims.vercel.app`,
 };
 
 export const resumeSummary =
-  "Software engineer with hands-on experience in full-stack web and mobile development. Builds production systems using React, TypeScript, Expo/React Native, Hono, Laravel, Python, Flutter, Firebase, and Frappe/ERPNext. Comfortable owning APIs, product features, and database work from implementation through testing and release.";
+  "I am a senior software engineer in Iloilo. I build production web and mobile systems, and I am comfortable owning APIs, product features, and database work from implementation through testing and release.";
 
 export type ResumeJob = {
   role: string;
@@ -53,11 +56,12 @@ export const resumeJobs: ResumeJob[] = [
     company: "Independent / Contract",
     location: "Iloilo, Philippines",
     bullets: [
-      "Designed, built, and delivered two production systems for clients — from requirements through deployment and handoff.",
+      "Designed, built, and delivered three production systems for clients — from requirements through deployment and handoff.",
     ],
     projects: [
+      "TenantHub — Rental dashboard. The public site shows tenants, billing, expenses, utility charges, collections, and occupancy for apartment and commercial units.",
       "PinPoint — Geofenced Attendance System: Attendance system using geofencing so students can sign in only when they are physically inside the classroom. Blocked remote check-ins and stored timestamped attendance logs.",
-      "CarPass — QR Vehicle Entry System: Vehicle entry system that scans a unique QR code per car when it enters an establishment. Logged the date and time of each scan for a clear entry history.",
+      "CarPass — QR Vehicle Entry System: Vehicle entry system that scans a unique QR code per car when it enters an establishment. Logged the date and time of each scan for a clear entry history. The public page is a sign-in screen.",
     ],
   },
   {
@@ -79,18 +83,17 @@ export const resumeSkillGroups: { title: string; items: string[] }[] = [
     title: "Frontend",
     items: [
       "React.js (JSX/TSX)",
-      "Expo / React Native",
       "Flutter (Dart)",
       "HTML5",
       "CSS3",
       "JavaScript",
       "TypeScript",
-      "Laravel",
+      "Expo / React Native",
     ],
   },
   {
     title: "Backend",
-    items: ["Hono", "Node.js", "Python (Flask, Streamlit)", "REST APIs", "Google Cloud Functions"],
+    items: ["Node.js", "Laravel", "Python (Flask, Streamlit)", "REST APIs", "Google Cloud Functions", "Hono"],
   },
   {
     title: "Database",

@@ -2,7 +2,8 @@
 
 import * as React from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Bug, Github, Mail, MapPin, Terminal } from "lucide-react";
+import { Bug, Github, Linkedin, Mail, MapPin, Terminal } from "lucide-react";
+import { ContactForm } from "@/components/sections/contact-form";
 import { portfolioData } from "@/lib/portfolio-data";
 import { useDeveloperTerminal } from "@/components/developer-terminal/developer-terminal-context";
 import { FooterTechPlayground } from "@/components/sections/footer-tech-playground";
@@ -191,7 +192,19 @@ export function Footer() {
                   GitHub
                 </a>
               </Magnetic>
+              <Magnetic>
+                <a
+                  href={portfolioData.contact.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex h-11 items-center justify-center gap-2 border border-[var(--line)] px-5 text-sm text-[var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring"
+                >
+                  <Linkedin className="h-4 w-4" aria-hidden="true" />
+                  LinkedIn
+                </a>
+              </Magnetic>
             </div>
+            <ContactForm />
           </div>
 
           <div className="md:col-span-5 md:pt-2">

@@ -3,8 +3,11 @@ import React from "react";
 import { Document, Font, Link, Page, renderToFile, StyleSheet, Text, View } from "@react-pdf/renderer";
 import type { Style } from "@react-pdf/types";
 import {
+  resumeEmail,
+  resumeGitHub,
   resumeIdentity,
   resumeJobs,
+  resumeLinkedIn,
   resumeReferences,
   resumeSkillGroups,
   resumeSummary,
@@ -166,12 +169,16 @@ function ResumeDocument() {
         <Text style={styles.name}>{resumeIdentity.name}</Text>
         <Text style={styles.contact}>
           Iloilo City, Iloilo, Philippines ·{" "}
-          <Link src="mailto:daveemanuel.lima@wvsu.edu.ph" style={styles.contactLink}>
-            daveemanuel.lima@wvsu.edu.ph
+          <Link src={`mailto:${resumeEmail}`} style={styles.contactLink}>
+            {resumeEmail}
           </Link>
           {" · "}
-          <Link src="https://github.com/DeybLims" style={styles.contactLink}>
+          <Link src={resumeGitHub} style={styles.contactLink}>
             github.com/DeybLims
+          </Link>
+          {" · "}
+          <Link src={resumeLinkedIn} style={styles.contactLink}>
+            LinkedIn
           </Link>
           {" · "}
           <Link src="https://davelims.vercel.app" style={styles.contactLink}>

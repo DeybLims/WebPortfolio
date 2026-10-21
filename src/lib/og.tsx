@@ -166,7 +166,7 @@ function OgCard({
           }}
         >
           <div style={{ display: "flex" }}>davelims.vercel.app</div>
-          <div style={{ display: "flex" }}>Software engineer</div>
+          <div style={{ display: "flex" }}>Senior software engineer</div>
         </div>
       </div>
     </div>

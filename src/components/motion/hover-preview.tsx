@@ -76,7 +76,7 @@ const ProjectPreview = React.forwardRef<HTMLDivElement, { project: Project | nul
   React.useEffect(() => setMounted(true), []);
   if (!mounted || !project) return null;
 
-  const showImage = Boolean(project.image) && !project.nda;
+  const showImage = Boolean(project.image);
 
   return createPortal(
     <div
@@ -91,7 +91,7 @@ const ProjectPreview = React.forwardRef<HTMLDivElement, { project: Project | nul
             alt=""
             width={560}
             height={320}
-            className={project.imageFit === "contain" ? "object-contain" : "object-cover"}
+            className={project.imageFit === "contain" || project.imageFit === "shot" ? "object-contain" : "object-cover"}
           />
         </div>
       ) : null}
