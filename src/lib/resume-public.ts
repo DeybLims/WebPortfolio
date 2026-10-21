@@ -61,7 +61,7 @@ export const resumeJobs: ResumeJob[] = [
     projects: [
       "TenantHub — Rental dashboard. The public site shows tenants, billing, expenses, utility charges, collections, and occupancy for apartment and commercial units.",
       "PinPoint — Geofenced Attendance System: Attendance system using geofencing so students can sign in only when they are physically inside the classroom. Blocked remote check-ins and stored timestamped attendance logs.",
-      "CarPass — QR Vehicle Entry System: Vehicle entry system that scans a unique QR code per car when it enters an establishment. Logged the date and time of each scan for a clear entry history. The public page is a sign-in screen.",
+      "CarPass — QR Vehicle Entry System: Freelance: built a QR vehicle-entry system for a student team's thesis. Each car has a unique QR code, and each scan logs the date and time. The public page is a sign-in screen.",
     ],
   },
   {

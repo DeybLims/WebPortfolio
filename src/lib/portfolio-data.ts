@@ -25,7 +25,7 @@ export const portfolioData: PortfolioData = {
       title: "CarPass — QR Vehicle Entry System",
       year: "2026",
       description:
-        "Vehicle entry system that scans a unique QR code per car when it enters an establishment and logs the date and time. The public site is a sign-in screen.",
+        "Freelance: built a QR vehicle-entry system for a student team's thesis. Each car gets a QR code, and a scan logs the date and time. The public site is a sign-in screen.",
       tags: [],
       links: [
         {
@@ -34,26 +34,30 @@ export const portfolioData: PortfolioData = {
         },
       ],
       image: {
-        src: "/images/projects/carpass-desktop.jpg",
-        alt: "QR CarPass sign-in screen on a desktop browser",
+        src: "/images/projects/carpass-dashboard.jpg",
+        alt: "CarPass dashboard",
       },
       images: [
         {
-          src: "/images/projects/carpass-desktop.jpg",
-          alt: "QR CarPass sign-in screen on a desktop browser",
+          src: "/images/projects/carpass-dashboard.jpg",
+          alt: "CarPass dashboard",
         },
         {
-          src: "/images/projects/carpass-mobile.jpg",
-          alt: "QR CarPass sign-in screen on a phone",
+          src: "/images/projects/carpass-cars.jpg",
+          alt: "CarPass list of registered cars, with personal details hidden",
+        },
+        {
+          src: "/images/projects/carpass-register.jpg",
+          alt: "Empty CarPass form to register a car",
         },
       ],
       imageFit: "shot",
       problem:
-        "An establishment needed a record of each vehicle at entry. The public site asks for an email and password before anything else is shown.",
+        "A student team needed a vehicle-entry system for their thesis: one QR code per car, and a log of the date and time of each scan.",
       constraints: "",
       solution:
-        "I built CarPass so each car has a unique QR code and each scan logs the date and time. The page that loads in public is titled QR CarPass, describes itself as secure campus vehicle access, and says it is a thesis project. The dashboard address redirects to that sign-in screen.",
-      metrics: "What is public is the sign-in screen.",
+        "Freelance: I built a QR vehicle-entry system for that thesis. The signed-in app has a dashboard, a list of registered cars, and a form to register a car and generate its QR code. The public site stops at a sign-in screen.",
+      metrics: "The public page is the sign-in screen.",
     },
     {
       title: "TenantHub",

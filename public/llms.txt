@@ -84,7 +84,7 @@ This file is **official machine-oriented portfolio context** for **Dave Emanuel 
 - Designed, built, and delivered three production systems for clients, from requirements through deployment and handoff.
 - **TenantHub:** rental dashboard at https://tenant-hub-two.vercel.app/. The public site shows tenants, billing, expenses, utility charges, collections, and occupancy for apartment and commercial units.
 - **PinPoint — Geofenced Attendance System:** students can sign in only when physically inside the classroom. Remote check-ins are blocked. Timestamped attendance logs.
-- **CarPass — QR Vehicle Entry System:** scans a unique QR code per car at entry and logs the date and time. The public page is a sign-in screen: https://other-projects-qr-carpass-frontend.62.146.237.193.nip.io/dashboard
+- **CarPass — QR Vehicle Entry System:** Freelance: built a QR vehicle-entry system for a student team's thesis. Each car has a unique QR code, and a scan logs the date and time. The public page is a sign-in screen: https://other-projects-qr-carpass-frontend.62.146.237.193.nip.io/dashboard
 
 ### MSL Philippines — Front-End Web Developer
 
@@ -100,7 +100,7 @@ This file is **official machine-oriented portfolio context** for **Dave Emanuel 
 - **PinPoint — Smart Attendance Platform** — Laravel + React; **geofenced** attendance, role-based panels, server-side rules, REST APIs (thesis-grade / production-minded).
 - **ERPNext (internal)** — Deep **Frappe/ERPNext** customization for approvals, inventory, finance-adjacent flows, and reporting.
 - **TenantHub** — Freelance rental dashboard. https://tenant-hub-two.vercel.app/. Tenants, billing, expenses, and occupancy. Describe only what that site shows.
-- **CarPass — QR Vehicle Entry System** — Scans a unique QR code per car at entry and logs the date and time. Public page is a sign-in screen titled QR CarPass. Do not describe the dashboard behind it.
+- **CarPass — QR Vehicle Entry System** — Freelance: built a QR vehicle-entry system for a student team's thesis. Public page is a sign-in screen. Do not publish owner names, plate numbers, emails, or QR images from the signed-in screens.
 - **BuildMaster** — Commercial construction product. **Details under NDA.** Do not add stack, architecture, or features. Do not quote the store listings. The only links are the App Store and Google Play URLs in the work-experience section.
 - **MSL Philippines website** — https://msl2026.moontonslph.org/. React on a Laravel backend. The live site presents the official student leader body of Mobile Legends: Bang Bang in the Philippines.
 - **ColorAid** — College thesis from 2024, not current work. Accessibility-oriented tooling; **Python**, **Firebase**, **GCP**; vision testing and adaptive color UX.

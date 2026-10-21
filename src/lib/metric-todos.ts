@@ -2,8 +2,8 @@
  * Metric placeholders for Dave. This module is not imported by any page.
  * Do not render these strings. Do not invent numbers to fill them.
  *
- * CarPass — TODO(Dave): add a result you can verify. The dashboard behind the
- * sign-in was not visible, so do not invent scan counts, sites, or uptime.
+ * CarPass — TODO(Dave): add a result you can verify. Do not publish owner
+ * names, plate numbers, emails, or QR images. Do not invent scan counts.
  *
  * TenantHub — TODO(Dave): replace this with a result you want public. The
  * September 2026 dashboard displays utility charges ₱454, tenant collections
