@@ -1,0 +1,6 @@
+---
+description: Short editing habits for every task
+alwaysApply: true
+---
+
+Be concise. Read only the files the task needs. Prefer a small edit over a rewrite. Do not reformat untouched code. Run `npm run build` before you finish.
