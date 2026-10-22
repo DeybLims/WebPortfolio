@@ -7,7 +7,6 @@ globs:
   - src/lib/metric-todos.ts
   - src/lib/now.ts
   - src/lib/now-content.ts
-  - src/components/chatbot.tsx
   - public/llms.txt
   - public/resume.json
 alwaysApply: false
@@ -15,7 +14,7 @@ alwaysApply: false
 
 BuildMaster is a mobile app. Do not add a tech stack, vendors, architecture, metrics, web storefront, or admin. Do not place WordPress, WooCommerce, Dokan, Hono, Kysely, MySQL, Expo, Meilisearch, Shipday, or Xendit next to BuildMaster or Quirao. Keep the approved problem, role, and result sentences. The résumé line stays the short NDA sentence so the PDF remains one page.
 
-TenantHub: no URL, screenshots, or billing or occupancy numbers. `links: []`. `metric-todos.ts` stays unimported.
+Do not add TenantHub back to the public site: no project, page, résumé line, or llms.txt entry. `metric-todos.ts` stays unimported and must not gain peso amounts or occupancy counts.
 
 ColorAid is a finished 2024 thesis. Do not describe it as current work. No GitHub link.
 

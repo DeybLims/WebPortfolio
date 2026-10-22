@@ -20,6 +20,15 @@ const targets = [
     hasTouch: true,
   },
   {
+    name: "360",
+    mobile: true,
+    userAgent: iphone.userAgent,
+    viewport: { width: 360, height: 740 },
+    deviceScaleFactor: 3,
+    isMobile: true,
+    hasTouch: true,
+  },
+  {
     name: "375",
     mobile: true,
     userAgent: iphone.userAgent,

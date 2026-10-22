@@ -5,7 +5,7 @@ import { workAnchor } from "@/lib/work-anchor";
 import { useProjectPreview } from "@/components/motion/hover-preview";
 
 export function ProjectIndex() {
-  const { bind, clear, preview } = useProjectPreview();
+  const { bind, clear, previewFor } = useProjectPreview();
 
   return (
     <div className="masthead-index" onPointerLeave={clear}>
@@ -30,12 +30,12 @@ export function ProjectIndex() {
                   <span className="index-desc">{project.description}</span>
                   {project.nda ? <span className="index-nda">Details under NDA</span> : null}
                 </a>
+                {previewFor(project)}
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      {preview}
     </div>
   );
 }

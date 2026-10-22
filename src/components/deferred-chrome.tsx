@@ -3,24 +3,15 @@
 import * as React from "react";
 import { useDeveloperTerminal } from "@/components/developer-terminal/developer-terminal-context";
 
-type Chrome = {
-  Terminal: React.ComponentType;
-  Chat: React.ComponentType;
-};
-
 export function DeferredChrome() {
   const { open } = useDeveloperTerminal();
-  const [chrome, setChrome] = React.useState<Chrome | null>(null);
+  const [Terminal, setTerminal] = React.useState<React.ComponentType | null>(null);
 
   React.useEffect(() => {
     let cancelled = false;
     const load = () => {
-      void Promise.all([
-        import("@/components/developer-terminal/developer-terminal"),
-        import("@/components/chatbot"),
-      ]).then(([terminal, chat]) => {
-        if (cancelled) return;
-        setChrome({ Terminal: terminal.DeveloperTerminal, Chat: chat.Chatbot });
+      void import("@/components/developer-terminal/developer-terminal").then((mod) => {
+        if (!cancelled) setTerminal(() => mod.DeveloperTerminal);
       });
     };
 
@@ -47,12 +38,6 @@ export function DeferredChrome() {
     };
   }, [open]);
 
-  if (!chrome) return null;
-  const { Terminal, Chat } = chrome;
-  return (
-    <>
-      <Terminal />
-      <Chat />
-    </>
-  );
+  if (!Terminal) return null;
+  return <Terminal />;
 }
