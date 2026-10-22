@@ -1,0 +1,16 @@
+---
+description: Mobile layout and overflow rules for UI and CSS
+globs:
+  - src/components/**/*.tsx
+  - src/app/**/*.tsx
+  - src/app/**/*.css
+alwaysApply: false
+---
+
+Give every flex and grid child `min-width: 0` (`min-w-0`). Do not set a fixed width larger than its parent.
+
+A wide piece (contribution calendar, CodeMirror, diagram SVG) needs a wrapper with `width: 100%`, `max-width: 100%`, `min-width: 0`, and `overflow-x: auto`. Add `contain: inline-size` when the child is `max-content`. Without a definite width, a 52-week grid widens the phone layout viewport and the page looks about half width.
+
+`overflow-x: clip` on `html`, `body`, and `main` is fine. Do not set overflow on `.shell`; that breaks the sticky rail.
+
+Tap targets are at least 44px. Check light and dark. Do not put `--vision-*` in `@theme` or `@property`.

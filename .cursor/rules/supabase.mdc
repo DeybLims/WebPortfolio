@@ -1,0 +1,16 @@
+---
+description: Supabase RLS and key rules for SQL and data routes
+globs:
+  - supabase/**
+  - src/lib/supabase/**
+  - src/app/**/route.ts
+  - src/app/contact-action.ts
+  - src/app/admin/**
+alwaysApply: false
+---
+
+Enable RLS on every table. Admin reads and writes use `public.is_blog_admin()`. `anon` may insert only where that is the product (`contact_messages`). It must not select private rows.
+
+The browser may use `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` only. Never put a service-role key in client code or in `NEXT_PUBLIC_*`.
+
+Do not apply migrations from the app. Dave runs SQL in the Supabase editor. Leave the Supabase project name and env vars as they are.

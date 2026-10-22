@@ -1,0 +1,16 @@
+node_modules
+.next
+out
+build
+dist
+coverage
+.vercel
+*.tsbuildinfo
+next-env.d.ts
+scripts/.resume-build.mjs
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Generated résumé PDF. Raster images over 500KB: add the path here (none today).
+public/*.pdf

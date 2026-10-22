@@ -1,0 +1,13 @@
+node_modules
+.next
+out
+build
+dist
+coverage
+.vercel
+*.tsbuildinfo
+next-env.d.ts
+scripts/.resume-build.mjs
+
+# Generated résumé PDF. Raster images over 500KB: add the path here (none today).
+public/*.pdf
