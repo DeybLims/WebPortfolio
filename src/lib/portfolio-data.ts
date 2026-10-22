@@ -60,17 +60,6 @@ export const portfolioData: PortfolioData = {
       metrics: "The public page is the sign-in screen.",
     },
     {
-      title: "TenantHub",
-      description: "A rental and tenant management dashboard built for a private client.",
-      tags: [],
-      links: [],
-      problem: "A private client needed a dashboard for rentals and tenants.",
-      constraints: "",
-      solution:
-        "I built TenantHub as a freelance project: a rental and tenant management dashboard. The work stays private.",
-      metrics: "",
-    },
-    {
       title: "PinPoint — Smart Attendance Platform",
       year: "2025",
       description:

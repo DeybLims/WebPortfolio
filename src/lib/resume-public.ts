@@ -56,10 +56,9 @@ export const resumeJobs: ResumeJob[] = [
     company: "Independent / Contract",
     location: "Iloilo, Philippines",
     bullets: [
-      "Designed, built, and delivered three production systems for clients — from requirements through deployment and handoff.",
+      "Designed, built, and delivered two production systems for clients — from requirements through deployment and handoff.",
     ],
     projects: [
-      "TenantHub — A rental and tenant management dashboard built for a private client.",
       "PinPoint — Geofenced Attendance System: Attendance system using geofencing so students can sign in only when they are physically inside the classroom. Blocked remote check-ins and stored timestamped attendance logs.",
       "CarPass — QR Vehicle Entry System: Freelance: built a QR vehicle-entry system for a student team's thesis. Each car has a unique QR code, and each scan logs the date and time. The public page is a sign-in screen.",
     ],
@@ -119,6 +118,13 @@ export const resumeSkillGroups: { title: string; items: string[] }[] = [
     ],
   },
 ];
+
+export const resumeEducation = {
+  institution: "West Visayas State University",
+  area: "Computer Science",
+  studyType: "Bachelor of Science",
+  score: "Cum Laude",
+};
 
 export const resumeReferences = "Available upon request.";
 

@@ -29,7 +29,7 @@ Build passes. At 390px, `documentElement.scrollWidth <= clientWidth` (and `inner
 ## Hard rules
 
 - BuildMaster: no tech stack, vendors, architecture, or metrics. Mobile app only — never mention a web storefront or admin. Keep the App Store and Google Play links already in the data.
-- Never link or show TenantHub. No URL, screenshots, or private numbers. The one-line freelance entry stays.
+- TenantHub is not on the public site. Do not add it to the project list, `/work`, résumé, `llms.txt`, sitemap, or nav. The admin SQL hint may still name the private Supabase project.
 - ColorAid is a finished 2024 college thesis, not current work.
 - Never commit secrets, `.env*`, or demo credentials.
 - Commits are Dave Emanuel Lima `<99727483+DeybLims@users.noreply.github.com>` only. No Co-authored-by, Cursor, or other trailers.

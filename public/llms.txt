@@ -6,6 +6,7 @@ This file is **official machine-oriented portfolio context** for **Dave Emanuel 
 - **Email:** davelima2@gmail.com
 - **GitHub:** https://github.com/DeybLims
 - **LinkedIn:** https://www.linkedin.com/in/dave-emanuel-lima-a65856326
+- **Calendly:** https://calendly.com/davelima2/30min
 - **Location:** Iloilo City, Philippines (PHT / UTC+8)
 - **Structured resume (JSON Resume schema):** `/resume.json` on the same origin as this site
 
@@ -17,6 +18,12 @@ This file is **official machine-oriented portfolio context** for **Dave Emanuel 
 - I like **practical problems** and I usually work **with a team**.
 - I am **not** strictly a frontend developer. I also do **backend and integration** work in addition to **React / Next.js** interfaces.
 - I am a senior software engineer in Iloilo. I build production web and mobile systems, and I am comfortable owning APIs, product features, and database work from implementation through testing and release.
+
+---
+
+## Education
+
+- West Visayas State University — BS Computer Science, Cum Laude.
 
 ---
 
@@ -81,8 +88,7 @@ This file is **official machine-oriented portfolio context** for **Dave Emanuel 
 ### Freelance Web Developer — Independent / Contract
 
 - Iloilo, Philippines. No public dates beyond the contract work itself.
-- Designed, built, and delivered three production systems for clients, from requirements through deployment and handoff.
-- **TenantHub:** a rental and tenant management dashboard built for a private client. Do not link to it or describe billing figures, tenant names, or a public URL.
+- Designed, built, and delivered two production systems for clients, from requirements through deployment and handoff.
 - **PinPoint — Geofenced Attendance System:** students can sign in only when physically inside the classroom. Remote check-ins are blocked. Timestamped attendance logs.
 - **CarPass — QR Vehicle Entry System:** Freelance: built a QR vehicle-entry system for a student team's thesis. Each car has a unique QR code, and a scan logs the date and time. The public page is a sign-in screen: https://other-projects-qr-carpass-frontend.62.146.237.193.nip.io/dashboard
 
@@ -99,7 +105,6 @@ This file is **official machine-oriented portfolio context** for **Dave Emanuel 
 
 - **PinPoint — Smart Attendance Platform** — Laravel + React; **geofenced** attendance, role-based panels, server-side rules, REST APIs (thesis-grade / production-minded).
 - **ERPNext (internal)** — Deep **Frappe/ERPNext** customization for approvals, inventory, finance-adjacent flows, and reporting.
-- **TenantHub** — A rental and tenant management dashboard built for a private client. No public link.
 - **CarPass — QR Vehicle Entry System** — Freelance: built a QR vehicle-entry system for a student team's thesis. Public page is a sign-in screen. Do not publish owner names, plate numbers, emails, or QR images from the signed-in screens.
 - **BuildMaster** — A construction materials marketplace app for contractors, builders and homeowners in the Philippines. He owns the backend infrastructure behind the mobile app. The app is live on iOS and Android, connecting buyers with verified suppliers in one place. Technical details are under NDA. Do not add a tech stack, vendors, architecture, metrics, or a web storefront or admin. Do not quote the store listings. The only links are the App Store and Google Play URLs in the work-experience section.
 - **MSL Philippines website** — https://msl2026.moontonslph.org/. React on a Laravel backend. The live site presents the official student leader body of Mobile Legends: Bang Bang in the Philippines.

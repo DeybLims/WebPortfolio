@@ -54,3 +54,17 @@ export function ExperienceSection() {
     </Section>
   );
 }
+
+export function EducationSection() {
+  return (
+    <Section
+      id="education"
+      className="education-section"
+      eyebrow="Education"
+      title="West Visayas State University"
+      description="BS Computer Science, Cum Laude"
+    >
+      {null}
+    </Section>
+  );
+}

@@ -8,6 +8,7 @@ import {
   resumeIdentity,
   resumeJobs,
   resumeLinkedIn,
+  resumeEducation,
   resumeReferences,
   resumeSkillGroups,
   resumeSummary,
@@ -28,8 +29,8 @@ const line = "#d9d3c7";
 
 const styles = StyleSheet.create({
   page: {
-    paddingTop: 32,
-    paddingBottom: 28,
+    paddingTop: 30,
+    paddingBottom: 24,
     paddingHorizontal: 44,
     fontFamily: "Source Sans 3",
     fontSize: 9.5,
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
     borderBottomColor: line,
   },
   section: {
-    marginTop: 6,
+    marginTop: 4,
   },
   sectionLabel: {
     fontFamily: "IBM Plex Mono",
@@ -73,7 +74,7 @@ const styles = StyleSheet.create({
     lineHeight: 1.3,
   },
   job: {
-    marginBottom: 6,
+    marginBottom: 5,
   },
   roleRow: {
     flexDirection: "row",
@@ -189,6 +190,13 @@ function ResumeDocument() {
 
         <Text style={styles.sectionLabel}>SUMMARY</Text>
         <Text style={styles.summary}>{resumeSummary}</Text>
+
+        <View style={styles.section}>
+          <Text style={styles.sectionLabel}>EDUCATION</Text>
+          <Text>
+            {resumeEducation.institution} — BS {resumeEducation.area}, {resumeEducation.score}
+          </Text>
+        </View>
 
         <View style={styles.section}>
           <Text style={styles.sectionLabel}>WORK EXPERIENCE</Text>

@@ -67,6 +67,7 @@ export function CommandPalette({
       { key: "architecture", label: "System architecture", hint: "Simulation", run: () => go("architecture") },
       { key: "live-ide", label: "Live IDE snippet", hint: "Run", run: () => go("live-ide") },
       { key: "experience", label: "Where I have worked", hint: "Experience", run: () => go("experience") },
+      { key: "education", label: "West Visayas State University", hint: "Education", run: () => go("education") },
       { key: "how-i-work", label: "A short operating manual", hint: "Process", run: () => go("how-i-work") },
       { key: "recruiter-faq", label: "Quick answers", hint: "Recruiters", run: () => go("recruiter-faq") },
       { key: "contact", label: "Contact", hint: "Email", run: () => go("contact") },

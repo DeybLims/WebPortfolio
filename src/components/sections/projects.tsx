@@ -125,7 +125,7 @@ export function ProjectsSection() {
   const [selectedProject, setSelectedProject] = React.useState<Project | null>(null);
   const closeModal = React.useCallback(() => setSelectedProject(null), []);
   const [lead, ...rest] = portfolioData.projects;
-  const { bind, clear, preview } = useProjectPreview();
+  const { bind, clear, previewFor } = useProjectPreview();
 
   React.useEffect(() => {
     if (!selectedProject) return undefined;
@@ -144,7 +144,13 @@ export function ProjectsSection() {
       description="A short note on each project. I open the longer write-up only when I can share it."
     >
       {lead ? (
-        <ProjectLead project={lead} onOpen={setSelectedProject} {...bind(lead)} onPointerLeave={clear} />
+        <ProjectLead
+          project={lead}
+          onOpen={setSelectedProject}
+          preview={previewFor(lead)}
+          {...bind(lead)}
+          onPointerLeave={clear}
+        />
       ) : null}
 
       <ol className="work-index" onPointerLeave={clear}>
@@ -158,6 +164,7 @@ export function ProjectsSection() {
               {project.tags.length > 0 ? (
                 <p className="work-tags">{project.tags.join(" · ")}</p>
               ) : null}
+              {previewFor(project)}
             </div>
             <div className="work-actions">
               <ProjectLinkList links={project.links} className="is-inline" />
@@ -177,7 +184,6 @@ export function ProjectsSection() {
       <AnimatePresence>
         {selectedProject ? <CaseStudySheet project={selectedProject} onClose={closeModal} /> : null}
       </AnimatePresence>
-      {preview}
     </Section>
   );
 }
@@ -185,10 +191,12 @@ export function ProjectsSection() {
 function ProjectLead({
   project,
   onOpen,
+  preview,
   ...pointer
 }: {
   project: Project;
   onOpen: (project: Project) => void;
+  preview?: React.ReactNode;
 } & React.HTMLAttributes<HTMLElement>) {
   return (
     <article id={workAnchor(project.title)} className="work-lead" {...pointer}>
@@ -198,6 +206,7 @@ function ProjectLead({
         <p className="work-desc is-lead">{project.description}</p>
         {project.nda ? <p className="work-nda">Details under NDA</p> : null}
         {project.tags.length > 0 ? <p className="work-tags">{project.tags.join(" · ")}</p> : null}
+        {preview}
         <div className="work-actions is-lead">
           <ProjectLinkList links={project.links} className="is-inline" />
           <Link href={`/work/${workSlug(project.title)}`} className="text-link">

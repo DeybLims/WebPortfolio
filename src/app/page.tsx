@@ -7,7 +7,7 @@ import { SkillsSection } from "@/components/sections/skills";
 import { PublicRecordSection } from "@/components/sections/public-record";
 import { DeferredDemos } from "@/components/sections/deferred-demos";
 import { ProjectsSection } from "@/components/sections/projects";
-import { ExperienceSection } from "@/components/sections/experience";
+import { EducationSection, ExperienceSection } from "@/components/sections/experience";
 import { OperatingManualSection } from "@/components/sections/operating-manual";
 import { RecruiterFAQSection } from "@/components/sections/recruiter-faq";
 import { Footer } from "@/components/sections/footer";
@@ -28,6 +28,7 @@ export default async function Home() {
       <PublicRecordSection />
       <DeferredDemos />
       <ExperienceSection />
+      <EducationSection />
       <div className="note-spread">
         <OperatingManualSection />
         <RecruiterFAQSection />

@@ -9,6 +9,7 @@ import { useDeveloperTerminal } from "@/components/developer-terminal/developer-
 import { FooterTechPlayground } from "@/components/sections/footer-tech-playground";
 import { KineticText } from "@/components/motion/kinetic-text";
 import { Magnetic } from "@/components/motion/magnetic";
+import { calendlyUrl } from "@/lib/calendly";
 
 function TerminalTrigger() {
   const { toggle } = useDeveloperTerminal();
@@ -179,6 +180,16 @@ export function Footer() {
                 >
                   <Mail className="h-4 w-4" aria-hidden="true" />
                   Email
+                </a>
+              </Magnetic>
+              <Magnetic>
+                <a
+                  href={calendlyUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex h-11 items-center justify-center gap-2 border border-[var(--line)] px-5 text-sm text-[var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring"
+                >
+                  Book a call
                 </a>
               </Magnetic>
               <Magnetic>

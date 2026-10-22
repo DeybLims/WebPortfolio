@@ -4,6 +4,7 @@ import * as React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Minus, Plus } from "lucide-react";
 import { portfolioData } from "@/lib/portfolio-data";
+import { calendlyUrl } from "@/lib/calendly";
 import { Section } from "@/components/ui/section";
 
 const FAQ_ITEMS = [
@@ -93,13 +94,23 @@ export function RecruiterFAQSection() {
         <p className="mt-3 max-w-xl text-base leading-7 text-[var(--muted)]">
           I take remote full-time roles and contract work. I build web and mobile software.
         </p>
-        <a
-          href={mailto}
-          className="mt-6 inline-flex min-h-11 items-center gap-2 bg-[var(--ink)] px-4 text-sm text-[var(--paper)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--paper)]"
-        >
-          Email me
-          <ArrowRight className="h-4 w-4" aria-hidden />
-        </a>
+        <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <a
+            href={mailto}
+            className="inline-flex min-h-11 items-center gap-2 bg-[var(--ink)] px-4 text-sm text-[var(--paper)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--paper)]"
+          >
+            Email me
+            <ArrowRight className="h-4 w-4" aria-hidden />
+          </a>
+          <a
+            href={calendlyUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex min-h-11 items-center border border-[var(--line)] px-4 text-sm text-[var(--ink)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-vision-ring"
+          >
+            Book a call
+          </a>
+        </div>
       </div>
     </Section>
   );
