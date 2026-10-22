@@ -131,6 +131,37 @@ export function dayLabel(date: string, count: number) {
   return `${count} contributions on ${formatted}.`;
 }
 
+function shortMonth(iso: string) {
+  return new Intl.DateTimeFormat("en", { month: "short", timeZone: "UTC" }).format(new Date(utcDay(iso)));
+}
+
+/** Label sits on the week that contains the 1st. The opening month uses week 0 when its 1st is off the grid. */
+function monthLabels(grid: (HeatCell | null)[][]) {
+  const months = Array.from({ length: grid.length }, () => "");
+  const days: { date: string; weekIndex: number }[] = [];
+  grid.forEach((week, weekIndex) => {
+    for (const cell of week) {
+      if (cell) days.push({ date: cell.date, weekIndex });
+    }
+  });
+  if (!days.length) return months;
+
+  let cursor = utcDay(`${days[0].date.slice(0, 7)}-01`);
+  const end = utcDay(`${days[days.length - 1].date.slice(0, 7)}-01`);
+  while (cursor <= end) {
+    const key = isoDate(cursor).slice(0, 7);
+    const firstOfMonth = days.find((day) => day.date === `${key}-01`);
+    const firstVisible = days.find((day) => day.date.startsWith(key));
+    const anchor = firstOfMonth ?? firstVisible;
+    if (anchor && (!months[anchor.weekIndex] || firstOfMonth)) {
+      months[anchor.weekIndex] = shortMonth(`${key}-01`);
+    }
+    const date = new Date(cursor);
+    cursor = Date.UTC(date.getUTCFullYear(), date.getUTCMonth() + 1, 1);
+  }
+  return months;
+}
+
 function levelFor(count: number, thresholds: [number, number, number]) {
   if (count <= 0) return 0 as const;
   if (count <= thresholds[0]) return 1 as const;
@@ -149,8 +180,6 @@ export function heatmapWeeks(
   const pick = (ratio: number) => sorted[Math.min(sorted.length - 1, Math.floor(ratio * sorted.length))] ?? 0;
   const thresholds: [number, number, number] = sorted.length ? [pick(0.25), pick(0.5), pick(0.75)] : [0, 0, 0];
 
-  let previousMonth = "";
-  const months: string[] = [];
   const grid: (HeatCell | null)[][] = selected.map((week) => {
     const cells: (HeatCell | null)[] = [null, null, null, null, null, null, null];
     for (const day of week.contributionDays) {
@@ -161,18 +190,9 @@ export function heatmapWeeks(
         label: dayLabel(day.date, day.count),
       };
     }
-    const first = cells.find((cell) => cell);
-    const month = first ? first.date.slice(0, 7) : "";
-    if (first && month !== previousMonth) {
-      previousMonth = month;
-      months.push(
-        new Intl.DateTimeFormat("en", { month: "short", timeZone: "UTC" }).format(new Date(utcDay(first.date))),
-      );
-    } else {
-      months.push("");
-    }
     return cells;
   });
+  const months = monthLabels(grid);
 
   const visible = grid.flatMap((week) => week.filter((cell): cell is HeatCell => Boolean(cell)));
   const total = visible.reduce((sum, cell) => sum + cell.count, 0);

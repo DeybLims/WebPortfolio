@@ -12,20 +12,25 @@ export type ContributionHeatmap = {
 
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-function monthSpans(months: string[]) {
-  const spans: { label: string; span: number }[] = [];
-  for (const label of months) {
-    const last = spans[spans.length - 1];
-    if (label || !last) spans.push({ label, span: 1 });
-    else last.span += 1;
+function monthGroups(months: string[]) {
+  const groups: { label: string; start: number; span: number }[] = [];
+  months.forEach((label, index) => {
+    if (label) groups.push({ label, start: index, span: 1 });
+  });
+  for (let index = 0; index < groups.length; index += 1) {
+    const next = groups[index + 1]?.start ?? months.length;
+    groups[index].span = next - groups[index].start;
   }
-  return spans;
+  return groups;
 }
 
 export function ContributionCalendar({ heatmap }: { heatmap: ContributionHeatmap }) {
   const ref = React.useRef<HTMLDivElement>(null);
+  const monthsRef = React.useRef<HTMLDivElement>(null);
   const [show, setShow] = React.useState(false);
+  const [fit, setFit] = React.useState<Record<number, boolean>>({});
   const weeks = heatmap.weeks.length;
+  const groups = monthGroups(heatmap.months);
 
   React.useEffect(() => {
     const node = ref.current;
@@ -43,6 +48,50 @@ export function ContributionCalendar({ heatmap }: { heatmap: ContributionHeatmap
     return () => observer.disconnect();
   }, []);
 
+  React.useLayoutEffect(() => {
+    if (!show) return undefined;
+    const row = monthsRef.current;
+    if (!row) return undefined;
+    let active = true;
+
+    const measure = () => {
+      if (!active) return;
+      const probe = document.createElement("span");
+      probe.className = "heat-month-label";
+      probe.style.position = "fixed";
+      probe.style.left = "0";
+      probe.style.top = "0";
+      probe.style.visibility = "hidden";
+      probe.style.whiteSpace = "nowrap";
+      document.body.appendChild(probe);
+      const next: Record<number, boolean> = {};
+      for (const cell of row.querySelectorAll<HTMLElement>(".heat-month")) {
+        const label = cell.dataset.label ?? "";
+        const start = Number(cell.dataset.start);
+        probe.textContent = label;
+        const textWidth = probe.getBoundingClientRect().width;
+        next[start] = textWidth > 0 && textWidth <= cell.clientWidth;
+      }
+      probe.remove();
+      setFit((current) => {
+        const starts = Object.keys(next);
+        if (starts.length === Object.keys(current).length && starts.every((key) => current[Number(key)] === next[Number(key)])) {
+          return current;
+        }
+        return next;
+      });
+    };
+
+    measure();
+    const fonts = document.fonts;
+    fonts?.ready.then(measure);
+    fonts?.addEventListener("loadingdone", measure);
+    return () => {
+      active = false;
+      fonts?.removeEventListener("loadingdone", measure);
+    };
+  }, [show, heatmap.months]);
+
   return (
     <div className="activity-heat" ref={ref}>
       <h3 className="meta">Last 52 weeks</h3>
@@ -55,16 +104,23 @@ export function ContributionCalendar({ heatmap }: { heatmap: ContributionHeatmap
               aria-label={heatmap.summary}
               style={{ gridTemplateColumns: `1.8rem repeat(${weeks}, 0.68rem)` }}
             >
-              <div role="row" className="heat-row">
-                <div role="columnheader" />
-                {monthSpans(heatmap.months).map((group, index) => (
+              <div role="row" className="heat-row heat-months" ref={monthsRef}>
+                {groups.map((group) => (
                   <div
-                    key={`${group.label}-${index}`}
+                    key={`${group.label}-${group.start}`}
                     role="columnheader"
                     className="heat-month"
-                    style={{ gridColumn: `span ${group.span}` }}
+                    data-label={group.label}
+                    data-start={group.start}
+                    data-fit={fit[group.start] ? "yes" : "no"}
+                    aria-label={group.label}
+                    style={{ gridColumn: `${group.start + 2} / span ${group.span}` }}
                   >
-                    {group.label}
+                    {fit[group.start] ? (
+                      <span className="heat-month-label" aria-hidden="true">
+                        {group.label}
+                      </span>
+                    ) : null}
                   </div>
                 ))}
               </div>
