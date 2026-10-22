@@ -24,7 +24,7 @@ Server Components by default. Add `"use client"` only for state, events, or brow
 
 ## Before you finish
 
-Build passes. At 390px, `documentElement.scrollWidth <= innerWidth`. Check light and dark.
+Build passes. At 390px, `documentElement.scrollWidth <= clientWidth` (and `innerWidth` stays equal to `clientWidth`). Check light and dark.
 
 ## Hard rules
 

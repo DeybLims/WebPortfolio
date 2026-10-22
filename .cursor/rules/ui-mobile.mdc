@@ -9,7 +9,7 @@ alwaysApply: false
 
 Give every flex and grid child `min-width: 0` (`min-w-0`). Do not set a fixed width larger than its parent.
 
-A wide piece (contribution calendar, CodeMirror, diagram SVG) needs a wrapper with `width: 100%`, `max-width: 100%`, `min-width: 0`, and `overflow-x: auto`. Add `contain: inline-size` when the child is `max-content`. Without a definite width, a 52-week grid widens the phone layout viewport and the page looks about half width.
+A wide piece (contribution calendar, CodeMirror, diagram SVG) needs a wrapper with `width: 100%`, `max-width: 100%`, `min-width: 0`, `overflow-x: auto`, and `contain: paint`. On mobile Chrome, a wide table or grid widens the layout viewport even inside `overflow: auto`. `contain: inline-size` does not stop that. `innerWidth` grows with it, so check `scrollWidth` against `clientWidth`.
 
 `overflow-x: clip` on `html`, `body`, and `main` is fine. Do not set overflow on `.shell`; that breaks the sticky rail.
 
