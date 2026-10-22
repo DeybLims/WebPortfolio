@@ -12,9 +12,20 @@ export type ContributionHeatmap = {
 
 const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
+function monthSpans(months: string[]) {
+  const spans: { label: string; span: number }[] = [];
+  for (const label of months) {
+    const last = spans[spans.length - 1];
+    if (label || !last) spans.push({ label, span: 1 });
+    else last.span += 1;
+  }
+  return spans;
+}
+
 export function ContributionCalendar({ heatmap }: { heatmap: ContributionHeatmap }) {
   const ref = React.useRef<HTMLDivElement>(null);
   const [show, setShow] = React.useState(false);
+  const weeks = heatmap.weeks.length;
 
   React.useEffect(() => {
     const node = ref.current;
@@ -35,42 +46,49 @@ export function ContributionCalendar({ heatmap }: { heatmap: ContributionHeatmap
   return (
     <div className="activity-heat" ref={ref}>
       <h3 className="meta">Last 52 weeks</h3>
-      <div className="heat-wrap" tabIndex={0} aria-label="GitHub contributions for the last 52 weeks">
-        {show ? (
-          <table className="heat-table">
-            <caption className="sr-only">{heatmap.summary}</caption>
-            <thead aria-hidden="true">
-              <tr>
-                <th />
-                {heatmap.months.map((month, index) => (
-                  <th key={`${month}-${index}`} scope="col">
-                    {month}
-                  </th>
+      <div className="heat-wrap">
+        <div className="heat-scroll" tabIndex={0} aria-label="GitHub contributions for the last 52 weeks">
+          {show ? (
+            <div
+              className="heat-grid"
+              role="table"
+              aria-label={heatmap.summary}
+              style={{ gridTemplateColumns: `1.8rem repeat(${weeks}, 0.68rem)` }}
+            >
+              <div role="row" className="heat-row">
+                <div role="columnheader" />
+                {monthSpans(heatmap.months).map((group, index) => (
+                  <div
+                    key={`${group.label}-${index}`}
+                    role="columnheader"
+                    className="heat-month"
+                    style={{ gridColumn: `span ${group.span}` }}
+                  >
+                    {group.label}
+                  </div>
                 ))}
-              </tr>
-            </thead>
-            <tbody>
+              </div>
               {WEEKDAYS.map((weekday, row) => (
-                <tr key={weekday}>
-                  <th scope="row" aria-hidden="true">
+                <div key={weekday} role="row" className="heat-row">
+                  <div role="rowheader" className="heat-dow">
                     {row % 2 === 1 ? weekday : ""}
-                  </th>
+                  </div>
                   {heatmap.weeks.map((week, column) => {
                     const cell = week[row];
-                    if (!cell) return <td key={`${weekday}-${column}`} className="heat-pad" aria-hidden="true" />;
+                    if (!cell) return <div key={`${weekday}-${column}`} className="heat-pad" role="cell" />;
                     return (
-                      <td key={cell.date} className="heat-cell" data-level={cell.level} title={cell.label}>
+                      <div key={cell.date} className="heat-cell" role="cell" data-level={cell.level} title={cell.label}>
                         <span className="sr-only">{cell.label}</span>
-                      </td>
+                      </div>
                     );
                   })}
-                </tr>
+                </div>
               ))}
-            </tbody>
-          </table>
-        ) : (
-          <div className="heat-placeholder" />
-        )}
+            </div>
+          ) : (
+            <div className="heat-placeholder" />
+          )}
+        </div>
       </div>
       <p className="heat-legend" aria-hidden="true">
         <span>Less</span>

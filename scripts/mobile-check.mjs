@@ -5,18 +5,28 @@ const url = process.env.MOBILE_CHECK_URL ?? "http://127.0.0.1:3000";
 const chrome =
   process.env.CHROME_PATH ||
   ["/usr/bin/google-chrome", "/usr/local/bin/google-chrome"].find((path) => existsSync(path));
+const iphone = devices["iPhone 13"];
 
-const weeks = 53;
-const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-let head = "<th></th>";
-for (let i = 0; i < weeks; i++) head += `<th scope="col">${i % 4 === 0 ? months[(i / 4) | 0] : ""}</th>`;
-let body = "";
-for (let row = 0; row < 7; row++) {
-  body += `<tr><th scope="row">${row % 2 ? "Mon" : ""}</th>`;
-  for (let column = 0; column < weeks; column++) body += '<td class="heat-cell" data-level="1"></td>';
-  body += "</tr>";
-}
-const heatTable = `<table class="heat-table"><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table>`;
+const targets = [
+  { name: "iPhone 13", ...iphone },
+  { name: "Pixel 7", ...devices["Pixel 7"] },
+  {
+    name: "440",
+    userAgent: iphone.userAgent,
+    viewport: { width: 440, height: 956 },
+    deviceScaleFactor: 3,
+    isMobile: true,
+    hasTouch: true,
+  },
+  {
+    name: "375",
+    userAgent: iphone.userAgent,
+    viewport: { width: 375, height: 812 },
+    deviceScaleFactor: 3,
+    isMobile: true,
+    hasTouch: true,
+  },
+];
 
 const browser = await chromium.launch({
   ...(chrome ? { executablePath: chrome } : { channel: "chrome" }),
@@ -25,46 +35,49 @@ const browser = await chromium.launch({
 
 let failed = false;
 
-for (const name of ["iPhone 13", "Pixel 7"]) {
-  const context = await browser.newContext({ ...devices[name] });
+for (const target of targets) {
+  const { name, ...device } = target;
+  const context = await browser.newContext(device);
   const page = await context.newPage();
-  await page.goto(url, { waitUntil: "domcontentloaded", timeout: 60_000 });
+  await page.goto(url, { waitUntil: "networkidle", timeout: 60_000 });
   await page.evaluate(() => {
     document.documentElement.style.scrollBehavior = "auto";
   });
-
-  const check = async (label) => {
-    const box = await page.evaluate(() => ({
-      scrollWidth: document.documentElement.scrollWidth,
-      innerWidth: window.innerWidth,
-    }));
-    const ok = box.scrollWidth <= box.innerWidth;
-    console.log(`${ok ? "ok" : "FAIL"} ${name} ${label}: scrollWidth ${box.scrollWidth} innerWidth ${box.innerWidth}`);
-    if (!ok) failed = true;
-  };
-
-  for (const theme of ["light", "dark"]) {
-    await page.evaluate((next) => document.documentElement.classList.toggle("dark", next === "dark"), theme);
-    await check(`${theme} top`);
-    for (const id of ["#projects", "#writing", "#record", "#contact"]) {
-      if (await page.locator(id).count()) {
-        await page.locator(id).scrollIntoViewIfNeeded();
-        await check(`${theme} ${id}`);
-      }
+  for (const id of ["#projects", "#writing", "#skills", "#record", "#architecture", "#live-ide", "#experience", "#contact"]) {
+    const section = page.locator(id);
+    if (await section.count()) {
+      await section.scrollIntoViewIfNeeded();
+      await page.waitForTimeout(200);
+    }
+  }
+  if (await page.getByRole("heading", { name: "Last 52 weeks" }).count()) {
+    await page.locator("#record").scrollIntoViewIfNeeded();
+    await page.waitForSelector(".heat-grid", { timeout: 8_000 });
+  }
+  for (const selector of [".arch-stage", ".cm-content"]) {
+    try {
+      await page.waitForSelector(selector, { timeout: 8_000 });
+    } catch {
+      console.log(`miss ${name} ${selector}`);
     }
   }
 
-  await page.evaluate((html) => {
-    let wrap = document.querySelector(".heat-wrap");
-    if (!wrap) {
-      const host = document.querySelector("#record .min-w-0") || document.querySelector("#record");
-      if (!host) return;
-      host.insertAdjacentHTML("beforeend", '<div class="activity"><div class="activity-heat"><div class="heat-wrap"></div></div></div>');
-      wrap = document.querySelector(".heat-wrap");
-    }
-    if (wrap && !wrap.querySelector(".heat-table")) wrap.innerHTML = html;
-  }, heatTable);
-  await check("calendar");
+  for (const theme of ["light", "dark"]) {
+    await page.evaluate((next) => {
+      document.documentElement.classList.toggle("dark", next === "dark");
+      window.scrollTo(0, document.body.scrollHeight);
+    }, theme);
+    const box = await page.evaluate(() => ({
+      scrollWidth: document.documentElement.scrollWidth,
+      clientWidth: document.documentElement.clientWidth,
+      innerWidth: window.innerWidth,
+    }));
+    const ok = box.scrollWidth <= box.clientWidth && box.innerWidth <= box.clientWidth + 1;
+    console.log(
+      `${ok ? "ok" : "FAIL"} ${name} ${theme}: scrollWidth ${box.scrollWidth} clientWidth ${box.clientWidth} innerWidth ${box.innerWidth}`,
+    );
+    if (!ok) failed = true;
+  }
   await context.close();
 }
 

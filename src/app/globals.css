@@ -771,7 +771,7 @@ footer.site-section .grid > * {
   border-top: 1px solid var(--line);
   padding-block: var(--space-7);
   scroll-margin-top: 4.5rem;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 
 .site-section > * {
@@ -2255,43 +2255,70 @@ footer.site-section .grid > * {
 }
 
 .heat-wrap {
-  display: block;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
   width: 100%;
   max-width: 100%;
   min-width: 0;
   margin-top: 0.85rem;
+  overflow: hidden;
+  /* Paint containment stops a wide grid from widening Chrome's mobile layout viewport. inline-size containment does not. */
+  contain: paint;
+}
+
+.heat-scroll {
   overflow-x: auto;
   overflow-y: hidden;
-  /* Ignore the max-content table when sizing, or the 52-week grid widens the layout viewport. */
-  contain: inline-size;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   overscroll-behavior-x: contain;
   -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.heat-scroll:focus-visible {
+  outline: 2px solid var(--vision-accent);
+  outline-offset: -2px;
 }
 
 .heat-placeholder {
   height: 8.5rem;
 }
 
-.heat-table {
-  border-collapse: separate;
-  border-spacing: 3px;
+.heat-grid {
+  display: grid;
+  gap: 3px;
   width: max-content;
+  overflow-wrap: normal;
 }
 
-.heat-table th {
-  padding: 0;
+.heat-row {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+}
+
+.heat-month,
+.heat-dow {
+  min-width: 0;
+  overflow: hidden;
   color: var(--muted);
   font-family: var(--font-mono);
   font-size: 0.62rem;
   font-weight: 500;
   letter-spacing: 0.04em;
-  text-align: left;
-  vertical-align: middle;
+  line-height: 1;
+  white-space: nowrap;
 }
 
-.heat-table th[scope="row"] {
-  padding-right: 0.4rem;
-  width: 1.8rem;
+.heat-month {
+  align-self: end;
+  padding-bottom: 0.15rem;
+}
+
+.heat-dow {
+  line-height: 0.68rem;
 }
 
 .heat-cell,
