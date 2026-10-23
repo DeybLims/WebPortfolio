@@ -45,6 +45,38 @@ function zoneLabel(sample: Date) {
   return short && short !== zone ? `${zone} (${short})` : zone;
 }
 
+function weeks(
+  year: number,
+  month: number,
+  firstWeekday: number,
+  daysInMonth: number,
+  byDay: Map<string, Slot[]>,
+  todayStart: number,
+  todayKey: string,
+) {
+  type Cell = { key: string; day: number | null; past: boolean; today: boolean; open?: Slot[] };
+  const cells: Cell[] = [];
+  for (let index = 0; index < firstWeekday; index += 1) {
+    cells.push({ key: `pad-${index}`, day: null, past: true, today: false });
+  }
+  for (let day = 1; day <= daysInMonth; day += 1) {
+    const key = `${monthKey(year, month)}-${String(day).padStart(2, "0")}`;
+    const past = new Date(year, month, day).getTime() < todayStart;
+    cells.push({ key, day, past, today: key === todayKey, open: byDay.get(key) });
+  }
+  const rows: Array<{ id: string; past: boolean; cells: Cell[] }> = [];
+  for (let index = 0; index < cells.length; index += 7) {
+    const slice = cells.slice(index, index + 7);
+    const days = slice.filter((cell) => cell.day !== null);
+    rows.push({
+      id: slice[0]?.key ?? `week-${index}`,
+      past: days.length > 0 && days.every((cell) => cell.past),
+      cells: slice,
+    });
+  }
+  return rows;
+}
+
 function dayLabel(year: number, month: number, day: number) {
   return new Intl.DateTimeFormat(undefined, { weekday: "long", month: "long", day: "numeric" }).format(
     new Date(year, month, day),
@@ -167,7 +199,9 @@ export function BookingCalendar() {
   const selectedSlots = selected ? (byDay.get(selected) ?? []) : [];
   const sample = selectedSlots[0] ? new Date(selectedSlots[0].start_time) : new Date(year, month, 1);
   const timeFormat = new Intl.DateTimeFormat(undefined, { hour: "numeric", minute: "2-digit" });
-  const todayKey = localKey(new Date().toISOString());
+  const today = new Date();
+  const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate()).getTime();
+  const todayKey = localKey(today.toISOString());
 
   function showMonth(next: number) {
     const year = Math.floor(next / 12);
@@ -228,35 +262,36 @@ export function BookingCalendar() {
             {label}
           </div>
         ))}
-        {Array.from({ length: firstWeekday }, (_, index) => (
-          <div key={`pad-${index}`} role="gridcell" />
+        {weeks(year, month, firstWeekday, daysInMonth, byDay, todayStart, todayKey).map((week) => (
+          <div key={week.id} className={week.past ? "booking-week is-past-week" : "booking-week"} role="row">
+            {week.cells.map((cell) => {
+              if (cell.day === null) return <div key={cell.key} role="gridcell" />;
+              const className = ["booking-day", cell.today ? "is-today" : "", cell.past ? "is-past" : "", cell.open ? "is-open" : ""]
+                .filter(Boolean)
+                .join(" ");
+              if (!cell.open) {
+                return (
+                  <div key={cell.key} role="gridcell" className={className}>
+                    <span>{cell.day}</span>
+                  </div>
+                );
+              }
+              return (
+                <div key={cell.key} role="gridcell">
+                  <button
+                    type="button"
+                    className={className}
+                    aria-pressed={selected === cell.key}
+                    aria-label={`${dayLabel(year, month, cell.day)}, ${cell.open.length} open ${cell.open.length === 1 ? "time" : "times"}`}
+                    onClick={() => setSelected(cell.key)}
+                  >
+                    {cell.day}
+                  </button>
+                </div>
+              );
+            })}
+          </div>
         ))}
-        {Array.from({ length: daysInMonth }, (_, index) => {
-          const day = index + 1;
-          const key = `${monthKey(year, month)}-${String(day).padStart(2, "0")}`;
-          const open = byDay.get(key);
-          const pressed = selected === key;
-          if (!open) {
-            return (
-              <div key={key} role="gridcell" className={key === todayKey ? "booking-day is-today" : "booking-day"}>
-                <span>{day}</span>
-              </div>
-            );
-          }
-          return (
-            <div key={key} role="gridcell">
-              <button
-                type="button"
-                className={key === todayKey ? "booking-day is-open is-today" : "booking-day is-open"}
-                aria-pressed={pressed}
-                aria-label={`${dayLabel(year, month, day)}, ${open.length} open ${open.length === 1 ? "time" : "times"}`}
-                onClick={() => setSelected(key)}
-              >
-                {day}
-              </button>
-            </div>
-          );
-        })}
       </div>
 
       <div id="booking-times" className="booking-times" aria-live="polite">
