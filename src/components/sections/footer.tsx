@@ -10,6 +10,7 @@ import { FooterTechPlayground } from "@/components/sections/footer-tech-playgrou
 import { KineticText } from "@/components/motion/kinetic-text";
 import { Magnetic } from "@/components/motion/magnetic";
 import { calendlyUrl } from "@/lib/calendly";
+import { BookingCalendar } from "@/components/sections/booking-calendar";
 
 function TerminalTrigger() {
   const { toggle } = useDeveloperTerminal();
@@ -215,6 +216,7 @@ export function Footer() {
                 </a>
               </Magnetic>
             </div>
+            <BookingCalendar />
             <ContactForm />
           </div>
 
