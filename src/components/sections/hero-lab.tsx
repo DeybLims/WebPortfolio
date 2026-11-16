@@ -75,25 +75,37 @@ const CompareSlider = React.memo(function CompareSlider() {
         <span className="meta">Before and after</span>
         A made-up booking form. Drag from a cramped, faint version to a readable one with one action.
       </figcaption>
-      <div className="compare-stage" ref={stageRef}>
-        <BookingMock tone="clean" />
-        <BookingMock tone="messy" />
-        <span className="compare-tag compare-tag-before">Before</span>
-        <span className="compare-tag compare-tag-after">After</span>
-        <label className="sr-only" htmlFor="compare-split">
-          Reveal the calmer screen
-        </label>
-        <input
-          ref={inputRef}
-          id="compare-split"
-          className="compare-range"
-          type="range"
-          min={0}
-          max={100}
-          defaultValue={50}
-          aria-valuetext="50 percent of the readable form"
-          onInput={(event) => applySplit(stageRef.current, event.currentTarget)}
-        />
+      <div className="compare-tags">
+        <span>Before</span>
+        <span>After</span>
+      </div>
+      <div className="compare-stage">
+        <p className="mock-title">Request a time</p>
+        <div className="mock-grid">
+          <div className="mock-labels" aria-hidden="true">
+            <span>Name</span>
+            <span>Email</span>
+            <span>Note</span>
+          </div>
+          <div className="mock-panes" ref={stageRef}>
+            <BookingMock tone="clean" />
+            <BookingMock tone="messy" />
+            <label className="sr-only" htmlFor="compare-split">
+              Reveal the readable form
+            </label>
+            <input
+              ref={inputRef}
+              id="compare-split"
+              className="compare-range"
+              type="range"
+              min={0}
+              max={100}
+              defaultValue={50}
+              aria-valuetext="50 percent of the readable form"
+              onInput={(event) => applySplit(stageRef.current, event.currentTarget)}
+            />
+          </div>
+        </div>
       </div>
     </figure>
   );
@@ -103,22 +115,18 @@ function BookingMock({ tone }: { tone: "clean" | "messy" }) {
   const messy = tone === "messy";
   return (
     <div className={messy ? "mock mock-messy" : "mock mock-clean"} aria-hidden="true">
-      <p className="mock-title">Request a time</p>
       <p className="mock-field">
-        <span className="mock-label">Name</span>
         <span className="mock-input" />
       </p>
       <p className="mock-field">
-        <span className="mock-label">Email</span>
         <span className="mock-input" />
       </p>
       <p className="mock-field">
-        <span className="mock-label">Note</span>
         <span className="mock-input" />
       </p>
       <p className="mock-actions">
         <span className="mock-button">{messy ? "Submit" : "Request"}</span>
-        <span className="mock-button mock-button-alt">{messy ? "Go!!" : ""}</span>
+        {messy ? <span className="mock-button mock-button-alt">Go!!</span> : null}
       </p>
       <p className="mock-notes">
         {messy ? (

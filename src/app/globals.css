@@ -695,77 +695,90 @@ footer.site-section .grid > * {
   text-wrap: pretty;
 }
 
+.compare-tags {
+  display: flex;
+  justify-content: space-between;
+  margin-block-end: 0.35rem;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .compare-stage {
+  overflow: visible;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  padding: 0.65rem 0.8rem 0.7rem;
+}
+
+.mock-title {
+  margin: 0 0 0.4rem;
+  color: var(--ink);
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.3;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.mock-grid {
+  display: grid;
+  grid-template-columns: 3.4rem minmax(0, 1fr);
+  column-gap: 0.45rem;
+  align-items: start;
+}
+
+.mock-labels {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--ink);
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.mock-labels span {
+  display: flex;
+  align-items: center;
+  min-block-size: 1.65rem;
+}
+
+.mock-panes {
   --split: 50;
   --thumb: 1.75rem;
   --reveal: calc((var(--split) / 100) * (100% - var(--thumb)) + (var(--thumb) / 2));
   position: relative;
-  overflow: visible;
-  border: 1px solid var(--line);
-  background: var(--paper);
+  min-inline-size: 0;
 }
 
 @media (pointer: coarse) {
-  .compare-stage {
+  .mock-panes {
     --thumb: 2.75rem;
   }
 }
 
-.compare-stage::before,
-.compare-stage::after {
+.mock-panes::before {
   content: "";
   position: absolute;
   z-index: 1;
-  pointer-events: none;
-}
-
-.compare-stage::before {
   inset-block: 0;
   inset-inline-start: var(--reveal);
   inline-size: 1px;
   background: var(--ink);
   transform: translateX(-50%);
-}
-
-.compare-stage::after {
-  inset-block-start: 50%;
-  inset-inline-start: var(--reveal);
-  inline-size: var(--thumb);
-  block-size: var(--thumb);
-  border: 2px solid var(--ink);
-  border-radius: 50%;
-  background: var(--paper);
-  transform: translate(-50%, -50%);
-}
-
-.compare-tag {
-  position: absolute;
-  z-index: 3;
-  inset-block-start: 0.45rem;
-  padding: 0.15rem 0.4rem;
-  background: color-mix(in oklab, var(--paper) 88%, transparent);
-  color: var(--ink);
-  font-family: var(--font-mono);
-  font-size: 0.62rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
   pointer-events: none;
 }
 
-.compare-tag-before {
-  inset-inline-start: 0.45rem;
-}
-
-.compare-tag-after {
-  inset-inline-end: 0.45rem;
-}
-
 .compare-range {
+  --slider-thumb: var(--thumb);
   position: absolute;
   z-index: 2;
-  inset: 0;
+  inset-inline: 0;
+  inset-block-start: 50%;
   inline-size: 100%;
-  block-size: 100%;
+  block-size: var(--thumb);
   margin: 0;
   padding: 0;
   border: 0;
@@ -774,20 +787,24 @@ footer.site-section .grid > * {
   -webkit-appearance: none;
   accent-color: transparent;
   cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.compare-range:focus {
+  outline: none;
 }
 
 .compare-range:focus-visible {
   outline: 2px solid var(--vision-accent);
-  outline-offset: 3px;
+  outline-offset: 4px;
 }
 
 .compare-range::-webkit-slider-runnable-track {
   -webkit-appearance: none;
-  block-size: 100%;
+  block-size: var(--thumb);
   border: 0;
   background: transparent;
   box-shadow: none;
-  color: transparent;
 }
 
 .compare-range::-webkit-slider-thumb {
@@ -795,15 +812,15 @@ footer.site-section .grid > * {
   appearance: none;
   inline-size: var(--thumb);
   block-size: var(--thumb);
-  margin-block-start: calc((100% - var(--thumb)) / 2);
-  border: 0;
-  background: transparent;
+  margin-block-start: 0;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--paper);
   box-shadow: none;
-  opacity: 0;
 }
 
 .compare-range::-moz-range-track {
-  block-size: 100%;
+  block-size: var(--thumb);
   border: 0;
   background: transparent;
 }
@@ -815,16 +832,17 @@ footer.site-section .grid > * {
 .compare-range::-moz-range-thumb {
   inline-size: var(--thumb);
   block-size: var(--thumb);
-  border: 0;
-  background: transparent;
-  opacity: 0;
+  border: 2px solid var(--ink);
+  border-radius: 50%;
+  background: var(--paper);
+  box-shadow: none;
 }
 
 .mock {
   display: grid;
   gap: 0.35rem;
   margin: 0;
-  padding: 0.7rem 0.8rem 0.65rem;
+  padding: 0;
   font-size: 0.78rem;
   line-height: 1.3;
 }
@@ -859,34 +877,10 @@ footer.site-section .grid > * {
   transform: rotate(-8deg);
 }
 
-.mock-title {
-  padding-inline: 3.1rem;
-  text-align: center;
-  text-wrap: balance;
-}
-
-.mock-clean .mock-title {
-  font-weight: 600;
-}
-
 .mock-field {
   display: grid;
-  grid-template-columns: 3.1rem minmax(0, 1fr);
   align-items: center;
-  gap: 0.4rem;
   min-block-size: 1.65rem;
-}
-
-.mock-label {
-  font-size: 0.72rem;
-}
-
-.mock-clean .mock-label {
-  font-weight: 600;
-}
-
-.mock-messy .mock-label {
-  font-size: 0.62rem;
 }
 
 .mock-input {
@@ -901,20 +895,20 @@ footer.site-section .grid > * {
   inline-size: 100%;
 }
 
-.mock-messy .mock-field:nth-child(2) .mock-input {
+.mock-messy .mock-field:nth-child(1) .mock-input {
   inline-size: 76%;
   justify-self: end;
   border-color: color-mix(in oklab, var(--ink) 22%, var(--paper));
 }
 
-.mock-messy .mock-field:nth-child(3) .mock-input {
+.mock-messy .mock-field:nth-child(2) .mock-input {
   inline-size: 64%;
   justify-self: start;
   border-style: dashed;
   border-color: color-mix(in oklab, var(--ink) 28%, var(--paper));
 }
 
-.mock-messy .mock-field:nth-child(4) .mock-input {
+.mock-messy .mock-field:nth-child(3) .mock-input {
   inline-size: 88%;
   justify-self: center;
   border-width: 3px;
@@ -922,10 +916,10 @@ footer.site-section .grid > * {
 }
 
 .mock-actions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.35rem;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  gap: 0.35rem;
   min-block-size: 1.75rem;
 }
 
@@ -934,40 +928,42 @@ footer.site-section .grid > * {
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  min-block-size: 1.55rem;
-  padding-inline: 0.45rem;
+  inline-size: fit-content;
+  min-block-size: 1.75rem;
+  padding-inline: 0.9rem;
+}
+
+.mock-clean .mock-actions {
+  justify-content: flex-end;
 }
 
 .mock-clean .mock-button {
-  grid-column: 1 / -1;
-  inline-size: 100%;
-  justify-content: flex-end;
-  padding-inline-end: 8%;
   background: var(--ink);
   color: var(--paper);
 }
 
-.mock-clean .mock-button-alt {
-  visibility: hidden;
+.mock-messy .mock-actions,
+.mock-messy .mock-notes {
+  inline-size: 46%;
 }
 
 .mock-messy .mock-actions {
-  inline-size: 42%;
+  align-items: flex-end;
 }
 
 .mock-messy .mock-button {
-  justify-self: start;
-  inline-size: 78%;
-  min-block-size: 0.9rem;
+  inline-size: fit-content;
+  min-block-size: 1.15rem;
+  padding-inline: 0.4rem;
   background: var(--form-error);
   color: var(--paper);
   font-size: 0.62rem;
 }
 
 .mock-messy .mock-button-alt {
-  justify-self: end;
-  inline-size: 52%;
-  min-block-size: 1.45rem;
+  inline-size: fit-content;
+  min-block-size: 1.55rem;
+  padding-inline: 0.75rem;
   border: 2px dashed color-mix(in oklab, var(--ink) 40%, var(--paper));
   background: transparent;
   color: color-mix(in oklab, var(--ink) 40%, var(--paper));
