@@ -1,7 +1,7 @@
 import { portfolioData } from "@/lib/portfolio-data";
 import { KineticText } from "@/components/motion/kinetic-text";
 import { Magnetic } from "@/components/motion/magnetic";
-import { ProjectIndex } from "@/components/sections/project-index";
+import { HeroLab } from "@/components/sections/hero-lab";
 
 export function Hero() {
   const role = portfolioData.experience[0];
@@ -18,7 +18,6 @@ export function Hero() {
           <KineticText text={portfolioData.name} mode="load" />
         </h1>
         <p className="lede">{portfolioData.summary}</p>
-        <p className="masthead-availability">Open to remote work.</p>
         <div className="masthead-actions">
           <Magnetic>
             <a href="#projects" className="button-ink">
@@ -50,7 +49,7 @@ export function Hero() {
         </p>
       </div>
 
-      <ProjectIndex />
+      <HeroLab />
     </section>
   );
 }
