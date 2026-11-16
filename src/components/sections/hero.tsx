@@ -1,7 +1,7 @@
 import { portfolioData } from "@/lib/portfolio-data";
-import { calendlyUrl } from "@/lib/calendly";
 import { KineticText } from "@/components/motion/kinetic-text";
 import { Magnetic } from "@/components/motion/magnetic";
+import { HeroLab } from "@/components/sections/hero-lab";
 
 export function Hero() {
   const role = portfolioData.experience[0];
@@ -49,33 +49,7 @@ export function Hero() {
         </p>
       </div>
 
-      <aside className="masthead-aside" aria-labelledby="availability-title">
-        <h2 id="availability-title" className="meta">
-          Available
-        </h2>
-        <dl className="availability-list">
-          <div>
-            <dt>Roles</dt>
-            <dd>Full-time remote roles, and contract work.</dd>
-          </div>
-          <div>
-            <dt>Hours</dt>
-            <dd>Iloilo City, Philippines (PHT / UTC+8). I can overlap with US, EU, or AU hours.</dd>
-          </div>
-          <div>
-            <dt>Focus</dt>
-            <dd>
-              Production web and mobile systems. I own APIs, product features, and database work from
-              implementation through testing and release.
-            </dd>
-          </div>
-        </dl>
-        <footer>
-          <a className="button-ink" href={calendlyUrl} target="_blank" rel="noreferrer">
-            Book a call
-          </a>
-        </footer>
-      </aside>
+      <HeroLab />
     </section>
   );
 }
