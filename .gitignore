@@ -41,3 +41,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 scripts/.resume-build.mjs
+
+# Local agent skills (modern-web-guidance)
+.agents/
+skills-lock.json
