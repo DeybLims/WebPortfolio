@@ -481,7 +481,6 @@ footer.site-section .grid > * {
 .rail-github,
 .jump-hint,
 .jump-help,
-.index-year,
 .work-year,
 .sheet-year {
   color: var(--muted);
@@ -599,7 +598,6 @@ footer.site-section .grid > * {
 .rail-now:focus-visible,
 .rail-name:focus-visible,
 .rail-github:focus-visible,
-.index-link:focus-visible,
 .icon-button:focus-visible,
 .type-section:focus-visible,
 .type-display:focus-visible {
@@ -638,8 +636,7 @@ footer.site-section .grid > * {
   }
 }
 
-.masthead-kicker,
-.masthead-availability {
+.masthead-kicker {
   color: var(--muted);
   font-size: 0.95rem;
 }
@@ -655,10 +652,6 @@ footer.site-section .grid > * {
   width: 0.28rem;
   height: 0.28rem;
   background: var(--vision-accent);
-}
-
-.masthead-availability {
-  margin-top: var(--space-3);
 }
 
 .masthead-actions {
@@ -677,83 +670,73 @@ footer.site-section .grid > * {
   margin-top: var(--space-4);
 }
 
-.index-table {
-  width: 100%;
-  margin-top: var(--space-3);
-  border-collapse: collapse;
+.masthead-aside {
+  container: availability / inline-size;
+  min-inline-size: 0;
+  border-inline-start: 1px solid var(--line);
+  padding-inline-start: clamp(1.15rem, 2vw, 2rem);
 }
 
-.index-table tr + tr {
-  border-top: 1px solid var(--line);
+.masthead-aside h2 {
+  margin: 0;
+  text-wrap: balance;
 }
 
-.index-year {
-  width: 5.6rem;
-  padding: 0.72rem 0.75rem 0.72rem 0;
+.availability-list {
+  margin: var(--space-3) 0 0;
+  padding: 0;
+}
+
+.availability-list > div {
+  display: grid;
+  gap: 0.25rem;
+  padding-block: 0.9rem;
+  border-block-start: 1px solid var(--line);
+}
+
+.availability-list > div:last-child {
+  border-block-end: 1px solid var(--line);
+}
+
+.availability-list dt {
+  color: var(--muted);
   font-family: var(--font-mono);
   font-size: 0.68rem;
   font-weight: 500;
   letter-spacing: 0.04em;
-  text-align: left;
-  vertical-align: baseline;
+  text-transform: uppercase;
 }
 
-.index-link {
-  display: grid;
-  gap: 0.15rem;
-  padding: 0.68rem 0;
-  color: inherit;
-  text-decoration: none;
-}
-
-.index-title {
+.availability-list dd {
+  margin: 0;
+  min-inline-size: 0;
   font-family: var(--font-serif);
   font-size: 1.08rem;
   letter-spacing: -0.02em;
-  line-height: 1.25;
-}
-
-.index-link:hover .index-title {
-  color: var(--vision-accent);
-}
-
-.index-desc,
-.index-nda {
-  color: var(--muted);
-  font-size: 0.84rem;
-  line-height: 1.4;
-}
-
-.masthead-index {
-  border-left: 1px solid var(--line);
-  padding-left: clamp(1.15rem, 2vw, 2rem);
-}
-
-@media (max-width: 1340px) {
-  .masthead-index {
-    border-left: 0;
-    margin-top: var(--space-5);
-    border-top: 1px solid var(--line);
-    padding-top: var(--space-5);
-    padding-left: 0;
-  }
-}
-
-.index-desc {
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow-wrap: normal;
-  word-break: normal;
+  line-height: 1.35;
   text-wrap: pretty;
 }
 
-.index-nda {
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+@container availability (inline-size > 28rem) {
+  .availability-list > div {
+    grid-template-columns: 6.5rem minmax(0, 1fr);
+    column-gap: 0.75rem;
+    align-items: baseline;
+  }
+}
+
+.masthead-aside footer {
+  margin-block-start: var(--space-5);
+}
+
+@media (max-width: 1340px) {
+  .masthead-aside {
+    margin-block-start: var(--space-5);
+    border-block-start: 1px solid var(--line);
+    border-inline-start: 0;
+    padding-block-start: var(--space-5);
+    padding-inline-start: 0;
+  }
 }
 
 .deploy-band {
@@ -1945,14 +1928,6 @@ footer.site-section .grid > * {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .masthead-index {
-    border-left: 0;
-    margin-top: var(--space-6);
-    border-top: 1px solid var(--line);
-    padding-top: var(--space-5);
-    padding-left: 0;
-  }
-
   .site-section-label {
     padding-top: 0;
   }
@@ -2175,6 +2150,12 @@ footer.site-section .grid > * {
 .hover-preview .index-nda {
   display: block;
   margin-top: 0.45rem;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.12em;
+  line-height: 1.4;
+  text-transform: uppercase;
 }
 
 .activity-stats,
