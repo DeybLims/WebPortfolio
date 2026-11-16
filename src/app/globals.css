@@ -696,11 +696,10 @@ footer.site-section .grid > * {
 }
 
 .compare-stage {
-  --split: 58;
+  --split: 50;
   --thumb: 1.75rem;
   --reveal: calc((var(--split) / 100) * (100% - var(--thumb)) + (var(--thumb) / 2));
   position: relative;
-  block-size: 10.5rem;
   overflow: visible;
   border: 1px solid var(--line);
   background: var(--paper);
@@ -822,133 +821,201 @@ footer.site-section .grid > * {
 }
 
 .mock {
-  position: absolute;
-  inset: 0;
-  overflow: clip;
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0.7rem 0.8rem 0.65rem;
+  font-size: 0.78rem;
+  line-height: 1.3;
+}
+
+.mock p {
+  margin: 0;
 }
 
 .mock-clean {
-  display: grid;
-  align-content: center;
-  gap: 0.55rem;
-  padding: 1.1rem 1.15rem;
+  position: relative;
   background: var(--paper);
-}
-
-.mock-title,
-.mock-row,
-.mock-action,
-.mock-top,
-.mock-pill,
-.mock-card,
-.mock-line {
-  display: block;
-}
-
-.mock-title {
-  inline-size: 90%;
-  block-size: 0.7rem;
-  background: var(--ink);
-}
-
-.mock-row {
-  inline-size: 96%;
-  block-size: 0.45rem;
-  background: color-mix(in oklab, var(--muted) 70%, var(--paper));
-}
-
-.mock-row-short {
-  inline-size: 68%;
-}
-
-.mock-action {
-  inline-size: 74%;
-  block-size: 1.35rem;
-  margin-block-start: 0.45rem;
-  background: var(--ink);
+  color: var(--ink);
 }
 
 .mock-messy {
-  background: color-mix(in oklab, var(--form-error) 16%, var(--paper));
+  position: absolute;
+  inset: 0;
+  overflow: clip;
+  background: color-mix(in oklab, var(--form-error) 14%, var(--paper));
+  color: color-mix(in oklab, var(--ink) 36%, var(--paper));
   clip-path: inset(0 calc(100% - var(--reveal)) 0 0);
 }
 
-.mock-top {
+.mock-messy::after {
+  content: "New!!";
   position: absolute;
-  inset-block-start: 0.35rem;
-  inset-inline: 0.3rem;
-  block-size: 0.7rem;
-  background: color-mix(in oklab, var(--form-error) 55%, var(--ink));
+  inset-block-start: 1.7rem;
+  inset-inline-start: 42%;
+  color: var(--form-error);
+  font-size: 0.62rem;
+  line-height: 1;
+  transform: rotate(-8deg);
 }
 
-.mock-pill,
-.mock-card,
-.mock-line {
-  position: absolute;
+.mock-title {
+  padding-inline: 3.1rem;
+  text-align: center;
+  text-wrap: balance;
 }
 
-.mock-pill {
-  inset-block-start: 1.25rem;
-  inset-inline-start: 0.3rem;
-  inline-size: 2.4rem;
-  block-size: 0.7rem;
-  background: var(--status-warn);
+.mock-clean .mock-title {
+  font-weight: 600;
 }
 
-.mock-pill-b {
-  inset-inline-start: 2.2rem;
-  background: var(--vision-accent);
+.mock-field {
+  display: grid;
+  grid-template-columns: 3.1rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.4rem;
+  min-block-size: 1.65rem;
 }
 
-.mock-pill-c {
-  inset-inline-start: 4.3rem;
-  inline-size: 3rem;
-  background: var(--form-error);
+.mock-label {
+  font-size: 0.72rem;
 }
 
-.mock-card {
-  inset-block-start: 2.1rem;
-  inset-inline-start: 0.45rem;
-  inline-size: 58%;
-  block-size: 3.4rem;
-  border: 1px solid var(--ink);
-  background: color-mix(in oklab, var(--status-warn) 35%, var(--paper));
+.mock-clean .mock-label {
+  font-weight: 600;
 }
 
-.mock-card-b {
-  inset-block-start: 3.1rem;
-  inset-inline-start: 28%;
-  inline-size: 50%;
-  background: color-mix(in oklab, var(--form-error) 28%, var(--paper));
+.mock-messy .mock-label {
+  font-size: 0.62rem;
 }
 
-.mock-card-c {
-  inset-block-start: 4.4rem;
-  inset-inline-start: 8%;
-  inline-size: 70%;
-  block-size: 2.2rem;
-  background: color-mix(in oklab, var(--vision-accent) 24%, var(--paper));
+.mock-input {
+  display: block;
+  box-sizing: border-box;
+  min-block-size: 1.15rem;
+  border: 1px solid color-mix(in oklab, var(--ink) 55%, var(--paper));
+  background: var(--paper);
 }
 
-.mock-line {
-  inset-block-end: 0.45rem;
-  inset-inline-start: 0.3rem;
-  inline-size: 92%;
-  block-size: 0.28rem;
+.mock-clean .mock-input {
+  inline-size: 100%;
+}
+
+.mock-messy .mock-field:nth-child(2) .mock-input {
+  inline-size: 76%;
+  justify-self: end;
+  border-color: color-mix(in oklab, var(--ink) 22%, var(--paper));
+}
+
+.mock-messy .mock-field:nth-child(3) .mock-input {
+  inline-size: 64%;
+  justify-self: start;
+  border-style: dashed;
+  border-color: color-mix(in oklab, var(--ink) 28%, var(--paper));
+}
+
+.mock-messy .mock-field:nth-child(4) .mock-input {
+  inline-size: 88%;
+  justify-self: center;
+  border-width: 3px;
+  border-color: color-mix(in oklab, var(--form-error) 70%, var(--paper));
+}
+
+.mock-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.35rem;
+  align-items: center;
+  min-block-size: 1.75rem;
+}
+
+.mock-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-block-size: 1.55rem;
+  padding-inline: 0.45rem;
+}
+
+.mock-clean .mock-button {
+  grid-column: 1 / -1;
+  inline-size: 100%;
+  justify-content: flex-end;
+  padding-inline-end: 8%;
   background: var(--ink);
+  color: var(--paper);
 }
 
-.mock-line-b {
-  inset-block-end: 0.9rem;
-  inline-size: 70%;
-  opacity: 0.45;
+.mock-clean .mock-button-alt {
+  visibility: hidden;
 }
 
-.mock-line-c {
-  inset-block-end: 1.35rem;
-  inset-inline-start: 18%;
-  inline-size: 60%;
-  opacity: 0.7;
+.mock-messy .mock-actions {
+  inline-size: 42%;
+}
+
+.mock-messy .mock-button {
+  justify-self: start;
+  inline-size: 78%;
+  min-block-size: 0.9rem;
+  background: var(--form-error);
+  color: var(--paper);
+  font-size: 0.62rem;
+}
+
+.mock-messy .mock-button-alt {
+  justify-self: end;
+  inline-size: 52%;
+  min-block-size: 1.45rem;
+  border: 2px dashed color-mix(in oklab, var(--ink) 40%, var(--paper));
+  background: transparent;
+  color: color-mix(in oklab, var(--ink) 40%, var(--paper));
+  font-size: 0.58rem;
+}
+
+.mock-notes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  min-block-size: 1.35rem;
+}
+
+.mock-clean .mock-notes {
+  justify-content: flex-end;
+}
+
+.mock-clean .mock-notes span {
+  border: 1px solid color-mix(in oklab, var(--ink) 45%, var(--paper));
+  padding: 0.08rem 0.35rem;
+  font-size: 0.68rem;
+}
+
+.mock-spin {
+  inline-size: 0.7rem;
+  block-size: 0.7rem;
+  border: 2px solid color-mix(in oklab, var(--ink) 22%, var(--paper));
+  border-block-start-color: var(--form-error);
+  border-radius: 50%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .mock-spin {
+    animation: mock-spin 1.1s linear infinite;
+  }
+}
+
+@keyframes mock-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.mock-skel {
+  inline-size: 38%;
+  block-size: 0.45rem;
+  background: color-mix(in oklab, var(--ink) 16%, var(--paper));
 }
 
 .fit h2 {

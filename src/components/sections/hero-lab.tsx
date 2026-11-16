@@ -49,7 +49,7 @@ const NEEDS: { id: string; label: string; titles: string[] }[] = [
 
 function applySplit(stage: HTMLElement | null, input: HTMLInputElement) {
   stage?.style.setProperty("--split", input.value);
-  input.setAttribute("aria-valuetext", `${input.value} percent of the calmer screen`);
+  input.setAttribute("aria-valuetext", `${input.value} percent of the readable form`);
 }
 
 export function HeroLab() {
@@ -73,27 +73,11 @@ const CompareSlider = React.memo(function CompareSlider() {
     <figure className="compare">
       <figcaption>
         <span className="meta">Before and after</span>
-        A made-up screen. Drag from a cluttered layout to a calmer one.
+        A made-up booking form. Drag from a cramped, faint version to a readable one with one action.
       </figcaption>
       <div className="compare-stage" ref={stageRef}>
-        <div className="mock mock-clean" aria-hidden="true">
-          <span className="mock-title" />
-          <span className="mock-row" />
-          <span className="mock-row mock-row-short" />
-          <span className="mock-action" />
-        </div>
-        <div className="mock mock-messy" aria-hidden="true">
-          <span className="mock-top" />
-          <span className="mock-pill" />
-          <span className="mock-pill mock-pill-b" />
-          <span className="mock-pill mock-pill-c" />
-          <span className="mock-card" />
-          <span className="mock-card mock-card-b" />
-          <span className="mock-card mock-card-c" />
-          <span className="mock-line" />
-          <span className="mock-line mock-line-b" />
-          <span className="mock-line mock-line-c" />
-        </div>
+        <BookingMock tone="clean" />
+        <BookingMock tone="messy" />
         <span className="compare-tag compare-tag-before">Before</span>
         <span className="compare-tag compare-tag-after">After</span>
         <label className="sr-only" htmlFor="compare-split">
@@ -106,14 +90,53 @@ const CompareSlider = React.memo(function CompareSlider() {
           type="range"
           min={0}
           max={100}
-          defaultValue={58}
-          aria-valuetext="58 percent of the calmer screen"
+          defaultValue={50}
+          aria-valuetext="50 percent of the readable form"
           onInput={(event) => applySplit(stageRef.current, event.currentTarget)}
         />
       </div>
     </figure>
   );
 });
+
+function BookingMock({ tone }: { tone: "clean" | "messy" }) {
+  const messy = tone === "messy";
+  return (
+    <div className={messy ? "mock mock-messy" : "mock mock-clean"} aria-hidden="true">
+      <p className="mock-title">Request a time</p>
+      <p className="mock-field">
+        <span className="mock-label">Name</span>
+        <span className="mock-input" />
+      </p>
+      <p className="mock-field">
+        <span className="mock-label">Email</span>
+        <span className="mock-input" />
+      </p>
+      <p className="mock-field">
+        <span className="mock-label">Note</span>
+        <span className="mock-input" />
+      </p>
+      <p className="mock-actions">
+        <span className="mock-button">{messy ? "Submit" : "Request"}</span>
+        <span className="mock-button mock-button-alt">{messy ? "Go!!" : ""}</span>
+      </p>
+      <p className="mock-notes">
+        {messy ? (
+          <>
+            <span className="mock-spin" />
+            <span>wait…</span>
+            <span className="mock-skel" />
+          </>
+        ) : (
+          <>
+            <span>Readable contrast</span>
+            <span>One clear action</span>
+          </>
+        )}
+      </p>
+    </div>
+  );
+}
 
 function QuickFit() {
   const [picked, setPicked] = React.useState<string[]>([]);
