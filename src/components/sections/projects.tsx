@@ -157,7 +157,7 @@ export function ProjectsSection() {
         {rest.map((project) => (
           <li key={project.title} id={workAnchor(project.title)} className="work-row" {...bind(project)}>
             <span className="work-year">{project.year ?? ""}</span>
-            <div className="min-w-0">
+            <div className="work-copy">
               <h3 className="work-title">{project.title}</h3>
               <p className="work-desc">{project.description}</p>
               {project.nda ? <p className="work-nda">Details under NDA</p> : null}
